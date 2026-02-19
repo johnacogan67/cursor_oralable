@@ -1,0 +1,7 @@
+pandas
+numpy
+scipy
+matplotlib
+coremltools
+scikit-learn
+bleak

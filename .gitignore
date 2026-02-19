@@ -1,0 +1,23 @@
+# Data and models
+data/
+models/*.pth
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+*.egg-info/
+.eggs/
+
+# IDE / OS
+.DS_Store
+.vscode/
+
+# Reference repos (separate clones)
+oralable_swift_ref/
+oralable_nrf_ref/
