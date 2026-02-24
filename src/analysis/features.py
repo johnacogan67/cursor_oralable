@@ -81,6 +81,7 @@ def compute_filters(df: pd.DataFrame) -> pd.DataFrame:
     Add filtered channels:
     - ir_dc: IR low-pass (<1 Hz) to get DC / baseline (hemodynamic occlusion).
     - green_bp: Green band-pass 0.5–8 Hz for pulsatile morphology / dicrotic notch.
+    - red_dc, red_ac, ir_ac: For SpO2 (ClinicalBiometricSuite); added if 'red' exists.
     """
     if "green" not in df.columns or "ir" not in df.columns:
         raise ValueError("Expected 'green' and 'ir' columns in session_50hz.csv")
@@ -90,18 +91,28 @@ def compute_filters(df: pd.DataFrame) -> pd.DataFrame:
 
     # Low-pass < 1 Hz for DC (use 0.8 Hz cutoff for some margin)
     b_lp, a_lp = _butter_lowpass(cutoff_hz=0.8, fs=FS, order=4)
-    ir_dc = filtfilt(b_lp, a_lp, sig_ir)
+    ir_dc = filtfilt(b_lp, a_lp, np.nan_to_num(sig_ir, nan=0.0))
     df["ir_dc"] = ir_dc
 
     # Band-pass 0.5–8 Hz on Green for beat detection and morphology
     b_bp, a_bp = _butter_bandpass(0.5, 8.0, fs=FS, order=4)
     # Optional: remove mean before filtering to reduce edge effects
     sig_green_detrended = sig_green - np.nanmean(sig_green)
-    green_bp = filtfilt(b_bp, a_bp, sig_green_detrended)
+    green_bp = filtfilt(b_bp, a_bp, np.nan_to_num(sig_green_detrended, nan=0.0))
     df["green_bp"] = green_bp
 
     # Rolling 5-second mean of IR DC (time-based, uses datetime index)
     df["ir_dc_mean_5s"] = df["ir_dc"].rolling("5s", center=True, min_periods=1).mean()
+
+    # Red/IR AC/DC for SpO2 (ClinicalBiometricSuite)
+    if "red" in df.columns:
+        sig_red = df["red"].astype(float).to_numpy()
+        red_dc = filtfilt(b_lp, a_lp, np.nan_to_num(sig_red, nan=0.0))
+        df["red_dc"] = red_dc
+        red_ac = filtfilt(b_bp, a_bp, np.nan_to_num(sig_red - np.nanmean(sig_red), nan=0.0))
+        df["red_ac"] = red_ac
+        ir_ac = filtfilt(b_bp, a_bp, np.nan_to_num(sig_ir - np.nanmean(sig_ir), nan=0.0))
+        df["ir_ac"] = ir_ac
 
     return df
 
@@ -192,37 +203,156 @@ def detect_beats_from_green_bp(df: pd.DataFrame) -> List[BeatFeature]:
     return beats
 
 
-def build_feature_dataframe(beats: List[BeatFeature]) -> pd.DataFrame:
-    """Convert list of BeatFeature objects into a labeled feature DataFrame."""
+def build_feature_dataframe(
+    beats: List[BeatFeature],
+    df: pd.DataFrame | None = None,
+    clinical_df: pd.DataFrame | None = None,
+) -> pd.DataFrame:
+    """Convert list of BeatFeature objects into a labeled feature DataFrame. Optionally adds spo2_pct, is_airway_rescue, cumulative_sashb from clinical_df."""
+    base_cols = [
+        "beat_index",
+        "onset_time",
+        "peak_time",
+        "offset_time",
+        "falling_edge_s",
+        "rising_edge_s",
+        "ir_dc_mean_5s",
+    ]
     if not beats:
-        return pd.DataFrame(
-            columns=[
-                "beat_index",
-                "onset_time",
-                "peak_time",
-                "offset_time",
-                "falling_edge_s",
-                "rising_edge_s",
-                "ir_dc_mean_5s",
-            ]
-        )
+        cols = base_cols + (["spo2_pct", "is_airway_rescue", "cumulative_sashb"] if clinical_df is not None else [])
+        return pd.DataFrame(columns=cols)
 
     records = []
     for i, b in enumerate(beats):
-        records.append(
-            {
-                "beat_index": i,
-                "onset_time": b.onset_time,
-                "peak_time": b.peak_time,
-                "offset_time": b.offset_time,
-                "falling_edge_s": b.falling_edge_s,
-                "rising_edge_s": b.rising_edge_s,
-                "ir_dc_mean_5s": b.ir_dc_mean_5s,
-            }
-        )
+        rec = {
+            "beat_index": i,
+            "onset_time": b.onset_time,
+            "peak_time": b.peak_time,
+            "offset_time": b.offset_time,
+            "falling_edge_s": b.falling_edge_s,
+            "rising_edge_s": b.rising_edge_s,
+            "ir_dc_mean_5s": b.ir_dc_mean_5s,
+        }
+        if clinical_df is not None:
+            if df is not None and b.peak_idx < len(clinical_df):
+                rec["spo2_pct"] = float(clinical_df["spo2_pct"].iloc[b.peak_idx])
+                rec["is_airway_rescue"] = int(clinical_df["is_airway_rescue"].iloc[b.peak_idx])
+                rec["cumulative_sashb"] = float(clinical_df["cumulative_sashb"].iloc[b.peak_idx])
+            else:
+                rec["spo2_pct"] = np.nan
+                rec["is_airway_rescue"] = 0
+                rec["cumulative_sashb"] = 0.0
+        records.append(rec)
     df_feat = pd.DataFrame.from_records(records)
     df_feat = df_feat.sort_values("peak_time").reset_index(drop=True)
     return df_feat
+
+
+# --- Clinical Biometric Suite ---
+
+DT_50HZ = 1.0 / FS  # 0.02 s
+SPO2_WINDOW_SAMPLES = int(3.0 * FS)  # 3 s for stable R
+AIRWAY_RESCUE_WINDOW_MS = 500
+AIRWAY_RESCUE_WINDOW_SAMPLES = int(AIRWAY_RESCUE_WINDOW_MS / 1000.0 * FS)  # 25 at 50 Hz
+AIRWAY_RESCUE_THRESHOLD = -0.15  # -15% drop
+SPO2_DIP_THRESHOLD = 90.0
+
+
+class ClinicalBiometricSuite:
+    """
+    Clinical-grade biometric processing on 50 Hz PPG data.
+
+    Implements:
+    - SpO2 empirical curve: R = (Red_AC/Red_DC)/(IR_AC/IR_DC), SpO2 = 110 - 25*R, clamp 60-100%
+    - Airway Rescue: IR DC drop exceeding -15% within 500 ms (hemodynamic occlusion)
+    - SASHB: Area under curve for SpO2 < 90%, cumulative over time
+    """
+
+    def __init__(
+        self,
+        spo2_window_samples: int = SPO2_WINDOW_SAMPLES,
+        rescue_window_samples: int = AIRWAY_RESCUE_WINDOW_SAMPLES,
+        rescue_threshold: float = AIRWAY_RESCUE_THRESHOLD,
+        spo2_dip_threshold: float = SPO2_DIP_THRESHOLD,
+        dt_s: float = DT_50HZ,
+    ):
+        self.spo2_window_samples = spo2_window_samples
+        self.rescue_window_samples = rescue_window_samples
+        self.rescue_threshold = rescue_threshold
+        self.spo2_dip_threshold = spo2_dip_threshold
+        self.dt_s = dt_s
+
+    def process(self, df: pd.DataFrame) -> pd.DataFrame:
+        """
+        Process df_resampled (50 Hz) and return copy with spo2_pct, is_airway_rescue, cumulative_sashb.
+        """
+        result = pd.DataFrame(index=df.index)
+        result["spo2_pct"] = self._compute_spo2(df)
+        result["is_airway_rescue"] = self._compute_airway_rescue(df)
+        result["cumulative_sashb"] = self._compute_sashb(result["spo2_pct"])
+        return result
+
+    def _compute_spo2(self, df: pd.DataFrame) -> pd.Series:
+        """SpO2 = 110 - 25*R, R = (Red_AC/Red_DC)/(IR_AC/IR_DC), clamped 60-100%."""
+        if "red_dc" not in df.columns or "red_ac" not in df.columns:
+            return pd.Series(np.nan, index=df.index)
+
+        red_dc = df["red_dc"].astype(float)
+        red_ac = df["red_ac"].astype(float)
+        ir_dc = df["ir_dc"].astype(float)
+        ir_ac = df["ir_ac"].astype(float)
+
+        # Rolling RMS of AC and mean DC over spo2_window_samples
+        eps = 1e-9
+        red_dc_roll = red_dc.rolling(window=self.spo2_window_samples, center=True, min_periods=1).mean()
+        ir_dc_roll = ir_dc.rolling(window=self.spo2_window_samples, center=True, min_periods=1).mean()
+        red_ac_rms = (red_ac**2).rolling(window=self.spo2_window_samples, center=True, min_periods=1).mean() ** 0.5
+        ir_ac_rms = (ir_ac**2).rolling(window=self.spo2_window_samples, center=True, min_periods=1).mean() ** 0.5
+
+        # R = (Red_AC/Red_DC) / (IR_AC/IR_DC)
+        red_ratio = red_ac_rms / (red_dc_roll + eps)
+        ir_ratio = ir_ac_rms / (ir_dc_roll + eps)
+        r = np.where(ir_ratio > eps, red_ratio / ir_ratio, np.nan)
+
+        # Oralable calibration: SpO2 = 110 - 25*R, clamp 60-100
+        spo2 = 110.0 - 25.0 * r
+        spo2 = np.clip(spo2, 60.0, 100.0)
+        spo2 = np.where(np.isfinite(spo2), spo2, np.nan)
+        return pd.Series(spo2, index=df.index)
+
+    def _compute_airway_rescue(self, df: pd.DataFrame) -> pd.Series:
+        """Rescue event: IR DC drop exceeding -15% within 500 ms window."""
+        if "ir_dc" not in df.columns:
+            return pd.Series(0, index=df.index)
+
+        ir_dc = df["ir_dc"].astype(float)
+        n = len(ir_dc)
+        is_rescue = np.zeros(n, dtype=int)
+
+        w = self.rescue_window_samples
+        if w < 2 or n < w:
+            return pd.Series(is_rescue, index=df.index)
+
+        for i in range(w, n):
+            start_val = ir_dc.iloc[i - w]
+            end_val = ir_dc.iloc[i]
+            if np.isfinite(start_val) and start_val > 1e-9:
+                pct_change = (end_val - start_val) / start_val
+                if pct_change <= self.rescue_threshold:
+                    is_rescue[i] = 1
+
+        return pd.Series(is_rescue, index=df.index)
+
+    def _compute_sashb(self, spo2_pct: pd.Series) -> pd.Series:
+        """Cumulative SASHB: sum of (threshold - SpO2) * dt when SpO2 < 90%."""
+        cum = np.zeros(len(spo2_pct))
+        for i in range(len(spo2_pct)):
+            s = spo2_pct.iloc[i]
+            if np.isfinite(s) and s < self.spo2_dip_threshold:
+                cum[i] = (self.spo2_dip_threshold - s) * self.dt_s
+            if i > 0:
+                cum[i] += cum[i - 1]
+        return pd.Series(cum, index=spo2_pct.index)
 
 
 # --- 5-second window biomarkers ---
@@ -298,6 +428,7 @@ def _hrv_svd_5s(beats: List[BeatFeature], t_start: pd.Timestamp, t_end: pd.Times
 def compute_window_biomarkers(
     df: pd.DataFrame,
     beats: List[BeatFeature],
+    clinical_df: pd.DataFrame | None = None,
 ) -> pd.DataFrame:
     """
     For every 5-second window in the 50 Hz data, compute:
@@ -305,26 +436,27 @@ def compute_window_biomarkers(
     - rise_fall_symmetry_5s: mean ratio (reperfusion time / drop time)
     - hrv_svd_s1_5s: leading singular value of HRV (RR-interval SVD)
     - hrv_svd_s1_s2_ratio_5s: s1/s2 ratio (bruxism vs arousal biomarker)
+    - spo2_pct, is_airway_rescue, cumulative_sashb: from ClinicalBiometricSuite (if clinical_df provided)
     """
     if "ir_dc" not in df.columns:
         raise ValueError("Column 'ir_dc' not found; run compute_filters() first.")
 
     index = df.index
-    if len(index) < SAMPLES_PER_WINDOW:
-        return pd.DataFrame(
-            columns=[
-                "window_start",
-                "window_end",
-                "ir_dc_shift_5s",
-                "rise_fall_symmetry_5s",
-                "hrv_svd_s1_5s",
-                "hrv_svd_s1_s2_ratio_5s",
-            ]
-        )
+    base_columns = [
+        "window_start",
+        "window_end",
+        "ir_dc_shift_5s",
+        "rise_fall_symmetry_5s",
+        "hrv_svd_s1_5s",
+        "hrv_svd_s1_s2_ratio_5s",
+    ]
+    if clinical_df is not None:
+        base_columns.extend(["spo2_pct", "is_airway_rescue", "cumulative_sashb"])
 
-    t0 = index[0]
+    if len(index) < SAMPLES_PER_WINDOW:
+        return pd.DataFrame(columns=base_columns)
+
     records = []
-    # Non-overlapping 5s windows
     n_windows = max(1, (len(index) - 1) // SAMPLES_PER_WINDOW)
     for k in range(n_windows):
         start_idx = k * SAMPLES_PER_WINDOW
@@ -335,16 +467,21 @@ def compute_window_biomarkers(
         ir_shift = _ir_dc_shift_5s(ir_dc_win)
         sym = _rise_fall_symmetry_5s(beats, window_start, window_end)
         s1, s1_s2 = _hrv_svd_5s(beats, window_start, window_end)
-        records.append(
-            {
-                "window_start": window_start,
-                "window_end": window_end,
-                "ir_dc_shift_5s": ir_shift,
-                "rise_fall_symmetry_5s": sym,
-                "hrv_svd_s1_5s": s1,
-                "hrv_svd_s1_s2_ratio_5s": s1_s2,
-            }
-        )
+        rec = {
+            "window_start": window_start,
+            "window_end": window_end,
+            "ir_dc_shift_5s": ir_shift,
+            "rise_fall_symmetry_5s": sym,
+            "hrv_svd_s1_5s": s1,
+            "hrv_svd_s1_s2_ratio_5s": s1_s2,
+        }
+        if clinical_df is not None:
+            win_spo2 = clinical_df["spo2_pct"].iloc[start_idx:end_idx]
+            win_rescue = clinical_df["is_airway_rescue"].iloc[start_idx:end_idx]
+            rec["spo2_pct"] = float(np.nanmean(win_spo2)) if len(win_spo2) > 0 else np.nan
+            rec["is_airway_rescue"] = int(win_rescue.max()) if len(win_rescue) > 0 else 0
+            rec["cumulative_sashb"] = float(clinical_df["cumulative_sashb"].iloc[end_idx - 1])
+        records.append(rec)
     return pd.DataFrame.from_records(records)
 
 
@@ -352,22 +489,30 @@ def extract_features(
     session_path: str | Path | None = None,
     out_path: str | Path | None = None,
     out_path_windows: str | Path | None = None,
+    out_path_clinical: str | Path | None = None,
 ) -> pd.DataFrame:
     """
     High-level entry point:
     - Load 50 Hz session CSV.
     - Apply IR low-pass (<1 Hz) and Green band-pass (0.5–8 Hz).
+    - Run ClinicalBiometricSuite (SpO2, airway rescue, SASHB) when red channel present.
     - Detect beats and compute onset/peak/offset, rising/falling edge durations.
     - Compute rolling 5 s mean IR DC baseline at each beat.
-    - For every 5 s window: IR DC-shift, rise/fall symmetry, SVD of HRV.
+    - For every 5 s window: IR DC-shift, rise/fall symmetry, SVD of HRV, clinical metrics.
     - Save beat-level features to data/datasets/features_labeled.csv.
     - Save window-level biomarkers to data/datasets/features_windows_5s.csv.
     """
     df = load_session_50hz(session_path)
     df = compute_filters(df)
+
+    clinical_df = None
+    if "red" in df.columns:
+        suite = ClinicalBiometricSuite()
+        clinical_df = suite.process(df)
+
     beats = detect_beats_from_green_bp(df)
-    feat_df = build_feature_dataframe(beats)
-    window_df = compute_window_biomarkers(df, beats)
+    feat_df = build_feature_dataframe(beats, df=df, clinical_df=clinical_df)
+    window_df = compute_window_biomarkers(df, beats, clinical_df=clinical_df)
 
     base = Path(__file__).resolve().parents[2] / "data" / "datasets"
     if out_path is None:
@@ -380,6 +525,11 @@ def extract_features(
         out_path_windows = base / "features_windows_5s.csv"
     out_path_windows = Path(out_path_windows)
     window_df.to_csv(out_path_windows, index=False)
+
+    if clinical_df is not None and out_path_clinical is not None:
+        out_path_clinical = Path(out_path_clinical)
+        out_path_clinical.parent.mkdir(parents=True, exist_ok=True)
+        clinical_df.to_csv(out_path_clinical)
 
     return feat_df
 
