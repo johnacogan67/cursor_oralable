@@ -28,6 +28,7 @@ PPG_CHAR_UUID = "3A0FF001-98C4-46B2-94AF-1AEE0FD4C48E"
 ACCEL_CHAR_UUID = "3A0FF002-98C4-46B2-94AF-1AEE0FD4C48E"
 TEMP_CHAR_UUID = "3A0FF003-98C4-46B2-94AF-1AEE0FD4C48E"
 BATTERY_CHAR_UUID = "3A0FF004-98C4-46B2-94AF-1AEE0FD4C48E"
+BATTERY_STATS_CHAR_UUID = "3A0FFEF2-98C4-46B2-94AF-1AEE0FD4C48E"  # Power telemetry: 6-byte payload
 DEVICE_NAME = "Oralable"
 RAW_DIR = Path(__file__).resolve().parents[2] / "data" / "raw"
 
@@ -49,6 +50,21 @@ def _format_log_line(uuid: str, data: bytes, ts: datetime | None = None) -> str:
     time_str = ts.strftime("%H:%M:%S.%f")[:-3]
     hex_str = _bytes_to_hex_line(data)
     return f"{time_str} - Characteristic ({uuid}) notified: <{hex_str}>\n"
+
+
+def _parse_battery_stats_6byte(data: bytes) -> str | None:
+    """
+    Parse 6-byte BatteryStats payload: [V_HI, V_LO, Pct, mAh_HI, mAh_LO, Est_Mins].
+    Returns [BATT] line for log_parser, or None if invalid.
+    """
+    if len(data) < 6:
+        return None
+    voltage_mv = (data[0] << 8) | data[1]
+    percent = data[2]
+    mah_scaled = (data[3] << 8) | data[4]
+    mah_used = mah_scaled / 100.0
+    est_min = data[5]
+    return f"V: {voltage_mv}mV | %: {percent}% | Used: {mah_used:.2f}mAh | Rem: {est_min}min"
 
 
 async def _scan_for_oralable() -> str | None:
@@ -83,6 +99,7 @@ async def _run_logger(
         chars.append(TEMP_CHAR_UUID)
     if subscribe_battery:
         chars.append(BATTERY_CHAR_UUID)
+        chars.append(BATTERY_STATS_CHAR_UUID)  # Power telemetry (60s interval)
     if not chars:
         chars = [PPG_CHAR_UUID]
 
@@ -94,6 +111,12 @@ async def _run_logger(
         line = _format_log_line(char_uuid, bytes(data))
         with open(out_path, "a+", encoding="utf-8") as f:
             f.write(line)
+            # Emit [BATT] line for BatteryStats (power telemetry) - parseable by log_parser
+            if char_uuid.lower() == BATTERY_STATS_CHAR_UUID.lower():
+                batt_line = _parse_battery_stats_6byte(bytes(data))
+                if batt_line:
+                    ts = datetime.now(timezone.utc).strftime("%H:%M:%S.%f")[:-3]
+                    f.write(f"{ts} - [BATT] {batt_line}\n")
         count += 1
         if verbose:
             print(line.rstrip(), flush=True)

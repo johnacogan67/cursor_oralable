@@ -361,6 +361,44 @@ WINDOW_S = 5.0
 SAMPLES_PER_WINDOW = int(WINDOW_S * FS)  # 250 at 50 Hz
 
 
+def calculate_hemodynamic_occlusion(ir_dc: np.ndarray | pd.Series) -> float:
+    """
+    Measure the percentage drop in the IR-PPG DC baseline (hemodynamic occlusion).
+
+    Baseline = mean of first 10% of samples; trough = minimum in window.
+    Returns (baseline - trough) / baseline * 100 as percentage drop.
+    Positive value indicates occlusion (blood flow restriction during clench).
+    """
+    arr = np.asarray(ir_dc, dtype=float)
+    arr = np.nan_to_num(arr, nan=0.0)
+    if arr.size < 10:
+        return float("nan")
+    ref_len = max(1, int(0.1 * arr.size))
+    baseline = np.mean(arr[:ref_len])
+    if baseline < 1e-9:
+        return float("nan")
+    trough = np.min(arr)
+    pct_drop = (baseline - trough) / baseline * 100.0
+    return float(pct_drop)
+
+
+def calculate_grind_jitter(accel_z: np.ndarray | pd.Series, fs: float = 100.0) -> float:
+    """
+    Use Accelerometer Z-axis variance (100 Hz) to detect rhythmic "shudder" of tooth grinding.
+
+    Grinding produces characteristic high-frequency vibration. Returns variance of accel_z
+    (or band-pass filtered segment 5-25 Hz to isolate grind signature). Higher = more grind-like.
+    """
+    arr = np.asarray(accel_z, dtype=float)
+    arr = np.nan_to_num(arr, nan=0.0)
+    if arr.size < int(0.5 * fs):  # need at least 0.5 s
+        return float("nan")
+    # Band-pass 5-25 Hz to isolate grind signature (rhythmic shudder)
+    b_bp, a_bp = _butter_bandpass(5.0, 25.0, fs, order=4)
+    filtered = filtfilt(b_bp, a_bp, arr - np.mean(arr))
+    return float(np.var(filtered))
+
+
 def _ir_dc_shift_5s(ir_dc: np.ndarray) -> float:
     """
     Average drop in IR baseline over a 5s window.

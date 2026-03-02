@@ -600,6 +600,81 @@ def parse_thermometer_log(csv_path: str | Path) -> pd.DataFrame:
     return df
 
 
+# Regex for [BATT] log lines from power telemetry (firmware BatteryStats or ble_logger)
+# Format: [BATT] V: {v}mV | %: {p}% | Used: {u}mAh | Rem: {r}min
+BATT_LINE_PATTERN = re.compile(
+    r"\[BATT\]\s+V:\s*(\d+)\s*mV\s*\|\s*%:\s*(\d+)\s*%\s*\|\s*Used:\s*([\d.]+)\s*mAh\s*\|\s*Rem:\s*(\d+)\s*min",
+    re.IGNORECASE,
+)
+
+
+def parse_batt_log_lines(csv_path: str | Path) -> pd.DataFrame:
+    """
+    Parse [BATT] log lines: V: {v}mV | %: {p}% | Used: {u}mAh | Rem: {r}min.
+
+    Returns DataFrame with columns: timestamp_s, voltage_mv, percent, mah_used, remaining_min.
+    Used to track voltage sag during clenches (power telemetry from REV10 firmware).
+    """
+    csv_path = Path(csv_path)
+    df_log = _read_log_rows(csv_path)
+    rows: list[tuple[float, int, int, float, int]] = []
+
+    for _, row in df_log.iterrows():
+        line = str(row["Line"])
+        m = BATT_LINE_PATTERN.search(line)
+        if not m:
+            continue
+        try:
+            ts_s = _parse_log_timestamp(str(row["Timestamp"]))
+            voltage_mv = int(m.group(1))
+            percent = int(m.group(2))
+            mah_used = float(m.group(3))
+            remaining_min = int(m.group(4))
+            rows.append((ts_s, voltage_mv, percent, mah_used, remaining_min))
+        except (ValueError, IndexError):
+            continue
+
+    if not rows:
+        return pd.DataFrame(columns=["timestamp_s", "voltage_mv", "percent", "mah_used", "remaining_min"])
+    return pd.DataFrame(
+        rows,
+        columns=["timestamp_s", "voltage_mv", "percent", "mah_used", "remaining_min"],
+    )
+
+
+class LogParser:
+    """
+    Wrapper for Oralable log parsing with battery telemetry tracking.
+
+    Parses PPG, accelerometer, thermometer, battery (BLE hex), and [BATT] lines.
+    Stores battery telemetry in battery_df for voltage sag analysis during clenches.
+    """
+
+    def __init__(self, log_path: str | Path):
+        self.log_path = Path(log_path)
+        self.ppg: pd.DataFrame = pd.DataFrame()
+        self.accelerometer: pd.DataFrame = pd.DataFrame()
+        self.thermometer: pd.DataFrame = pd.DataFrame()
+        self.battery: pd.DataFrame = pd.DataFrame()
+        self.battery_df: pd.DataFrame = pd.DataFrame()  # [BATT] telemetry: voltage sag during clenches
+
+    def parse_all(self, tdm_interleave: bool = True) -> dict[str, pd.DataFrame]:
+        """Parse all streams and [BATT] lines. Populates battery_df from [BATT] format."""
+        streams = parse_all(self.log_path, tdm_interleave=tdm_interleave)
+        self.ppg = streams.get("ppg", pd.DataFrame())
+        self.accelerometer = streams.get("accelerometer", pd.DataFrame())
+        self.thermometer = streams.get("thermometer", pd.DataFrame())
+        self.battery = streams.get("battery", pd.DataFrame())
+        self.battery_df = parse_batt_log_lines(self.log_path)
+        return {
+            "ppg": self.ppg,
+            "accelerometer": self.accelerometer,
+            "thermometer": self.thermometer,
+            "battery": self.battery,
+            "battery_telemetry": self.battery_df,
+        }
+
+
 def parse_battery_log(csv_path: str | Path) -> pd.DataFrame:
     """
     Parse battery characteristic(s) (3A0FF004 battery notify; 3A0FF007/008 if present) from Oralable log.
@@ -636,10 +711,10 @@ def parse_battery_log(csv_path: str | Path) -> pd.DataFrame:
 
 def parse_all(csv_path: str | Path, tdm_interleave: bool = True) -> dict[str, pd.DataFrame]:
     """
-    Parse PPG, accelerometer, thermometer, and battery from one Oralable log.
+    Parse PPG, accelerometer, thermometer, battery, and [BATT] telemetry from one Oralable log.
 
-    Returns dict with keys: "ppg", "accelerometer", "thermometer", "battery".
-    Missing or empty streams are still present as keys with empty DataFrames (with correct columns).
+    Returns dict with keys: "ppg", "accelerometer", "thermometer", "battery", "battery_telemetry".
+    battery_telemetry: [BATT] lines (V, %, mAh used, Rem min) for voltage sag during clenches.
 
     tdm_interleave: Default True. BLE logs show cyclic zeros (one channel per sample);
     use True to combine every 3 TDM slots into (R, IR, G) triplets.
@@ -650,6 +725,7 @@ def parse_all(csv_path: str | Path, tdm_interleave: bool = True) -> dict[str, pd
         "accelerometer": parse_accelerometer_log(csv_path),
         "thermometer": parse_thermometer_log(csv_path),
         "battery": parse_battery_log(csv_path),
+        "battery_telemetry": parse_batt_log_lines(csv_path),
     }
 
 
