@@ -355,6 +355,89 @@ class ClinicalBiometricSuite:
         return pd.Series(cum, index=spo2_pct.index)
 
 
+def calculate_tfi(
+    df: pd.DataFrame,
+    *,
+    elapsed_col: str = "elapsed_s",
+    ir_dc_mean_col: str = "ir_dc_mean_5s",
+    ac_pulse_col: str = "green_bp",
+    fs: float = FS,
+    ac_rms_window_s: float = 1.0,
+) -> dict[str, float]:
+    """
+    Temporalis Fatigue Index (TFI) — session-level trend metrics for IEEE / patent reporting.
+
+    Fatigue is modeled as (1) a falling IR-DC baseline (hemodynamic drift) and (2) narrowing
+    AC pulse amplitude (reduced pulsatile perfusion). Both are estimated via linear regression
+    over elapsed session time.
+
+    - **dc_baseline_slope_per_s**: slope of `ir_dc_mean_5s` vs time (negative ⇒ mean DC falling).
+    - **ac_pulse_amplitude_slope_per_s**: slope of a short-window RMS envelope of the band-pass
+      Green channel (`green_bp`) vs time (negative ⇒ AC amplitude narrowing).
+    - **tfi_score**: unitless composite in [0, 100], higher when both trends align with fatigue
+      (normalized by signal scale; uses tanh squashing).
+
+    Parameters
+    ----------
+    df
+        Must include `elapsed_s`, `ir_dc_mean_5s` (or override), and `green_bp` (AC component).
+    """
+    required = {elapsed_col, ir_dc_mean_col, ac_pulse_col}
+    missing = required - set(df.columns)
+    if missing:
+        raise ValueError(f"calculate_tfi: missing columns {sorted(missing)}")
+
+    t = df[elapsed_col].to_numpy(dtype=float)
+    dc = df[ir_dc_mean_col].to_numpy(dtype=float)
+    g = df[ac_pulse_col].to_numpy(dtype=float)
+
+    ok = np.isfinite(t) & np.isfinite(dc) & np.isfinite(g)
+    if np.sum(ok) < max(50, int(5 * fs)):
+        return {
+            "dc_baseline_slope_per_s": float("nan"),
+            "ac_pulse_amplitude_slope_per_s": float("nan"),
+            "tfi_score": float("nan"),
+            "tfi_dc_contribution": float("nan"),
+            "tfi_ac_contribution": float("nan"),
+        }
+
+    t = t[ok]
+    dc = dc[ok]
+    g = g[ok]
+    t = t - t[0]
+
+    dc_slope, _ = np.polyfit(t, dc, 1)
+
+    win = max(5, int(fs * ac_rms_window_s))
+    gs = pd.Series(g)
+    ac_rms = np.sqrt((gs**2).rolling(win, center=True, min_periods=1).mean())
+    ac_rms = ac_rms.bfill().ffill().to_numpy()
+    ac_slope, _ = np.polyfit(t, ac_rms, 1)
+
+    # Scale-normalized fatigue contributions (dimensionless; negative raw slopes ⇒ positive fatigue)
+    dc_scale = float(np.nanpercentile(np.abs(dc), 95) - np.nanpercentile(np.abs(dc), 5))
+    if not np.isfinite(dc_scale) or dc_scale < 1e-9:
+        dc_scale = float(np.nanstd(dc) + 1e-9)
+    ac_scale = float(np.nanpercentile(ac_rms, 95) - np.nanpercentile(ac_rms, 5))
+    if not np.isfinite(ac_scale) or ac_scale < 1e-9:
+        ac_scale = float(np.nanstd(ac_rms) + 1e-9)
+
+    dur = float(t[-1] - t[0]) if len(t) > 1 else 1.0
+    # Expected drift over full session relative to IQR-like scale
+    dc_contrib = -(dc_slope * dur) / (dc_scale + 1e-9)
+    ac_contrib = -(ac_slope * dur) / (ac_scale + 1e-9)
+    combined = 0.5 * dc_contrib + 0.5 * ac_contrib
+    tfi = float(50.0 + 50.0 * np.tanh(combined / 2.0))
+
+    return {
+        "dc_baseline_slope_per_s": float(dc_slope),
+        "ac_pulse_amplitude_slope_per_s": float(ac_slope),
+        "tfi_score": tfi,
+        "tfi_dc_contribution": float(dc_contrib),
+        "tfi_ac_contribution": float(ac_contrib),
+    }
+
+
 # --- 5-second window biomarkers ---
 
 WINDOW_S = 5.0
@@ -384,17 +467,20 @@ def calculate_hemodynamic_occlusion(ir_dc: np.ndarray | pd.Series) -> float:
 
 def calculate_grind_jitter(accel_z: np.ndarray | pd.Series, fs: float = 100.0) -> float:
     """
-    Use Accelerometer Z-axis variance (100 Hz) to detect rhythmic "shudder" of tooth grinding.
+    Use Accelerometer Z-axis variance to detect rhythmic "shudder" of tooth grinding.
 
     Grinding produces characteristic high-frequency vibration. Returns variance of accel_z
     (or band-pass filtered segment 5-25 Hz to isolate grind signature). Higher = more grind-like.
+    At 50 Hz, uses 5-24 Hz to stay below Nyquist.
     """
     arr = np.asarray(accel_z, dtype=float)
     arr = np.nan_to_num(arr, nan=0.0)
     if arr.size < int(0.5 * fs):  # need at least 0.5 s
         return float("nan")
-    # Band-pass 5-25 Hz to isolate grind signature (rhythmic shudder)
-    b_bp, a_bp = _butter_bandpass(5.0, 25.0, fs, order=4)
+    high_hz = min(25.0, fs * 0.48)  # stay below Nyquist
+    if high_hz <= 5.0:
+        return float("nan")
+    b_bp, a_bp = _butter_bandpass(5.0, high_hz, fs, order=4)
     filtered = filtfilt(b_bp, a_bp, arr - np.mean(arr))
     return float(np.var(filtered))
 

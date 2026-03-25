@@ -41,9 +41,10 @@ SAMPLE_INTERVAL_S = 1.0 / 50.0
 ACCEL_SAMPLES_PER_PACKET = 50
 ACCEL_SAMPLE_INTERVAL_S = 1.0 / 100.0  # 100 Hz typical
 
-# PPG channel order per firmware tgm_service.h and oralable_swift OralableDevice.swift:
-# Each sample = 12 bytes (3 × uint32 LE): [Red, IR, Green] at offsets 0, 4, 8
-PPG_CHANNEL_ORDER = "R_IR_G"  # Red, IR, Green per sample (matches iOS app)
+# PPG channel order per firmware tgm_service.h:
+# Each sample = 12 bytes (3 × uint32 LE): [Red, slot1, slot2] at offsets 0, 4, 8
+# R_IR_G: slot1=IR, slot2=G. R_G_IR: slot1=G, slot2=IR (use when slot1 is constant/low)
+PPG_CHANNEL_ORDER = "R_G_IR"  # Red, Green, IR (Oralable_6 logs show slot1 constant; IR in slot2)
 
 # -----------------------------------------------------------------------------
 # Firmware byte layout (oralable_nrf / github.com/johnacogan67/oralable_nrf)
@@ -491,9 +492,25 @@ def _read_log_rows(path: Path) -> pd.DataFrame:
                         rows_line.append(m2.group(2).strip())
         return pd.DataFrame({"Timestamp": rows_ts, "Line": rows_line})
 
+    # .csv may be a proper export (Timestamp, Line) or a line-based iOS/macOS BLE dump
+    if path.suffix.lower() == ".csv":
+        head = path.read_text(encoding="utf-8", errors="replace")[:4096]
+        first = head.splitlines()[0] if head else ""
+        ios_ble = re.match(r"^\d{2}:\d{2}:\d{2}\.\d+\s+-\s+", first or "")
+        if ios_ble:
+            lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+            rows_ts: list[str] = []
+            rows_line: list[str] = []
+            for line in lines:
+                m2 = re.match(r"^(\d{2}:\d{2}:\d{2}\.\d+)\s+-\s+(.*)", line)
+                if m2:
+                    rows_ts.append(m2.group(1))
+                    rows_line.append(m2.group(2).strip())
+            return pd.DataFrame({"Timestamp": rows_ts, "Line": rows_line})
+
     df = pd.read_csv(path)
     if "Timestamp" not in df.columns or "Line" not in df.columns:
-        raise ValueError("CSV must have columns: Timestamp, Line")
+        raise ValueError("CSV must have columns: Timestamp, Line, or line-based BLE log lines")
     return df
 
 
@@ -658,7 +675,7 @@ class LogParser:
         self.battery: pd.DataFrame = pd.DataFrame()
         self.battery_df: pd.DataFrame = pd.DataFrame()  # [BATT] telemetry: voltage sag during clenches
 
-    def parse_all(self, tdm_interleave: bool = True) -> dict[str, pd.DataFrame]:
+    def parse_all(self, tdm_interleave: bool = False) -> dict[str, pd.DataFrame]:
         """Parse all streams and [BATT] lines. Populates battery_df from [BATT] format."""
         streams = parse_all(self.log_path, tdm_interleave=tdm_interleave)
         self.ppg = streams.get("ppg", pd.DataFrame())
@@ -709,19 +726,27 @@ def parse_battery_log(csv_path: str | Path) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=["timestamp_s", "characteristic", "hex_payload"])
 
 
-def parse_all(csv_path: str | Path, tdm_interleave: bool = True) -> dict[str, pd.DataFrame]:
+def parse_all(
+    csv_path: str | Path,
+    tdm_interleave: bool = False,
+    channel_order: str | None = None,
+) -> dict[str, pd.DataFrame]:
     """
     Parse PPG, accelerometer, thermometer, battery, and [BATT] telemetry from one Oralable log.
 
     Returns dict with keys: "ppg", "accelerometer", "thermometer", "battery", "battery_telemetry".
     battery_telemetry: [BATT] lines (V, %, mAh used, Rem min) for voltage sag during clenches.
 
-    tdm_interleave: Default True. BLE logs show cyclic zeros (one channel per sample);
-    use True to combine every 3 TDM slots into (R, IR, G) triplets.
+    tdm_interleave: Default False. Use True if BLE log shows cyclic zeros (TDM).
+    channel_order: Override PPG_CHANNEL_ORDER (e.g. "R_G_IR" or "R_IR_G").
     """
     csv_path = Path(csv_path)
     return {
-        "ppg": parse_oralable_log(csv_path, tdm_interleave=tdm_interleave),
+        "ppg": parse_oralable_log(
+            csv_path,
+            tdm_interleave=tdm_interleave,
+            channel_order=channel_order or PPG_CHANNEL_ORDER,
+        ),
         "accelerometer": parse_accelerometer_log(csv_path),
         "thermometer": parse_thermometer_log(csv_path),
         "battery": parse_battery_log(csv_path),

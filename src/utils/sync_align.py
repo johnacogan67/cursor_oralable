@@ -65,6 +65,17 @@ def _accel_z_signal(df: pd.DataFrame, z_column: str = "accel_z") -> np.ndarray:
     return np.abs(df[z_column].astype(float).to_numpy())
 
 
+def _accel_g_magnitude(df: pd.DataFrame) -> np.ndarray:
+    """G magnitude (sqrt(x²+y²+z²)) for tap detection per .cursorrules '3 consecutive high-G spikes'."""
+    cols = ["accel_x", "accel_y", "accel_z"]
+    if not all(c in df.columns for c in cols):
+        raise ValueError("Need accel_x, accel_y, accel_z for G magnitude.")
+    x = df["accel_x"].astype(float).to_numpy()
+    y = df["accel_y"].astype(float).to_numpy()
+    z = df["accel_z"].astype(float).to_numpy()
+    return np.sqrt(x * x + y * y + z * z)
+
+
 def _find_three_taps_in_signal(
     z_abs: np.ndarray,
     fs: float,
@@ -74,28 +85,59 @@ def _find_three_taps_in_signal(
     Find first occurrence of 3 high-magnitude spikes within a 2-second window on Z-axis.
     Returns sample index of the 3rd spike (T=0).
     """
-    n = len(z_abs)
+    anchors = _find_all_three_taps_in_signal(z_abs, fs, window_seconds, max_count=1)
+    if not anchors:
+        raise ValueError(f"Could not find 3 taps within a {window_seconds}s window.")
+    return int(anchors[0])
+
+
+def _find_all_three_taps_in_signal(
+    sig: np.ndarray,
+    fs: float,
+    window_seconds: float = SYNC_WINDOW_S,
+    min_gap_seconds: float = 5.0,
+    max_count: Optional[int] = None,
+    sigma_multiplier: float = 3.0,
+) -> list[int]:
+    """
+    Find all occurrences of 3 high-magnitude spikes within a 2-second window.
+    sig: spike signal (e.g. |accel_z| or G magnitude).
+    Returns list of sample indices of the 3rd spike (T=0) for each instance.
+    Instances must be separated by at least min_gap_seconds to avoid overlapping.
+    sigma_multiplier: threshold = mean + sigma_multiplier * std (default 3.0).
+    """
+    n = len(sig)
     max_span_samples = int(window_seconds * fs)
+    min_gap_samples = int(min_gap_seconds * fs)
     if n < max_span_samples:
         raise ValueError(f"Not enough samples for a {window_seconds}s window (need >= {max_span_samples} at {fs} Hz).")
 
-    m = float(np.nanmean(z_abs))
-    s = float(np.nanstd(z_abs))
+    m = float(np.nanmean(sig))
+    s = float(np.nanstd(sig))
     if s > 0:
-        thresh = m + 3.0 * s
+        thresh = m + sigma_multiplier * s
     else:
-        thresh = float(np.nanpercentile(z_abs, 95))
+        thresh = float(np.nanpercentile(sig, 95))
 
     min_distance = max(1, int(0.08 * fs))  # ~80 ms between taps
-    peaks, _ = find_peaks(z_abs, height=thresh, distance=min_distance)
+    peaks, _ = find_peaks(sig, height=thresh, distance=min_distance)
     if len(peaks) < 3:
-        raise ValueError("Fewer than 3 high-magnitude Z-axis peaks found; cannot locate sync taps.")
+        raise ValueError(
+            f"Fewer than 3 high-magnitude peaks found (sigma={sigma_multiplier}); cannot locate sync taps."
+        )
+
+    anchors: list[int] = []
+    last_anchor_idx = -min_gap_samples - 1
 
     for i in range(len(peaks) - 2):
         p0, p1, p2 = peaks[i], peaks[i + 1], peaks[i + 2]
-        if p2 - p0 <= max_span_samples:
-            return int(p2)  # 3rd spike index
-    raise ValueError(f"Could not find 3 taps within a {window_seconds}s window.")
+        if p2 - p0 <= max_span_samples and p2 - last_anchor_idx >= min_gap_samples:
+            anchors.append(int(p2))
+            last_anchor_idx = p2
+            if max_count is not None and len(anchors) >= max_count:
+                break
+
+    return anchors
 
 
 def find_three_tap_anchor(
@@ -147,6 +189,114 @@ def find_three_tap_anchor(
     anchor_idx = _find_three_taps_in_signal(z_abs, FS_50, SYNC_WINDOW_S)
     anchor_time = df_session.index[anchor_idx]
     return anchor_idx, anchor_time
+
+
+def _try_find_anchors(
+    sig: np.ndarray,
+    fs: float,
+    min_gap_seconds: float,
+    max_count: Optional[int],
+    sigma_multipliers: tuple[float, ...] = (3.0, 2.5, 2.0),
+) -> list[int]:
+    """Try finding 3-tap anchors with progressively relaxed sigma thresholds."""
+    last_err: Optional[Exception] = None
+    for sigma in sigma_multipliers:
+        try:
+            return _find_all_three_taps_in_signal(
+                sig, fs, SYNC_WINDOW_S, min_gap_seconds, max_count, sigma_multiplier=sigma
+            )
+        except ValueError as e:
+            last_err = e
+    raise last_err  # type: ignore
+
+
+def find_all_three_tap_anchors(
+    df_session: pd.DataFrame,
+    accel_100hz_path: str | Path | None = None,
+    max_count: int = 3,
+    min_gap_seconds: float = 5.0,
+    use_g_magnitude: bool = True,
+    prefer_last_seconds: float | None = None,
+) -> list[Tuple[int, pd.Timestamp]]:
+    """
+    Find up to max_count instances of the 3-tap sync pattern.
+    Per .cursorrules: "3 consecutive high-G spikes" — tries Z-axis first, then G magnitude.
+    use_g_magnitude: if True, fall back to G magnitude when Z-axis has too few peaks.
+    prefer_last_seconds: if set (e.g. 120), scan only the last N seconds for taps — use when
+        you performed a single 3-tap near the end to avoid false positives from earlier movement.
+    Returns list of (anchor_idx, anchor_time) for each instance.
+    """
+    df_accel_100 = load_accel_100hz(accel_100hz_path)
+    if df_accel_100 is not None and len(df_accel_100) > int(SYNC_WINDOW_S * FS_100):
+        t0_accel_full = float(df_accel_100["timestamp_s"].min())  # Keep for session mapping
+        # When prefer_last_seconds is set, scan only the tail to find taps near end (avoids false positives)
+        if prefer_last_seconds is not None and prefer_last_seconds > 0:
+            n_tail = int(prefer_last_seconds * FS_100)
+            if len(df_accel_100) > n_tail:
+                df_accel_100 = df_accel_100.iloc[-n_tail:].reset_index(drop=True)
+
+        # Try Z-axis first, then G magnitude with relaxed sigma
+        sigs_to_try: list[tuple[str, np.ndarray]] = [("Z", _accel_z_signal(df_accel_100))]
+        if use_g_magnitude and all(c in df_accel_100.columns for c in ["accel_x", "accel_y", "accel_z"]):
+            sigs_to_try.append(("G", _accel_g_magnitude(df_accel_100)))
+
+        anchor_indices_100: list[int] = []
+        for name, sig in sigs_to_try:
+            try:
+                anchor_indices_100 = _try_find_anchors(
+                    sig, FS_100, min_gap_seconds, max_count
+                )
+                if anchor_indices_100:
+                    break
+            except ValueError:
+                continue
+        if not anchor_indices_100:
+            # Fallback: try G magnitude at 2.0 sigma (catches taps near end of session)
+            if use_g_magnitude and all(c in df_accel_100.columns for c in ["accel_x", "accel_y", "accel_z"]):
+                _g = _accel_g_magnitude(df_accel_100)
+                anchor_indices_100 = _find_all_three_taps_in_signal(
+                    _g, FS_100, SYNC_WINDOW_S, min_gap_seconds, max_count, sigma_multiplier=2.0
+                )
+        if not anchor_indices_100:
+            raise ValueError(
+                "Could not find 3-tap sync on Z-axis or G magnitude; try stronger taps."
+            )
+
+        t0_accel_s = t0_accel_full
+        session_start = df_session.index[0]
+        results: list[Tuple[int, pd.Timestamp]] = []
+        for idx_100 in anchor_indices_100:
+            t_anchor_s = float(df_accel_100["timestamp_s"].iloc[idx_100])
+            anchor_time = session_start + pd.Timedelta(seconds=(t_anchor_s - t0_accel_s))
+            anchor_time = min(max(anchor_time, session_start), df_session.index[-1])
+            anchor_idx = int(np.searchsorted(df_session.index, anchor_time, side="left"))
+            if anchor_idx >= len(df_session):
+                anchor_idx = len(df_session) - 1
+            if anchor_idx > 0 and (anchor_time - df_session.index[anchor_idx - 1]).total_seconds() < (df_session.index[anchor_idx] - anchor_time).total_seconds():
+                anchor_idx -= 1
+            anchor_time = df_session.index[anchor_idx]
+            results.append((anchor_idx, anchor_time))
+        return results
+
+    # Use 50 Hz session
+    if "accel_z" not in df_session.columns:
+        raise ValueError("No accel_z in session and no 100 Hz accelerometer CSV; cannot detect sync taps.")
+    sigs_to_try = [("Z", _accel_z_signal(df_session))]
+    if use_g_magnitude and all(c in df_session.columns for c in ["accel_x", "accel_y", "accel_z"]):
+        sigs_to_try.append(("G", _accel_g_magnitude(df_session)))
+
+    anchor_indices: list[int] = []
+    for _name, sig in sigs_to_try:
+        try:
+            anchor_indices = _try_find_anchors(sig, FS_50, min_gap_seconds, max_count)
+            break
+        except ValueError:
+            continue
+    if not anchor_indices:
+        raise ValueError(
+            "Could not find 3-tap sync on Z-axis or G magnitude; try stronger taps."
+        )
+    return [(idx, df_session.index[idx]) for idx in anchor_indices]
 
 
 def shift_session_index_to_anchor(df: pd.DataFrame, anchor_time: pd.Timestamp) -> pd.DataFrame:

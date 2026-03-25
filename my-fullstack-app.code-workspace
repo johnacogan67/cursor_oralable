@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../oralable_nrf"
+		},
+		{
+			"path": "../oralable_swift"
+		},
+		{
+			"path": "../OralableCore"
+		}
+	],
+	"settings": {}
+}

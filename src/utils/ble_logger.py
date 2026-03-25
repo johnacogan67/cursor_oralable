@@ -99,7 +99,7 @@ async def _run_logger(
         chars.append(TEMP_CHAR_UUID)
     if subscribe_battery:
         chars.append(BATTERY_CHAR_UUID)
-        chars.append(BATTERY_STATS_CHAR_UUID)  # Power telemetry (60s interval)
+        # BatteryStats (3A0FFEF2) optional - only on firmware with power telemetry
     if not chars:
         chars = [PPG_CHAR_UUID]
 
@@ -136,7 +136,24 @@ async def _run_logger(
                 def h(sender, data):
                     notification_handler(char_uuid, data)
                 return h
-            await client.start_notify(uuid, make_handler(uuid))
+            try:
+                await client.start_notify(uuid, make_handler(uuid))
+            except Exception as e:
+                if uuid.lower() == BATTERY_STATS_CHAR_UUID.lower():
+                    print(f"  (BatteryStats not found - use power telemetry firmware for [BATT] lines)")
+                else:
+                    raise e
+        # Try BatteryStats if not in main list (power telemetry, 60s interval)
+        if subscribe_battery:
+            try:
+                def make_handler(char_uuid):
+                    def h(sender, data):
+                        notification_handler(char_uuid, data)
+                    return h
+                await client.start_notify(BATTERY_STATS_CHAR_UUID, make_handler(BATTERY_STATS_CHAR_UUID))
+                print("  BatteryStats (power telemetry) subscribed.")
+            except Exception:
+                pass
         print("Subscribed. Recording...")
         try:
             while True:
