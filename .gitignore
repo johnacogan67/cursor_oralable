@@ -1,6 +1,7 @@
 # Data and models
 data/
 models/*.pth
+mam_net_temporalis.h5
 
 # Python
 __pycache__/

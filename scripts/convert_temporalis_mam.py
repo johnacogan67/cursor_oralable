@@ -6,6 +6,9 @@ Priority:
   1. If --keras points to a saved Keras model (*.h5, SavedModel dir, etc.), convert via coremltools.
   2. Else build a placeholder MIL program with input shape [1, 50, 6] (1 s @ 50 Hz, six channels).
 
+Keras → Core ML often exposes the softmax vector as output name ``Identity``; ``CoreMLTemporalisClassifier``
+also checks ``probabilities`` first (MIL stub), then ``Identity``.
+
 Typical channel order for inference (must match iOS tensor layout):
   0: Green AC — Butterworth bandpass 0.5–4 Hz (Temporalis research)
   1: IR DC — lowpass 0.8 Hz

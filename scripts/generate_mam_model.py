@@ -4,6 +4,11 @@ Train Temporalis MAM Net (Keras) from a BLE session log or pre-built gold CSV.
 
 Pipeline (raw log):
   1) parse_oralable_log + parse_accelerometer_log → merge → resample_raw_to_50hz (20 ms grid)
+
+Strict 50 Hz file (recommended with ``src/processing/resampler.py``):
+  - Build merged CSV with ``timestamp_s``, ``green``, ``red``, ``ir``, accel columns (e.g. export from step 1), then
+    ``resample_raw_to_50hz(merged_path, out_path)``.
+  - Train: ``python scripts/generate_mam_model.py --session-50hz out_path``.
   2) Filters aligned with iOS UnifiedBiometricProcessor / OralableCore:
      - IR DC: lowpass 0.8 Hz (filtfilt)
      - Green / Red AC: bandpass 0.5–4 Hz (Temporalis paths)
@@ -29,6 +34,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from scipy.signal import filtfilt
+from sklearn.utils.class_weight import compute_class_weight
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -186,6 +192,31 @@ def dataframe_from_log(
     return _temporalis_filter_columns(df)
 
 
+def dataframe_from_session_50hz_csv(path: Path, protocol_path: Path | None) -> pd.DataFrame:
+    """
+    Load output of ``resample_raw_to_50hz`` (datetime index as first CSV column; 20 ms grid).
+    Expects columns from merged PPG+accel: green, red, ir, temporalis_accel_* (or accel_x/y/z).
+    """
+    df = pd.read_csv(path)
+    time_col = df.columns[0]
+    df = df.copy()
+    df[time_col] = pd.to_datetime(df[time_col], utc=False)
+    df = df.set_index(time_col)
+    df = _add_elapsed_s(df)
+    if "accel_x" in df.columns and "temporalis_accel_x" not in df.columns:
+        df = df.rename(columns={
+            "accel_x": "temporalis_accel_x",
+            "accel_y": "temporalis_accel_y",
+            "accel_z": "temporalis_accel_z",
+        })
+    df = apply_temporalis_labels_to_frame(
+        df,
+        elapsed_col="elapsed_s",
+        protocol_path=protocol_path if protocol_path and protocol_path.exists() else None,
+    )
+    return _temporalis_filter_columns(df)
+
+
 def dataframe_from_gold_csv(path: Path, protocol_path: Path | None) -> pd.DataFrame:
     """Gold CSV from process_temporalis_gold: may use temporalis_* PPG names; normalize columns."""
     df = pd.read_csv(path)
@@ -277,9 +308,11 @@ def train_and_save(X: np.ndarray, y: np.ndarray, out_h5: Path, epochs: int, val_
     )
 
     y_int = y_train.astype(np.int32)
-    classes = np.arange(4)
-    cw = keras.utils.class_weight.compute_class_weight("balanced", classes=classes, y=y_int)
-    cw_d = {int(i): float(w) for i, w in enumerate(cw)}
+    classes_present = np.unique(y_int)
+    cw = compute_class_weight(class_weight="balanced", classes=classes_present, y=y_int)
+    cw_d = {int(c): float(w) for c, w in zip(classes_present, cw)}
+    for c in range(4):
+        cw_d.setdefault(c, 1.0)
 
     model.fit(
         X_train,
@@ -312,6 +345,12 @@ def main() -> int:
         help="Optional: pre-built gold CSV instead of --input log",
     )
     ap.add_argument(
+        "--session-50hz",
+        type=Path,
+        default=None,
+        help="Strict 50 Hz CSV from resample_raw_to_50hz (overrides --input and --gold)",
+    )
+    ap.add_argument(
         "--protocol",
         type=Path,
         default=ROOT / "docs" / "TEMPORALIS_COLLECTION_PROTOCOL.md",
@@ -331,7 +370,12 @@ def main() -> int:
 
     proto = args.protocol if args.protocol.exists() else None
 
-    if args.gold:
+    if args.session_50hz:
+        if not args.session_50hz.exists():
+            print(f"--session-50hz not found: {args.session_50hz}", file=sys.stderr)
+            return 1
+        df = dataframe_from_session_50hz_csv(args.session_50hz, protocol_path=proto)
+    elif args.gold:
         if not args.gold.exists():
             print(f"--gold not found: {args.gold}", file=sys.stderr)
             return 1
