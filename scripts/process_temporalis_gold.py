@@ -71,8 +71,8 @@ def _accel_mag(df: pd.DataFrame) -> np.ndarray:
 def _plot_apnea_hoi(
     df: pd.DataFrame,
     out_path: Path,
-    t0_s: float = 235.0,
-    t1_s: float = 275.0,
+    t0_s: float = 240.0,
+    t1_s: float = 270.0,
 ) -> None:
     """Plot A: IR-DC (HOI), SpO2, label_enum during simulated apnea + tonic rescue window."""
     sub = df[(df["elapsed_s"] >= t0_s) & (df["elapsed_s"] <= t1_s)].copy()
