@@ -254,7 +254,7 @@ DT_50HZ = 1.0 / FS  # 0.02 s
 SPO2_WINDOW_SAMPLES = int(3.0 * FS)  # 3 s for stable R
 AIRWAY_RESCUE_WINDOW_MS = 500
 AIRWAY_RESCUE_WINDOW_SAMPLES = int(AIRWAY_RESCUE_WINDOW_MS / 1000.0 * FS)  # 25 at 50 Hz
-AIRWAY_RESCUE_THRESHOLD = -0.15  # -15% drop
+AIRWAY_RESCUE_THRESHOLD = -0.10  # -10% drop
 SPO2_DIP_THRESHOLD = 90.0
 
 
@@ -264,7 +264,7 @@ class ClinicalBiometricSuite:
 
     Implements:
     - SpO2 empirical curve: R = (Red_AC/Red_DC)/(IR_AC/IR_DC), SpO2 = 110 - 25*R, clamp 60-100%
-    - Airway Rescue: IR DC drop exceeding -15% within 500 ms (hemodynamic occlusion)
+    - Airway Rescue: IR DC drop exceeding -10% within 500 ms (hemodynamic occlusion)
     - SASHB: Area under curve for SpO2 < 90%, cumulative over time
     """
 
@@ -321,7 +321,7 @@ class ClinicalBiometricSuite:
         return pd.Series(spo2, index=df.index)
 
     def _compute_airway_rescue(self, df: pd.DataFrame) -> pd.Series:
-        """Rescue event: IR DC drop exceeding -15% within 500 ms window."""
+        """Rescue event: IR DC drop exceeding -10% within 500 ms window."""
         if "ir_dc" not in df.columns:
             return pd.Series(0, index=df.index)
 
