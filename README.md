@@ -1,5 +1,7 @@
 # Oralable MAM Signal Processing
 
+**Documentation:** [docs/README.md](docs/README.md) · Product strategy in `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md`
+
 ## Setup (pandas)
 
 A virtual environment with pandas is in `.venv`. To use it:

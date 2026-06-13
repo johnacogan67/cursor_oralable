@@ -1,5 +1,7 @@
 # Temporalis Data Collection Protocol (REV10 Single-Node)
 
+**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · Firmware **1.0.36+** worn gating (`oralable_nrf`)
+
 **Target:** Temporalis Anterior (Temple)
 
 **Sampling Rate:** 50 Hz (standardized via computer BLE logger)
@@ -58,3 +60,48 @@ python src/utils/ble_logger.py --out TEMPORALIS_RAW_01.csv
 1. **Temporal precision:** Table offsets (e.g. 01:00, 02:00) define segment boundaries for labeling.
 2. **Clinical targets:** Each action (Sync-Tap, Tonic, Phasic, Rescue) maps to expected IR and accelerometer signatures (HOI, motion, recovery).
 3. **Hardware guardrails:** 1.5 V–2.5 V baseline audit ensures strap tension stays in the calibrated range before trusting labels.
+
+---
+
+## Validation anchoring (T=0 = 1st 3-tap sync)
+
+All Python validation runs anchor **T=0 at the first 3-tap sync**, not recording start.
+
+| Component | T=0 definition | How set |
+|-----------|----------------|--------|
+| **self_validate.py** | 1st sync | `--segment-from 1` → `t0_s = start_s` |
+| **validation_dashboard** | 1st sync | `segment_from_sync=1` → `anchors[0]` |
+| **clinical_summary** | 1st sync | Segments from 1st anchor via `find_all_three_tap_anchors` |
+| **Protocol CSV** | `JOHN_COGAN_1ST_SYNC_PROTOCOL.csv` | Header: "T=0 = 1st 3-Tap Sync" |
+
+### Run commands (1st sync)
+
+```bash
+python -m src.validation.self_validate data/raw/Oralable_20260304_090927.txt \
+  --segment-from 1 -o data/plots/self_validation_from_sync1.png
+
+python -c "
+from pathlib import Path
+from src.validation_dashboard import run_validation_dashboard
+run_validation_dashboard(
+    log_path=Path('data/raw/Oralable_20260304_090927.txt'),
+    segment_from_sync=1,
+    output_path=Path('data/plots/validation_dashboard_sync1.png'),
+)
+"
+```
+
+### Ed/Pedro protocol phases (elapsed from 1st sync)
+
+| Phase | Elapsed (s) | Action |
+|-------|-------------|--------|
+| 0 | 0–5 | 3-Tap Sync |
+| 1 | 30–45 | Max Tonic Clench |
+| 2 | 45–60 | Rest |
+| 3 | 60–105 | Phasic Grinding |
+| 4 | 105–120 | Rest |
+| 5 | 120–135 | Swallow/Control |
+| 6 | 150–195 | Simulated Apnea |
+| 7 | 210–270 | Natural Speech |
+
+**Files:** `data/validation_logs/JOHN_COGAN_1ST_SYNC_PROTOCOL.csv` · plots in `data/plots/ed_presentation/`

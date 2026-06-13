@@ -1,5 +1,7 @@
 # Oralable Algorithm Architecture: Python ↔ iOS Swift
 
+**Doc index:** [docs/README.md](./README.md) · **Firmware GATT:** [oralable_nrf/docs/README.md](https://github.com/johnacogan67/oralable_nrf/blob/main/docs/README.md) · **Product:** [ORALABLE_MARKET_LANDSCAPE.md](https://github.com/johnacogan67/oralable_nrf/blob/main/docs/ORALABLE_MARKET_LANDSCAPE.md)
+
 This document describes how to separate algorithm design (developed in Python in this repo) from the iOS app and use the same algorithms in both.
 
 ---

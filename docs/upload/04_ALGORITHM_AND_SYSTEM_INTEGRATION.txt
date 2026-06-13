@@ -1,0 +1,154 @@
+================================================================================
+ORALABLE MAM — ALGORITHM & SYSTEM INTEGRATION
+Generated: 2026-06-07
+Sources: cursor_oralable/docs/ALGORITHM_ARCHITECTURE.md + live codebase
+================================================================================
+
+1. PRODUCT CONTEXT
+------------------
+Device:   Oralable MAM (PPG Red/IR/Green + 3-axis accelerometer)
+Location: Cheek (temporalis / masseter region)
+Goal:     Detect sleep bruxism (clenching/grinding) via hemodynamic occlusion
+Vitals:   HR (Green), SpO2 (Red/IR), HRV for sleep staging
+
+2. SAMPLING & SYNC STANDARDS
+----------------------------
+- Final data: exactly 50 Hz (20 ms) via linear interpolation
+- PPG bandpass: Butterworth 0.5–8.0 Hz (heart rate)
+- IR DC: low-pass <1 Hz (muscle occlusion / clench indicator)
+- Accelerometer: up to 100 Hz native; synced/resampled to 50 Hz with PPG
+- Sync anchor: 3 consecutive high-G spikes on accel Z ("sync taps")
+
+3. PYTHON MODULES (cursor_oralable)
+-----------------------------------
+src/analysis/features.py
+  - Butterworth filters, beat detection, IR DC baseline
+  - 5s window biomarkers: ir_dc_shift, rise_fall_symmetry, HRV SVD
+
+src/analysis/visualize_test.py
+  - Bandpass 0.5–8 Hz, median filter accel, rolling mean IR DC
+
+src/utils/sync_align.py
+  - 3-tap sync detection on accel Z (2s window, 3σ threshold)
+
+src/parser/log_parser.py
+  - TDM parsing from nRF Connect HEX exports, 50 Hz resampling
+
+src/processing/resampler.py
+  - 50 Hz linear interpolation
+
+4. SWIFT MODULES (OralableCore + oralable_swift)
+-------------------------------------------------
+OralableCore/Algorithms/
+  ButterworthFilter.swift    vDSP IIR
+  PPGProcessor.swift         Bandpass + beat detection
+  IRDCProcessor.swift        Lowpass + rolling mean for occlusion
+
+OralableCore/Calculations/
+  HeartRateService, SpO2Service, BiometricProcessor
+  MotionCompensator, ActivityClassifier
+  MAMInferenceManager        Core ML bruxism classifier
+
+oralable_swift/Services/
+  UnifiedBiometricProcessor  HR, SpO2, motion compensation, perfusion
+  SignalProcessingPipeline   Activity classification pipeline
+
+5. ARCHITECTURE: SINGLE SOURCE OF TRUTH (target state)
+------------------------------------------------------
+
+┌─────────────────────────────────────────────────────────────────┐
+│  ALGORITHM SPEC (YAML/JSON)                                      │
+│  - Filter params (0.5–8 Hz, <1 Hz, order 4)                      │
+│  - Window sizes (50 samples, 5s, 100 samples)                    │
+│  - Sync tap params (2s window, 3σ, min 80ms between taps)        │
+│  - SpO2 calibration coefficients                                │
+└─────────────────────────────────────────────────────────────────┘
+         │                                    │
+         ▼                                    ▼
+┌─────────────────────┐            ┌─────────────────────────────┐
+│  Python (Research)   │            │  Swift (Production)          │
+│  features.py         │            │  OralableCore/Algorithms     │
+│  scipy.signal        │            │  Accelerate vDSP             │
+│  Core ML export      │            │  Core ML inference           │
+└─────────────────────┘            └─────────────────────────────┘
+
+Implemented in OralableCore:
+  Signal/AlgorithmSpec.swift — shared filter parameters
+  Filters/TransferFunctionFilter.swift — IIR coefficients
+  Resources/BruxismMAM_Temporalis.mlpackage — trained from Python pipeline
+
+6. ALGORITHM SPEC PARAMETERS (reference)
+----------------------------------------
+sampling:
+  ppg_hz: 50.0
+  accel_hz: 100.0
+
+filters:
+  ppg_bandpass: 0.5–8.0 Hz, order 4
+  ir_dc_lowpass: 0.8 Hz, order 4
+  accel_median: window 5
+
+buffers:
+  ppg_circular_size: 100   (2s at 50 Hz)
+  hr_window_samples: 150   (3s)
+  spo2_window_samples: 150
+
+sync_taps:
+  window_seconds: 2.0
+  sigma_threshold: 3.0
+  min_distance_ms: 80
+
+spo2_calibration (empirical):
+  SpO2 = -45.060*R² + 30.354*R + 94.845
+
+7. CLENCH / BRUXISM DETECTION LOGIC
+-----------------------------------
+Primary signal: IR DC-trough depth (hemodynamic occlusion during clench)
+Cross-verification: accelerometer jaw vibration + PPG morphology
+ML path: MAMInferenceManager + BruxismMAM_Temporalis Core ML model
+  - Input: windowed biomarkers from 50 Hz stream
+  - Output: bruxism / muscle activity classification
+
+StateTransitionDetector:
+  - Uses stream timestamps for event alignment
+  - Activity gate uses absolute IR-DC shift magnitude
+
+8. IR-DC ADC FORMAT (firmware → app)
+--------------------------------------
+See docs/IR_DC_ADC_FORMAT.md in cursor_oralable
+- 32-bit raw IR values on pcb00003
+- IR-DC coupling range: 10M–70M raw for cheek coupling
+- Channel order: R_G_IR when BLE slot1 is constant
+
+9. VALIDATION STRATEGY
+----------------------
+1. Python gold chain: process_temporalis_gold.py → GOLD_STANDARD_VALIDATION.csv
+2. OralableCore ParityTests vs GOLD_STANDARD_FILTER_PARITY.csv
+3. nRF Connect session logs (Oralable (7)–(11)) for BLE stability
+4. Cross-verify clench vs IR DC-trough depth per project rules
+
+10. KNOWN GAPS (as of 2026-06-07)
+---------------------------------
+Firmware:
+  - Battery keepalive visible as only 1 packet in some nRF Connect exports
+  - iOS does not yet use 009 Status characteristic
+
+iOS long-session:
+  - BLEBackgroundWorker: max 3 reconnect attempts
+  - AutomaticRecordingSession: ends on disconnect (no pause/resume)
+  - AutoFlush: ~hourly; unified buffer 1.8M samples
+
+Algorithm parity:
+  - Swift SpO2 still uses empirical curve; Python has fuller PWA pipeline
+  - Ongoing alignment via AlgorithmSpec + parity tests
+
+11. REFERENCES
+--------------
+- Peter Charlton Pulse Waveform Analysis (arterial stiffness, HRV)
+- Zhang et al. 2023 PPG-Net 4 morphology (laminar/stagnant/turbulent)
+- Attia et al. 2024 — 50 Hz sleep staging accuracy standards
+- Apple Accelerate vDSP, Core ML Tools
+
+================================================================================
+END ALGORITHM & SYSTEM INTEGRATION
+================================================================================

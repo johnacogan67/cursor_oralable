@@ -1,0 +1,283 @@
+================================================================================
+ORALABLE — FOUR GITHUB REPOSITORIES OVERVIEW
+Generated: 2026-06-07
+Owner: johnacogan67
+================================================================================
+
+This document consolidates metadata and README content from all four Oralable
+codebases used in the MAM (Masseter / cheek PPG + accelerometer) platform.
+
+================================================================================
+REPO 1: cursor_oralable
+================================================================================
+URL:         https://github.com/johnacogan67/cursor_oralable
+Description: (none set on GitHub)
+Branch:      main
+Commits:     13
+Tracked files: 65
+Primary languages: Python (.py), Markdown (.md)
+
+PURPOSE
+-------
+Python research and signal-processing pipeline for Oralable MAM data.
+Converts nRF Connect BLE logs to 50 Hz CSV, runs Temporalis gold validation,
+clinical reports, and algorithm development that feeds iOS via OralableCore.
+
+RECENT COMMITS
+--------------
+6dde116 Lower airway-rescue label threshold from 15% to 10%.
+a89e315 Update temporalis validation outputs and regenerate 3D infographic assets.
+6ced2ef Add OMG signature figure and plotting script for Figure 04.
+c94474d Temporalis MAM: train from 50 Hz, remove masseter stub, pipeline script
+14169c4 feat: Enhance Temporalis MAM model generation and processing
+
+README (copy-pasted from GitHub)
+--------------------------------
+# Oralable MAM Signal Processing
+
+## Setup (pandas)
+
+A virtual environment with pandas is in `.venv`. To use it:
+
+```bash
+source .venv/bin/activate   # or on Windows: .venv\Scripts\activate
+# Or run directly:
+.venv/bin/python src/parser/log_parser.py "data/raw/text.txt"
+```
+
+To create the venv and install dependencies (if needed):
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+```
+
+## Data Flow
+1. Place nrfConnect logs in `data/raw/`.
+2. Run `src/parser/log_parser.py` to convert HEX to initial CSV.
+3. Run `src/processing/resampler.py` to normalize to 50Hz.
+
+## Researcher Instructions (Temporalis gold chain)
+
+Use a Python 3 environment with dependencies from `requirements.txt` (see **Setup** above).
+
+1. **Record** a session following `docs/TEMPORALIS_COLLECTION_PROTOCOL.md` and save the BLE log (e.g. `TEMPORALIS_RAW_01.csv` or under `data/raw/`).
+
+2. **Build the gold validation CSV** (50 Hz, Butterworth filters, automatic Temporalis labels, SpO2 / SASHB):
+   ```bash
+   python scripts/process_temporalis_gold.py path/to/your_ble_log.csv
+   ```
+   Output: `data/validation/GOLD_STANDARD_VALIDATION.csv`, plots under `plots/temporalis_validation/`.
+
+3. **Optional — protocol segment table only** (no recording):
+   ```bash
+   python -m src.analysis.label_generator --temporalis-auto
+   ```
+
+4. **Clinical report** (TFI, SASHB, event counts, SpO2–clench timing) for IEEE / patent summaries:
+   ```bash
+   python scripts/generate_clinical_report.py --input data/validation/GOLD_STANDARD_VALIDATION.csv
+   ```
+   Console output and `data/validation/clinical_report.txt` (override with `--out`).
+
+**Note:** `src/analysis/features.py` defines `calculate_tfi()` (Temporalis Fatigue Index) used by the report script.
+
+KEY DIRECTORIES
+---------------
+src/parser/       BLE log → CSV (TDM parsing)
+src/processing/     50 Hz resampler, filters
+src/analysis/     features.py, label_generator, clinical metrics
+src/utils/        sync_align.py (3-tap accel sync), ble_logger.py
+scripts/          process_temporalis_gold.py, generate_clinical_report.py
+docs/             ALGORITHM_ARCHITECTURE.md, IR_DC_ADC_FORMAT.md, protocols
+data/raw/         nRF Connect exports
+data/validation/  Gold standard outputs
+
+SIGNAL PROCESSING RULES (from .cursorrules)
+-------------------------------------------
+- All final data resampled to exactly 50 Hz (20 ms intervals)
+- PPG: Butterworth bandpass 0.5–8.0 Hz (HR); low-pass <1 Hz (IR DC / occlusion)
+- Accelerometer: actigraphy + jaw vibration; sync with 50 Hz PPG
+- PPG channel order: R_G_IR (Red, Green, IR)
+- IR-DC coupling range: 10M–70M raw (32-bit firmware)
+- Clench detection cross-verified against IR DC-trough depth
+
+================================================================================
+REPO 2: oralable_nrf
+================================================================================
+URL:         https://github.com/johnacogan67/oralable_nrf
+Description: (none set on GitHub)
+Branch:      known-good-battery-ble (local)
+Commits:     4 (app layer; full workspace includes NCS/Zephyr submodules)
+Tracked files: 2601 (includes Zephyr/NCS build tree)
+
+PURPOSE
+-------
+nRF Connect SDK firmware for Oralable MAM device (nRF52832, pcb00003).
+Custom TGM GATT service streams PPG, accelerometer, temperature, battery.
+Firmware 1.0.36 adds worn-gated streaming for adaptive BLE bandwidth.
+
+RECENT COMMITS
+--------------
+ddbc2d2 Fix app build module resolution and sensor compile path
+deb26b5 Harden iOS stream startup defaults and bump app version.
+c617f81 Stabilize battery-only runtime by hardening BATEN latch handling.
+de499b0 Flattened directory structure and moved iOS app out
+
+README (copy-pasted from GitHub — excerpt)
+------------------------------------------
+# tgm_firmware
+
+Firmware for the TGM
+
+# nRF Connect SDK example application
+
+Based on ncs-example-application. Application in `app/`.
+
+### Streaming PPG data
+50 Hz, CONFIG_PPG_SAMPLES_PER_FRAME=20 (0.4 s per frame).
+Structure tgm_service_ppg_data_t: frame counter + samples (R4+IR4+G4 each).
+
+### Streaming accelerometer data
+50 Hz, CONFIG_ACC_SAMPLES_PER_FRAME=25 (0.5 s per frame).
+Structure tgm_service_acc_data_t: frame counter + samples (X2+Y2+Z2 each).
+
+### Battery
+int32 mV, CONFIG_BATTERY_MEASUREMENT_INTERVAL=300 s default.
+
+### Temperature
+8 bytes, centidegree Celsius, CONFIG_TEMPERATURE_MEASUREMENT_INTERVAL=1 s.
+
+### PPG register tuning
+Write 2 bytes to 3a0ff008: register address + value.
+
+KEY DIRECTORIES
+---------------
+app/src/          Application (main, ble, tgm_service, ppg, acc, battery)
+app/prj.conf      Kconfig (BLE buffers, sample rates, supervision timeout)
+boards/byteexplain/pcb00003/  Board definition
+scripts/          flash_and_rtt.sh
+docs/             TANDEM_WORKFLOW.md, compatibility_matrix.md
+
+CURRENT VERSION: 1.0.36-nrfconnect (app/VERSION)
+
+================================================================================
+REPO 3: oralable_swift
+================================================================================
+URL:         https://github.com/johnacogan67/oralable_swift
+Description: (none set on GitHub)
+Branch:      main
+Commits:     398
+Tracked files: 433
+Primary languages: Swift (261 files), JSON, HTML
+
+PURPOSE
+-------
+iOS application (OralableApp) for consumer and professional (dentist) targets.
+BLE central, device pairing, real-time dashboard, recording sessions, CloudKit,
+subscriptions, clinical exports. Depends on OralableCore Swift package.
+
+RECENT COMMITS
+--------------
+547c2b7 Document FirstLaunch onboarding fit-guide race (readiness vs pairing)
+ff0e4d9 Fix SharedDataManager skip-sync log string interpolation
+a6a2bf1 Improve BLE resilience and add firmware controls
+ad9b062 Add BLE link-quality RSSI path and debug summaries
+b7adf56 Improve BLE disconnect handling for supervision timeouts
+
+README: (no root README on GitHub)
+
+KEY DIRECTORIES
+---------------
+OralableApp/OralableApp/
+  Managers/         DeviceManager, BLE coordinators, background worker
+  Devices/          OralableDevice, ANRMuscleSenseDevice
+  Services/         SignalProcessingPipeline, UnifiedBiometricProcessor
+  Views/            Dashboard, historical, settings, onboarding
+  Models/           Sensor models, recording sessions
+OralableApp/OralableApp.xcodeproj/
+.github/workflows/  ios.yml CI
+
+TARGETS
+-------
+- OralableApp (consumer)
+- OralableForProfessionals (dentist/clinical)
+
+PLATFORM
+--------
+iOS, CoreBluetooth, CloudKit, StoreKit subscriptions
+
+================================================================================
+REPO 4: OralableCore
+================================================================================
+URL:         https://github.com/johnacogan67/OralableCore
+Description: (none set on GitHub)
+Branch:      main
+Commits:     60
+Tracked files: 127
+Primary languages: Swift (122 files), Core ML model
+
+PURPOSE
+-------
+Shared Swift package: BLE parsing, signal processing algorithms, biometric
+calculations, event detection, CSV export, CloudKit models, Core ML inference.
+Single source of truth for protocol constants and parsing logic used by iOS app.
+
+RECENT COMMITS
+--------------
+9de931a Use stream timestamps for state events and harden inference gaps.
+3c8803b Suppress MAM gap/OOD warnings during warm-up
+9ad0bfc Throttle MAM diagnostic debug logs during live inference.
+0c74cf2 Throttle MAM input-gap warning logging to real gaps.
+cdc53be Use absolute IR-DC shift magnitude for activity gate decisions.
+
+README: (no README on GitHub)
+
+PACKAGE STRUCTURE (Package.swift)
+---------------------------------
+name: OralableCore
+platforms: iOS 16+, macOS 13+
+products: .library(name: "OralableCore")
+dependencies: none (lightweight)
+
+Sources/OralableCore/
+  BLE/              BLEConstants, BLEDataParser, SensorDataBuffer
+  Algorithms/       ButterworthFilter, PPGProcessor, IRDCProcessor
+  Calculations/     HR, SpO2, BiometricProcessor, MAMInferenceManager
+  Filters/          TransferFunctionFilter
+  Events/           AutomaticRecordingSession, EventDetector, StateTransitionDetector
+  CSV/              Parser, Exporter, StateEventCSVExporter
+  CloudKit/         HealthDataRecord, SharedSessionData
+  Models/           SensorData, SensorReading, PPGData, DeviceInfo
+  Resources/        BruxismMAM_Temporalis.mlpackage (Core ML)
+  DesignSystem/     Colors, typography, shared UI components
+
+Tests/OralableCoreTests/
+  ParityTests, BLETests, CalculationsTests, IntegrationTests
+  Resources/GOLD_STANDARD_FILTER_PARITY.csv
+
+================================================================================
+CROSS-REPO RELATIONSHIPS
+================================================================================
+
+cursor_oralable ──algorithm spec / training──► OralableCore (Core ML models)
+       │                                              │
+       │ BLE log analysis                             │ Swift Package
+       ▼                                              ▼
+  validation CSV                              oralable_swift (iOS app)
+                                                     │
+                                                     │ BLE GATT
+                                                     ▼
+                                              oralable_nrf (firmware)
+
+Data path (production):
+  Device (nRF) → BLE notify → iOS OralableDevice → OralableCore.BLEDataParser
+  → MAMInferenceManager → events / dashboard / CloudKit / CSV export
+
+Data path (research):
+  nRF Connect CSV → cursor_oralable log_parser → 50 Hz CSV → features / gold standard
+  → train Core ML → OralableCore Resources
+
+================================================================================
+END GITHUB REPOS OVERVIEW
+================================================================================

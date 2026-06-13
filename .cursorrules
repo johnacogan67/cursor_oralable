@@ -30,3 +30,9 @@
 - **Plan Mode:** When I ask for a new feature, first research the `src/` directory and propose a plan in Markdown.
 - **Verification:** Always check for 'Baseline Wander' when calculating SpO2.
 - **Sync:** When processing logs, look for 3 consecutive high-G spikes in the Accelerometer (Sync Taps) to anchor the start time.
+
+## 7. Firmware & nRF Connect
+- **Any firmware change** (`oralable_nrf/`) must be validated against **nRF Connect** before it is considered complete.
+- Firmware GATT/BLE behavior must stay **compatible with what nRF Connect expects** (service/characteristic UUIDs, read sizes, notify payloads, stable connection after CCC enable).
+- Use **nRF Connect log exports** (CSV: `Timestamp, Source, Level, Line`) as the primary debug artifact: decode hex reads, note disconnect timing relative to the last CCC/read, and map findings to the next firmware fix.
+- See `oralable_nrf/.cursor/rules/nrf-connect-validation.mdc` for the full checklist.

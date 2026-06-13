@@ -1,5 +1,7 @@
 # IR-DC and PPG ADC Format
 
+**Related:** [docs/README.md](./README.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md`
+
 **Default configuration** (Oralable MAM cheek): `R_G_IR` channel order, IR-DC coupling 10M–70M raw.
 
 ## IR-DC

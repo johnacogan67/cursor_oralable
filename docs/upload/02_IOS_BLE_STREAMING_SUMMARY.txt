@@ -1,0 +1,231 @@
+================================================================================
+ORALABLE MAM — iOS BLE STREAMING LOGIC SUMMARY
+Repositories: oralable_swift (app) + OralableCore (shared package)
+Generated: 2026-06-07
+================================================================================
+
+1. REPOSITORIES
+---------------
+oralable_swift:  https://github.com/johnacogan67/oralable_swift  (398 commits, 433 files)
+OralableCore:    https://github.com/johnacogan67/OralableCore    (60 commits, 127 files)
+
+OralableCore is a Swift Package (iOS 16+, macOS 13+) consumed by OralableApp.
+No external SPM dependencies — lightweight shared library.
+
+2. BLE STACK LAYERS (top to bottom)
+-----------------------------------
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│  UI / ViewModels (DashboardViewModel, etc.)                             │
+└───────────────────────────────┬─────────────────────────────────────────┘
+                                │ Combine publishers
+┌───────────────────────────────▼─────────────────────────────────────────┐
+│  DeviceManager + coordinators                                           │
+│  - DeviceConnectionCoordinator  (connect, discover, enable notify)      │
+│  - DeviceScanningCoordinator    (scan for TGM service UUID)             │
+│  - DeviceSensorDataRouter       (route batches to storage/UI)           │
+│  - BLEBackgroundWorker          (reconnect, RSSI, health checks)      │
+│  - BLEDataPublisher             (@Published UI state)                   │
+│  - SensorDataProcessor          (HR, SpO2, history, auto-flush)       │
+└───────────────────────────────┬─────────────────────────────────────────┘
+                                │
+┌───────────────────────────────▼─────────────────────────────────────────┐
+│  OralableDevice (BLEDeviceProtocol)                                     │
+│  - CBPeripheralDelegate                                                 │
+│  - Service/characteristic discovery                                     │
+│  - enableNotifications / enableAccelerometerNotifications / temp      │
+│  - OralableDevice+DataParsing → BLEDataParser (OralableCore)          │
+└───────────────────────────────┬─────────────────────────────────────────┘
+                                │
+┌───────────────────────────────▼─────────────────────────────────────────┐
+│  BLECentralManager (implements BLEService protocol)                     │
+│  - CBCentralManager delegate                                            │
+│  - connect / disconnect / scan / setNotifyValue                         │
+└───────────────────────────────┬─────────────────────────────────────────┘
+                                │
+┌───────────────────────────────▼─────────────────────────────────────────┐
+│  CoreBluetooth (iOS)  ◄──BLE──►  nRF52832 firmware (tgm_service)        │
+└─────────────────────────────────────────────────────────────────────────┘
+
+3. CONNECTION FLOW (DeviceConnectionCoordinator)
+------------------------------------------------
+Step 1: handleDeviceConnected → readiness = .connected
+Step 2: discoverServices([3A0FF000, 180F]) — 10s timeout
+Step 3: discoverCharacteristics — 10s timeout
+Step 2.5: requestFirmwareConnParamUpdate() (OralableDevice)
+Step 3: readFirmwareVersion() from 3A0FF006 — FirmwareGate blocks old FW
+Step 4: enableNotifications() on 3A0FF001 (PPG) — 10s timeout
+Step 5: enableAccelerometerNotifications() on 3A0FF002
+Step 5b: enableTemperatureNotifications() on 3A0FF003
+Step 5c: configurePPGLEDs() (register writes via 3A0FF008)
+→ readiness = .ready
+→ automaticRecordingSession?.onDeviceConnected()
+
+NOT enabled by iOS app today:
+  - 3A0FF007 (PPG reg read notify)
+  - 3A0FF008 (PPG reg write — used only for LED config)
+  - 3A0FF009 (Status: worn/charging/battery_pct) — firmware has it, iOS does not subscribe
+
+iOS also references (pcb00003 may not expose):
+  - 3A0FF00A firmware log notify
+  - 3A0FF00B firmware config write
+  - 3A0FF00C firmware config state
+
+4. NOTIFICATION READINESS (OralableDevice)
+------------------------------------------
+struct NotificationReadiness: OptionSet {
+  ppgData, accelerometer, temperature, battery
+  allRequired = [.ppgData, .accelerometer]
+  all = [.ppgData, .accelerometer, .temperature, .battery]
+}
+
+Device is "ready for streaming" when PPG + ACC CCC confirmations received.
+Battery CCC enabled separately (deferred path).
+
+5. DATA PARSING PIPELINE
+-----------------------
+BLE notify (3A0FF001)
+  → OralableDevice.parseSensorData(Data)
+  → OralableCore.BLEDataParser.parsePPGPacket()
+  → [SensorReading] batch (Red, IR, Green per sample)
+  → readingsBatchSubject (Combine)
+  → DeviceManager.handleSensorReadingsBatch()
+  → readingsBatchSubject / latestReadings / allSensorReadings
+  → SensorDataProcessor / DashboardViewModel / AutomaticRecordingSession
+
+Accelerometer (3A0FF002):
+  → BLEDataParser.parseAccelerometerPacket()
+  → SensorReading batches (X, Y, Z)
+
+Temperature (3A0FF003):
+  → parseTemperaturePacket() → TemperatureData
+
+Battery (3A0FF004):
+  → int32 mV → BatteryConversion → percentage
+
+PPG packet expectations (OralableCore.BLEConstants.TGM):
+  - PPG: 244 bytes = 4-byte frame counter + 20 samples × 12 bytes
+  - ACC: 154 bytes = 4-byte frame counter + 25 samples × 6 bytes
+  - Temp: 8 bytes
+  - Battery: 4 bytes (int32 mV)
+
+6. ORALABLECORE BLE MODULE
+--------------------------
+Sources/OralableCore/BLE/
+  BLEConstants.swift   — All TGM UUIDs, packet sizes, RSSI thresholds
+  BLEDataParser.swift  — Byte-level parsing, timestamp interpolation
+  SensorDataBuffer.swift — Circular buffering for real-time streams
+
+Sources/OralableCore/Algorithms/
+  ButterworthFilter.swift, PPGProcessor.swift, IRDCProcessor.swift
+  TransferFunctionFilter.swift — IIR filters matching Python spec
+
+Sources/OralableCore/Calculations/
+  BiometricProcessor, HeartRateService, SpO2Service
+  MotionCompensator, ActivityClassifier
+  MAMInferenceManager — Core ML bruxism inference (BruxismMAM_Temporalis.mlpackage)
+
+Sources/OralableCore/Events/
+  AutomaticRecordingSession — auto-start recording on connect
+  EventDetector, StateTransitionDetector
+  EventRecordingSession
+
+7. SENSOR DATA PROCESSING (SensorDataProcessor)
+-----------------------------------------------
+- Maintains sensorDataHistory (max 10,000 rows)
+- flushLiveHistoryToTempFileIfNonEmpty() — hourly spill to Application Support
+- BioMetricCalculator: peak detection HR, R-ratio SpO2
+- Calibration capture window for Temporalis wizard (10 min, ~40k samples)
+
+8. BACKGROUND / RECONNECTION (BLEBackgroundWorker)
+--------------------------------------------------
+Default config:
+  maxReconnectionAttempts: 3  ← LIMITS 8+ hour sessions
+  baseReconnectionDelay: 2s (exponential backoff, max 30s)
+  rssiPollingInterval: 5s
+  healthCheckInterval: 10s
+  connectionStaleTimeout: 30s
+  autoReconnectEnabled: true
+
+Gap for long sessions: only 3 reconnect attempts then gives up.
+AutomaticRecordingSession ends on disconnect (no pause/resume across gaps).
+
+9. SCANNING
+-----------
+DeviceScanningCoordinator filters for TGM service UUID:
+  3A0FF000-98C4-46B2-94AF-1AEE0FD4C48E
+
+BLECentralManager also checks advertised service UUIDs for Oralable detection.
+
+10. FIRMWARE ↔ iOS INTERACTION (1.0.36)
+---------------------------------------
+Firmware worn-gating:
+  - Off-body: PPG/ACC/temp notifies suppressed even with CCC enabled
+  - On-body: streams resume if CCC still on
+
+iOS today:
+  - Does NOT subscribe to 009 Status for firmware `worn` bit
+  - Infers worn from PPG perfusion / signal quality in app logic
+  - Enables PPG+ACC+temp+battery on connect regardless of worn state
+  - With 1.0.36: off-body = minimal BLE from device side automatically
+
+Recommended iOS changes for 8+ hour adaptive sessions:
+  1. Subscribe to 3A0FF009 Status, parse worn byte
+  2. Unlimited/indefinite reconnect during active recording
+  3. Session pause/resume across brief disconnects (not fresh session)
+  4. More aggressive AutoFlush (30 min or sample-count threshold)
+  5. Gate UI "streaming" indicators on firmware worn bit
+
+11. KEY SWIFT FILES
+-------------------
+OralableApp/OralableApp/Managers/
+  DeviceManager.swift
+  DeviceConnectionCoordinator.swift
+  DeviceScanningCoordinator.swift
+  DeviceSensorDataRouter.swift
+  BLECentralManager.swift
+  BLE/BLEDataPublisher.swift
+  BLE/BLEBackgroundWorker.swift
+  BLE/SensorDataProcessor.swift
+  BLE/BioMetricCalculator.swift
+  AutoFlushService.swift
+
+OralableApp/OralableApp/Devices/OralableDevice/
+  OralableDevice.swift
+  OralableDevice+CBPeripheralDelegate.swift
+  OralableDevice+DataParsing.swift
+
+OralableCore/Sources/OralableCore/
+  BLE/BLEConstants.swift, BLE/BLEDataParser.swift
+  Events/AutomaticRecordingSession.swift
+  Calculations/MAMInferenceManager.swift
+
+12. DATA FLOW DIAGRAM
+---------------------
+  nRF52832                    iOS
+  --------                    ---
+  PPG sample @50Hz
+       │
+  batch 20 samples
+       │
+  GATT notify 001 ──────────► CBPeripheralDelegate
+                                    │
+                              parseSensorData()
+                                    │
+                              BLEDataParser (OralableCore)
+                                    │
+                              SensorReading batch
+                                    │
+                              DeviceManager router
+                                    │
+                    ┌───────────────┼───────────────┐
+                    ▼               ▼               ▼
+            SensorDataProcessor  Recording   Dashboard UI
+                    │
+            BiometricProcessor / MAMInferenceManager
+                    │
+            StateTransitionDetector → events CSV
+
+================================================================================
+END iOS BLE STREAMING SUMMARY
+================================================================================

@@ -1,0 +1,185 @@
+================================================================================
+ORALABLE MAM — FIRMWARE ARCHITECTURE (oralable_nrf)
+Generated: 2026-06-07
+Current version: 1.0.36-nrfconnect (app/VERSION)
+Target board: pcb00003 (nRF52832, revision 6)
+================================================================================
+
+1. REPOSITORY
+-------------
+URL:     https://github.com/johnacogan67/oralable_nrf
+Branch:  known-good-battery-ble (local)
+Commits: 4 (tracked in git; workspace includes full NCS/Zephyr tree)
+App dir: oralable_nrf/app/
+Build:   west build -b pcb00003 -d build_pcb00003 app -- -DBOARD_ROOT=<repo>
+Flash:   ./scripts/flash_and_rtt.sh --build-dir build_pcb00003 --snr <J-Link SN>
+
+2. HIGH-LEVEL ARCHITECTURE
+--------------------------
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│  main.c                                                                 │
+│  - Device state machine (worn / charging / init)                        │
+│  - Die-temp worn detection (25.5°C on, 24.5°C off hysteresis)           │
+│  - Calls tgm_service_set_device_worn() on state transitions             │
+│  - Temperature sampling work queue (for worn + status)                  │
+└───────────────────────────────┬─────────────────────────────────────────┘
+                                │
+        ┌───────────────────────┼───────────────────────┐
+        ▼                       ▼                       ▼
+┌───────────────┐      ┌─────────────────┐     ┌─────────────────┐
+│  ble.c        │      │  tgm_service.c  │     │  Sensor drivers │
+│  - Peripheral │◄────►│  GATT service   │     │  ppg.c (MAXM86161)│
+│  - Adv/conn   │      │  10 chars       │     │  acc.c (LIS2DTW12)│
+│  - Disconnect │      │  Notify paths   │     │  battery.c (ADC)  │
+│    logging    │      │  Worn gating    │     │  sensor_i2c.c     │
+└───────────────┘      └─────────────────┘     └─────────────────┘
+
+3. SOURCE FILES (app/src/)
+--------------------------
+main.c          Application entry, worn/charging state, temp work
+ble.c / ble.h   Bluetooth peripheral, connection lifecycle
+tgm_service.c/h Custom GATT service (TGM / Oralable protocol)
+ppg.c / ppg.h   MAXM86161 PPG driver, 50 Hz sampling, frame batching
+acc.c / acc.h   LIS2DTW12 accelerometer, 50 Hz sampling
+battery.c/h     Battery voltage ADC, mV reporting
+sensor_i2c.c/h  Shared I2C mutex for sensor bus
+early_rtt.c     SEGGER RTT early logging
+
+4. GATT SERVICE LAYOUT (UUID base 3A0FF000-98C4-46B2-94AF-1AEE0FD4C48E)
+-------------------------------------------------------------------------
+Char UUID suffix | Name              | Direction | Payload
+-----------------|-------------------|-----------|----------------------------------
+001              | PPG               | Notify    | frame_counter + N×(R4+IR4+G4) bytes
+002              | ACC               | Notify    | frame_counter + N×(X2+Y2+Z2) bytes
+003              | Temp              | Notify    | frame_counter + centi-°C int16
+004              | Battery           | Notify    | int32 millivolts
+005              | Device ID         | Read      | uint64
+006              | Firmware          | Read      | version string (e.g. "1.0.36-nrfconnect")
+007              | PPG reg read      | Notify    | register value
+008              | PPG reg write     | Write     | 2 bytes: reg addr + value
+009              | Status            | Notify    | charging, worn, device_state, battery_pct
+
+5. DATA FORMATS
+---------------
+PPG (CONFIG_PPG_SAMPLES_PER_FRAME=20):
+  - 50 Hz effective rate; 20 samples/frame → ~0.4 s per BLE packet (~244 bytes)
+  - Per sample: Red uint32, IR uint32, Green uint32 (12 bytes)
+  - Frame header: uint32 frame_counter
+
+ACC (CONFIG_ACC_SAMPLES_PER_FRAME=25):
+  - 50 Hz; 25 samples/frame → ~0.5 s per packet (~154 bytes)
+  - Per sample: int16 X, Y, Z (6 bytes)
+  - Frame header: uint32 frame_counter
+
+Temperature:
+  - 8 bytes: frame_counter (4) + centi-degrees int16 (2)
+  - CONFIG_TEMPERATURE_MEASUREMENT_INTERVAL=1 s
+
+Battery:
+  - int32 millivolts (4 bytes)
+  - CONFIG_BATTERY_MEASUREMENT_INTERVAL=300 s (5 min) for scheduled reads
+  - Link keepalive also sends battery every 5 s when battery CCC enabled
+
+Status (009):
+  - byte0: charging (0/1)
+  - byte1: worn (0/1) — body temp detected
+  - byte2: device_state enum (0-3)
+  - byte3: battery_pct (0-100)
+
+6. DEVICE STATE MACHINE (main.c)
+--------------------------------
+enum device_state_t:
+  DEVICE_STATE_NOT_WORN_NOT_CHARGING
+  DEVICE_STATE_NOT_WORN_CHARGING
+  DEVICE_STATE_WORN
+  DEVICE_STATE_INIT
+
+Worn detection:
+  - nRF die temperature sensor
+  - Worn threshold:  >= 25.50°C (2550 centidegrees)
+  - Not-worn threshold: < 24.50°C (2450 centidegrees)
+  - On transition: tgm_service_set_device_worn(bool)
+
+7. BLE CONNECTION POLICY (prj.conf + tgm_service.c)
+---------------------------------------------------
+Connection params (peripheral preferred):
+  - Min interval: 12 × 1.25 ms = 15 ms
+  - Max interval: 36 × 1.25 ms = 45 ms
+  - Latency: 0
+  - Supervision timeout: 3200 × 10 ms = 32 s (NCS max for nRF52832)
+
+Buffer hardening (1.0.35+):
+  - CONFIG_BT_L2CAP_TX_BUF_COUNT=12
+  - CONFIG_BT_ATT_TX_COUNT=12
+  - gatt_notify_checked(): 80 ms backoff on -ENOMEM
+
+Link keepalive (1.0.34+):
+  - k_work_delayable every 5 s while connected
+  - Sends battery notify if battery CCC enabled
+  - Re-armed on every CCC enable and after each fire
+
+8. WORN-GATED STREAMING (1.0.36)
+--------------------------------
+tgm_service_set_device_worn(bool worn):
+
+OFF-BODY (worn=false):
+  - ppg_stop(), acc_stop(), ppg_set_notify_poll(false)
+  - Block PPG/ACC/temp notify sends even if CCC still enabled
+  - Temp still sampled internally for worn detection
+  - Status notify on worn/charging change (if 009 CCC on)
+  - ~50× less BLE traffic vs full streaming
+
+ON-BODY (worn=true):
+  - If PPG/ACC CCC still enabled: deferred ppg_start/acc_start via k_work
+  - Full 50 Hz PPG + ACC streaming resumes without re-enabling CCC
+
+CCC handlers:
+  - PPG CCC on → link_keepalive_arm + ppg_start_work (only starts if worn)
+  - PPG CCC off → ppg_stop
+  - ACC CCC on/off → same pattern
+  - Temp/battery/status CCC → flag only; data gated by worn where applicable
+
+9. SENSOR HARDWARE
+------------------
+PPG:  Maxim MAXM86161 (I2C) — Red, IR, Green LEDs
+ACC:  ST LIS2DTW12 (I2C) — 3-axis accelerometer
+MCU:  nRF52832 on pcb00003
+Battery: ADC measurement, charging detect via GPIO (chrsts)
+
+10. MEMORY (typical build_pcb00003)
+-----------------------------------
+FLASH: ~194 KB / 512 KB (37%)
+RAM:   ~42 KB / 64 KB (64%)
+
+11. FIRMWARE VERSION HISTORY (recent)
+-------------------------------------
+1.0.32  Supervision/battery fixes, TGM UUID in scan response
+1.0.33  Deferred PPG/ACC start via k_work, I2C mutex, static notify buffers
+1.0.34  32s supervision, PPG 500ms poll fallback, 5s link keepalive
+1.0.35  L2CAP/ATT buffer increase, notify backpressure, keepalive reschedule fix
+1.0.36  Worn-gated streaming (off-body minimal BLE, on-body full rate)
+
+12. BUILD / FLASH COMMANDS
+--------------------------
+cd /Users/johnacogan67/work/oralable_nrf
+west build -b pcb00003 -d build_pcb00003 app -- -DBOARD_ROOT=/Users/johnacogan67/work/oralable_nrf
+./scripts/flash_and_rtt.sh --build-dir build_pcb00003 --snr 1050090445
+
+Note: J-Link error -256 during flash is benign noise; erase/program/verify still succeeds.
+
+13. VALIDATION (nRF Connect log 11, firmware 1.0.36)
+----------------------------------------------------
+Device off-body, all 7 CCCs enabled:
+  - PPG=0, ACC=0, TEMP=0 packets for ~130 s after last CCC
+  - Link stayed up ~3 min with minimal traffic
+  - Confirms worn-gating works as designed
+
+Pending validation:
+  - On-body resume without re-enabling CCC
+  - Status 009 notify on worn transitions
+  - iOS 8+ hour session with adaptive download
+
+================================================================================
+END FIRMWARE ARCHITECTURE
+================================================================================
