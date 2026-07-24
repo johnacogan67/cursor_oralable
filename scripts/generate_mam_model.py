@@ -125,12 +125,19 @@ def _temporalis_filter_columns(df: pd.DataFrame) -> pd.DataFrame:
     red_ac = filtfilt(b_bp, a_bp, np.nan_to_num(r - np.nanmean(r), nan=0.0))
 
     out = df.copy()
-    out["mam_ir_dc"] = ir_dc
-    out["mam_green_ac"] = green_ac
-    out["mam_red_ac"] = red_ac
-    out["mam_ax"] = df["temporalis_accel_x"].astype(float).to_numpy() / ACCEL_SCALE
-    out["mam_ay"] = df["temporalis_accel_y"].astype(float).to_numpy() / ACCEL_SCALE
-    out["mam_az"] = df["temporalis_accel_z"].astype(float).to_numpy() / ACCEL_SCALE
+    out["mam_ir_dc"] = np.nan_to_num(ir_dc, nan=0.0, posinf=0.0, neginf=0.0)
+    out["mam_green_ac"] = np.nan_to_num(green_ac, nan=0.0, posinf=0.0, neginf=0.0)
+    out["mam_red_ac"] = np.nan_to_num(red_ac, nan=0.0, posinf=0.0, neginf=0.0)
+    # Accel merge_asof can leave a few NaNs at edges — zero-fill before /g scale.
+    out["mam_ax"] = np.nan_to_num(
+        df["temporalis_accel_x"].astype(float).to_numpy() / ACCEL_SCALE, nan=0.0
+    )
+    out["mam_ay"] = np.nan_to_num(
+        df["temporalis_accel_y"].astype(float).to_numpy() / ACCEL_SCALE, nan=0.0
+    )
+    out["mam_az"] = np.nan_to_num(
+        df["temporalis_accel_z"].astype(float).to_numpy() / ACCEL_SCALE, nan=0.0
+    )
     return out
 
 
@@ -152,17 +159,23 @@ def build_training_arrays(
 
     fine = df["label_enum"].to_numpy(dtype=np.int16)
     mam = _fine_enum_to_mam(fine)
-    mat = df[feat_cols].to_numpy(dtype=np.float64)
+    # Keep raw feature scale (BatchNorm in the graph matches iOS inference tensors).
+    mat = np.nan_to_num(
+        df[feat_cols].to_numpy(dtype=np.float64), nan=0.0, posinf=0.0, neginf=0.0
+    )
     n = mat.shape[0]
     for start in range(0, n - window + 1, stride):
         end = start + window
         if np.any(fine[start:end] < 0):
             continue
+        win = mat[start:end]
+        if not np.isfinite(win).all():
+            continue
         labels_win = mam[start:end]
         # majority vote on window (stabler than center-only for 50-sample bins)
         counts = np.bincount(labels_win, minlength=4)
         y = int(np.argmax(counts))
-        X_list.append(mat[start:end].astype(np.float32))
+        X_list.append(win.astype(np.float32))
         y_list.append(y)
 
     if not X_list:

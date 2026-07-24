@@ -1,80 +1,111 @@
-# Temporalis Data Collection Protocol (REV10 Single-Node)
+# Temporalis collection & validation protocols (REV10)
 
-**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · Firmware **1.0.36+** worn gating (`oralable_nrf`)
+> **Phase scope:** These protocols are **Phase 1+ / research** (muscle IR-DC, Protocol A/B).  
+> **Current pilot (Phase 0):** temple HR/SpO₂ only — [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md). Do not require Protocol B for Phase 0 kit ship.
 
-**Target:** Temporalis Anterior (Temple)
+**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · Firmware **1.0.70** ship (gate min 1.0.63)
 
-**Sampling Rate:** 50 Hz (standardized via computer BLE logger)
+**Hardware:** Gen1 · BOM REV8 · PCB REV10 · Kaga ES2832AA2  
+**Target site (Phase 1+):** Temporalis anterior (temple / cheek clip)
 
-**Objective:** Create labeled training set for Core ML MAM Net
-
----
-
-## Phase 1: Physical Setup
-
-1. **Locate Target:** Place fingers on the temple. Clench teeth firmly. Locate the peak bulge.
-2. **Mounting:** Secure the headband so the sensor window is directly over the peak bulge.
-3. **Tension Check:** Ensure the strap feels firm but comfortable (target: 5–15 mmHg).
+**Sampling:** 50 Hz PPG + accelerometer (BLE logger or app)
 
 ---
 
-## Phase 2: The 10-Minute Lock Sequence
+## Do not mix these two protocols
+
+| | **Protocol A — Training labels** | **Protocol B — Ed/Pedro validation** |
+|---|----------------------------------|--------------------------------------|
+| **Purpose** | Core ML / CNN-LSTM **labeled** dataset | Clinical **pass/fail** gates (Ed Owens, Pedro) |
+| **Time anchor** | **Recording start** (wall-clock offsets in table) | **T=0 = 1st 3-tap sync** on accelerometer Z |
+| **Sync taps** | **Five** rhythmic taps at 01:00 | **Three** taps in phase 0 (0–5 s from T=0) |
+| **Duration** | ~6 min lock sequence (+ setup) | ~4.5 min from T=0 |
+| **Used by** | `label_enum`, training pipelines | `self_validate.py`, `CLINICAL_VALIDATION.md` |
+| **Occlusion check** | ~15% HOI drop (training QC, voltage-scaled) | Cheek raw tiers + swallow/speech FP gates |
+
+Uploading both to NotebookLM without this table causes conflicting answers about sync count and T=0.
+
+---
+
+## Shared: physical setup
+
+1. **Locate target:** Fingers on temple; clench to find peak bulge.
+2. **Mounting:** Sensor window over peak bulge (headband or cheek clip per hardware).
+3. **Tension:** Firm but comfortable (target 5–15 mmHg strap equivalent).
+
+**IR-DC units:** Protocol A uses **voltage** targets for headband QC. Protocol B and production cheek logs use **raw ADC** (10M–70M, see [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md)). Do not compare 1.5 V baseline to 33M raw without conversion.
+
+---
+
+## Protocol A — 10-minute lock sequence (training labels)
+
+**Objective:** Create labeled training set for Core ML MAM Net.
+
+**Anchor:** offsets below are **elapsed time from recording start** (not from sync taps).
 
 | Time offset | Action | Clinical target |
 |-------------|--------|-----------------|
-| 00:00 – 01:00 | Rest (quiet) | Establish IR-DC baseline voltage (target **1.5 V–2.5 V**). |
-| 01:00 – 01:10 | Sync-Taps | Five firm, rhythmic taps on the sensor housing for alignment. |
-| 01:10 – 02:00 | Rest | Allow signal to settle after movement. |
-| 02:00 – 02:10 | Max Tonic Clench | Clench teeth as hard as possible for 10 s (HOI anchor). |
-| 02:10 – 03:00 | Rest | Observe HOI recovery (blood volume return). |
-| 03:00 – 03:20 | Phasic Grinding | Rhythmic side-to-side jaw movement for 20 s. |
-| 03:20 – 04:00 | Rest | Clear accelerometer jitter baseline. |
-| 04:00 – 04:20 | Simulated Apnea | Hold breath for 20 s (verify SpO₂ dip). |
-| 04:20 – 04:30 | Tonic Rescue | Perform a 10 s clench at the end of breath-hold. |
-| 04:30 – 06:00 | Final Recovery | Absolute stillness for 90 s. |
+| 00:00 – 01:00 | Rest (quiet) | IR-DC baseline voltage (target **1.5 V–2.5 V** during rest). |
+| 01:00 – 01:10 | Sync-taps | **Five** firm, rhythmic taps on housing. |
+| 01:10 – 02:00 | Rest | Signal settle after movement. |
+| 02:00 – 02:10 | Max tonic clench | 10 s HOI anchor. |
+| 02:10 – 03:00 | Rest | HOI recovery. |
+| 03:00 – 03:20 | Phasic grinding | 20 s rhythmic jaw motion. |
+| 03:20 – 04:00 | Rest | Accel jitter baseline. |
+| 04:00 – 04:20 | Simulated apnea | 20 s breath hold (SpO₂ dip). |
+| 04:20 – 04:30 | Tonic rescue | 10 s clench at end of breath-hold. |
+| 04:30 – 06:00 | Final recovery | 90 s stillness. |
 
----
+### Post-collection QC (Protocol A)
 
-## Phase 3: Post-Collection Validation
-
-- **Baseline audit:** IR-DC **< 2.8 V** (strap tension within calibrated range; see Phase 2 baseline target 1.5 V–2.5 V during rest).
-- **HOI crash:** Visible **~15%** drop during clench.
-- **File format:** CSV saved as **`TEMPORALIS_RAW_01.csv`**.
-
----
-
-## Ground truth usage
-
-This document is the reference for temporal offsets used in **`label_enum`** (e.g. Phase 5 alignment) when processing recordings that follow this protocol. Offsets are wall-clock relative to recording start; accuracy within **1–2 seconds** is required for CNN-LSTM training alignment.
-
-**Logger command (reference):**
+- Baseline audit: IR-DC **< 2.8 V** strap ceiling; rest target **1.5–2.5 V** during first minute.
+- HOI crash: visible **~15%** drop during tonic clench (training QC, not Ed/Pedro pass gate).
+- Output file: `TEMPORALIS_RAW_01.csv`.
 
 ```bash
-python src/utils/ble_logger.py --out TEMPORALIS_RAW_01.csv
+# Mac guided session (preferred): timed cues + worn-mode write + BLE log
+.venv/bin/python scripts/run_protocol_a_session.py
+# Legacy logger (no cues):
+python -m src.utils.ble_logger --out data/raw/TEMPORALIS_RAW_01.txt
 ```
 
----
+Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_mam_pipeline.py --raw <log>` for Core ML.
 
-## Three design anchors
+**Labeling:** Table offsets (e.g. 02:00 tonic) define `label_enum` segment boundaries. Accuracy within **1–2 s** required.
 
-1. **Temporal precision:** Table offsets (e.g. 01:00, 02:00) define segment boundaries for labeling.
-2. **Clinical targets:** Each action (Sync-Tap, Tonic, Phasic, Rescue) maps to expected IR and accelerometer signatures (HOI, motion, recovery).
-3. **Hardware guardrails:** 1.5 V–2.5 V baseline audit ensures strap tension stays in the calibrated range before trusting labels.
+**Milestone log (24 Jul 2026):** `data/raw/TEMPORALIS_RAW_20260724_084345.txt` → OralableCore `BruxismMAM_Temporalis.mlpackage` · app **4.3.3**.
 
 ---
 
-## Validation anchoring (T=0 = 1st 3-tap sync)
+## Protocol B — Ed/Pedro structured validation
 
-All Python validation runs anchor **T=0 at the first 3-tap sync**, not recording start.
+**Objective:** Reproducible clinical fidelity report for investors and protocol leads.
+
+**Anchor:** **T=0 = first 3-tap sync** (three high-G events on accel Z within 2 s — same detector as `sync_align.py`). **Not** recording start.
+
+Canonical results: [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md). Pilot roles: [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md).
+
+### Phases (elapsed seconds from **1st 3-tap sync**)
+
+| Phase | Elapsed (s) | Action | Pass criteria (summary) |
+|-------|-------------|--------|-------------------------|
+| 0 | 0–5 | 3-tap sync | Sync detected in log |
+| 1 | 30–45 | Max tonic clench | IR-DC occlusion measured |
+| 2 | 45–60 | Rest | — |
+| 3 | 60–105 | Phasic grinding | Accel jitter RMS elevated |
+| 4 | 105–120 | Rest | — |
+| 5 | 120–135 | Swallow / control | **0** false clench alerts |
+| 6 | 150–195 | Simulated apnea | Rescue + cheek-tier occlusion |
+| 7 | 210–270 | Natural speech | **0** false positives |
+
+### Validation tooling (T=0 = 1st sync)
 
 | Component | T=0 definition | How set |
 |-----------|----------------|--------|
-| **self_validate.py** | 1st sync | `--segment-from 1` → `t0_s = start_s` |
-| **validation_dashboard** | 1st sync | `segment_from_sync=1` → `anchors[0]` |
-| **clinical_summary** | 1st sync | Segments from 1st anchor via `find_all_three_tap_anchors` |
-| **Protocol CSV** | `JOHN_COGAN_1ST_SYNC_PROTOCOL.csv` | Header: "T=0 = 1st 3-Tap Sync" |
-
-### Run commands (1st sync)
+| `self_validate.py` | 1st sync | `--segment-from 1` |
+| `validation_dashboard` | 1st sync | `segment_from_sync=1` |
+| `clinical_summary` | 1st sync | `find_all_three_tap_anchors` |
+| Protocol CSV | 1st sync | `JOHN_COGAN_1ST_SYNC_PROTOCOL.csv` |
 
 ```bash
 python -m src.validation.self_validate data/raw/Oralable_20260304_090927.txt \
@@ -91,17 +122,12 @@ run_validation_dashboard(
 "
 ```
 
-### Ed/Pedro protocol phases (elapsed from 1st sync)
+**Artifacts:** `data/validation_logs/JOHN_COGAN_1ST_SYNC_PROTOCOL.csv` · plots in `data/plots/ed_presentation/`
 
-| Phase | Elapsed (s) | Action |
-|-------|-------------|--------|
-| 0 | 0–5 | 3-Tap Sync |
-| 1 | 30–45 | Max Tonic Clench |
-| 2 | 45–60 | Rest |
-| 3 | 60–105 | Phasic Grinding |
-| 4 | 105–120 | Rest |
-| 5 | 120–135 | Swallow/Control |
-| 6 | 150–195 | Simulated Apnea |
-| 7 | 210–270 | Natural Speech |
+---
 
-**Files:** `data/validation_logs/JOHN_COGAN_1ST_SYNC_PROTOCOL.csv` · plots in `data/plots/ed_presentation/`
+## Design anchors (both protocols)
+
+1. **Temporal precision:** Use the correct anchor (recording start vs 1st sync) for the protocol you are running.
+2. **Clinical targets:** Sync-tap, tonic, phasic, rescue map to expected IR-DC and accelerometer signatures.
+3. **Hardware guardrails:** Coupling in cheek tier per [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) before trusting labels or pass/fail.
