@@ -1,7 +1,9 @@
 # Clinical validation log
 
 Consolidated Ed/Pedro protocol evaluations and presentation packages.  
-**Protocol:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) (T=0 = **1st 3-tap sync**).
+**Protocol:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) — **Protocol B** (T=0 = **1st 3-tap sync**). Do not use Protocol A (training) timings for validation.
+
+**Scope note (July 2026):** Historical runs below support science. **Current pilot** is Stage A Phase 0 temple vitals ([ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md)); Protocol B / muscle is Phase 1+. Strategy + cost/timeline: [IP_NORTH_STAR.md](./IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md).
 
 ---
 
@@ -106,17 +108,8 @@ Early evaluation before swallow/speech/rescue checks were fully implemented in `
 
 ---
 
-## Protocol phases (T=0 = 1st 3-tap sync)
+## Protocol phases
 
-| Phase | Timing | Action |
-|-------|--------|--------|
-| 0 | 0:00–0:05 | 3-Tap Sync |
-| 1 | 0:30–0:45 | Max Tonic Clench |
-| 2 | 0:45–1:00 | Rest |
-| 3 | 1:00–1:45 | Phasic Grinding |
-| 4 | 1:45–2:00 | Rest |
-| 5 | 2:00–2:15 | Swallow/Control |
-| 6 | 2:30–3:15 | Simulated Apnea |
-| 7 | 3:30–4:30 | Natural Speech |
+Canonical **Protocol B** phase table (elapsed seconds from 1st 3-tap sync): [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md#protocol-b--edpedro-structured-validation).
 
 *Last updated: June 2026*

@@ -1,4 +1,12 @@
 ================================================================================
+**DEPRECATED SNAPSHOT** — do not use as current truth.
+Current Gen1 ship: FW **1.0.70** · iOS app **4.3.3**
+Canonical: cursor_oralable/docs/data_room/VERSION_ALIGNMENT.md
+Flash: cursor_oralable/docs/data_room/FIRMWARE_1.0.70_FLASH.md
+This file body may still describe older FW (e.g. 1.0.36) for archive/PDF history.
+================================================================================
+
+================================================================================
 ORALABLE MAM — iOS BLE STREAMING LOGIC SUMMARY
 Repositories: oralable_swift (app) + OralableCore (shared package)
 Generated: 2026-06-07

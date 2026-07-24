@@ -1,36 +1,45 @@
 # Oralable Algorithm Architecture: Python ↔ iOS Swift
 
-**Doc index:** [docs/README.md](./README.md) · **Firmware GATT:** [oralable_nrf/docs/README.md](https://github.com/johnacogan67/oralable_nrf/blob/main/docs/README.md) · **Product:** [ORALABLE_MARKET_LANDSCAPE.md](https://github.com/johnacogan67/oralable_nrf/blob/main/docs/ORALABLE_MARKET_LANDSCAPE.md)
+**Doc index:** [docs/README.md](./README.md) · **System hub:** [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) (Core ML path, metrics) · **Firmware GATT:** [oralable_nrf/docs/README.md](../../oralable_nrf/docs/README.md)
 
-This document describes how to separate algorithm design (developed in Python in this repo) from the iOS app and use the same algorithms in both.
+This document describes the **algorithm split** between Python research and iOS production, what is **implemented today**, and what remains on the roadmap.
 
 ---
 
-## 1. Current State
+## 1. Current state (June 2026)
 
-### Python (cursor_oralable)
+### Python (`cursor_oralable`) — research reference
 
 | Module | Purpose |
 |--------|---------|
-| `src/analysis/features.py` | Butterworth filters (0.5–8 Hz bandpass, <1 Hz lowpass), beat detection, IR DC baseline, 5s window biomarkers (ir_dc_shift, rise_fall_symmetry, HRV SVD) |
-| `src/analysis/visualize_test.py` | Bandpass 0.5–8 Hz, median filter for accel, rolling mean for IR DC trend |
-| `src/utils/sync_align.py` | 3-tap sync detection on accel Z (2s window, 3σ threshold) |
-| `src/parser/log_parser.py` | TDM parsing, 50 Hz resampling |
+| `src/analysis/features.py` | Butterworth filters, beat detection, **TFI**, window biomarkers |
+| `src/validation/self_validate.py` | SASHB, occlusion tiers, swallow/speech FP, rescue gates |
+| `src/utils/sync_align.py` | **3-tap** sync on accel Z (Protocol B validation) |
+| `src/parser/log_parser.py` | TDM / hex parsing, 50 Hz resampling |
 | `src/processing/resampler.py` | 50 Hz linear interpolation |
+| `scripts/convert_temporalis_mam.py` | Keras → `BruxismMAM_Temporalis.mlpackage` |
 
-### Swift (oralable_swift)
+### Swift (`OralableCore` + `oralable_swift`) — production
 
-| Component | Purpose |
-|-----------|---------|
-| `UnifiedBiometricProcessor` | HR (peak detection), SpO2 (R-value), motion compensation, perfusion index |
-| `SignalProcessingPipeline` | Placeholder HR/SpO2, motion compensation, activity classification |
-| `OralableCore` | Shared package (MotionCompensator, ActivityClassifier, CSV parsing, etc.) |
+| Component | Status | Purpose |
+|-----------|--------|---------|
+| `BLEDataParser` | **Implemented** | Frame-counter-aware PPG/ACC/temp/battery/**5-byte status** |
+| `AlgorithmSpec` | **Implemented** | Shared filter rates, thresholds |
+| `TransferFunctionFilter` / `ButterworthFilter` | **Implemented** | HR bandpass, IR DC lowpass, Temporalis AC bandpass |
+| `PPGProcessor`, `IRDCProcessor` | **Implemented** | Bandpass beats, IR DC trend / occlusion |
+| `MAMInferenceManager` | **Implemented** | Core ML `BruxismMAM_Temporalis` @ 50 Hz × 6 ch |
+| `UnifiedBiometricProcessor` | **Implemented** | HR, SpO₂, motion comp, **TFI**, **SASHB** |
+| `NRFConnectBLELogger` | **Implemented** | nRF-style CSV export |
+| `ProfessionalHandshakeExport` | **Implemented** | Hourly TFI + SASHB + Temporalis rollups |
+| `algorithm_spec.yaml` (Python) | **Planned** | Single YAML loaded by both runtimes |
+| `SyncTapDetector.swift` | **Partial** | Logic in Python; not standalone Swift module |
+| Full Python↔Swift numeric parity tests | **Partial** | Golden-file diff not automated in CI |
 
-**Gap:** Swift uses different algorithms (peak detection, empirical SpO2 curve) and does not yet implement the Python-derived filters, beat morphology, or bruxism biomarkers.
+**Summary:** Core filters, BLE parsing, Core ML inference, TFI/SASHB, and handshake export are **in production Swift**. Remaining work is **YAML spec parity**, **sync-tap Swift module**, and **automated golden tests** — not “Swift has no filters.”
 
 ---
 
-## 2. Architecture: Single Source of Truth
+## 2. Architecture: single source of truth (target)
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -53,9 +62,9 @@ This document describes how to separate algorithm design (developed in Python in
 
 ---
 
-## 3. Implementation Plan
+## 3. Roadmap (not all shipped)
 
-### Phase 1: Algorithm Spec (Shared Parameters)
+### Phase 1: Algorithm spec YAML (planned)
 
 Create `src/config/algorithm_spec.yaml`:
 
@@ -99,68 +108,33 @@ spo2_calibration:
   c: 94.845
 ```
 
-Python loads this via `pyyaml`; Swift loads it from a bundled JSON (or hardcoded constants generated from the spec).
+**Today:** parameters live in `OralableCore/Signal/AlgorithmSpec.swift` and Python `features.py` — keep in sync manually until YAML lands.
 
 ---
 
-### Phase 2: Swift Algorithm Module
+### Phase 2: Swift algorithm module (mostly done)
 
-Add an **Algorithms** layer inside `OralableCore` (or a new `OralableAlgorithms` package):
+`OralableCore` already contains:
 
 ```
-OralableCore/
-  Sources/
-    OralableCore/
-      Algorithms/
-        ButterworthFilter.swift    # vDSP-based IIR
-        PPGProcessor.swift         # Bandpass + beat detection
-        IRDCProcessor.swift        # Lowpass + rolling mean
-        SyncTapDetector.swift      # 3-tap on accel Z
-        SpO2Calculator.swift       # R-value + calibration
+OralableCore/Sources/OralableCore/
+  Algorithms/ButterworthFilter.swift
+  Algorithms/PPGProcessor.swift
+  Algorithms/IRDCProcessor.swift
+  Filters/TransferFunctionFilter.swift
+  Signal/AlgorithmSpec.swift
+  Calculations/MAMInferenceManager.swift
 ```
 
-**Key Swift implementations:**
-
-1. **ButterworthFilter** – Use `Accelerate` (vDSP) for IIR filtering, or `DSPFilters`-style biquad cascade. Coefficients can be generated in Python and exported:
-
-   ```python
-   # In Python: export filter coeffs for Swift
-   from scipy.signal import butter
-   b, a = butter(4, [0.5/25, 8/25], btype='band')
-   # Export b, a as [Double] for Swift
-   ```
-
-2. **PPGProcessor** – Circular buffer of 100 samples → bandpass filter → peak detection (same logic as `detect_beats_from_green_bp`).
-
-3. **IRDCProcessor** – Lowpass <1 Hz for occlusion dip; rolling mean for trend.
-
-4. **SyncTapDetector** – Port `_find_three_taps_in_signal` from `sync_align.py`.
+**Remaining:** export filter coefficients from Python in CI; optional `SyncTapDetector.swift`.
 
 ---
 
-### Phase 3: Core ML for ML Models
+### Phase 3: Core ML (shipped)
 
-For classifiers (e.g., bruxism vs arousal from window biomarkers):
+**Production model:** `BruxismMAM_Temporalis.mlpackage` — input `[1, 50, 6]`, four Temporalis classes. See [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) §13.
 
-1. **Train in Python** (scikit-learn, PyTorch, etc.) on `features_windows_5s.csv`.
-2. **Export to Core ML**:
-
-   ```python
-   import coremltools as ct
-   # ... train model ...
-   mlmodel = ct.convert(model, inputs=[...])
-   mlmodel.save("BruxismClassifier.mlmodel")
-   ```
-
-3. **Use in Swift**:
-
-   ```swift
-   let model = BruxismClassifier()
-   let input = BruxismClassifierInput(ir_dc_shift: ..., rise_fall_symmetry: ..., ...)
-   let output = try model.prediction(input: input)
-   ```
-
-The `.cursorrules` already specify: *"Prepare models for Core ML"*.
+Pipeline: `scripts/generate_mam_model.py` → `scripts/convert_temporalis_mam.py` → bundle in OralableCore Resources.
 
 ---
 
@@ -187,17 +161,16 @@ UnifiedBiometricProcessor / DashboardViewModel
 
 ---
 
-## 4. File Layout After Rearchitecture
+## 4. File layout (current)
 
-### Python (cursor_oralable)
+### Python (`cursor_oralable`)
 
 ```
 src/
   config/
-    algorithm_spec.yaml      # NEW: shared spec
+    algorithm_spec.yaml      # Planned — not yet shared load
   analysis/
-    features.py              # Load spec, run algorithms
-    visualize_test.py
+    features.py
   utils/
     sync_align.py
   processing/
@@ -206,29 +179,24 @@ src/
     log_parser.py
 ```
 
-### Swift (oralable_swift / OralableCore)
+### Swift (`OralableCore`)
 
 ```
-OralableCore/
-  Sources/OralableCore/
-    Algorithms/              # NEW
-      FilterCoefficients.swift   # From Python export
-      ButterworthFilter.swift
-      PPGProcessor.swift
-      IRDCProcessor.swift
-      SyncTapDetector.swift
-    Services/
-      MotionCompensator.swift   # Existing
-      ActivityClassifier.swift  # Existing
+OralableCore/Sources/OralableCore/
+  Algorithms/              # Shipped
+    ButterworthFilter.swift
+    PPGProcessor.swift
+    IRDCProcessor.swift
+  Filters/TransferFunctionFilter.swift
+  Signal/AlgorithmSpec.swift
+  Calculations/MAMInferenceManager.swift
+  Resources/BruxismMAM_Temporalis.mlpackage
 ```
 
-### Shared
+### Shared export
 
 ```
-cursor_oralable/
-  models/
-    coreml/
-      BruxismClassifier.mlmodel   # Exported from Python
+cursor_oralable/scripts/convert_temporalis_mam.py  → mlpackage in OralableCore Resources
 ```
 
 ---

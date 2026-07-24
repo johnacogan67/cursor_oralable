@@ -1,8 +1,28 @@
 # Claude Instructions: Oralable iOS Swift Refactor & OralableCore
 
-**Related:** [docs/README.md](../README.md) · [ALGORITHM_ARCHITECTURE.md](../ALGORITHM_ARCHITECTURE.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md`
+**Related:** [docs/README.md](../README.md) · [ALGORITHM_ARCHITECTURE.md](../ALGORITHM_ARCHITECTURE.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](../ORALABLE_SYSTEM_ARCHITECTURE.md) · `oralable_nrf/docs/DEVELOPMENT.md`
 
-**Purpose:** Give these instructions to Claude or Claude Code to refactor the oralable_swift iOS app, extend the OralableCore package with BLE parsing and algorithm modules, and align with the Python algorithm design in cursor_oralable.
+**Purpose:** Historical refactor guide for oralable_swift + OralableCore. **Many items below are done** — see §1.5 status table before re-implementing.
+
+---
+
+## 1.5 Implementation status (June 2026)
+
+| Item | Status | Location |
+|------|--------|----------|
+| `BLEDataParser` skips 4-byte frame counter | **Done** | `OralableCore/BLE/BLEDataParser.swift` |
+| `AlgorithmSpec`, Butterworth / transfer-function filters | **Done** | `Signal/AlgorithmSpec.swift`, `Filters/TransferFunctionFilter.swift` |
+| `PPGProcessor`, `IRDCProcessor` | **Done** | `Algorithms/` |
+| `MAMInferenceManager` + Core ML bundle | **Done** | `Calculations/MAMInferenceManager.swift` |
+| 5-byte status `3A0FF009` | **Done** | `TGMDeviceStatus.swift`, `BLEDataParser` |
+| Staggered CCC / nRF-aligned connect | **Done** | `DeviceConnectionCoordinator`, `enableNRFAlignedStreamingNotifications()` |
+| `NRFConnectBLELogger` | **Done** | `OralableCore/BLE/NRFConnectBLELogger.swift` |
+| TFI / SASHB in app | **Done** | `UnifiedBiometricProcessor`, dashboard |
+| `algorithm_spec.yaml` shared load | **Not done** | See ALGORITHM_ARCHITECTURE roadmap |
+| Standalone `SyncTapDetector.swift` | **Not done** | Python `sync_align.py` only |
+| Golden Python↔Swift test vectors in CI | **Partial** | Manual validation scripts |
+
+**Do not** re-open “fix BLEDataParser frame counter” unless a regression test fails.
 
 ---
 
@@ -44,8 +64,8 @@ oralable_swift_ref/                 # iOS app (clone from github.com/johnacogan6
 
 - Clone as sibling of `OralableApp`: `oralable_swift_ref/OralableCore/`
 - Workspace references `../../OralableCore` (local path)
-- Already contains: `BLE/BLEConstants.swift`, `BLE/BLEDataParser.swift`, `Calculations/` (HeartRateCalculator, BiometricProcessor, etc.)
-- **Gap:** `BLEDataParser` does not skip the 4-byte frame counter in PPG/accel packets; `OralableDevice` still uses inline parsing. Algorithm modules (ButterworthFilter, PPGProcessor, IRDCProcessor) are not yet in OralableCore.
+- Already contains: `BLE/BLEConstants.swift`, `BLE/BLEDataParser.swift` (frame-counter-aware), `Algorithms/`, `MAMInferenceManager`, `NRFConnectBLELogger`
+- **Remaining gaps:** YAML spec parity, `SyncTapDetector`, automated golden tests — not BLE frame parsing
 
 ### 1.2 BLE Protocol (Oralable MAM)
 
@@ -56,7 +76,10 @@ oralable_swift_ref/                 # iOS app (clone from github.com/johnacogan6
 | `3A0FF001` | PPG (Red, IR, Green) | 4-byte frame_counter + N×12 bytes (3×uint32 per sample) |
 | `3A0FF002` | Accelerometer | 4-byte frame_counter + N×6 bytes (3×int16 X,Y,Z per sample) |
 | `3A0FF003` | Temperature / Command | 8 bytes: frame_counter + int16 centidegrees |
-| `3A0FF004` | Battery (TGM) | 4 bytes: int32 millivolts |
+| `3A0FF004` | Battery (TGM) | 4 bytes: int32 millivolts (LE) |
+| `3A0FF006` | Firmware version | UTF-8 string |
+| `3A0FF009` | Device status | **5 bytes** (FW ≥ 1.0.47): on_dock, worn, device_state, battery_pct, charge_active |
+| `3A0FF00A`–`00C` | FW log / config | Diagnostics (≥ 1.0.37) |
 
 **PPG Packet (3A0FF001):**
 - Bytes 0–3: `frame_counter` (uint32 LE)
@@ -117,19 +140,13 @@ The app imports `OralableCore` for:
 - `accelSampleRateHz: Double = 100.0`
 - `ppgSamplesPerPacket = 20`, `accelSamplesPerPacket = 25`
 
-### Task 3: Fix BLEDataParser for Oralable MAM Packet Format
+### Task 3: BLEDataParser (maintain, do not rewrite)
 
-**OralableCore has `BLE/BLEDataParser.swift`**, but it does **not** skip the 4-byte frame counter. The TGM packet format is:
-- Bytes 0–3: `frame_counter` (uint32 LE) — **must be skipped**
-- Bytes 4+: samples (12 bytes each for PPG, 6 bytes each for accel)
+`BLEDataParser` **already** skips the 4-byte frame counter. Verify regressions with `OralableCoreTests/BLETests.swift` before changing packet layout.
 
-Update `BLEDataParser.parsePPGData` and `parseAccelerometerData` to:
-
-- **PPG:** Start at byte 4 (skip frame_counter). For each sample i: offset = 4 + i×12. Red@offset+0, IR@offset+4, Green@offset+8.
-- **Accelerometer:** Start at byte 4. For each sample: offset = 4 + i×6. X, Y, Z as int16.
-- Add overloads that return `[SensorReading]` with per-sample timestamps for `OralableDevice` integration, or extend existing methods to accept `sampleDataStart: Int = 4`.
-
-`BLEDataParser.parseTGMBatteryData` and temperature parsing already exist; ensure temperature uses centidegrees format (bytes 4–5 = int16) per firmware.
+- **PPG:** Bytes 4+ — Red, IR, Green uint32 LE per sample (pcb00003 cheek order may be R_G_IR — see `IR_DC_ADC_FORMAT.md`)
+- **Accelerometer:** Bytes 4+ — X, Y, Z int16
+- **Status `009`:** 5 bytes on FW ≥ 1.0.47
 
 ### Task 4: Create AlgorithmSpec.swift
 
@@ -208,11 +225,12 @@ In `UnifiedBiometricProcessor` (or equivalent):
 |------|----------|--------|
 | `Package.swift` | OralableCore/ | Exists |
 | `BLEConstants.swift` | OralableCore/Sources/.../BLE/ | Exists — extend with frame counter, sample rates |
-| `BLEDataParser.swift` | OralableCore/Sources/.../BLE/ | Exists — fix to skip 4-byte frame counter |
-| `AlgorithmSpec.swift` | OralableCore/Sources/.../Algorithms/ | **Create** — shared params |
-| `ButterworthFilter.swift` | OralableCore/Sources/.../Algorithms/ | **Create** — IIR filter |
-| `PPGProcessor.swift` | OralableCore/Sources/.../Algorithms/ | **Create** — bandpass + beats |
-| `IRDCProcessor.swift` | OralableCore/Sources/.../Algorithms/ | **Create** — lowpass + trend |
+| `BLEDataParser.swift` | OralableCore/Sources/.../BLE/ | **Done** — frame counter + 5-byte status |
+| `AlgorithmSpec.swift` | OralableCore/Sources/.../Signal/ | **Done** |
+| `ButterworthFilter.swift` | OralableCore/Sources/.../Algorithms/ | **Done** |
+| `PPGProcessor.swift` | OralableCore/Sources/.../Algorithms/ | **Done** |
+| `IRDCProcessor.swift` | OralableCore/Sources/.../Algorithms/ | **Done** |
+| `SyncTapDetector.swift` | — | **Not done** |
 
 ---
 
@@ -252,9 +270,8 @@ Copy and paste this block when starting a new conversation:
 2. Read the reference Python files: `src/parser/log_parser.py`, `src/analysis/features.py`, `src/utils/ble_logger.py`
 3. Read the Swift files: `OralableApp/Devices/OralableDevice.swift`, `OralableApp/Managers/DeviceManager.swift`
 4. **OralableCore** is at https://github.com/johnacogan67/OralableCore.git — clone as sibling of OralableApp
-5. Fix `BLEDataParser` to skip 4-byte frame counter; add AlgorithmSpec, ButterworthFilter, PPGProcessor, IRDCProcessor to OralableCore
-6. Refactor OralableDevice to use OralableCore's BLEDataParser for parsing (with frame-counter-aware overloads)
-7. Ensure BLE connection flow works for 3A0FF001, 3A0FF002, 3A0FF003, 3A0FF004
+5. Confirm `BLEDataParser` and nRF-aligned connect flow still match [ORALABLE_SYSTEM_ARCHITECTURE.md](../ORALABLE_SYSTEM_ARCHITECTURE.md) §10
+6. For new work: YAML spec, SyncTapDetector, golden tests — see [ALGORITHM_ARCHITECTURE.md](../ALGORITHM_ARCHITECTURE.md)
 
 **Constraints:**
 - PPG packet: 4-byte frame_counter + N×12 bytes (Red, IR, Green per sample at offsets 0, 4, 8)

@@ -1,37 +1,30 @@
 ORALABLE DOCUMENTATION PACK — UPLOAD INDEX
-Generated: 2026-06-07
+Generated: 2026-06-07 · **STATUS: DEPRECATED for pilot / diligence (July 2026)**
 
-This folder contains text files for uploading to external systems (partners,
-regulatory, grant applications, architecture reviews).
+Do NOT use these text files as current product truth.
+Use instead:
+  - cursor_oralable/docs/data_room/VERSION_ALIGNMENT.md   ← canonical versions
+  - cursor_oralable/docs/PRODUCT_ROADMAP.md
+  - cursor_oralable/docs/ORALABLE_SYSTEM_ARCHITECTURE.md
+  - cursor_oralable/docs/VITALS_PHASE_GEN1_GEN2.md
+  - cursor_oralable/docs/data_room/ED_PEDRO_QUICK_START.md
+  - cursor_oralable/docs/data_room/FIRMWARE_1.0.70_FLASH.md
 
-FILES
+Frozen snapshot body below was cut at firmware **1.0.36** / June 2026 and is retained for
+partner PDF history only (`ORALABLE_PLATFORM_DOCUMENTATION.pdf`).
+
+CURRENT PILOT TRUTH (22 Jul 2026)
+--------------------------------
+Gen1 FW:     **1.0.70** (STAT blink = charging)
+iOS app:     **4.3.3** (FirmwareGate min 1.0.63 / recommend 1.0.70)
+Hardware:    BOM REV8 · PCB REV10 · Kaga ES2832AA2 · Oralable magnetic case (NOT Qi)
+Gen2:        BOM REV9 · PCB REV11 · ES4L15BA1 · FW 2.0.x (not shipping)
+Phase 0:     temple HR/SpO2 · Phase 1+: muscle IR-DC/TFI (same Gen1 HW)
+
+FILES (historical — content may say 1.0.36)
 -----
 01_FIRMWARE_ARCHITECTURE.txt
-  nRF52832 firmware (oralable_nrf): GATT layout, worn-gating, BLE policy,
-  state machine, build/flash, version history. Current: 1.0.36-nrfconnect.
-
 02_IOS_BLE_STREAMING_SUMMARY.txt
-  iOS app BLE stack (oralable_swift + OralableCore): connection flow,
-  parsing pipeline, coordinators, background worker, gaps for 8+ hour sessions.
-
 03_GITHUB_REPOS_OVERVIEW.txt
-  All four GitHub repos: URLs, commits, README copy-paste, directory structure,
-  cross-repo relationships.
-
 04_ALGORITHM_AND_SYSTEM_INTEGRATION.txt
-  Python ↔ Swift algorithm architecture, signal processing rules, ML path,
-  validation strategy, known gaps.
-
-GITHUB REPOSITORIES
--------------------
-https://github.com/johnacogan67/cursor_oralable   (Python research)
-https://github.com/johnacogan67/oralable_nrf       (nRF firmware)
-https://github.com/johnacogan67/oralable_swift     (iOS app)
-https://github.com/johnacogan67/OralableCore         (shared Swift package)
-
-LOCAL PATHS
------------
-/Users/johnacogan67/work/cursor_oralable
-/Users/johnacogan67/work/oralable_nrf
-/Users/johnacogan67/work/oralable_swift
-/Users/johnacogan67/work/OralableCore
+ORALABLE_COMBINED.md / ORALABLE_PLATFORM_DOCUMENTATION.pdf
