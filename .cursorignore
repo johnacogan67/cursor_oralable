@@ -1,0 +1,24 @@
+# Python environments and caches
+.venv/
+.venv_ci/
+.venv_mam/
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+.matplotlib/
+
+# Large data/artifacts
+data/
+plots/
+notebooks/
+ota/
+
+# Heavy file types
+*.csv
+*.h5
+*.png
+*.html
+*.log
+
+# OS noise
+.DS_Store
