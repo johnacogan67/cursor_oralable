@@ -162,6 +162,7 @@ Ed and Pedro each complete:
 - [ ] 3× temple sessions (≥5 min) with HR and SpO₂ at least once
 - [ ] 1× CSV export per session
 
-Protocol B / overnight muscle study **deferred** until vitals stable.
+Protocol B / overnight muscle study **deferred** until vitals stable.  
+When overnight muscle evaluation starts: **≥ 6 h** worn (goal **8 h**); Share → Clinical Temporalis PDF + Mac `generate_overnight_night_report.py`. Review **state hypnogram** first; bands Low/Moderate/High per [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md).
 
 **Sign-off:** [VITALS_PILOT_TEST_PLAN.md § Sign-off](./VITALS_PILOT_TEST_PLAN.md#sign-off)

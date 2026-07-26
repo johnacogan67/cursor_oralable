@@ -13,6 +13,8 @@ This document describes the **algorithm split** between Python research and iOS 
 | Module | Purpose |
 |--------|---------|
 | `src/analysis/features.py` | Butterworth filters, beat detection, **TFI**, window biomarkers |
+| `src/analysis/overnight_states.py` | Overnight quiet/tonic/phasic/rescue/recovery + bouts/KPIs |
+| `scripts/generate_overnight_night_report.py` | Night pack — **hypnogram-first**; see [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) for BP-style bands |
 | `src/validation/self_validate.py` | SASHB, occlusion tiers, swallow/speech FP, rescue gates |
 | `src/utils/sync_align.py` | **3-tap** sync on accel Z (Protocol B validation) |
 | `src/parser/log_parser.py` | TDM / hex parsing, 50 Hz resampling |
@@ -27,8 +29,10 @@ This document describes the **algorithm split** between Python research and iOS 
 | `AlgorithmSpec` | **Implemented** | Shared filter rates, thresholds |
 | `TransferFunctionFilter` / `ButterworthFilter` | **Implemented** | HR bandpass, IR DC lowpass, Temporalis AC bandpass |
 | `PPGProcessor`, `IRDCProcessor` | **Implemented** | Bandpass beats, IR DC trend / occlusion |
-| `MAMInferenceManager` | **Implemented** | Core ML `BruxismMAM_Temporalis` @ 50 Hz × 6 ch |
+| `MAMInferenceManager` | **Implemented** | Core ML `BruxismMAM_Temporalis` @ 50 Hz × 6 ch — cohort plan [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md) |
 | `UnifiedBiometricProcessor` | **Implemented** | HR, SpO₂, motion comp, **TFI**, **SASHB** |
+| `OvernightStateClassifier` / `NightReportSampleLoader` | **Implemented** | Bout night report (Python `overnight_states` parity); Share clinical PDF |
+| `ClinicalReportGenerator` | **Implemented** | Multi-page overnight PDF + event CSV |
 | `NRFConnectBLELogger` | **Implemented** | nRF-style CSV export |
 | `ProfessionalHandshakeExport` | **Implemented** | Hourly TFI + SASHB + Temporalis rollups |
 | `algorithm_spec.yaml` (Python) | **Planned** | Single YAML loaded by both runtimes |

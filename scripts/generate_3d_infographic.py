@@ -35,24 +35,24 @@ import tempfile
 
 import numpy as np
 import pandas as pd
-from scipy.signal import butter, filtfilt
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
 
-
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
+from src.analysis.overnight_states import (  # noqa: E402
+    STATE_COLORS as _STATE_COLORS_FULL,
+    enrich_overnight_frame,
+    project_measurement_frame,
+)
+
+# 3D cluster view uses the four core classes (recovery folded into quiet for scatter).
+STATE_COLORS = {k: _STATE_COLORS_FULL[k] for k in ("quiet", "tonic", "phasic", "rescue")}
 MOTION_STABLE_THRESHOLD_G = 0.15
 IR_DC_DROP_THRESHOLD_PCT = 15.0
 RESCUE_SPO2_THRESHOLD = 92.0
-
-STATE_COLORS = {
-    "quiet": "#D3D3D3",   # light gray
-    "tonic": "#4169E1",   # royal blue
-    "phasic": "#50C878",  # emerald green
-    "rescue": "#8B0000",  # deep red
-}
 
 
 def resolve_input_path(user_path: Path | None) -> Path:
@@ -72,93 +72,6 @@ def resolve_input_path(user_path: Path | None) -> Path:
         "No gold-standard CSV found. Expected one of: "
         "TEMPORALIS_GOLD_STANDARD.csv, data/validation/GOLD_STANDARD_VALIDATION.csv"
     )
-
-
-def infer_sample_rate(elapsed_s: np.ndarray) -> float:
-    if elapsed_s.size < 3:
-        return 50.0
-    dt = np.diff(elapsed_s)
-    dt = dt[np.isfinite(dt) & (dt > 0)]
-    if dt.size == 0:
-        return 50.0
-    med = float(np.median(dt))
-    if med <= 0:
-        return 50.0
-    fs = 1.0 / med
-    return fs if 1 <= fs <= 500 else 50.0
-
-
-def lowpass(signal: np.ndarray, cutoff_hz: float, fs: float, order: int = 4) -> np.ndarray:
-    nyq = 0.5 * fs
-    wn = min(0.99, max(1e-6, cutoff_hz / nyq))
-    b, a = butter(order, wn, btype="low")
-    return filtfilt(b, a, signal)
-
-
-def normalize_ir_dc_to_volts(ir_dc: np.ndarray) -> np.ndarray:
-    # If already in volts-like range, keep as is.
-    vmax = float(np.nanmax(ir_dc))
-    vmin = float(np.nanmin(ir_dc))
-    if np.isfinite(vmax) and np.isfinite(vmin) and vmin >= 0 and vmax <= 5.0:
-        return ir_dc
-
-    # Otherwise robustly normalize observed dynamic range to 1.5..3.0V for infographic.
-    lo = float(np.nanpercentile(ir_dc, 1))
-    hi = float(np.nanpercentile(ir_dc, 99))
-    if not np.isfinite(lo) or not np.isfinite(hi) or hi <= lo:
-        return np.full_like(ir_dc, 2.1, dtype=float)
-    t = (ir_dc - lo) / (hi - lo)
-    t = np.clip(t, 0.0, 1.0)
-    return 1.5 + t * (3.0 - 1.5)
-
-
-def classify_states(
-    elapsed_s: np.ndarray,
-    ir_dc_v: np.ndarray,
-    spo2_pct: np.ndarray,
-    motion_power: np.ndarray,
-    label_hint: np.ndarray | None = None,
-) -> tuple[np.ndarray, np.ndarray]:
-    """Derive Quiet/Tonic/Phasic/Rescue states from infographic rules."""
-    if elapsed_s.size == 0:
-        return np.array([], dtype=object), np.array([], dtype=float)
-
-    # Baseline reference from first protocol minute when available; fallback to full median.
-    baseline_mask = elapsed_s <= 60.0
-    baseline_v = float(np.nanmedian(ir_dc_v[baseline_mask])) if np.any(baseline_mask) else float(np.nanmedian(ir_dc_v))
-    baseline_v = baseline_v if np.isfinite(baseline_v) and baseline_v > 0 else float(np.nanmedian(ir_dc_v))
-    baseline_v = max(1e-6, baseline_v)
-    drop_pct = (baseline_v - ir_dc_v) / baseline_v * 100.0
-
-    out = np.full(elapsed_s.shape[0], "quiet", dtype=object)
-    phasic_motion_threshold = max(MOTION_STABLE_THRESHOLD_G, float(np.nanpercentile(motion_power, 75)))
-    stable_motion = motion_power <= phasic_motion_threshold
-    high_motion = motion_power > phasic_motion_threshold
-    drop_mask = drop_pct > IR_DC_DROP_THRESHOLD_PCT
-
-    tonic_mask = drop_mask & stable_motion & (spo2_pct >= RESCUE_SPO2_THRESHOLD)
-    rescue_mask = drop_mask & (spo2_pct < RESCUE_SPO2_THRESHOLD)
-    phasic_mask = high_motion & (spo2_pct >= RESCUE_SPO2_THRESHOLD)
-
-    out[tonic_mask] = "tonic"
-    out[phasic_mask] = "phasic"
-    out[rescue_mask] = "rescue"
-
-    # If protocol labels are present, map them to visual classes for fidelity.
-    if label_hint is not None and len(label_hint) == len(out):
-        lbl = np.char.lower(label_hint.astype(str))
-        out[np.char.find(lbl, "phasic") >= 0] = "phasic"
-        out[np.char.find(lbl, "tonic") >= 0] = "tonic"
-        out[np.char.find(lbl, "rescue") >= 0] = "rescue"
-
-    return out, drop_pct
-
-
-def required_column(df: pd.DataFrame, names: tuple[str, ...]) -> str:
-    for n in names:
-        if n in df.columns:
-            return n
-    raise KeyError(f"Missing required column. Expected one of: {names}")
 
 
 def _looks_like_ble_raw_log(path: Path) -> bool:
@@ -232,35 +145,15 @@ def _load_gold_like_frame(path: Path) -> pd.DataFrame:
     return pd.read_csv(path, engine="python", on_bad_lines="skip")
 
 
-def _project_measurement_frame(df: pd.DataFrame) -> pd.DataFrame:
-    elapsed_col = required_column(df, ("elapsed_s", "ElapsedSeconds", "elapsed"))
-    ir_col = required_column(df, ("ir_dc", "temporalis_ir", "ir"))
-    spo2_col = required_column(df, ("spo2_pct", "spo2", "SpO2", "spo2_percent"))
-    ax_col = required_column(df, ("temporalis_accel_x", "accel_x"))
-    ay_col = required_column(df, ("temporalis_accel_y", "accel_y"))
-    az_col = required_column(df, ("temporalis_accel_z", "accel_z"))
-    out = pd.DataFrame({
-        "elapsed_s": pd.to_numeric(df[elapsed_col], errors="coerce"),
-        "ir_dc_raw": pd.to_numeric(df[ir_col], errors="coerce"),
-        "spo2_pct": pd.to_numeric(df[spo2_col], errors="coerce"),
-        "accel_x": pd.to_numeric(df[ax_col], errors="coerce"),
-        "accel_y": pd.to_numeric(df[ay_col], errors="coerce"),
-        "accel_z": pd.to_numeric(df[az_col], errors="coerce"),
-    })
-    if "label_name" in df.columns:
-        out["label_name"] = df["label_name"].astype(str)
-    return out
-
-
 def prep_frame(csv_path: Path, max_points: int, validation_path: Path | None = None) -> pd.DataFrame:
     # Prefer already unified 50 Hz validation data when provided.
     if validation_path is not None and validation_path.exists():
-        base_df = _project_measurement_frame(_load_gold_like_frame(validation_path))
+        base_df = project_measurement_frame(_load_gold_like_frame(validation_path))
     else:
-        base_df = _project_measurement_frame(_load_gold_like_frame(csv_path))
+        base_df = project_measurement_frame(_load_gold_like_frame(csv_path))
 
     if validation_path is not None and validation_path.exists() and validation_path.resolve() != csv_path.resolve():
-        val_df = _project_measurement_frame(_load_gold_like_frame(validation_path))
+        val_df = project_measurement_frame(_load_gold_like_frame(validation_path))
         base_df = pd.merge_asof(
             base_df.sort_values("elapsed_s"),
             val_df.sort_values("elapsed_s"),
@@ -278,32 +171,9 @@ def prep_frame(csv_path: Path, max_points: int, validation_path: Path | None = N
             merged["label_name"] = base_df["label_name_a"]
         base_df = merged
 
-    out = base_df.dropna(subset=["elapsed_s", "ir_dc_raw", "spo2_pct"])
-
-    out = out.sort_values("elapsed_s").reset_index(drop=True)
-    if out.empty:
-        raise ValueError("No valid rows found after filtering.")
-
-    fs = infer_sample_rate(out["elapsed_s"].to_numpy())
-    ir_v = normalize_ir_dc_to_volts(out["ir_dc_raw"].to_numpy())
-    ir_v_lp = lowpass(ir_v, cutoff_hz=0.8, fs=fs, order=4)
-
-    out["ir_dc_v_filtered_unclipped"] = ir_v_lp
-    out["ir_dc_v_filtered"] = np.clip(ir_v_lp, 1.5, 3.0)
-    out["spo2_pct"] = np.clip(out["spo2_pct"], 85.0, 100.0)
-    mag = np.sqrt(out["accel_x"] ** 2 + out["accel_y"] ** 2 + out["accel_z"] ** 2) / 16384.0
-    out["motion_g"] = np.abs(mag - 1.0)
-    out["motion_power"] = np.sqrt(
-        (out["motion_g"] ** 2).rolling(window=25, center=True, min_periods=1).mean()
-    )
-    label_hint = out["label_name"].to_numpy() if "label_name" in out.columns else None
-    out["mam_state"], out["ir_drop_pct"] = classify_states(
-        out["elapsed_s"].to_numpy(),
-        out["ir_dc_v_filtered_unclipped"].to_numpy(),
-        out["spo2_pct"].to_numpy(),
-        out["motion_power"].to_numpy(),
-        label_hint=label_hint,
-    )
+    # Cluster plot: core 4 classes only (no recovery band).
+    out = enrich_overnight_frame(base_df, apply_recovery=False, use_label_hints=True)
+    out.loc[out["mam_state"] == "recovery", "mam_state"] = "quiet"
 
     if len(out) > max_points:
         step = int(np.ceil(len(out) / max_points))
@@ -312,8 +182,10 @@ def prep_frame(csv_path: Path, max_points: int, validation_path: Path | None = N
     return out
 
 
-def plot_png(df: pd.DataFrame, out_png: Path) -> None:
+def plot_png(df: pd.DataFrame, out_png: Path, hide_states: set[str] | None = None) -> None:
     plt.rcParams["font.family"] = "Times New Roman"
+    hide_states = {s.lower() for s in (hide_states or set())}
+    plot_states = tuple(s for s in ("quiet", "tonic", "phasic", "rescue") if s not in hide_states)
 
     fig = plt.figure(figsize=(14, 8), dpi=220)
     ax = fig.add_subplot(111, projection="3d")
@@ -324,16 +196,18 @@ def plot_png(df: pd.DataFrame, out_png: Path) -> None:
     y = df["motion_power"].to_numpy()
     z = df["ir_dc_v_filtered"].to_numpy()
     s = df["mam_state"].to_numpy()
+    visible = np.isin(s, plot_states)
+    y_vis = y[visible] if np.any(visible) else y
 
     # Occlusion floor plane at IR-DC=2.1V.
-    y_max = float(np.nanpercentile(y, 99)) if len(y) else 0.3
+    y_max = float(np.nanpercentile(y_vis, 99)) if len(y_vis) else 0.3
     y_max = max(0.1, y_max)
     xx, yy = np.meshgrid(np.linspace(85.0, 100.0, 2), np.linspace(0.0, y_max, 2))
     zz = np.full_like(xx, 2.1)
     ax.plot_surface(xx, yy, zz, color="#C9A227", alpha=0.18, linewidth=0)
 
     # Color-by-state 3D scatter.
-    for state in ("quiet", "tonic", "phasic", "rescue"):
+    for state in plot_states:
         mask = s == state
         if np.any(mask):
             ax.scatter(
@@ -352,8 +226,11 @@ def plot_png(df: pd.DataFrame, out_png: Path) -> None:
     ax.set_xlabel("SpO2 Saturation (%)", color="white", labelpad=12)
     ax.set_ylabel("Motion Power (Accel jitter)", color="white", labelpad=12)
     ax.set_zlabel("IR-DC Voltage (Filtered)", color="white", labelpad=12)
+    title = "OMG Clinical Infographic — 3D SpO2 / IR-DC / Time"
+    if "quiet" in hide_states:
+        title += " (events only)"
     ax.set_title(
-        "OMG Clinical Infographic — 3D SpO2 / IR-DC / Time",
+        title,
         color="white",
         pad=18,
         fontsize=15,
@@ -365,11 +242,19 @@ def plot_png(df: pd.DataFrame, out_png: Path) -> None:
         axis._axinfo["axisline"]["color"] = (1, 1, 1, 0.65)  # type: ignore[attr-defined]
         axis._axinfo["tick"]["color"] = (1, 1, 1, 0.8)  # type: ignore[attr-defined]
 
+    state_labels = {
+        "quiet": "Quiet",
+        "tonic": "Tonic",
+        "phasic": "Phasic",
+        "rescue": "Airway Rescue",
+    }
     legend_lines = [
-        plt.Line2D([0], [0], marker="o", color="none", markerfacecolor=STATE_COLORS["quiet"], markersize=7, label="Quiet"),
-        plt.Line2D([0], [0], marker="o", color="none", markerfacecolor=STATE_COLORS["tonic"], markersize=7, label="Tonic"),
-        plt.Line2D([0], [0], marker="o", color="none", markerfacecolor=STATE_COLORS["phasic"], markersize=7, label="Phasic"),
-        plt.Line2D([0], [0], marker="o", color="none", markerfacecolor=STATE_COLORS["rescue"], markersize=7, label="Airway Rescue"),
+        plt.Line2D(
+            [0], [0], marker="o", color="none",
+            markerfacecolor=STATE_COLORS[state], markersize=7, label=state_labels[state],
+        )
+        for state in plot_states
+    ] + [
         plt.Line2D([0], [0], color="#C9A227", lw=6, alpha=0.35, label="Occlusion Floor (2.1V)"),
     ]
     leg = ax.legend(handles=legend_lines, loc="upper left", framealpha=0.2, facecolor="#0B0F14", edgecolor="#CCCCCC")
@@ -382,7 +267,7 @@ def plot_png(df: pd.DataFrame, out_png: Path) -> None:
     plt.close(fig)
 
 
-def plot_html(df: pd.DataFrame, out_html: Path) -> None:
+def plot_html(df: pd.DataFrame, out_html: Path, hide_states: set[str] | None = None) -> None:
     try:
         import plotly.graph_objects as go
     except Exception as exc:  # pragma: no cover - runtime environment dependent
@@ -390,16 +275,21 @@ def plot_html(df: pd.DataFrame, out_html: Path) -> None:
             "plotly is required for HTML output. Install with: pip install plotly"
         ) from exc
 
+    hide_states = {s.lower() for s in (hide_states or set())}
+    plot_states = tuple(s for s in ("quiet", "tonic", "phasic", "rescue") if s not in hide_states)
+
     x = df["spo2_pct"].to_numpy()
     y = df["motion_power"].to_numpy()
     z = df["ir_dc_v_filtered"].to_numpy()
     s = df["mam_state"].to_numpy()
     t = df["elapsed_s"].to_numpy()
+    visible = np.isin(s, plot_states)
+    y_vis = y[visible] if np.any(visible) else y
 
     fig = go.Figure()
 
     # Add one trace per state for clean legend.
-    for state in ("quiet", "tonic", "phasic", "rescue"):
+    for state in plot_states:
         mask = s == state
         if not np.any(mask):
             continue
@@ -409,7 +299,7 @@ def plot_html(df: pd.DataFrame, out_html: Path) -> None:
                 y=y[mask],
                 z=z[mask],
                 mode="markers",
-                name=state.capitalize(),
+                name="Airway Rescue" if state == "rescue" else state.capitalize(),
                 text=[f"t={tt:.2f}s" for tt in t[mask]],
                 hovertemplate=(
                     "State=%{fullData.name}<br>"
@@ -427,7 +317,7 @@ def plot_html(df: pd.DataFrame, out_html: Path) -> None:
         )
 
     # Occlusion floor plane at z=2.1V.
-    y_max = float(np.nanpercentile(y, 99)) if len(y) else 0.3
+    y_max = float(np.nanpercentile(y_vis, 99)) if len(y_vis) else 0.3
     y_max = max(0.1, y_max)
     xx = np.array([[85.0, 100.0], [85.0, 100.0]])
     yy = np.array([[0.0, 0.0], [y_max, y_max]])
@@ -444,9 +334,12 @@ def plot_html(df: pd.DataFrame, out_html: Path) -> None:
         )
     )
 
+    title = "OMG Clinical Infographic — 3D SpO2 / IR-DC / Time"
+    if "quiet" in hide_states:
+        title += " (events only)"
     fig.update_layout(
         template="plotly_dark",
-        title="OMG Clinical Infographic — 3D SpO2 / IR-DC / Time",
+        title=title,
         font=dict(family="Times New Roman", color="white", size=14),
         scene=dict(
             xaxis=dict(
@@ -506,21 +399,39 @@ def main() -> int:
         default=5000,
         help="Downsample cap for plotting performance.",
     )
+    ap.add_argument(
+        "--hide-quiet",
+        action="store_true",
+        help="Omit quiet/baseline points; show tonic/phasic/rescue only.",
+    )
+    ap.add_argument(
+        "--hide-states",
+        type=str,
+        default="",
+        help="Comma-separated states to omit (quiet,tonic,phasic,rescue).",
+    )
     args = ap.parse_args()
+
+    hide_states: set[str] = set()
+    if args.hide_quiet:
+        hide_states.add("quiet")
+    if args.hide_states.strip():
+        hide_states.update(s.strip().lower() for s in args.hide_states.split(",") if s.strip())
 
     try:
         in_path = resolve_input_path(args.input)
         df = prep_frame(in_path, max_points=max(500, args.max_points), validation_path=args.validation)
-        plot_png(df, args.png_out)
-        plot_html(df, args.html_out)
+        plot_png(df, args.png_out, hide_states=hide_states)
+        plot_html(df, args.html_out, hide_states=hide_states)
     except Exception as exc:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
 
+    shown = len(df) if not hide_states else int((~df["mam_state"].isin(hide_states)).sum())
     print(f"Input : {in_path}")
     print(f"PNG   : {args.png_out}")
     print(f"HTML  : {args.html_out}")
-    print(f"Rows  : {len(df)}")
+    print(f"Rows  : {len(df)} (plotted {shown}; hidden={sorted(hide_states) or 'none'})")
     return 0
 
 

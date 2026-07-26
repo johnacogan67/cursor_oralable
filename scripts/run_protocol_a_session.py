@@ -322,6 +322,13 @@ def main() -> int:
         "  .venv/bin/python scripts/generate_clinical_report.py "
         "--input data/validation/GOLD_STANDARD_VALIDATION.csv"
     )
+    print(
+        "  # (clinical report also writes plots/overnight_report/<session>/night_report.pdf)"
+    )
+    print(
+        "  .venv/bin/python scripts/generate_overnight_night_report.py "
+        "--input data/validation/GOLD_STANDARD_VALIDATION.csv"
+    )
     return 0
 
 

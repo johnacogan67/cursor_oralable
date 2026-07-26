@@ -1,8 +1,8 @@
 # Oralable research & validation documentation index
 
-Python algorithm development, clinical protocols, and gold-standard validation (`cursor_oralable`). **Doc pack:** `docs/VERSION` → **1.3.11** (pilot FW **1.0.70** · app **4.3.3** — [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)).
+Python algorithm development, clinical protocols, and gold-standard validation (`cursor_oralable`). **Doc pack:** `docs/VERSION` → **1.3.15** (pilot FW **1.0.70** · app **4.3.3** — timeline align + overnight bands + Core ML cohort — [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)).
 
-**Product roadmap (phases + BOM):** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)
+**Product roadmap (phases + BOM + canonical timeline §3):** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)
 
 **Product strategy:** [oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md](../../oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md) (competitors, regulatory, GTM, appendices A/B).
 
@@ -30,13 +30,15 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 | Document | Description |
 |----------|-------------|
 | [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) | **Protocol A** (training, 5 taps) vs **Protocol B** (Ed/Pedro, 3-tap T=0) — read “do not mix” table |
+| [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) | **Canonical** overnight bands (BP-style), hypnogram-first graphing, ≥6 h gate, Mac/iOS pack |
+| [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md) | **Canonical** Protocol A cohort sizes, users/sessions, demographics, leave-user-out |
 | [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md) | Phase 1 pilot roles — phases canonical in Protocol B above |
 
 ## Investor / Point A data room
 
 | Document | Description |
 |----------|-------------|
-| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.38** · pilot FW **1.0.70** · app **4.3.3** |
+| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.42** · pilot FW **1.0.70** · app **4.3.3** |
 | [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) | Phase 0 Vitals one-pager |
 | [data_room/VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) | Canonical FW **1.0.70** · app **4.3.3** |
 | [data_room/FIRMWARE_1.0.70_FLASH.md](./data_room/FIRMWARE_1.0.70_FLASH.md) | Pilot flash guide |
@@ -74,10 +76,15 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 
 ## Standard pipeline
 
-1. Record per [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md)
+1. Record per [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md)  
+   - Structured: Protocol A/B (minutes).  
+   - **Evaluable overnight:** **≥ 6 h** worn (goal 8 h).
 2. `python scripts/process_temporalis_gold.py <ble_log.csv>`
-3. `python scripts/generate_clinical_report.py --input data/validation/GOLD_STANDARD_VALIDATION.csv`
-4. Optional: `oralable_nrf/scripts/check_ir_dc_scaling.py` on new logs
+3. `python scripts/generate_clinical_report.py --input data/validation/GOLD_STANDARD_VALIDATION.csv`  
+   (also writes overnight graphic pack under `plots/overnight_report/`)
+4. Optional night pack only: `python scripts/generate_overnight_night_report.py --input data/validation/GOLD_STANDARD_VALIDATION.csv`
+5. Optional: `oralable_nrf/scripts/check_ir_dc_scaling.py` on new logs  
+6. **iOS:** Share → Clinical Temporalis PDF (same bout panels + event CSV; needs session samples / flushes)
 
 ## NotebookLM
 

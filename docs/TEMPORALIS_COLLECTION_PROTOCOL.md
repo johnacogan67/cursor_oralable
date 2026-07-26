@@ -41,6 +41,8 @@ Uploading both to NotebookLM without this table causes conflicting answers about
 
 **Objective:** Create labeled training set for Core ML MAM Net.
 
+**Cohort sizing / demographics:** [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md) — Tier 1 ≈ 20–30 users × 3–5 Protocol A; leave-user-out; stratify by sex, age, habitus, skin tone. Overnight nights are for hypnogram/bands, not primary Core ML labels.
+
 **Anchor:** offsets below are **elapsed time from recording start** (not from sync taps).
 
 | Time offset | Action | Clinical target |
@@ -69,7 +71,7 @@ Uploading both to NotebookLM without this table causes conflicting answers about
 python -m src.utils.ble_logger --out data/raw/TEMPORALIS_RAW_01.txt
 ```
 
-Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_mam_pipeline.py --raw <log>` for Core ML.
+Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_mam_pipeline.py --raw <log>` for Core ML. Aggregate **many subjects** before claiming a general model — see [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md).
 
 **Labeling:** Table offsets (e.g. 02:00 tonic) define `label_enum` segment boundaries. Accuracy within **1–2 s** required.
 
@@ -123,6 +125,41 @@ run_validation_dashboard(
 ```
 
 **Artifacts:** `data/validation_logs/JOHN_COGAN_1ST_SYNC_PROTOCOL.csv` · plots in `data/plots/ed_presentation/`
+
+---
+
+## Overnight sleep session (evaluation)
+
+Structured Protocol A/B locks are **minutes**, not sleep. For **evaluable overnight** TFI / SASHB / bout reports (dentist or pilot review):
+
+| Tier | Worn duration | Use |
+|------|---------------|-----|
+| **Canonical minimum** | **≥ 6 hours** | Counts as a completed overnight for Ed/Pedro / night-report evaluation |
+| **Goal** | **~8 hours** | Preferred full night |
+| **Smoking-gun hourly r** | **≥ 3 hours** of filled hourly buckets | Pearson SASHB vs rescue fraction (needs ≥3 hourly bins) |
+| **Not sleep** | Protocol A (~6 min) / Protocol B (~4.5 min) | Training / pass-fail only |
+
+See also [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md) §4.2.
+
+### Night-report pack (Mac + iOS)
+
+**Canonical product direction:** [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) — **blood-pressure-style bands** (Low / Moderate / High) on TFI, SASHB/h, rescue/h, tonic min/h; **state hypnogram is the primary graphic**; dual-rail / 3D are secondary. Not a single sleep-quality score first; cohort percentiles later.
+
+After gold / validation CSV (or overnight BLE log → gold):
+
+```bash
+.venv/bin/python scripts/process_temporalis_gold.py data/raw/YOUR_LOG.txt
+.venv/bin/python scripts/generate_clinical_report.py \
+  --input data/validation/GOLD_STANDARD_VALIDATION.csv
+# Also writes plots/overnight_report/<session>/ (KPI, hypnogram, hourly, smoking-gun, events, PDF)
+# Or directly:
+.venv/bin/python scripts/generate_overnight_night_report.py \
+  --input data/validation/GOLD_STANDARD_VALIDATION.csv
+```
+
+**iOS:** Share → **Export PDF — Oralable MAM: Clinical Temporalis Report** rebuilds the same panels from session samples (RAM history + memory-flush CSVs + session file). Lead with **state hypnogram** + bands; hourly stack / smoking-gun / event CSV support dentist detail. Wellness states only — not a diagnosis.
+
+States: quiet / tonic / phasic / rescue / recovery (`src/analysis/overnight_states.py` · Swift `OvernightStateClassifier`).
 
 ---
 

@@ -75,15 +75,21 @@
 
 ### 4.2 Overnight session (optional but recommended)
 
-**Purpose:** Wellness metrics — TFI, SASHB, hourly rollups, battery life.
+**Purpose:** Wellness metrics — TFI, SASHB, hourly rollups, battery life, night-report graphics.
 
 | Item | Target |
 |------|--------|
-| Duration | ≥ 6 h worn (goal 8 h) |
+| Duration | **≥ 6 h worn** (goal **8 h**) — minimum for an *evaluable* overnight; under 6 h = debug only |
+| Hourly correlation | Prefer **≥ 3 h** continuous so smoking-gun r (hourly SASHB vs rescue) can compute |
 | Coupling | IR-DC stable in range; worn gate OK |
-| Export | App session history + research CSV + clinical PDF |
+| Export (iOS) | Share → research CSV + **Clinical Temporalis PDF** (bout hypnogram, dual-rail, event CSV) |
+| Export (Mac) | `generate_clinical_report.py` → also `plots/overnight_report/<session>/night_report.pdf` |
 
-**Minimum:** **1 overnight** each for Ed and Pedro before expanding to Phase 1B.
+**Minimum:** **1 overnight (≥6 h)** each for Ed and Pedro before expanding to Phase 1B.
+
+**Not overnight:** Protocol A (~6 min) and Protocol B (~4.5 min) are structured locks only — see [TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) § Overnight sleep session.
+
+**Review UX:** lead with **state hypnogram** + provisional **Low / Moderate / High** bands (TFI, SASHB/h, rescue/h) — [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md). Recalibrate cutoffs from these pilot nights.
 
 ### 4.3 Professional workflow smoke (once)
 

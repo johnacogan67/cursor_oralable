@@ -1,7 +1,7 @@
 # Oralable investor data room index
 
 Maps **Balance Points Point A** functional areas to canonical documents.  
-**Pack version:** data room index **1.1.38** · Pilot firmware **1.0.70** · App **4.3.3** · **As at:** 24 Jul 2026 · Ed/Pedro kits **not yet shipped** (charge-to-temple gate)
+**Pack version:** data room index **1.1.42** · Pilot firmware **1.0.70** · App **4.3.3** · **As at:** 26 Jul 2026 · Ed/Pedro kits **gated** · timeline [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical)
 
 **Product phases / BOM:** [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) (Phase 0 temple vitals now; Phase 1+ muscle deferred; Gen1 = BOM REV8 / REV10; Gen2 = BOM REV9 / REV11)
 
@@ -73,7 +73,10 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 | [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLIST.md) | John pre-ship dry run |
 | [PILOT_PROTOCOL_ED_PEDRO.md](./PILOT_PROTOCOL_ED_PEDRO.md) | Phase 1 muscle pilot (deferred after vitals) |
 | [../CLINICAL_VALIDATION.md](../CLINICAL_VALIDATION.md) | Prior lab validation runs (March 2026) |
-| [../TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) | Structured phase timing (sync anchor) |
+| [../TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) | Structured phase timing (Protocol A vs B vs overnight ≥6 h) |
+| [../OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) | Overnight bands + **hypnogram-first** graphing (Mac + iOS PDF) |
+| [../CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md) | Protocol A cohort sizes / demographics for Core ML |
+| [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) | **Canonical development timeline** (§3) |
 
 ---
 
@@ -94,7 +97,7 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 |-------|------------|
 | Data room markdown | `docs/data_room/VERSION` + git tags on `cursor_oralable` |
 | Engineering doc hub | [ORALABLE_SYSTEM_ARCHITECTURE.md](../ORALABLE_SYSTEM_ARCHITECTURE.md) (§3 validation matrix) |
-| Research doc pack | `cursor_oralable/docs/VERSION` (**1.3.11**) · [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) |
+| Research doc pack | `cursor_oralable/docs/VERSION` (**1.3.15**) · [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) |
 | Firmware doc pack | `oralable_nrf/docs/VERSION` (**1.2.2**) |
 | Market landscape | v1.2 in `ORALABLE_MARKET_LANDSCAPE.md` |
 | Upload PDF pack | `docs/upload/ORALABLE_PLATFORM_DOCUMENTATION.pdf` |

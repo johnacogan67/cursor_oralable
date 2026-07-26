@@ -27,7 +27,7 @@ Speaker: One sentence — we ship a working wearable that embodies a new US pate
 | Dimension | Point A (July 2026) |
 |-----------|---------------------|
 | **Legal entity** | **JAC DENTAL SOLUTIONS LIMITED** (Ireland) |
-| **Product** | Gen1 Phase 0 (temple HR/SpO₂) — kits **built**, **not yet shipped** to Ed/Pedro; gated on charge-to-temple |
+| **Product** | Gen1 Phase 0 (temple HR/SpO₂) — kits **built**, **gated** (not yet shipped); charge-to-temple SOC ≥50% |
 | **Hardware** | BOM **REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.70** · Oralable magnetic case (**not Qi**) |
 | **App** | **Patient app only** for this iteration — Oralable for Dentists **off** |
 | **Claims** | Wellness only — **not** a medical device |

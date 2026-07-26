@@ -1,6 +1,6 @@
 # Gen1 / Gen2 — living tracking board
 
-**Owner:** John Cogan · **Updated:** 2026-07-24  
+**Owner:** John Cogan · **Updated:** 2026-07-26  
 **Policy:** Single repo, multi-board — **do not fork**. See [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md) · **[PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)** · **[VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)** · **[COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md)**
 
 
@@ -16,7 +16,7 @@
 | **Gen1 production** | `oralable_nrf` | working tree → tag `v1.0.70` | `pcb00003` | **`1.0.70`** (pilot ship hex) | **Active pilot** |
 | **Gen1 prior** | `oralable_nrf` | tags `v1.0.66` | `pcb00003` | `1.0.66` | Rollback only |
 | **Gen2 bring-up** | `oralable_nrf` | `feature/gen2-nrf54l15` | `pcb00003_gen2` | `2.0.0-gen2-nrfconnect` (target) | **Scaffold** |
-| **Docs / research** | `cursor_oralable` | `main` | — | docs **1.3.11** / data_room **1.1.38** | Tracking live |
+| **Docs / research** | `cursor_oralable` | `main` | — | docs **1.3.15** / data_room **1.1.42** | Tracking live |
 | **iOS / Core** | `oralable_swift` · `OralableCore` | current | — | App **4.3.3** · gate min **1.0.63** / recommend **1.0.70** | No Gen2 fork |
 
 ### Rules (non-negotiable)
@@ -190,5 +190,6 @@ All must be true before Gen1 EOL decision (target **2027-06**):
 | 2026-07-16 | `app/VERSION` → **1.0.67**; dropped misplaced `CONFIG_BT_DFU_SMP` (central client); iOS CCC timeouts + hang fixes; scheduled backlog §3b |
 | 2026-07-16 | Nordic/Apple align documented: adv `.recycled`, iOS awaited CCC + status/battery readiness, explicit MCUmgr Kconfigs (SMP auth deferred) |
 | 2026-07-22 | Pilot ship aligned to **1.0.70** + app **4.3.2**; STAT blink dock; prior 1.0.67/1.0.68 lineage folded in |
-| 2026-07-24 | Milestone: app **4.3.3** (build 4) · docs **1.3.11** / data_room **1.1.38** · Temporalis MAM retrained via Mac Protocol A BLE session |
+| 2026-07-24 | Milestone: app **4.3.3** (build 4) · Temporalis MAM Mac Protocol A retrain · night-report PDF path |
+| 2026-07-26 | Docs align: hub **1.3.15** / data_room **1.1.42** · overnight bands + Core ML cohort · PRODUCT_ROADMAP §3 canonical timeline (Phase 0 gated; eng overnight shipped early) |
 | 2026-07-16 | Tracking board created; `feature/gen2-nrf54l15` @ `c378a89` + `pcb00003_gen2` stub; no-fork policy locked |

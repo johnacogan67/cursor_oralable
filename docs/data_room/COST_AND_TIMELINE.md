@@ -15,13 +15,18 @@
 
 ## 1. Timeline (likely)
 
+**Canonical calendar:** [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical). Do not invent alternate phase dates here.
+
 ```
-2026 Jul–Sep   PHASE 0 / Ed–Pedro (Stage A)
-               Gen1 kits · patient app only · temple vitals gates
+2026 Jul 24    ENG MILESTONE (shipped)
+               Protocol A Mac · Core ML Tier 0 · night-report PDF (hypnogram-first)
+                      │
+2026 Jul–Sep    PHASE 0 / Ed–Pedro (Stage A) — YOU ARE HERE
+               Gen1 stack ready · kits gated (charge-to-temple) · temple vitals · patient app only
                       │
 2026 Q4–2027 Q1  PHASE 1+ embodiment (Stage A)
-               TFI / SASHB / IR-DC in patient app · clinical exports
-               Soft consumer Premium optional · professional app still gated
+               TFI / SASHB / IR-DC live in patient UX · Protocol B · ≥6 h overnight eval
+               Core ML Tier 1 cohort · soft Premium optional · professional app still gated
                       │
 2026 Q4–2027 H2  GEN2 bring-up (parallel)
                REV11 EVT · FW 2.0.x · vitals parity · longer nights
@@ -37,8 +42,9 @@
 
 | Window | Focus | Exit criteria |
 |--------|-------|---------------|
-| **Now – Sep 2026** | Phase 0 Ed/Pedro | Temple HR/SpO₂ gates; CSV evidence; no pro app |
-| **Q4 2026 – Q1 2027** | Phase 1+ Stage A | TFI/SASHB/IR-DC live in patient app; patent-table exports |
+| **24 Jul 2026** | Eng overnight + Core ML Tier 0 | PDF/Mac pack + mlpackage retrain (done) |
+| **Now – Sep 2026** | Phase 0 Ed/Pedro | Temple HR/SpO₂ gates; CSV evidence; kits shipped past charge gate; no pro app |
+| **Q4 2026 – Q1 2027** | Phase 1+ Stage A | TFI/SASHB/IR-DC live in patient UX; Protocol B; overnight ≥6 h eval; patent-table exports |
 | **Q4 2026 – H2 2027** | Gen2 HW/FW | G2-P0…P6; temple parity; CHRSTS/SOC better than Gen1 |
 | **2026–2027** | US patent | Non-provisional submitted; prosecution as needed |
 | **H1 2027+** | Stage B prep | Pre-sub package; clinical concordance plan funded |

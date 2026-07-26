@@ -1,7 +1,7 @@
 # JAC Dental Solutions — Current governance status
 
 **As at:** **22 Jul 2026** (post meeting + Ken evening email pack)  
-**Pack:** data room **1.1.38** (pilot FW **1.0.70** · app **4.3.3** · Ed/Pedro **not yet shipped**)  
+**Pack:** data room **1.1.42** (pilot FW **1.0.70** · app **4.3.3** · Ed/Pedro **kits gated**)  
 **Entity:** JAC Dental Solutions Limited · CRO **697987** · Oralable  
 
 This is the **single cleaned snapshot** of corporate / cap-table / leadership reality. Detail lives in the linked docs; if anything conflicts, **this page + Register of Members distill win** over older NotebookLM notes **and over Ken’s Pre-Seed discussion memo**.

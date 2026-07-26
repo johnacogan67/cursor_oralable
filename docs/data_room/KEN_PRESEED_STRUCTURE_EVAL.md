@@ -1,6 +1,6 @@
 # Ken Pre-Seed Structure — evaluation (proposal only)
 
-**As at:** 22 Jul 2026 · Data room pack **1.1.35**  
+**As at:** 26 Jul 2026 · Data room pack **1.1.42**  
 **Status:** Distill of Ken’s evening email pack — **not company position · not a term sheet**  
 **Canonical governance:** [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md)  
 **Sources (Downloads / private Drive — not in git):**

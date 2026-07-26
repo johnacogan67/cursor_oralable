@@ -1,23 +1,30 @@
 # Version alignment (canonical)
 
-**As at:** 24 Jul 2026 · Data room pack **1.1.38** · Docs hub **1.3.11**
+**As at:** 26 Jul 2026 · Data room pack **1.1.42** · Docs hub **1.3.15**
 
 Use this table when updating flash guides, pilot handouts, architecture, website, or TestFlight notes. Prefer these strings over older “1.0.66 ship / 1.0.67 next” language.
 
-## Milestone — 24 Jul 2026 (Temporalis Mac Protocol A)
+**Canonical development timeline:** [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · planning mirror [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) §1.
+
+## Milestone — 24 Jul 2026 (Temporalis Mac Protocol A + overnight night report)
 
 | Item | Status |
 |------|--------|
 | **Stack** | FW **1.0.70** · app **4.3.3** (build **4**) · Gen1 REV10 |
 | **OralableCore** | `BruxismMAM_Temporalis.mlpackage` retrained from Mac BLE Protocol A log `data/raw/TEMPORALIS_RAW_20260724_084345.txt` |
 | **Capture path** | `scripts/run_protocol_a_session.py` (bleak + worn-mode write + timed cues) → `process_temporalis_gold` / `run_temporalis_mam_pipeline.py` |
-| **Ed/Pedro kits** | **Not yet shipped** (charge-to-temple gate unchanged) |
+| **Night report (Mac)** | `scripts/generate_overnight_night_report.py` (+ hooked from `generate_clinical_report.py`) → `plots/overnight_report/<session>/` |
+| **Night report (iOS)** | Share → Clinical Temporalis PDF: bout hypnogram, smoking-gun dual rail, event CSV (`OvernightStateClassifier` / `NightReportSampleLoader`) |
+| **Overnight UX direction** | [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) — **BP-style bands** (TFI / SASHB/h / rescue/h / tonic min/h); **state hypnogram primary**; no sleep-score-first |
+| **Core ML cohort** | [CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md) — Tier 1 ≈ 20–30 users × 3–5 Protocol A; leave-user-out; stratify sex/age/habitus/skin |
+| **Evaluable overnight** | **≥ 6 h** worn (goal **8 h**); Protocol A/B minutes are not sleep sessions |
+| **Ed/Pedro kits** | **Gated** — stack ready; not yet shipped (charge-to-temple) |
 
 ## Pilot ship status (ready ≠ delivered)
 
-| Item | As at 24 Jul 2026 |
+| Item | As at 26 Jul 2026 |
 |------|------------------|
-| **Ed/Pedro kits** | **Not yet shipped** |
+| **Ed/Pedro kits** | **Gated / not yet shipped** |
 | **Stack** | FW **1.0.70** · app **4.3.3** · Gen1 REV10 — flash/TestFlight path ready |
 | **Ship gate** | Case charge to **temple-ready SOC (≥50%)** + short worn HR/SpO₂ without brownout |
 | **Status sense** | STAT blink policy in **1.0.70** (do not say “chrsts broken on REV10”) |

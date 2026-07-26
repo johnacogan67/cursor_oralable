@@ -31,7 +31,7 @@ Related: [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [GEN1_GEN2_
 
 | Generation | BOM | PCB | Module (U5) | SoC | Battery | Firmware | Status |
 |------------|-----|-----|-------------|-----|---------|----------|--------|
-| **Gen1** | `PCB00003-TGM-BOM-REV8` | **REV10** pilot (REV8 prod data) | Kaga **ES2832AA2** | nRF52832 | CG-320B ~15 mAh | **1.0.70** ship (min 1.0.63) | **Shipping / Ed–Pedro kits** |
+| **Gen1** | `PCB00003-TGM-BOM-REV8` | **REV10** pilot (REV8 prod data) | Kaga **ES2832AA2** | nRF52832 | CG-320B ~15 mAh | **1.0.70** ship (min 1.0.63) | **Ship-ready / kits gated** (charge-to-temple) |
 | **Gen2** | `PCB00003-TGM-BOM-REV9` | **REV11** | Kaga **ES4L15BA1** | nRF54L15 | LP260820 ~30 mAh *(sample EMS: **LP270829 35 mAh** approved May 2026 — [GEN2_COGS](./data_room/GEN2_COGS_KAGA_QUOTE.md))* | **2.0.x** target | **Not shipping** (scaffold) |
 
 **Rules**
@@ -45,7 +45,7 @@ Related: [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [GEN1_GEN2_
 
 ## 2. Software phases (features)
 
-### Phase 0 — Vitals (now · Mid 2026)
+### Phase 0 — Vitals (now – Sep 2026)
 
 **Hardware:** Gen1 · BOM REV8 · PCB REV10 · ES2832AA2 · FW **1.0.70** · App **4.3.3**
 
@@ -61,20 +61,27 @@ Related: [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [GEN1_GEN2_
 
 **Pass gates:** [data_room/VITALS_PILOT_TEST_PLAN.md](./data_room/VITALS_PILOT_TEST_PLAN.md)
 
-### Phase 1+ — Muscle / bruxism (Late 2026+ · Gen1 software)
+### Phase 1+ — Muscle / bruxism (Q4 2026 – Q1 2027 · Gen1 software)
 
 **Hardware unchanged:** Gen1 · BOM REV8 · PCB REV10 · ES2832AA2 (same kits; app/FW unlock features)
 
-| Features |
-|----------|
-| IR-DC occlusion / hemodynamic load for clench & grind phenotypes |
-| Temporalis Fatigue Index (**TFI**) session & hourly rollups |
-| Hypoxic burden (**SASHB**) with overnight SpO₂ |
-| Actigraphy / jaw vibration (LIS2DTW12) |
-| Protocol B / muscle calibration (when Phase 0 gates pass) |
-| Oralable for Professionals & research export / clinical PDF | After Phase 0; **not** Ed/Pedro kit scope |
+| Features | Notes |
+|----------|--------|
+| IR-DC occlusion / hemodynamic load for clench & grind phenotypes | Live in patient UX |
+| Temporalis Fatigue Index (**TFI**) session & hourly rollups | Live gauges + history |
+| Hypoxic burden (**SASHB**) with overnight SpO₂ | Live + overnight bands |
+| Protocol B / muscle calibration | When Phase 0 gates pass |
+| Actigraphy / jaw vibration (LIS2DTW12) | Productized with muscle UX |
+| Oralable for Professionals | After Phase 1+ share gate — **not** Ed/Pedro kit scope |
+| In-app overnight morning card | Hypnogram + BP-style bands in UI (PDF path already shipped — see below) |
 
-**Deferred pilot body:** [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md)
+**Already shipped as engineering (Jul 2026) — not the same as Phase 1+ pilot complete:**
+
+- Mac night pack + iOS Share clinical PDF (hypnogram-first, dual-rail, event CSV)
+- Provisional BP-style overnight bands ([OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md))
+- Protocol A capture + Core ML Tier 0 retrain; Tier 1 cohort plan ([CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md))
+
+**Deferred Phase 1+ pilot body:** [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md)
 
 ### Gen2 hardware era (2026–2027)
 
@@ -101,17 +108,22 @@ Primary on **Gen2** (BOM REV9 / REV11). Gen1 sunset after IR-DC, RF, and iOS soa
 
 ---
 
-## 3. Timeline (calendar)
+## 3. Timeline (calendar) — canonical
 
-| Window | Track | Milestone | Planning cash (see COST) |
-|--------|-------|-----------|--------------------------|
-| 2024–2025 | Gen1 + IP | Platform build, **foundation patents granted (US & EU)**, beta | — |
-| H1 2026 | Gen1 | Kits in field (REV10 / BOM REV8 / 1.0.6x) | — |
-| **Now – Sep 2026** | **Stage A · Phase 0** | Ed/Pedro temple vitals (**you are here**) — patient app only | Mid P0 ~€30–50k |
-| **Q4 2026 – Q1 2027** | **Stage A · Phase 1+** | TFI / SASHB / IR-DC embodiment + US patent file | Toward Stage A mid ~€200–250k |
-| **Q4 2026 – H2 2027** | Gen2 HW/FW | REV11 + 2.0.x bring-up (parallel) | +Gen2 → ~€350–450k mid |
-| 2026–2027 | IP | US patent **submission / prosecution** (counsel-led) | In Stage A IP line |
-| **H2 2027 – 2028** | **Stage B** | Medical device path (510(k) / CE) — not claimed today | Through Stage B ~€0.8–1.0M mid |
+**This table is the development timeline of record.** Sync [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md), [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md), [MOBILE_APP_FLOWS.md](../../oralable_swift/docs/MOBILE_APP_FLOWS.md), and FTS to it.
+
+| Window | Track | Status (26 Jul 2026) | Milestone |
+|--------|-------|----------------------|-----------|
+| 2024–2025 | Gen1 + IP | Done | Platform build; foundation patents granted (US & EU); beta |
+| H1 2026 | Gen1 | Done | REV10 / BOM REV8 kits; FW 1.0.6x lineage → **1.0.70** |
+| **24 Jul 2026** | **Eng milestone** | **Shipped** | Protocol A Mac capture; Core ML Temporalis retrain (Tier 0); Mac + iOS night-report PDF (hypnogram-first); provisional overnight bands; docs hub **1.3.15** / data_room **1.1.42** |
+| **Now – Sep 2026** | **Stage A · Phase 0** | **You are here** | Ed/Pedro temple vitals — stack ready, **kits gated** (charge-to-temple); patient app only |
+| **Q4 2026 – Q1 2027** | **Stage A · Phase 1+** | Planned | Muscle embodiment in patient UX; Protocol B; ≥6 h overnight evaluation; Core ML Tier 1 cohort; US patent file |
+| **Q4 2026 – H2 2027** | Gen2 HW/FW | Scaffold | REV11 + FW **2.0.x** bring-up (parallel) |
+| 2026–2027 | IP | Active | New US patent submission / prosecution (counsel-led) |
+| **H2 2027 – 2028** | **Stage B** | Deferred | Medical device path (510(k) / CE) — not claimed in Stage A |
+
+**Stack now:** FW **1.0.70** · app **4.3.3** · Gen1 REV10 · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
 
 Living engineering calendar: [GEN1_GEN2_TRACKING.md §2](./GEN1_GEN2_TRACKING.md#2-timeline-calendar) · **Cost ranges:** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md)
 
@@ -129,4 +141,4 @@ When any row in §1 or §2 changes:
 
 ---
 
-*Last updated: 2026-07-16*
+*Last updated: 2026-07-26*

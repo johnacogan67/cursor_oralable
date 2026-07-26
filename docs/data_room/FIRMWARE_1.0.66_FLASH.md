@@ -1,6 +1,6 @@
 # Firmware 1.0.66 — flash guide (pcb00003 / REV10)
 
-**Build date:** July 2026 · **Target:** Stage A Phase 0 Vitals pilot (**shipping**) · Ed/Pedro = **patient app only**
+**Build date:** July 2026 · **Role:** **Rollback only** (current ship = **1.0.70**) · Ed/Pedro = **patient app only**
 
 Includes **1.0.65** energy/LED/charge fixes **plus** BLE RSSI + reconnect improvements.
 

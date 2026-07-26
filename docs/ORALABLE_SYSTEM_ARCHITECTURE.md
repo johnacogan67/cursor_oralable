@@ -4,7 +4,7 @@
 
 | Field | Value |
 |-------|--------|
-| Last updated | 2026-07-22 |
+| Last updated | 2026-07-26 |
 | Firmware baseline | pcb00003, nRF52832, TGM GATT `3A0FF000` — **pilot ship 1.0.70** (STAT blink = charging) · see [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
 | iOS | App **4.3.3** · `FirmwareGate` min **1.0.63** · recommend **1.0.70** |
 | Python sampling standard | 50 Hz (20 ms), PPG R/G/IR + ACC — **Phase 0:** temple vitals; **Phase 1+:** cheek/temple IR-DC |
@@ -613,11 +613,17 @@ Per validation segment (tonic clench, phasic grind, apnea gasp):
 | **Dashboard** | HR, SpO₂, battery, connection, TFI gauge, SASHB, accel sparklines |
 | **Apple Health summary strip** | TFI + SASHB when clinical mode enabled |
 | **Session history** | Per-night rollups, trends |
-| **Share / Clinical PDF** | TFI, SASHB, event counts, SpO₂–clench correlation |
+| **Share / Clinical PDF** | Overnight night report: bout KPIs, bout hypnogram, hourly stack + SASHB, smoking-gun IR-DC/SpO₂ dual rail, event table + CSV |
 | **Professional share** | Handshake JSON + display code |
 | **Developer** | nRF-style BLE CSV export for side-by-side with nRF Connect |
 
-**Target (roadmap):** Unified overnight report — single timeline with TFI by hour, SASHB bands, rescue markers, HR strip (see `oralable_swift/docs/MOBILE_APP_FLOWS.md`).
+**Overnight evaluation floor:** **≥ 6 h** worn (goal **8 h**) for an evaluable sleep session; Protocol A/B locks are minutes only.
+
+**Measurement / graphing direction** ([OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md)):
+
+- **Bands** (blood-pressure style): Low / Moderate / High on TFI, SASHB per wear-hour, rescue per hour, tonic min per hour — not a single sleep-quality score first.
+- **Primary graphic:** **state hypnogram** (quiet / tonic / phasic / rescue / recovery). Hourly stack and smoking-gun dual rail are supporting; 3D cluster is appendix.
+- Mac pack: `scripts/generate_overnight_night_report.py` · states in `src/analysis/overnight_states.py`. iOS: `NightReportSampleLoader` + Share clinical PDF.
 
 ---
 
@@ -685,7 +691,7 @@ Export plots: `data/plots/ed_presentation/` after running validation scripts.
 | Solid green on pad | OPEN | Target 1.0.52; see §3.2 |
 | LED after BLE | PARTIAL | §3.2 S6 (off body) / S7 (worn keep streams @ 1.0.70) |
 | Android app | Roadmap | iOS + OralableCore first |
-| Unified overnight report UI | Planned | §15 |
+| Unified overnight report UI | **PARTIAL** | §15 — Share PDF + Mac pack shipped; in-app morning card open |
 | 510(k) path | Regulatory | Monitoring claim separate from wellness |
 
 *For detailed per-area status, use §3 Validation status matrix.*
@@ -696,7 +702,8 @@ Export plots: `data/plots/ed_presentation/` after running validation scripts.
 
 | Date | Author | Changes |
 |------|--------|---------|
-| 2026-07-24 | Milestone | App **4.3.3** (build 4) · docs **1.3.11** / data_room **1.1.38** · Temporalis MAM Mac Protocol A retrain |
+| 2026-07-26 | Docs align | Docs **1.3.15** / data_room **1.1.42** · PRODUCT_ROADMAP §3 canonical timeline · overnight PARTIAL (PDF done) · Core ML cohort doc |
+| 2026-07-24 | Milestone | App **4.3.3** (build 4) · Temporalis MAM Mac Protocol A retrain · night-report PDF path |
 | 2026-07-22 | Version align | Pilot ship **1.0.70** + iOS **4.3.2**; STAT blink dock; [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
 | 2026-07-16 | Cost/timeline | [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) propagated across docs; Stage A→B cash ranges |
 | 2026-07-16 | IP north star | [IP_NORTH_STAR.md](./IP_NORTH_STAR.md): Stage A wearable → Stage B medical; new US patent embodiment |

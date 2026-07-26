@@ -1,6 +1,6 @@
 # IP evaluation and competitive landscape — Ken diligence
 
-**As at:** **24 Jul 2026** · Pack aligns with data room **1.1.38**  
+**As at:** **26 Jul 2026** · Pack aligns with data room **1.1.42**  
 **Audience:** Ken / Point B diligence · founder prep for Peacock / PurdyLucey  
 **Status:** Working evaluation · counsel PDFs ingested · **not legal advice · not an FTO opinion**  
 **Counsel:** Justin Muehlmeyer (Peacock Law, US) · Michael Lucey (PurdyLucey, EU)  

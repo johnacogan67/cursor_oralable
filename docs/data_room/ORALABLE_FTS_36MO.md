@@ -15,7 +15,7 @@
 
 This specification defines the **Oralable MAM platform** for investors and technical diligence:
 
-- **Hardware** — PCB00003 clip + Oralable magnetic case; **Gen1** (BOM REV8 / REV10 / ES2832AA2) shipping; **Gen2** (BOM REV9 / REV11 / ES4L15BA1) upcoming
+- **Hardware** — PCB00003 clip + Oralable magnetic case; **Gen1** (BOM REV8 / REV10 / ES2832AA2) **ship-ready / kits gated**; **Gen2** (BOM REV9 / REV11 / ES4L15BA1) upcoming
 - **Firmware** — nRF Connect SDK, TGM GATT, worn-gated streaming; pilot ship **1.0.70**
 - **Mobile** — iOS consumer + professional apps; Android roadmap
 - **Algorithms** — Phase 0 temple vitals (HR/SpO₂); Phase 1+ IR-DC occlusion, TFI/SASHB, jaw actigraphy
@@ -30,8 +30,8 @@ This specification defines the **Oralable MAM platform** for investors and techn
 
 | Tier | Timeframe | Intended use (draft) |
 |------|-----------|----------------------|
-| **Phase 0 Vitals (shipping)** | Now – Mid/Late 2026 | Temple HR & SpO₂ awareness on Gen1 kits; honest device state. **Not** a diagnosis. |
-| **Phase 1+ Muscle (Gen1 software)** | Late 2026+ | Personal awareness of jaw load / bruxism phenotypes (IR-DC, TFI); optional share with dental care provider. |
+| **Phase 0 Vitals (stack ready / kits gated)** | Now – Sep 2026 | Temple HR & SpO₂ awareness on Gen1; honest device state. **Not** a diagnosis. |
+| **Phase 1+ Muscle (Gen1 software)** | Q4 2026 – Q1 2027 | Personal awareness of jaw load / bruxism phenotypes (IR-DC, TFI); ≥6 h overnight eval; optional share with dental care provider. |
 | **Clinical investigation** | 6–18 mo | Structured Protocol B under Ed/Pedro after Phase 0 gates; EMG cross-validation (ANR M40). |
 | **Cleared device (target)** | 18–36 mo | Monitor and record nocturnal jaw muscle activity consistent with sleep bruxism (510(k) / CE Class IIa path). |
 
@@ -64,7 +64,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 
 ## 4. Hardware
 
-### 4.1 Current (pcb00003, shipping)
+### 4.1 Current (pcb00003, ship-ready / kits gated)
 
 | Item | Specification |
 |------|----------------|
@@ -121,7 +121,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 | APP-07 | 6-digit share code → dentist CloudKit | ✅ code · ⏳ prod CloudKit |
 | APP-08 | StoreKit 2 subscriptions (6 products) | ✅ code · ⏳ App Store Connect |
 | APP-09 | HealthKit read/write | ✅ |
-| APP-10 | Unified overnight report (TFI + SASHB + events) | 🔲 Q3–Q4 2026 |
+| APP-10 | Unified overnight report (TFI + SASHB + events) | ✅ Share PDF + event CSV; **hypnogram-first**; provisional BP-style bands ([OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md)); Mac night pack; evaluable night **≥ 6 h**; **open:** in-app morning card |
 
 **Navigation:** `oralable_swift/docs/MOBILE_APP_FLOWS.md`
 
@@ -181,7 +181,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 **Validation:** `cursor_oralable` — `self_validate.py`, `validation_dashboard`, protocol phases (Ed/Pedro).  
 **Swift parity:** `OralableCore` algorithms + `UnifiedBiometricProcessor`.
 
-**ML roadmap:** Core ML `BruxismMAM_Temporalis`; training labels from structured protocol segments.
+**ML roadmap:** Core ML `BruxismMAM_Temporalis`; training labels from Protocol A; cohort sizes / demographics in [CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md).
 
 ---
 
@@ -195,14 +195,17 @@ sequenceDiagram
     participant CK as CloudKit
     participant P as Dentist app
 
-    U->>A: Sign in, complete fit/calibration
-    U->>D: Wear clip on cheek overnight
+    Note over U,P: Phase 0 = temple vitals (patient app). Cheek/muscle + dentist share = Phase 1+ / later.
+    U->>A: Sign in, Phase 0 placement (temple)
+    U->>D: Wear clip on temple overnight (≥6 h evaluable)
     D->>A: BLE auto-connect, auto-record
-    A->>A: TFI/SASHB rollups, local history
-    U->>A: Generate share code
-    A->>CK: Upload compressed session JSON
-    P->>CK: Enter share code
-    P->>P: Review trends, export CSV
+    A->>A: Vitals / (Phase 1+) TFI/SASHB rollups, night PDF
+    opt Phase 1+ / post–Ed-Pedro
+      U->>A: Generate share code
+      A->>CK: Upload compressed session JSON
+      P->>CK: Enter share code
+      P->>P: Review trends, export CSV
+    end
 ```
 
 ---
@@ -216,7 +219,7 @@ Pre-launch dashboard shows **PPG IR waveform** by default; additional cards gate
 | **TFI** | Temporalis / jaw fatigue index rollup | Activity trend indicator | Pilot + EMG concordance |
 | **SASHB** | SpO₂ desaturation burden proxy | Overnight oxygen pattern context | Validated vs finger oximeter optional |
 | **Event timeline** | Clench/grind state transitions | Pattern awareness | vs EMG gold standard |
-| **HR / SpO₂** | From green/red/IR PPG | General wellness vitals | Cheek coupling study |
+| **HR / SpO₂** | From green/red/IR PPG | General wellness vitals | Temple (Phase 0) → cheek coupling (Phase 1+) |
 
 **Ken gap:** Modelled accuracy specs and population benchmarks — **filled by Ed/Pedro pilot** ([PILOT_PROTOCOL_ED_PEDRO.md](./PILOT_PROTOCOL_ED_PEDRO.md)).
 

@@ -3,7 +3,7 @@
 > **Active path (July 2026): Phase 0 Vitals** — temple HR/SpO₂.  
 > Protocol B / cheek muscle steps below are **Phase 1+ only** (do after Phase 0 gates pass).
 
-**Goal (Phase 0):** Flash Gen1 kit, temple vitals smoke, honest device state — **ship gate before Ed/Pedro handoff** (kits not yet shipped as at 22 Jul 2026).  
+**Goal (Phase 0):** Flash Gen1 kit, temple vitals smoke, honest device state — **ship gate before Ed/Pedro handoff** (kits **gated** as at 26 Jul 2026).  
 **Goal (Phase 1+):** Full Protocol B + `self_validate.py` on the same Gen1 hardware (BOM REV8 / REV10).
 
 **Ship gate:** Oralable-case charge to temple-ready SOC (≥50%) + short worn HR/SpO₂ without brownout. See [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) § Pilot ship status.
@@ -114,7 +114,8 @@ Use full phase table in [TEMPORALIS_COLLECTION_PROTOCOL.md § Protocol B](../TEM
 | E2 | Rename: `Oralable_PILOT_John_YYYYMMDD_dryrun1.csv` | ☐ |
 | E3 | Copy to `cursor_oralable/data/raw/pilot_ed_pedro/` | ☐ |
 | E4 | Run validation (below) — sync detected, no hard failures | ☐ |
-| E5 | Optional: Share → Clinical Temporalis PDF | ☐ |
+| E5 | Optional: Share → Clinical Temporalis PDF (bout hypnogram / dual-rail / event CSV) | ☐ |
+| E5b | Overnight evaluable only if **≥ 6 h** worn (goal 8 h); Protocol A/B minutes ≠ sleep | ☐ |
 
 ```bash
 cd /Users/johnacogan67/work/cursor_oralable

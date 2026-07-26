@@ -216,6 +216,23 @@ def main() -> None:
         default=ROOT / "data" / "validation" / "clinical_report.txt",
         help="Output text report path.",
     )
+    ap.add_argument(
+        "--night-report",
+        action="store_true",
+        default=True,
+        help="Also generate overnight graphic pack (default: on).",
+    )
+    ap.add_argument(
+        "--no-night-report",
+        action="store_true",
+        help="Skip overnight night-report pack.",
+    )
+    ap.add_argument(
+        "--night-out-dir",
+        type=Path,
+        default=None,
+        help="Overnight pack output dir (default: plots/overnight_report/<auto>).",
+    )
     args = ap.parse_args()
     if not args.input.exists():
         print(f"Input not found: {args.input}", file=sys.stderr)
@@ -231,6 +248,15 @@ def main() -> None:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(text, encoding="utf-8")
     print(f"Wrote {args.out}", file=sys.stderr)
+
+    if args.night_report and not args.no_night_report:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from generate_overnight_night_report import generate_report, session_id_from_path  # type: ignore
+
+        sid = session_id_from_path(args.input)
+        out_dir = args.night_out_dir or (ROOT / "plots" / "overnight_report" / sid)
+        paths = generate_report(args.input, out_dir)
+        print(f"Night report: {paths['pdf']}", file=sys.stderr)
 
 
 if __name__ == "__main__":
