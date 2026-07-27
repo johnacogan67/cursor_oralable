@@ -1,9 +1,9 @@
 # Oralable investor data room index
 
 Maps **Balance Points Point A** functional areas to canonical documents.  
-**Pack version:** data room index **1.1.42** · Pilot firmware **1.0.70** · App **4.3.3** · **As at:** 26 Jul 2026 · Ed/Pedro kits **gated** · timeline [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical)
+**Pack version:** data room index **1.1.47** · Pilot firmware **1.0.70** · App **4.3.3** · **As at:** 27 Jul 2026 · Ed/Pedro kits **gated** · timeline [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · avenues [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md)
 
-**Product phases / BOM:** [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) (Phase 0 temple vitals now; Phase 1+ muscle deferred; Gen1 = BOM REV8 / REV10; Gen2 = BOM REV9 / REV11)
+**Product phases / BOM:** [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) (Phase 0 temple vitals now; Phase 1+ muscle; Gen1 = BOM REV8 / REV10; Gen2 = BOM REV9 / REV11; tech avenues §2b)
 
 **Point A baseline:** Ken / Balance Points assessment (9 June 2026) — overall **1.5 / 5.0** (Essential).
 
@@ -50,8 +50,12 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 | [HW_ENGINEER_ALTIUM_BRIEF.md](./HW_ENGINEER_ALTIUM_BRIEF.md) | **Altium / HW engineer** — Gen1 CHRSTS + Gen2 pin/net checklist (email-ready) |
 | [APPS_AND_REVENUE_EVAL.md](./APPS_AND_REVENUE_EVAL.md) | Patient vs professional apps vs revenue (Phase 0/1+ fit) |
 | [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) | Likely costs + timeline (Stage A wearable → Stage B medical) |
+| [PITCH_CEO_CANDIDATE.pdf](./PITCH_CEO_CANDIDATE.pdf) | **Send to CEO candidates** — branded 10-slide overview (Oralable + Word of Mouth™) |
+| [brand/](./brand/) | Logo lockup + trademark notes for pitch decks |
+| [PITCH_CEO_CANDIDATE.md](./PITCH_CEO_CANDIDATE.md) | CEO-candidate pitch source + cover email |
+| [PITCH_CEO_CANDIDATE.html](./PITCH_CEO_CANDIDATE.html) | CEO-candidate browser deck (← →) |
 | [PITCH_DECK_KEN.html](./PITCH_DECK_KEN.html) | **Present to Ken** — 15-slide browser deck (← →) |
-| [PITCH_DECK_KEN.md](./PITCH_DECK_KEN.md) | Pitch source distill (edit here, then refresh HTML if needed) |
+| [PITCH_DECK_KEN.md](./PITCH_DECK_KEN.md) | BalancePoints pitch source distill (separate from CEO send) |
 | [FINANCIALS_CASH_SNAPSHOT.md](./FINANCIALS_CASH_SNAPSHOT.md) | Bank cash Point A (JAC Dental · Revolut summary — no IBAN in git) |
 | [GEN1_COGS_KAGA_QUOTE.md](./GEN1_COGS_KAGA_QUOTE.md) | Kaga Gen1 sample PCB quote (€95×20 + €1,995 NRE · May 2024) |
 | [GEN2_COGS_KAGA_QUOTE.md](./GEN2_COGS_KAGA_QUOTE.md) | Kaga Gen2 sample lot **€3,735** (PCB €145×20 + stencil + **batteries €13×20**) |
@@ -59,7 +63,8 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 | [FUNDING_POINT_B_AND_CAP_TABLE.md](./FUNDING_POINT_B_AND_CAP_TABLE.md) | Ken Point B €180k stack + JAC cap table distill |
 | [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md) | **Start here** — cleaned as-at 22 Jul governance snapshot + doc list |
 | [KEN_PRESEED_STRUCTURE_EVAL.md](./KEN_PRESEED_STRUCTURE_EVAL.md) | Ken 22 Jul Pre-Seed memo (€1.25m) — **proposal eval** + Nigel questions |
-| [CEO_JOB_DESCRIPTION.md](./CEO_JOB_DESCRIPTION.md) | CEO search brief for Nigel / Amstrow candidate referrals |
+| [CEO_JOB_DESCRIPTION.md](./CEO_JOB_DESCRIPTION.md) | CEO search brief — send with [PITCH_CEO_CANDIDATE.pdf](./PITCH_CEO_CANDIDATE.pdf) |
+| [JOHN_COGAN_CV.md](./JOHN_COGAN_CV.md) | Founder multi-use CV · LinkedIn paste · pitch bios (2026) |
 | [JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md](./JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md) | Canonical entity · org · cap table · Ken/Nigel · INTERNAL (Conor §A · recognition §G) |
 | [MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](./MEETING_BRIEF_KEN_NIGEL_2026-07-22.md) | **22 Jul** John/Ken/Nigel meeting — outcomes + prep archive |
 | [MARKET_SIZING.md](./MARKET_SIZING.md) | US market sketch (~4.1M nightguards → ~1.4M SOM) |
@@ -76,7 +81,10 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 | [../TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) | Structured phase timing (Protocol A vs B vs overnight ≥6 h) |
 | [../OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) | Overnight bands + **hypnogram-first** graphing (Mac + iOS PDF) |
 | [../CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md) | Protocol A cohort sizes / demographics for Core ML |
-| [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) | **Canonical development timeline** (§3) |
+| [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) | **Canonical development timeline** (§3) + tech avenues (§2b) |
+| [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md) | Gemini temple-PPG avenues distill (external — not product claims) |
+| [../ORALABLE_SYSTEM_MAP.csv](../ORALABLE_SYSTEM_MAP.csv) | Spreadsheet twin — filter by `sheet` (ken_area, tech_avenue, open_decision, …) |
+| [../ORALABLE_SYSTEM_MAP_DIAGRAMS.md](../ORALABLE_SYSTEM_MAP_DIAGRAMS.md) | Mermaid diagrams for pitch / Notion |
 
 ---
 

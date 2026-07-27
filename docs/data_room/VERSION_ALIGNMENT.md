@@ -1,10 +1,11 @@
 # Version alignment (canonical)
 
-**As at:** 26 Jul 2026 · Data room pack **1.1.42** · Docs hub **1.3.15**
+**As at:** 27 Jul 2026 · Data room pack **1.1.47** · Docs hub **1.3.16**
 
 Use this table when updating flash guides, pilot handouts, architecture, website, or TestFlight notes. Prefer these strings over older “1.0.66 ship / 1.0.67 next” language.
 
-**Canonical development timeline:** [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · planning mirror [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) §1.
+**Canonical development timeline:** [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · planning mirror [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) §1.  
+**Technology avenues (Gemini distill):** [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md) · roadmap §2b · landscape §4b.
 
 ## Milestone — 24 Jul 2026 (Temporalis Mac Protocol A + overnight night report)
 

@@ -1,8 +1,12 @@
 # Oralable research & validation documentation index
 
-Python algorithm development, clinical protocols, and gold-standard validation (`cursor_oralable`). **Doc pack:** `docs/VERSION` → **1.3.15** (pilot FW **1.0.70** · app **4.3.3** — timeline align + overnight bands + Core ML cohort — [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)).
+Python algorithm development, clinical protocols, and gold-standard validation (`cursor_oralable`). **Doc pack:** `docs/VERSION` → **1.3.16** (pilot FW **1.0.70** · app **4.3.3** — Gemini tech avenues + timeline — [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)).
 
-**Product roadmap (phases + BOM + canonical timeline §3):** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)
+**Product roadmap (phases + BOM + canonical timeline §3 + tech avenues §2b):** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)
+
+**Technology avenues distill:** [data_room/GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/GEMINI_TEMPLE_PPG_AVENUES.md) (external exploration — not product claims)
+
+**System map (visual / spreadsheet / mermaid):** [ORALABLE_SYSTEM_MAP.csv](./ORALABLE_SYSTEM_MAP.csv) · [ORALABLE_SYSTEM_MAP_DIAGRAMS.md](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md) · Cursor canvas `oralable-system-map`
 
 **Product strategy:** [oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md](../../oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md) (competitors, regulatory, GTM, appendices A/B).
 
@@ -38,7 +42,7 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 
 | Document | Description |
 |----------|-------------|
-| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.42** · pilot FW **1.0.70** · app **4.3.3** |
+| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.47** · pilot FW **1.0.70** · app **4.3.3** |
 | [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) | Phase 0 Vitals one-pager |
 | [data_room/VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) | Canonical FW **1.0.70** · app **4.3.3** |
 | [data_room/FIRMWARE_1.0.70_FLASH.md](./data_room/FIRMWARE_1.0.70_FLASH.md) | Pilot flash guide |

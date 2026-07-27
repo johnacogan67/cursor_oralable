@@ -6,7 +6,7 @@
 
 **North star:** [IP_NORTH_STAR.md](./IP_NORTH_STAR.md) — **first a patent-implementing wellness wearable**, **later a medical device**. Embody the **new US patent being submitted** (Temporalis OMG / IR-DC / TFI / SASHB). Foundation granted US & EU patents are the base layer.
 
-Related: [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [GEN1_GEN2_TRACKING.md](./GEN1_GEN2_TRACKING.md) · [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) · [data_room/REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md)
+Related: [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [GEN1_GEN2_TRACKING.md](./GEN1_GEN2_TRACKING.md) · [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) · [data_room/REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/GEMINI_TEMPLE_PPG_AVENUES.md)
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
 **Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
@@ -106,6 +106,23 @@ Primary on **Gen2** (BOM REV9 / REV11). Gen1 sunset after IR-DC, RF, and iOS soa
 - **Stage B (later):** medical-device pathway exploration / 510(k)–MDR — [REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md).  
 - **IP:** Align embodiments with the **new US patent submission** ([IP_NORTH_STAR.md](./IP_NORTH_STAR.md)). Foundation granted US & EU remain; no public filing details without counsel.
 
+### 2b. Technology avenues
+
+**Where Oralable sits:** not MEP/ESG/EEG; not an sEMG product. Temple **optical hemodynamic** sensing (IR-DC optical myography + arterial PPG + ACC) — **adjacent** to EMG gold standard (ANR validation path), **orthogonal** to rings and to intraoperative neural monitoring. Hemodynamic lag (~1–5 s) is accepted for ambulatory/overnight use; it is not a millisecond nerve-conduction substitute. Distill: [GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/GEMINI_TEMPLE_PPG_AVENUES.md) · landscape §4b.
+
+**Form factor rule:** **Night temple clip first** (Gen1 Phase 0 → Phase 1+). Day glasses/frames share the sensor thesis but are an **avenue only** — do not slip Ed/Pedro or §3 dates.
+
+| Avenue | Physics / sensors | Product posture | When |
+|--------|-------------------|-----------------|------|
+| Temple vitals HR/SpO₂ | Green/R/IR PPG | **Phase 0 (now)** | Now – Sep 2026 |
+| Optical myography / IR-DC bruxism + ACC | IR-DC + jaw vib | **Phase 1+ Stage A** | Q4 2026 – Q1 2027 |
+| Overnight SpO₂ burden (SASHB) + hypnogram | SpO₂ + overnight states | Eng PDF done → Phase 1+ UX | Parallel |
+| Daytime clench / stress (chew vs clench filter) | Same sensors, day UX | **Avenue** — not Ed/Pedro | Post Phase 1+ explore |
+| Migraine prodrome / vascular amplitude | Temporal artery PPG + temp | Research / Stage B explore | Far |
+| Sleep apnea **screening claims** | SpO₂ + HR + ACC | Stage A = pattern context only; diagnostic claim = Stage B | Far |
+| Haptic / audio biofeedback therapy | Actuator **not** on Gen1 BOM | Hardware avenue (Gen2+ / accessory) | Far |
+| Bilateral carotid / PTT BP / GCA / TBI / seizure | Needs 2nd site, ECG, clinical gold | **Out of Stage A scope** | Deferred / not roadmap |
+
 ---
 
 ## 3. Timeline (calendar) — canonical
@@ -116,7 +133,8 @@ Primary on **Gen2** (BOM REV9 / REV11). Gen1 sunset after IR-DC, RF, and iOS soa
 |--------|-------|----------------------|-----------|
 | 2024–2025 | Gen1 + IP | Done | Platform build; foundation patents granted (US & EU); beta |
 | H1 2026 | Gen1 | Done | REV10 / BOM REV8 kits; FW 1.0.6x lineage → **1.0.70** |
-| **24 Jul 2026** | **Eng milestone** | **Shipped** | Protocol A Mac capture; Core ML Temporalis retrain (Tier 0); Mac + iOS night-report PDF (hypnogram-first); provisional overnight bands; docs hub **1.3.15** / data_room **1.1.42** |
+| **24 Jul 2026** | **Eng milestone** | **Shipped** | Protocol A Mac capture; Core ML Temporalis retrain (Tier 0); Mac + iOS night-report PDF (hypnogram-first); provisional overnight bands |
+| **27 Jul 2026** | **Docs** | **Shipped** | Gemini temple-PPG avenues mapped (§2b); docs hub **1.3.16** / data_room **1.1.47** |
 | **Now – Sep 2026** | **Stage A · Phase 0** | **You are here** | Ed/Pedro temple vitals — stack ready, **kits gated** (charge-to-temple); patient app only |
 | **Q4 2026 – Q1 2027** | **Stage A · Phase 1+** | Planned | Muscle embodiment in patient UX; Protocol B; ≥6 h overnight evaluation; Core ML Tier 1 cohort; US patent file |
 | **Q4 2026 – H2 2027** | Gen2 HW/FW | Scaffold | REV11 + FW **2.0.x** bring-up (parallel) |
@@ -131,14 +149,15 @@ Living engineering calendar: [GEN1_GEN2_TRACKING.md §2](./GEN1_GEN2_TRACKING.md
 
 ## 4. Doc & website sync checklist
 
-When any row in §1 or §2 changes:
+When any row in §1, §2, or §2b changes:
 
 1. This file + [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) + [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md)
 2. [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) (if pilot ship)
 3. Website: `oralable_swift/OralableApp/docs/{about,specifications,support,user-guide}.html` + `WEBSITE.md` (no euro budgets on public pages)
 4. Firmware smoke: `oralable_nrf/docs/DEVELOPMENT.md` (case ≠ Qi; Phase 0 = temple)
-5. Bump `docs/VERSION` / `docs/data_room/VERSION` as appropriate
+5. Avenues / modality: [GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/GEMINI_TEMPLE_PPG_AVENUES.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` §4b
+6. Bump `docs/VERSION` / `docs/data_room/VERSION` as appropriate
 
 ---
 
-*Last updated: 2026-07-26*
+*Last updated: 2026-07-27*

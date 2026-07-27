@@ -1,0 +1,126 @@
+sheet,domain,item,detail,status,canonical_doc,next_gate_or_placeholder,as_at,weight,ready_pct,owner
+category_map,Strategy / IP,North star,Stage A wearable then Stage B medical; new US patent embodiment,active,IP_NORTH_STAR,File / prosecute new US,2026-07-26,,,
+category_map,Hardware Gen1,Clip + case,BOM REV8 / REV10 / ES2832AA2 / magnetic case (not Qi),partial,PRODUCT_ROADMAP §1,Charge-to-temple ≥50% SOC,2026-07-26,,,
+category_map,Firmware / BLE,Ship stack,TGM GATT worn stream STAT blink OTA,done,VERSION_ALIGNMENT; FIRMWARE_1.0.70,Field soak with Ed/Pedro,2026-07-26,,,
+category_map,Software Phase 0,Vitals,Temple HR/SpO2 placement honest device state,active,PRODUCT_ROADMAP §2-3,Ship kits past charge gate,2026-07-26,,,
+category_map,Software Phase 1+,Muscle,IR-DC TFI SASHB Protocol B morning card,planned,PRODUCT_ROADMAP; OVERNIGHT_NIGHT_REPORT,Phase 0 pass + ≥6 h nights,2026-07-26,,,
+category_map,Algorithms / Core ML,Temporalis MAM,Tier 0 thin; Tier 1 cohort planned,partial,CORE_ML_TRAINING_COHORT,20-30 users × Protocol A,2026-07-26,,,
+category_map,Mobile patient,Oralable iOS,Vitals UX; overnight PDF shipped; IAP dark,partial,MOBILE_APP_FLOWS; APPS_AND_REVENUE_EVAL,Morning card + Soft Premium gate,2026-07-26,,,
+category_map,Mobile professional,Oralable for Dentists,Deferred for Ed/Pedro,deferred,APPS_AND_REVENUE_EVAL,Phase 1+ shareable rollups + CloudKit,2026-07-26,,,
+category_map,Market / GTM,Positioning,US SOM sketch; Path A consumer / Path B pro,partial,GTM_ONE_PAGE; MARKET_SIZING,Primary cites + CAC model,2026-07-26,,,
+category_map,Commercial / funding,Point B,EUR 180k stack; Stage A cost ranges,partial,FUNDING_POINT_B; COST_AND_TIMELINE,F&F terms; CLN; runway monthlies,2026-07-26,,,
+category_map,Regulatory Stage B,Medical path,510(k)/CE exploration — not Stage A claims,deferred,REGULATORY_TIMELINE,Funded clinical package,2026-07-26,,,
+category_map,Traction / Voice,Evidence,Usage + founder voice,gap,data_room/README Ken areas,Pilot nights + Balance Points voice,2026-07-26,,,
+component,HW,PCB00003 clip REV10,MAXM86161 PPG + LIS2DTW12 ACC,partial,PRODUCT_ROADMAP,Ship gate,2026-07-26,,,
+component,HW,Oralable magnetic case,LTC6990 TX + USB-C (not Qi),partial,PRODUCT_ROADMAP,Cell energy / SOC rise on case,2026-07-26,,,
+component,FW,nRF52832 NCS app,Worn-gated BLE stream STAT OTA,done,FIRMWARE_1.0.70,Field soak,2026-07-26,,,
+component,Core,OralableCore SPM,Parser batteries Core ML package,done,OralableCore,Tier 1 retrain,2026-07-26,,,
+component,App,Oralable patient,Vitals UX + Share clinical PDF,partial,MOBILE_APP_FLOWS,Morning card,2026-07-26,,,
+component,App,Oralable for Dentists,Participant roster / handshake,deferred,APPS_AND_REVENUE_EVAL,Phase 1+ + CloudKit,2026-07-26,,,
+component,Tooling,Mac Protocol A + night report,Gold labels + PDF pack,done,OVERNIGHT_NIGHT_REPORT,—,2026-07-26,,,
+component,ML,BruxismMAM_Temporalis,Tier 0; Tier 1 planned,partial,CORE_ML_TRAINING_COHORT,Cohort recruitment,2026-07-26,,,
+component,Cloud,CloudKit share codes,Patient to dentist upload,tbd,APPS_AND_REVENUE_EVAL,Prod CloudKit decision,2026-07-26,,,
+component,HW Gen2,REV11 / ES4L15BA1 / FW 2.0.x,Longer nights better SOC/LED,planned,GEN1_GEN2_TRACKING,G2-P0…P6 bring-up,2026-07-26,,,
+component,Repo,oralable_nrf,Firmware GATT board targets,done,DEVELOPMENT.md,1.0.70 ship,2026-07-26,,,
+component,Repo,OralableCore,Shared BLE parse Core ML,done,OralableCore,Tier 1,2026-07-26,,,
+component,Repo,oralable_swift,Patient + dentist iOS + website,partial,MOBILE_APP_FLOWS,4.3.3 patient; dentist dark,2026-07-26,,,
+component,Repo,cursor_oralable,Python gold reports docs data room,done,docs/VERSION,1.3.15 / 1.1.42,2026-07-26,,,
+timeline,calendar,2024-2025,Gen1 + IP foundation,done,PRODUCT_ROADMAP §3,Platform build; patents granted,2026-07-26,,,
+timeline,calendar,H1 2026,Gen1 kits REV10; FW to 1.0.70,done,PRODUCT_ROADMAP §3,—,2026-07-26,,,
+timeline,calendar,24 Jul 2026,Eng milestone Protocol A + Core ML Tier0 + night PDF,done,PRODUCT_ROADMAP §3,—,2026-07-26,,,
+timeline,calendar,Now – Sep 2026,Phase 0 Stage A temple vitals; kits gated,active,PRODUCT_ROADMAP §3,Ship kits past charge gate,2026-07-26,,,
+timeline,calendar,Q4 2026 – Q1 2027,Phase 1+ muscle UX Protocol B overnight Core ML Tier1,planned,PRODUCT_ROADMAP §3,Phase 0 pass,2026-07-26,,,
+timeline,calendar,Q4 2026 – H2 2027,Gen2 HW/FW parallel,planned,GEN1_GEN2_TRACKING,REV11 + 2.0.x,2026-07-26,,,
+timeline,calendar,2026-2027,IP new US patent,active,IP_NORTH_STAR,Counsel filing,2026-07-26,,,
+timeline,calendar,H2 2027 – 2028,Stage B medical,deferred,REGULATORY_TIMELINE,Funded clinical package,2026-07-26,,,
+apps,capability,Pair + temple placement,Patient=done,done,MOBILE_APP_FLOWS,Phase 0,2026-07-26,,,
+apps,capability,Live HR/SpO2 + quality,Patient=done,done,MOBILE_APP_FLOWS,Phase 0,2026-07-26,,,
+apps,capability,Device LED / STAT mirror,Patient=done,done,MOBILE_APP_FLOWS,Phase 0,2026-07-26,,,
+apps,capability,Clinical overnight PDF export,Patient=done (eng early),done,OVERNIGHT_NIGHT_REPORT,Morning card still open,2026-07-26,,,
+apps,capability,In-app morning card,Patient=planned,planned,OVERNIGHT_NIGHT_REPORT,Phase 1+ UX,2026-07-26,,,
+apps,capability,TFI/SASHB live gauges,Patient=planned; Dentist=deferred,planned,APPS_AND_REVENUE_EVAL,Phase 1+,2026-07-26,,,
+apps,capability,Protocol B / calibration,Patient=planned,planned,TEMPORALIS_COLLECTION_PROTOCOL,After Phase 0 pass,2026-07-26,,,
+apps,capability,CloudKit share code,Both=tbd,tbd,APPS_AND_REVENUE_EVAL,Prod CloudKit,2026-07-26,,,
+apps,capability,StoreKit Premium/Practice,Patient=tbd; Dentist=deferred,tbd,GTM_ONE_PAGE,Soft launch gate,2026-07-26,,,
+apps,capability,HealthKit,Patient=done (code),done,MOBILE_APP_FLOWS,—,2026-07-26,,,
+apps,capability,Android MVP,Planned not critical path,planned,MOBILE_APP_FLOWS,Q3-Q4 2026+,2026-07-26,,,
+market,funnel,US population,331M (2022 sketch),partial,MARKET_SIZING,Not validated study,2026-07-26,,,
+market,funnel,Regular grinders ~12%,~40M TAM-ish,partial,MARKET_SIZING,Range 8-31%,2026-07-26,,,
+market,funnel,Custom nightguard users,~4.1M SAM,partial,MARKET_SIZING,8k×262×2 undocumented,2026-07-26,,,
+market,funnel,Smart nightguard interest,~1.4M SOM,partial,MARKET_SIZING,×0.35 heuristic,2026-07-26,,,
+market,path,A Consumer,Individual App Store/web/retail; patient app,active,GTM_ONE_PAGE,In Ed/Pedro scope,2026-07-26,,,
+market,path,B Professional,Dental practice; patient+dentist,deferred,GTM_ONE_PAGE,Post Phase 1+ shareable rollups,2026-07-26,,,
+market,path,C Cleared later,Clinical/payer SaMD UI,deferred,REGULATORY_TIMELINE,Stage B gate,2026-07-26,,,
+market,pricing,Premium,EUR 9.99/mo 99.99/yr in code,tbd,GTM_ONE_PAGE,Elasticity study post launch,2026-07-26,,,
+market,pricing,Dentist Professional,EUR 29.99/mo 299.99/yr,deferred,GTM_ONE_PAGE,Path B activation,2026-07-26,,,
+market,pricing,Dentist Practice,EUR 99.99/mo 999.99/yr,deferred,GTM_ONE_PAGE,Path B activation,2026-07-26,,,
+market,pricing,Hardware ASP / bundle,Sample COGS only,gap,GEN1_COGS; GEN2_COGS; BITTELE,Volume finished-kit COGS TBD,2026-07-26,,,
+market,pricing,CAC / LTV,Draft assumptions only,gap,GTM_ONE_PAGE,Full CAC model,2026-07-26,,,
+commercial,funding,Friends & family,EUR 50k,tbd,FUNDING_POINT_B_AND_CAP_TABLE,Term sheet,2026-07-26,,,
+commercial,funding,PSSF CLN,EUR 100k,tbd,FUNDING_POINT_B_AND_CAP_TABLE,Instrument docs,2026-07-26,,,
+commercial,funding,HPSU,EUR 30k,tbd,FUNDING_POINT_B_AND_CAP_TABLE,Application,2026-07-26,,,
+commercial,funding,Point B total,EUR 180k by Oct 2026,active,FUNDING_POINT_B_AND_CAP_TABLE,Close stack,2026-07-26,,,
+commercial,funding,Ken Pre-Seed memo,EUR 1.25m proposal only,tbd,KEN_PRESEED_STRUCTURE_EVAL,Negotiation outcome,2026-07-26,,,
+commercial,cost_range,Stage A mid planning,EUR 200-250k (not budget),partial,COST_AND_TIMELINE,Replace with quotes,2026-07-26,,,
+commercial,cost_range,Stage A + Gen2 mid,EUR 350-450k,partial,COST_AND_TIMELINE,Replace with quotes,2026-07-26,,,
+commercial,cost_range,Through Stage B mid,EUR 0.8-1.0M,partial,COST_AND_TIMELINE,Replace with quotes,2026-07-26,,,
+commercial,scale,Volume manufacturing,EMS / finished-kit COGS,tbd,COST_AND_TIMELINE,Volume quote,2026-07-26,,,
+commercial,scale,International,IE/UK + Android + localization,gap,GTM_ONE_PAGE,Android MVP + cites,2026-07-26,,,
+cost_workstream,Stage A,Ed/Pedro Phase 0 ops,low5 mid15 high35,partial,COST_AND_TIMELINE,Travel phones replacements,2026-07-26,,15,
+cost_workstream,Stage A,Gen1 build / scrap / spares,low10 mid25 high60,partial,COST_AND_TIMELINE,Volume kit COGS TBD,2026-07-26,,25,
+cost_workstream,Stage A,Patient app Phase 0→1+,low20 mid50 high100,partial,COST_AND_TIMELINE,Not pro app yet,2026-07-26,,50,
+cost_workstream,Stage A,FW 1.0.70 soak / field,low5 mid15 high30,partial,COST_AND_TIMELINE,STAT + TestFlight,2026-07-26,,15,
+cost_workstream,Stage A,Phase 1+ science / validation,low15 mid40 high80,planned,COST_AND_TIMELINE,Protocol B + reports,2026-07-26,,40,
+cost_workstream,Stage A,Cloud / Apple / tools,low1 mid3 high8,partial,COST_AND_TIMELINE,Low until scale,2026-07-26,,3,
+cost_workstream,Stage A,Website / GTM content,low2 mid8 high20,partial,COST_AND_TIMELINE,Optional ads,2026-07-26,,8,
+cost_workstream,Stage A,Insurance / legal ops,low3 mid10 high25,partial,COST_AND_TIMELINE,Wellness tier,2026-07-26,,10,
+cost_workstream,Gen2,Gen2 subtotal,low70 mid180 high420,planned,COST_AND_TIMELINE,EVT modules FW,2026-07-26,,180,
+cost_workstream,IP,IP near-term + year 1,low25 mid60 high140,active,COST_AND_TIMELINE,File + prosecute,2026-07-26,,60,
+cost_workstream,Stage B,Clinical concordance swing,mid ~150k+ high400k,deferred,COST_AND_TIMELINE,Biggest cost swing,2026-07-26,,150,
+ken_area,diligence,Technology & Product,FW 1.0.70 app 4.3.3 night PDF Protocol A,partial,FTS; SYSTEM_ARCHITECTURE; DEVELOPMENT; MOBILE_APP_FLOWS,Ed/Pedro field nights; kits gated,2026-07-26,10%,65,Eng / John
+ken_area,diligence,Market & Positioning,US nightguard funnel sketch peer shelf,partial,MARKET_SIZING; landscape; GTM_ONE_PAGE,Primary cites; IE/UK cut; validated TAM,2026-07-26,5%,45,Founder / Ken
+ken_area,diligence,GTM & Sales,Path A/B split IAP SKUs website,partial,GTM_ONE_PAGE; PITCH_DECK_KEN,Full CAC model; channel tests,2026-07-26,10%,40,GTM
+ken_area,diligence,User Traction & Revenue,TestFlight / beta history only,gap,APPS_AND_REVENUE_EVAL,Lifecycle; MRR; first pilot usage KPIs,2026-07-26,10%,10,Ops / pilot
+ken_area,diligence,Financials,Cash snapshot Point B cost ranges,partial,FINANCIALS_CASH; FUNDING_POINT_B; COST_AND_TIMELINE,F&F valuation; CLN; runway; statutory pack,2026-07-26,10%,35,Founder / accountant
+ken_area,diligence,Team & Governance,Entity map Ken CEO ask Conor path,partial,CURRENT_GOVERNANCE; JAC_CORPORATE; KEN_PRESEED,Complete Conor; Strand Two; CRO; CEO; options,2026-07-26,10%,40,Board / Nigel
+ken_area,diligence,Legal IP & Corp,Foundation US/EU IE/UK steps landscape,partial,IP_PORTFOLIO; IP_EVAL; IP_NORTH_STAR,IE AoA; UP 8 Aug; assign provisional; FTO; Lisa Curley deed,2026-07-26,10%,50,IP counsel
+ken_area,diligence,Risk Regulation Compliance,Stage A wellness frame Stage B outline,partial,REGULATORY_TIMELINE,Product liability cert; Stage B funding package,2026-07-26,15%,35,Regulatory
+ken_area,diligence,International Readiness,IE/UK entity steps partially noted,gap,GTM_ONE_PAGE,Android build; localization; market cut,2026-07-26,5%,15,Product
+ken_area,diligence,Data Room & Investment Docs,Pack 1.1.42 pitch HTML system map,partial,data_room/README; PITCH_DECK_KEN,Investor-final deck polish,2026-07-26,5%,55,Founder / Ken
+ken_area,diligence,Voice,Pending Balance Points session,gap,Balance Points voice session,Founder voice session booking,2026-07-26,10%,5,Founder / Ken
+open_decision,product,Ed/Pedro kit ship date,Ops/HW,active,ED_PEDRO_QUICK_START,Until charge-to-temple SOC gate clears,2026-07-26,,,Ops / HW
+open_decision,product,Overnight band cutoffs final,Science,tbd,OVERNIGHT_NIGHT_REPORT,Until ≥6 h cohort calibration,2026-07-26,,,Science
+open_decision,product,Core ML Tier 1 demographics,Science,tbd,CORE_ML_TRAINING_COHORT,Until 20-30 user Protocol A plan executed,2026-07-26,,,Science
+open_decision,product,Morning card IA / Figma,Product,planned,MOBILE_APP_FLOWS,Until Phase 1+ UX sprint,2026-07-26,,,Product
+open_decision,product,CloudKit production,Eng/Apple,tbd,APPS_AND_REVENUE_EVAL,Until Phase 1+ share gate,2026-07-26,,,Eng
+open_decision,product,Android priority vs iOS depth,Product,planned,MOBILE_APP_FLOWS,Until resource call after Phase 0,2026-07-26,,,Product
+open_decision,commercial,IAP soft-launch timing,GTM,tbd,GTM_ONE_PAGE,Until honest Premium value post Phase 1+,2026-07-26,,,GTM
+open_decision,commercial,Volume finished-kit COGS,Ops/EMS,gap,GEN1_COGS; GEN2_COGS,Until volume quote (not sample lots),2026-07-26,,,Ops
+open_decision,commercial,F&F valuation & terms,Founder/Ken,tbd,FUNDING_POINT_B,Until counsel + term sheet,2026-07-26,,,Founder / Ken
+open_decision,commercial,PSSF CLN terms,Founder/Ken,tbd,FUNDING_POINT_B,Until instrument docs,2026-07-26,,,Founder / Ken
+open_decision,governance,CEO hire / equity,Board/Nigel,tbd,CEO_JOB_DESCRIPTION,Until search + contract,2026-07-26,,,Board / Nigel
+open_decision,governance,Ken equity ask ~28%,Governance,tbd,CURRENT_GOVERNANCE_STATUS,Until negotiation outcome,2026-07-26,,,Governance
+open_decision,governance,Complete Conor purchase / Strand Two,Governance,tbd,JAC_CORPORATE,Until legal close,2026-07-26,,,Governance
+open_decision,ip,New US patent claims set,IP counsel,active,IP_NORTH_STAR,Until filing package,2026-07-26,,,IP counsel
+open_decision,ip,UP / IE AoA / assignments / FTO,IP counsel,tbd,IP_PORTFOLIO_STATUS,UP deadline 8 Aug + deeds,2026-07-26,,,IP counsel
+open_decision,regulatory,510(k) predicate choice,Regulatory,deferred,REGULATORY_TIMELINE,Until funded clinical plan,2026-07-26,,,Regulatory
+open_decision,regulatory,Product liability cert,Ops/legal,gap,REGULATORY_TIMELINE,Until broker quote + bind,2026-07-26,,,Ops / legal
+open_decision,ken,Founder voice session,Founder/Ken,gap,data_room/README,Until Balance Points booking,2026-07-26,,,Founder / Ken
+open_decision,commercial,Elasticity / price A/B,GTM,gap,GTM_ONE_PAGE,Until post soft-launch data,2026-07-26,,,GTM
+stack,versions,Firmware ship,1.0.70,done,VERSION_ALIGNMENT,—,2026-07-26,,,
+stack,versions,iOS patient app,4.3.3 build 4,done,VERSION_ALIGNMENT,—,2026-07-26,,,
+stack,versions,Docs hub,1.3.15,done,docs/VERSION,—,2026-07-26,,,
+stack,versions,Data room pack,1.1.42,done,docs/data_room/VERSION,—,2026-07-26,,,
+stack,versions,Gen2 firmware target,2.0.x,planned,PRODUCT_ROADMAP,Not on Ed/Pedro kits,2026-07-26,,,
+tech_avenue,Near,Temple vitals HR/SpO2,Green/R/IR PPG Phase 0,active,PRODUCT_ROADMAP §2b,Now-Sep 2026,2026-07-27,,,
+tech_avenue,Near-Mid,Optical myography IR-DC bruxism + ACC,Phase 1+ Stage A,planned,PRODUCT_ROADMAP §2b,Q4 2026-Q1 2027,2026-07-27,,,
+tech_avenue,Near-Mid,Overnight SASHB + hypnogram,Eng PDF done; Phase 1+ UX,partial,OVERNIGHT_NIGHT_REPORT,Morning card open,2026-07-27,,,
+tech_avenue,Mid,Daytime clench / stress chew-vs-clench,Same sensors day UX,planned,GEMINI_TEMPLE_PPG_AVENUES,Post Phase 1+ explore; not Ed/Pedro,2026-07-27,,,
+tech_avenue,Far,Migraine prodrome / vascular amplitude,Research / Stage B explore,deferred,GEMINI_TEMPLE_PPG_AVENUES,Not Stage A claim,2026-07-27,,,
+tech_avenue,Far,Sleep apnea screening claims,Pattern context Stage A only,deferred,GEMINI_TEMPLE_PPG_AVENUES,Diagnostic = Stage B,2026-07-27,,,
+tech_avenue,Far,Haptic / audio biofeedback therapy,Actuator not on Gen1 BOM,deferred,GEMINI_TEMPLE_PPG_AVENUES,Gen2+ / accessory,2026-07-27,,,
+tech_avenue,Out,Bilateral carotid / PTT BP / GCA / TBI / seizure,Needs 2nd site ECG clinical gold,gap,GEMINI_TEMPLE_PPG_AVENUES,Out of Stage A / not roadmap,2026-07-27,,,
+open_decision,product,Day form factor glasses vs night clip,Product,planned,PRODUCT_ROADMAP §2b,Night clip first; day = avenue only,2026-07-27,,,Product
+open_decision,product,Biofeedback actuator on BOM,Ops/HW,deferred,GEMINI_TEMPLE_PPG_AVENUES,Until Gen2+ / accessory decision,2026-07-27,,,Ops / HW
+open_decision,regulatory,Migraine / apnea diagnostic claims,Regulatory,deferred,REGULATORY_TIMELINE,Until Stage B funded path,2026-07-27,,,Regulatory
+category_map,Technology avenues,Gemini temple PPG ladder,OMG core; MEP/EEG orthogonal; day/therapy Far,partial,GEMINI_TEMPLE_PPG_AVENUES; PRODUCT_ROADMAP §2b,Keep Stage A claim boundaries,2026-07-27,,,
