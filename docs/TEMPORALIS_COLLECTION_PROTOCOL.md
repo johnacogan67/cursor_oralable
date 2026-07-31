@@ -3,12 +3,20 @@
 > **Phase scope:** These protocols are **Phase 1+ / research** (muscle IR-DC, Protocol A/B).  
 > **Current pilot (Phase 0):** temple HR/SpO₂ only — [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md). Do not require Protocol B for Phase 0 kit ship.
 
-**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · Firmware **1.0.70** ship (gate min 1.0.63)
+**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · [FIGURES.md](./FIGURES.md) · Firmware **1.0.70** ship (gate min 1.0.63) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Hardware:** Gen1 · BOM REV8 · PCB REV10 · Kaga ES2832AA2  
 **Target site (Phase 1+):** Temporalis anterior (temple / cheek clip)
 
 **Sampling:** 50 Hz PPG + accelerometer (BLE logger or app)
+
+![FIG-CO-003 Temple placement](./figures/FIG-CO-003-temple-placement.svg)
+
+*Figure FIG-CO-003 — Temporalis clip placement (placeholder).*
+
+![FIG-CO-017 Cheek vs temple](./figures/FIG-CO-017-cheek-vs-temple-sites.svg)
+
+*Figure FIG-CO-017 — Cheek vs temple sensor sites (placeholder; pilot = temple).*
 
 ---
 
@@ -29,9 +37,15 @@ Uploading both to NotebookLM without this table causes conflicting answers about
 
 ## Shared: physical setup
 
-1. **Locate target:** Fingers on temple; clench to find peak bulge.
+1. **Locate target:** Fingers on temple; clench to find peak bulge (**anterior temporalis** — same site class as GrindCare sEMG in literature; Oralable uses **optical** IR-DC, not electrodes).
 2. **Mounting:** Sensor window over peak bulge (headband or cheek clip per hardware).
 3. **Tension:** Firm but comfortable (target 5–15 mmHg strap equivalent).
+
+**Optional clinical intake (Ed/Pedro / Paper B):** patient completes **BruxScreen-Q** (and dentist **BruxScreen-C** when available) — Lobbezoo et al. 2024. See [LITERATURE_AND_PRIOR_ART.md](./data_room/LITERATURE_AND_PRIOR_ART.md). Do not treat questionnaire alone as instrumented SB diagnosis.
+
+![FIG-CO-024 BruxScreen intake](./figures/FIG-CO-024-bruxscreen-intake.svg)
+
+*Figure FIG-CO-024 — BruxScreen intake form stub (literature tool — not Oralable UI).*
 
 **IR-DC units:** Protocol A uses **voltage** targets for headband QC. Protocol B and production cheek logs use **raw ADC** (10M–70M, see [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md)). Do not compare 1.5 V baseline to 33M raw without conversion.
 
@@ -50,6 +64,11 @@ Uploading both to NotebookLM without this table causes conflicting answers about
 | 00:00 – 01:00 | Rest (quiet) | IR-DC baseline voltage (target **1.5 V–2.5 V** during rest). |
 | 01:00 – 01:10 | Sync-taps | **Five** firm, rhythmic taps on housing. |
 | 01:10 – 02:00 | Rest | Signal settle after movement. |
+
+![FIG-CO-005 Protocol A five-tap](./figures/FIG-CO-005-protocol-a-five-tap.svg)
+
+*Figure FIG-CO-005 — Protocol A 5-tap training sync (placeholder).*
+
 | 02:00 – 02:10 | Max tonic clench | 10 s HOI anchor. |
 | 02:10 – 03:00 | Rest | HOI recovery. |
 | 03:00 – 03:20 | Phasic grinding | 20 s rhythmic jaw motion. |
@@ -84,6 +103,10 @@ Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_
 **Objective:** Reproducible clinical fidelity report for investors and protocol leads.
 
 **Anchor:** **T=0 = first 3-tap sync** (three high-G events on accel Z within 2 s — same detector as `sync_align.py`). **Not** recording start.
+
+![FIG-CO-004 Protocol B three-tap](./figures/FIG-CO-004-three-tap-sync.svg)
+
+*Figure FIG-CO-004 — Protocol B 3-tap sync (placeholder).*
 
 Canonical results: [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md). Pilot roles: [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md).
 
@@ -124,7 +147,7 @@ run_validation_dashboard(
 "
 ```
 
-**Artifacts:** `data/validation_logs/JOHN_COGAN_1ST_SYNC_PROTOCOL.csv` · plots in `data/plots/ed_presentation/`
+**Artifacts:** `data/validation_logs/JOHN_COGAN_1ST_SYNC_PROTOCOL.csv` · plots in `data/plots/ed_presentation/` · figure IDs [FIGURES.md](./FIGURES.md) (FIG-CO-009 / FIG-CO-010 pattern)
 
 ---
 
@@ -143,7 +166,7 @@ See also [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PE
 
 ### Night-report pack (Mac + iOS)
 
-**Canonical product direction:** [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) — **blood-pressure-style bands** (Low / Moderate / High) on TFI, SASHB/h, rescue/h, tonic min/h; **state hypnogram is the primary graphic**; dual-rail / 3D are secondary. Not a single sleep-quality score first; cohort percentiles later.
+**Canonical product direction:** [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) — **blood-pressure-style bands** (Low / Moderate / High) on TFI, SASHB/h, rescue/h, tonic min/h; **state hypnogram is the primary / very useful graphic** (exemplar [FIG-CO-025](./figures/FIG-CO-025-state-hypnogram-exemplar.png) · `plots/overnight_report/TEMPORALIS_20260724/02_state_hypnogram.png`); dual-rail / 3D are secondary. Not a single sleep-quality score first; cohort percentiles later.
 
 After gold / validation CSV (or overnight BLE log → gold):
 
@@ -157,7 +180,7 @@ After gold / validation CSV (or overnight BLE log → gold):
   --input data/validation/GOLD_STANDARD_VALIDATION.csv
 ```
 
-**iOS:** Share → **Export PDF — Oralable MAM: Clinical Temporalis Report** rebuilds the same panels from session samples (RAM history + memory-flush CSVs + session file). Lead with **state hypnogram** + bands; hourly stack / smoking-gun / event CSV support dentist detail. Wellness states only — not a diagnosis.
+**iOS:** Dashboard / Share show **in-app state hypnogram** (`StateHypnogramView`, adapts FIG-CO-025). Share → **Export PDF — Oralable MAM: Clinical Temporalis Report** rebuilds the full pack from session samples (RAM history + memory-flush CSVs + session file). Lead with **state hypnogram** + bands; hourly stack / smoking-gun / event CSV support dentist detail. Wellness states only — not a diagnosis.
 
 States: quiet / tonic / phasic / rescue / recovery (`src/analysis/overnight_states.py` · Swift `OvernightStateClassifier`).
 

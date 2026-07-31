@@ -2,9 +2,46 @@
 
 **Status:** Canonical product direction · July 2026  
 **Audience:** Engineering, pilot ops, patient/dentist UX  
-**Related:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) · [oralable_swift/docs/MOBILE_APP_FLOWS.md](../../oralable_swift/docs/MOBILE_APP_FLOWS.md) · [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md)
+**Related:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) · [oralable_swift/docs/MOBILE_APP_FLOWS.md](../../oralable_swift/docs/MOBILE_APP_FLOWS.md) · [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md) · [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 Wellness wording only — **not** a diagnosis of bruxism, apnea, or disease.
+
+![FIG-CO-008 Night report layout](./figures/FIG-CO-008-night-report-layout.svg)
+
+*Figure FIG-CO-008 — Overnight night report layout (placeholder).*
+
+### Gold exemplar — state hypnogram (very useful measure)
+
+**Most useful overnight graphic:** the **state hypnogram** (`02_state_hypnogram.png`) — quiet / tonic / phasic / rescue / recovery across the night. Lead partner reviews, morning UX, and clinical PDF page-1 with this panel ahead of hourly stack or dual-rail.
+
+**In-app (required):** Patient app ships a **SwiftUI adaptation** of this measure (`StateHypnogramView` + `OvernightMorningCardView`) — Share-tab preview + Dashboard morning card — via `OvernightStateClassifier` / `OvernightNightReportBuilder`. Not a PNG screenshot. Flag: `showOvernightHypnogram` (on in vitals phase; off in App Store Minimal). Full multi-page pack remains Share → Clinical Temporalis PDF.
+
+**Reference night (24 Jul 2026 eng pack):**  
+[`plots/overnight_report/TEMPORALIS_20260724/02_state_hypnogram.png`](../plots/overnight_report/TEMPORALIS_20260724/02_state_hypnogram.png) · figure ID **FIG-CO-025**.
+
+![FIG-CO-025 State hypnogram exemplar](./figures/FIG-CO-025-state-hypnogram-exemplar.png)
+
+*Figure FIG-CO-025 — State hypnogram from TEMPORALIS_20260724 — **primary / very useful overnight measure** (eng exemplar; in-app adapts this).*
+
+![FIG-CO-019 Hypnogram bands](./figures/FIG-CO-019-hypnogram-bands.svg)
+
+*Figure FIG-CO-019 — Overnight band chips layout stub (placeholder; pair with FIG-CO-025).*
+
+```mermaid
+flowchart LR
+  Wear[Wear overnight ge 6h] --> Auto[App auto-record]
+  Auto --> Class[OvernightStateClassifier]
+  Class --> Hypno[State hypnogram PRIMARY]
+  Class --> PDF[Clinical Temporalis PDF]
+  Class --> UI[Morning card in app]
+  Class --> Preview[Share tab hypnogram preview]
+  PDF --> Share[Share tab PDF export]
+  Hypno --> PDF
+  Hypno --> UI
+  Hypno --> Preview
+```
+
+App path: [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0) · FIG-IOS-003 (adapts FIG-CO-025).
 
 ---
 
@@ -51,22 +88,24 @@ Rates use `wear_h = wear_seconds / 3600`.
 
 | Priority | Panel | Role |
 |----------|-------|------|
-| **1 — Primary** | **State hypnogram** (quiet / tonic / phasic / rescue / recovery) | Best at-a-glance overnight map for users and dentists — PSG-style jaw-load barcode |
+| **1 — Primary (very useful)** | **State hypnogram** (quiet / tonic / phasic / rescue / recovery) | Best at-a-glance overnight map for users and dentists — PSG-style jaw-load barcode. **Exemplar:** FIG-CO-025 / `TEMPORALIS_20260724/02_state_hypnogram.png` |
 | **2 — Supporting** | Hourly stacked burden + SASHB line | Clustering by hour of night |
 | **3 — Dentist detail** | Smoking-gun dual rail (IR-DC + SpO₂) | Mechanism / coupling review |
 | **4 — Dentist table** | Event bout CSV / table | Chairside list |
 | **Appendix** | Events-only 3D cluster | Mechanism / IP storytelling — not the morning view |
 
-**Product rule:** Morning card and page-1 of the clinical PDF lead with **bands + state hypnogram**. Dual-rail and 3D are secondary.
+**Product rule:** Morning card and page-1 of the clinical PDF lead with **bands + state hypnogram**. Dual-rail and 3D are secondary. Treat the hypnogram as the **default “is this night useful?”** view.
 
 ### Implementations
 
 | Surface | Location |
 |---------|----------|
-| Mac pack | `scripts/generate_overnight_night_report.py` → `plots/overnight_report/<session>/` (`02_state_hypnogram.png` primary) |
+| Mac pack | `scripts/generate_overnight_night_report.py` → `plots/overnight_report/<session>/` (`02_state_hypnogram.png` **primary / very useful**) |
+| Eng exemplar | `plots/overnight_report/TEMPORALIS_20260724/02_state_hypnogram.png` → [FIG-CO-025](./figures/FIG-CO-025-state-hypnogram-exemplar.png) |
 | States | `src/analysis/overnight_states.py` |
 | iOS PDF | `ClinicalReportGenerator` + `OvernightStateClassifier` + `NightReportSampleLoader` |
-| Share path | Share → Clinical Temporalis Report (+ event CSV) |
+| **iOS in-app** | `StateHypnogramView` + `OvernightMorningCardView` + `OvernightNightReportBuilder` (Share preview + Dashboard) |
+| Share path | Share → hypnogram preview + Clinical Temporalis Report (+ event CSV) |
 
 ---
 

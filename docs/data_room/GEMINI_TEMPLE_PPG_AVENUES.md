@@ -5,7 +5,7 @@
 **Source:** Gemini conversation (share [UiCw1EsJguV6](https://share.gemini.google/UiCw1EsJguV6) · app `b1033d03cf397b38`)  
 **Local capture:** `~/Downloads/Measuring Brain Signals Down Spinal Cord.md`
 
-**Canonical product posture:** [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) §2b · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · landscape [ORALABLE_MARKET_LANDSCAPE.md](../../../oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md) §4b
+**Canonical product posture:** [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) §2b · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · landscape [ORALABLE_MARKET_LANDSCAPE.md](../../../oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md) §4b · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 ---
 
@@ -43,7 +43,7 @@ Measuring descending motor / cortico-spinal activity ranges from invasive electr
 |---------|--------|-----------------|------------------|
 | **Near** | Temple vitals HR / SpO₂ | Green / R / IR PPG | **Phase 0 (now)** |
 | **Near→Mid** | Optical myography bruxism / TMJ load + ACC | IR-DC + jaw vib | **Phase 1+ Stage A** |
-| **Near→Mid** | Overnight SpO₂ burden (SASHB) + state hypnogram | SpO₂ + overnight states | Eng PDF shipped; Phase 1+ UX |
+| **Near→Mid** | Overnight SpO₂ burden (SASHB) + state hypnogram | SpO₂ + overnight states | Eng PDF + **in-app hypnogram** shipping; Phase 1+ muscle UX polish |
 | **Mid** | Daytime clench / stress (chew vs clench filter) | Same sensors; day UX | **Avenue** — not Ed/Pedro |
 | **Far** | Migraine prodrome / vascular amplitude | Temporal artery PPG + temp | Research / Stage B explore |
 | **Far** | Sleep apnea **screening claims** | SpO₂ + HR + ACC | Stage A = pattern context only; diagnostic = Stage B |

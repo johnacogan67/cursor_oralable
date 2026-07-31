@@ -1,7 +1,9 @@
 # Gen1 / Gen2 — living tracking board
 
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
 **Owner:** John Cogan · **Updated:** 2026-07-26  
-**Policy:** Single repo, multi-board — **do not fork**. See [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md) · **[PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)** · **[VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)** · **[COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md)**
+**Policy:** Single repo, multi-board — **do not fork**. See [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md) · **[PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)** · **[VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)** · **[COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md)** · [FIGURES.md](./FIGURES.md)
 
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
@@ -55,6 +57,8 @@
 | **2027-01 → 2027-02** | Gen2 | Pilot parity (G2-P6) | Temple vitals gates |
 | **2027-01 → 2027-06** | Gen2 | Optional on-device ML | Research gate |
 | **2027-06** | Product | Gen1 EOL / spare-parts decision | Written decision |
+
+**Figures:** [FIGURES.md](./FIGURES.md)
 
 ```mermaid
 gantt

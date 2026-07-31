@@ -8,6 +8,10 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 
 **System map (visual / spreadsheet / mermaid):** [ORALABLE_SYSTEM_MAP.csv](./ORALABLE_SYSTEM_MAP.csv) · [ORALABLE_SYSTEM_MAP_DIAGRAMS.md](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md) · Cursor canvas `oralable-system-map`
 
+**Figures (master inventory):** [FIGURES.md](./FIGURES.md) · assets in [`figures/`](./figures/) · data-room copies [`data_room/figures/`](./data_room/figures/)
+
+**Patient app working diagrams:** [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0) · Mermaid also in [ORALABLE_SYSTEM_MAP_DIAGRAMS.md §8](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md)
+
 **Product strategy:** [oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md](../../oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md) (competitors, regulatory, GTM, appendices A/B).
 
 ## Product phases & hardware
@@ -34,7 +38,7 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 | Document | Description |
 |----------|-------------|
 | [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) | **Protocol A** (training, 5 taps) vs **Protocol B** (Ed/Pedro, 3-tap T=0) — read “do not mix” table |
-| [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) | **Canonical** overnight bands (BP-style), hypnogram-first graphing, ≥6 h gate, Mac/iOS pack |
+| [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) | **Canonical** overnight bands (BP-style), **state hypnogram = very useful primary** ([FIG-CO-025](./figures/FIG-CO-025-state-hypnogram-exemplar.png)); **in-app** + Mac/iOS PDF; ≥6 h gate |
 | [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md) | **Canonical** Protocol A cohort sizes, users/sessions, demographics, leave-user-out |
 | [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md) | Phase 1 pilot roles — phases canonical in Protocol B above |
 
@@ -42,8 +46,12 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 
 | Document | Description |
 |----------|-------------|
-| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.47** · pilot FW **1.0.70** · app **4.3.3** |
-| [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) | Phase 0 Vitals one-pager |
+| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.59** · pilot FW **1.0.70** · app **4.3.3** |
+| [data_room/COLLAB_NABAVI_MCGILL.md](./data_room/COLLAB_NABAVI_MCGILL.md) | Nabavi collab truth — McGill / RI-MUHC · not Dianyx · Ed/Pedro · Wout Altium |
+| [data_room/LITERATURE_AND_PRIOR_ART.md](./data_room/LITERATURE_AND_PRIOR_ART.md) | TEC literature distill (Li ambulatory SB · BruxScreen · chewing PPG · encaps) |
+| [data_room/PITCH_KOOROSH.pdf](./data_room/PITCH_KOOROSH.pdf) | Nabavi leave-behind (McGill IEEE + optional Altium) |
+| [data_room/KOOROSH_OUTREACH.md](./data_room/KOOROSH_OUTREACH.md) | Email to seyed.nabavi@mcgill.ca |
+| [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) | Phase 0 Vitals one-pager (Ed Owens / Pedro Beacon) |
 | [data_room/VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) | Canonical FW **1.0.70** · app **4.3.3** |
 | [data_room/FIRMWARE_1.0.70_FLASH.md](./data_room/FIRMWARE_1.0.70_FLASH.md) | Pilot flash guide |
 | [data_room/ORALABLE_FTS_36MO.md](./data_room/ORALABLE_FTS_36MO.md) | 36-month functional & technical specification |
@@ -75,8 +83,8 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 | Repo | Role |
 |------|------|
 | **oralable_nrf** | Firmware, GATT, OTA — `docs/README.md` |
-| **oralable_swift** | Consumer + dentist apps, CloudKit, [MOBILE_APP_FLOWS.md](../../oralable_swift/docs/MOBILE_APP_FLOWS.md) |
-| **OralableCore** | Shared BLE parsing, TFI/SASHB handshake export |
+| **oralable_swift** | Consumer + dentist apps, CloudKit, [MOBILE_APP_FLOWS.md](../../oralable_swift/docs/MOBILE_APP_FLOWS.md) ([§2 working diagrams](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)) |
+| **OralableCore** | Shared BLE parsing, TFI/SASHB handshake export — [docs/README.md](../../OralableCore/docs/README.md) · [FIGURES.md](./FIGURES.md) |
 
 ## Standard pipeline
 

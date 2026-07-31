@@ -7,10 +7,10 @@
 
 **Program:** Oralable Point A operating evidence · **Version:** 1.1.0 · **July 2026**  
 **Scope:** Phase 1+ muscle / IR-DC / Protocol B on **same Gen1 hardware** (BOM REV8 · PCB REV10 · ES2832AA2 · FW ≥ **1.0.70**)  
-**Protocol leads:** **Ed Owens** & **Pedro** (structured validation, protocol fidelity)  
+**Protocol leads:** **[Dr Edward Owens](https://beaconconsultantssleephealthclinic.ie/team-member/dr-edward-owens/)** & **[Dr Pedro Mayoral Sanz](https://beaconconsultantssleephealthclinic.ie/team-member/dr-pedro/)** (Beacon · structured validation, protocol fidelity)  
 **Sponsor:** JAC Dental Ltd
 
-**Related:** [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) (**Phase 0 one-pager**) · [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLIST.md) · [../TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) (**Protocol B**) · [../CLINICAL_VALIDATION.md](../CLINICAL_VALIDATION.md) · [ORALABLE_FTS_36MO.md](./ORALABLE_FTS_36MO.md)
+**Related:** [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) (**Phase 0 one-pager**) · [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLIST.md) · [../TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) (**Protocol B**) · [../CLINICAL_VALIDATION.md](../CLINICAL_VALIDATION.md) · [ORALABLE_FTS_36MO.md](./ORALABLE_FTS_36MO.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Phase timings:** Same as Protocol B in `TEMPORALIS_COLLECTION_PROTOCOL.md` (do not use Protocol A training timings).
 
@@ -37,8 +37,8 @@
 
 | Role | Person | Responsibility |
 |------|--------|----------------|
-| **Protocol lead / clinical validator** | Ed Owens | Session oversight, protocol timing, sign-off on fidelity reports |
-| **Protocol lead / clinical validator** | Pedro | Same; joint sign-off on pass/fail matrix |
+| **Protocol lead / clinical validator** | Dr Edward Owens (Beacon) | Session oversight, protocol timing, sign-off on fidelity reports |
+| **Protocol lead / clinical validator** | Dr Pedro Mayoral Sanz (Beacon) | Same; joint sign-off on pass/fail matrix |
 | **Technical operator** | John Cogan (or delegate) | Device prep, flash FW **≥ 1.0.36** (bench build → [architecture §3](../ORALABLE_SYSTEM_ARCHITECTURE.md#3-validation-status-matrix-where-we-are)), app build, log export |
 | **Participants (Phase 1A)** | Ed, Pedro | Each completes structured sessions on themselves |
 | **Participants (Phase 1B)** | +3 recruits | After Ed/Pedro gate passes — dentist-referred or research volunteers |
@@ -89,7 +89,7 @@
 
 **Not overnight:** Protocol A (~6 min) and Protocol B (~4.5 min) are structured locks only — see [TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) § Overnight sleep session.
 
-**Review UX:** lead with **state hypnogram** + provisional **Low / Moderate / High** bands (TFI, SASHB/h, rescue/h) — [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md). Recalibrate cutoffs from these pilot nights.
+**Review UX:** lead with **state hypnogram** (in-app morning card / Share preview + PDF) + provisional **Low / Moderate / High** bands (TFI, SASHB/h, rescue/h) — [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) · FIG-CO-025. Recalibrate cutoffs from these pilot nights.
 
 ### 4.3 Professional workflow smoke (once)
 
@@ -177,7 +177,7 @@ Store under `cursor_oralable/data/raw/pilot_ed_pedro/` (create on first run).
 |-------------|----------|
 | Validator one-pager | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) |
 | Phase 1A fidelity reports | `CLINICAL_VALIDATION.md` § Pilot Ed/Pedro 2026 |
-| Plots | `data/plots/pilot_ed_pedro/` |
+| Plots | `data/plots/pilot_ed_pedro/` — promote embeds via [../FIGURES.md](../FIGURES.md) |
 | Session log index | `data/raw/pilot_ed_pedro/README.md` |
 | Sign-off sheet | `data_room/PILOT_SIGNOFF_ED_PEDRO.pdf` (external) |
 
@@ -208,8 +208,8 @@ run_validation_dashboard(
 
 | Role | Name | Phase 1A | Date |
 |------|------|----------|------|
-| Protocol lead | Ed Owens | ☐ | |
-| Protocol lead | Pedro | ☐ | |
+| Protocol lead | Dr Edward Owens | ☐ | |
+| Protocol lead | Dr Pedro Mayoral Sanz | ☐ | |
 | Technical | John Cogan | ☐ | |
 
 *After sign-off, notify Balance Points / Ken with updated data room index.*

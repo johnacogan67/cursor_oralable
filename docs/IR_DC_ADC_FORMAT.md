@@ -1,8 +1,14 @@
 # IR-DC and PPG ADC Format
 
-**Related:** [docs/README.md](./README.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md`
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
+**Related:** [docs/README.md](./README.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` · [FIGURES.md](./FIGURES.md)
 
 **Default configuration** (Oralable MAM cheek): `R_G_IR` channel order, IR-DC coupling 10M–70M raw.
+
+![FIG-CO-006 IR-DC occlusion trough](./figures/FIG-CO-006-ir-dc-occlusion-trough.svg)
+
+*Figure FIG-CO-006 — IR-DC occlusion trough (placeholder).*
 
 ## IR-DC
 

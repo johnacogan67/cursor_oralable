@@ -3,7 +3,7 @@
 **Status:** Canonical product end-goal · July 2026  
 **Audience:** Engineering, pilot, apps, GTM, counsel (Peacock / Strand Two — portfolio external to git)
 
-**Related:** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [data_room/REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) §14 · [data_room/APPS_AND_REVENUE_EVAL.md](./data_room/APPS_AND_REVENUE_EVAL.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/IP_EVAL_AND_LANDSCAPE.md](./data_room/IP_EVAL_AND_LANDSCAPE.md)
+**Related:** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [data_room/REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) §14 · [data_room/APPS_AND_REVENUE_EVAL.md](./data_room/APPS_AND_REVENUE_EVAL.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/IP_EVAL_AND_LANDSCAPE.md](./data_room/IP_EVAL_AND_LANDSCAPE.md) · [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
 **Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
@@ -22,6 +22,23 @@
 | **B — Medical device** | Cleared / CE medical tier (future) | Patient + professional clinical workflows | Same patent family supports differentiated SaMD/device story | Higher ASP; slower; counsel + regulatory gate |
 
 **Rule:** Do **not** jump to Stage B claims in App Store, website, or Ed/Pedro materials. Stage A must stay honest wellness while the patent embodiment matures.
+
+```mermaid
+flowchart TB
+  Gen1[Gen1 Phase 0 temple vitals] --> Phase1[Phase 1+ muscle IR-DC TFI SASHB]
+  Phase1 --> Gen2[Gen2 hardware parallel]
+  Phase1 --> StageA[Stage A wellness wearable ships]
+  StageA --> Evidence[Field evidence plus structured studies]
+  Evidence --> StageB[Stage B medical 510k or CE later]
+```
+
+![FIG-CO-001 Stage A to Stage B](./figures/FIG-CO-001-stage-ab-pathway.svg)
+
+*Figure FIG-CO-001 — Stage A wearable → Stage B medical pathway (placeholder).*
+
+![FIG-CO-002 Patent embodiment stack](./figures/FIG-CO-002-patent-embodiment-stack.svg)
+
+*Figure FIG-CO-002 — Patent embodiment product stack (placeholder).*
 
 ---
 
@@ -53,12 +70,13 @@ Counsel owns exact claim language. Engineering implements **enabling embodiments
 | Optical myography at **temporalis** | Temple placement, overnight coupling | Phase 0 placement → Phase 1+ muscle UI |
 | **Hemodynamic occlusion (IR-DC)** | IR-DC trough / occlusion %, ACC cross-check | Phase 1+ (**Stage A wearable**) |
 | **Overnight jaw load** | Phasic / tonic / quiet / rescue; Core ML Temporalis | Phase 1+ |
+| **State hypnogram (patient UX)** | In-app barcode + Clinical PDF (device-inferred states) | **Phase 0 shipping** — Dashboard / Share; ≥6&nbsp;h bands |
 | **Blood oxygen burden correlation** | **SASHB** + SpO₂ vs rescue / clench timing | Phase 0 SpO₂ → Phase 1+ correlation exports |
 | **TFI** | IR-DC slope + green AC slope → 0–100 | Phase 1+ patient app |
-| Clinical / patent tables | Clinical report, handshake hourly bins | Phase 1+; professional app after share gate |
+| Clinical / patent tables | Clinical report, handshake hourly bins | Phase 0 PDF pack; Phase 1+ muscle polish; professional app after share gate |
 | **Stage B medical** | Same metrics under locked IFU / SaMD labeling | After regulatory submission path |
 
-**Phase 0 role:** Prove temple SpO₂ / HR and honest device state — substrate for SASHB and overnight sessions. Not the full invention story yet.
+**Phase 0 role:** Prove temple SpO₂ / HR and honest device state — substrate for SASHB and overnight sessions. Patient app already surfaces the overnight **state hypnogram** (wellness copy only). Full IR-DC / TFI invention story is Phase 1+.
 
 **Ed/Pedro:** Patient app only — Stage A wearable evidence. Professional app not required for this iteration.
 
@@ -66,22 +84,14 @@ Counsel owns exact claim language. Engineering implements **enabling embodiments
 
 ## 5. How workstreams serve Stage A → Stage B
 
-```
-Stage B — Medical device (later: 510(k) / CE exploration)
-        ▲
-        │  evidence + locked claims + QMS
-        │
-Stage A — Wellness wearable (ship first)
-        ▲
-        │  patent-implementing product
-        │
-US patent submission (IP)  ←── foundation grants (US & EU)
-        ▲
-   Phase 1+ patient app (TFI / SASHB / IR-DC)
-        ▲
-   Phase 0 Ed/Pedro — temple vitals (patient app only)
-        ▲
-   Gen1 → Gen2 hardware
+```mermaid
+flowchart BT
+  HW[Gen1 to Gen2 hardware] --> P0[Phase 0 Ed Pedro temple vitals]
+  P0 --> P1[Phase 1+ patient app TFI SASHB IR-DC]
+  IP[US patent submission] --> Foundation[Foundation grants US and EU]
+  Foundation --> StageA[Stage A wellness wearable]
+  P1 --> StageA
+  StageA --> StageB[Stage B medical later]
 ```
 
 | Workstream | Stage A (wearable) | Stage B (medical, later) |
@@ -99,8 +109,8 @@ US patent submission (IP)  ←── foundation grants (US & EU)
 
 1. [ ] Repeatable temple overnight sessions on Gen1 (Phase 0 gates)  
 2. [ ] IR-DC + TFI + SASHB in Python **and** Swift (parity)  
-3. [ ] Clinical / patent-table export from real logs  
-4. [ ] Patient app surfaces metrics with **wellness-only** copy  
+3. [x] Clinical / patent-table export from real logs (Clinical Temporalis PDF + Mac night pack)  
+4. [x] Patient app surfaces overnight hypnogram + bands with **wellness-only** copy (`StateHypnogramView`)  
 5. [ ] Claim wording consistent with latest US submission (counsel)  
 6. [ ] Professional share path only after (3)–(4)
 

@@ -1,9 +1,13 @@
 # Clinical validation log
 
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
 Consolidated Ed/Pedro protocol evaluations and presentation packages.  
 **Protocol:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) — **Protocol B** (T=0 = **1st 3-tap sync**). Do not use Protocol A (training) timings for validation.
 
-**Scope note (July 2026):** Historical runs below support science. **Current pilot** is Stage A Phase 0 temple vitals ([ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md)); Protocol B / muscle is Phase 1+. Strategy + cost/timeline: [IP_NORTH_STAR.md](./IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md).
+**Scope note (July 2026):** Historical runs below support science. **Current pilot** is Stage A Phase 0 temple vitals ([ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md)); Protocol B / muscle is Phase 1+. Strategy + cost/timeline: [IP_NORTH_STAR.md](./IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md). **Figures:** [FIGURES.md](./FIGURES.md).
+
+**Clinical labels / screening (literature):** For practice intake and Paper B phenotype labels, prefer lightweight **BruxScreen** (Lobbezoo et al., *J Oral Rehabil* 2024 — questionnaire + dentist clinical form) rather than full **STAB**. Instrument gold standard for SB diagnosis remains **PSG-AV**; ambulatory sEMG devices are screening-grade per Li et al. 2025. Distill: [LITERATURE_AND_PRIOR_ART.md](./data_room/LITERATURE_AND_PRIOR_ART.md). Oralable device output is **extraoral temporalis optical** phenotype — not a PSG replacement claim in Stage A.
 
 ---
 
@@ -40,7 +44,20 @@ Speech False Positives:                 0 ✓
 
 ### Plots
 
-`data/plots/ed_presentation/oralable7/` — `oralable7_from_sync1.png`, `oralable7_validation_dashboard.png`
+`data/plots/ed_presentation/oralable7/` — `oralable7_from_sync1.png`, `oralable7_validation_dashboard.png`  
+**Figure IDs:** [FIG-CO-009](./figures/FIG-CO-009-oralable7-from-sync1.svg) · [FIG-CO-010](./figures/FIG-CO-010-oralable7-validation-dashboard.svg) (placeholders until PNGs are promoted — see [FIGURES.md](./FIGURES.md)).
+
+![FIG-CO-009 Oralable_7 from sync1](./figures/FIG-CO-009-oralable7-from-sync1.svg)
+
+*Figure FIG-CO-009 — Oralable_7 from sync1 (placeholder; promote `data/plots/ed_presentation/oralable7/oralable7_from_sync1.png`).*
+
+![FIG-CO-010 Oralable_7 validation dashboard](./figures/FIG-CO-010-oralable7-validation-dashboard.svg)
+
+*Figure FIG-CO-010 — Oralable_7 validation dashboard (placeholder; promote `.../oralable7_validation_dashboard.png`).*
+
+![FIG-CO-018 SASHB bout example](./figures/FIG-CO-018-sashb-bout-example.svg)
+
+*Figure FIG-CO-018 — SASHB bout example trace (placeholder).*
 
 ### Share zip
 
@@ -83,7 +100,8 @@ Swallow / Speech False Positives:      0 ✓
 
 ### Plots
 
-`data/plots/ed_presentation/` — `self_validation_from_sync1.png`, `validation_dashboard_sync1.png`, `clinical_summary_sync1.png`, `clinical_summary_sync1.pdf`
+`data/plots/ed_presentation/` — `self_validation_from_sync1.png`, `validation_dashboard_sync1.png`, `clinical_summary_sync1.png`, `clinical_summary_sync1.pdf`  
+Promote selected plots into [FIGURES.md](./FIGURES.md) as new `FIG-CO-*` rows when embedding in partner packs (same pattern as FIG-CO-009 / FIG-CO-010).
 
 ### Battery note
 

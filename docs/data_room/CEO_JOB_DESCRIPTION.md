@@ -7,6 +7,8 @@
 
 This is a **search brief**, not an offer. Compensation / equity are indicative bands for discussion with counsel and the board.
 
+**Send with:** company pitch for candidates — [PITCH_CEO_CANDIDATE.md](./PITCH_CEO_CANDIDATE.md) · [PITCH_CEO_CANDIDATE.pdf](./PITCH_CEO_CANDIDATE.pdf) · browser [PITCH_CEO_CANDIDATE.html](./PITCH_CEO_CANDIDATE.html)
+
 ---
 
 ## 1. Company in one paragraph

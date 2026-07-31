@@ -1,5 +1,7 @@
 # Oralable System Architecture
 
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
 **Living document for engineering, clinical validation, and NotebookLM**
 
 | Field | Value |
@@ -9,6 +11,7 @@
 | iOS | App **4.3.3** · `FirmwareGate` min **1.0.63** · recommend **1.0.70** |
 | Python sampling standard | 50 Hz (20 ms), PPG R/G/IR + ACC — **Phase 0:** temple vitals; **Phase 1+:** cheek/temple IR-DC |
 | Primary repos | `oralable_nrf`, `oralable_swift`, `OralableCore`, `cursor_oralable` |
+| Figures | [FIGURES.md](./FIGURES.md) · Mermaid hub [ORALABLE_SYSTEM_MAP_DIAGRAMS.md](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md) |
 
 **How to use this doc**
 
@@ -221,7 +224,7 @@ It combines:
 |------|------|
 | `oralable_nrf` | Zephyr/NCS firmware: BLE GATT, sensors, worn/charger logic, OTA (MCUboot + mcumgr) |
 | `OralableCore` | Shared Swift package: BLE parsing, algorithms, Core ML inference, handshake export |
-| `oralable_swift` | iOS app UI, `DeviceManager`, `UnifiedBiometricProcessor`, dashboards |
+| `oralable_swift` | iOS app UI, `DeviceManager`, `UnifiedBiometricProcessor`, dashboards — [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0) |
 | `cursor_oralable` | Python research: log parsing, 50 Hz pipeline, validation, **Core ML training/export** |
 
 **Build / flash (firmware):**
@@ -622,7 +625,7 @@ Per validation segment (tonic clench, phasic grind, apnea gasp):
 **Measurement / graphing direction** ([OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md)):
 
 - **Bands** (blood-pressure style): Low / Moderate / High on TFI, SASHB per wear-hour, rescue per hour, tonic min per hour — not a single sleep-quality score first.
-- **Primary graphic:** **state hypnogram** (quiet / tonic / phasic / rescue / recovery). Hourly stack and smoking-gun dual rail are supporting; 3D cluster is appendix.
+- **Primary graphic (very useful measure):** **state hypnogram** (quiet / tonic / phasic / rescue / recovery). Eng exemplar: [FIG-CO-025](./figures/FIG-CO-025-state-hypnogram-exemplar.png) ← `plots/overnight_report/TEMPORALIS_20260724/02_state_hypnogram.png`. **In-app:** `StateHypnogramView` + `OvernightMorningCardView` (Share preview + Dashboard). Hourly stack and smoking-gun dual rail remain PDF-secondary; 3D cluster is appendix.
 - Mac pack: `scripts/generate_overnight_night_report.py` · states in `src/analysis/overnight_states.py`. iOS: `NightReportSampleLoader` + Share clinical PDF.
 
 ---
@@ -640,7 +643,7 @@ Reference: `cursor_oralable/docs/CLINICAL_VALIDATION.md`, `TEMPORALIS_COLLECTION
 | Simulated apnea | Breath hold + gasp clench | Rescue detected; occlusion in cheek tier |
 | Speech | Talk | **0** false positives |
 
-Export plots: `data/plots/ed_presentation/` after running validation scripts.
+Export plots: `data/plots/ed_presentation/` after running validation scripts. Named embeds: [FIGURES.md](./FIGURES.md) (FIG-CO-009 / FIG-CO-010).
 
 ---
 
@@ -655,7 +658,7 @@ Export plots: `data/plots/ed_presentation/` after running validation scripts.
 | `docs/CLINICAL_VALIDATION.md` | Run results + Protocol B pass/fail |
 | `docs/TEMPORALIS_COLLECTION_PROTOCOL.md` | Protocol A vs B (read “do not mix” table first) |
 | `oralable_nrf/docs/DEVELOPMENT.md` | Tandem workflow + smoke checklist |
-| `oralable_swift/docs/MOBILE_APP_FLOWS.md` | App navigation / UX (optional) |
+| `oralable_swift/docs/MOBILE_APP_FLOWS.md` | App navigation / UX + **§2 working diagrams** (session, BLE→UI, auto-record) |
 | `docs/ALGORITHM_ARCHITECTURE.md` | Optional — roadmap + parity status (overlap with hub §11–13) |
 | Recent **nRF Connect CSV** exports | Runtime BLE truth |
 
@@ -691,7 +694,7 @@ Export plots: `data/plots/ed_presentation/` after running validation scripts.
 | Solid green on pad | OPEN | Target 1.0.52; see §3.2 |
 | LED after BLE | PARTIAL | §3.2 S6 (off body) / S7 (worn keep streams @ 1.0.70) |
 | Android app | Roadmap | iOS + OralableCore first |
-| Unified overnight report UI | **PARTIAL** | §15 — Share PDF + Mac pack shipped; in-app morning card open |
+| Unified overnight report UI | **PARTIAL** | §15 — Share PDF + Mac pack + **in-app hypnogram / morning card** (`StateHypnogramView`, flag `showOvernightHypnogram`); polish / Figma still open |
 | 510(k) path | Regulatory | Monitoring claim separate from wellness |
 
 *For detailed per-area status, use §3 Validation status matrix.*

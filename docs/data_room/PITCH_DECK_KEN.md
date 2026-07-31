@@ -1,10 +1,14 @@
-# Oralable — Pitch deck (distilled for Ken / BalancePoints)
+# Oralable® — Pitch deck (distilled for Ken / BalancePoints)
+
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Audience:** Ken Kinsella · [BalancePoints](https://balancepoints.co.uk) (Point A → Point B framing)  
 **Status:** Working draft · July 2026 · strong for **Ken working session**; **not** F&F-close ready until valuation / terms / use-of-funds / runway / Voice  
 
-**Present this:** open [`PITCH_DECK_KEN.html`](./PITCH_DECK_KEN.html) in a browser (← → keys).  
+**Present this:** open [`PITCH_DECK_KEN.html`](./PITCH_DECK_KEN.html) in a browser (← → keys) · PDF [`PITCH_DECK_KEN.pdf`](./PITCH_DECK_KEN.pdf).  
 This `.md` file is the source distill for edits.
+
+**Brand (HTML/PDF):** [`brand/oralable_logo_lockup.png`](./brand/oralable_logo_lockup.png) · **Oralable®** · **Word of Mouth™** · Open Sans · trademarks of JAC Dental Solutions Limited.
 
 **Point A baseline (Ken 9 June 2026):** **1.5 / 5.0** Essential. Materially improved since: cash, COGS, Point B ask, cap table, market sketch, IP filings confirmed.
 
@@ -12,7 +16,9 @@ This `.md` file is the source distill for edits.
 
 ## Slide 1 — Title
 
-**Oralable**  
+**[Oralable® lockup]**  
+**Word of Mouth™**
+
 Temple wearable for overnight vitals → jaw-load awareness → (later) medical device  
 
 **Stage A now:** patent-implementing **wellness wearable**  
@@ -287,6 +293,7 @@ We are building the wearable that makes that path real.
 
 | Topic | Doc |
 |-------|-----|
+| Founder CV / pitch bio | [`JOHN_COGAN_CV.md`](./JOHN_COGAN_CV.md) |
 | End goal | [`../IP_NORTH_STAR.md`](../IP_NORTH_STAR.md) |
 | Phases / BOM | [`../PRODUCT_ROADMAP.md`](../PRODUCT_ROADMAP.md) |
 | Cost / timeline | [`COST_AND_TIMELINE.md`](./COST_AND_TIMELINE.md) |

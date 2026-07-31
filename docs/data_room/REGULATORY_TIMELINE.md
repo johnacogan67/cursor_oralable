@@ -3,7 +3,7 @@
 **One-page diligence summary** · **Version:** 1.2.0 · **July 2026**  
 **Not legal advice** — confirm with regulatory counsel before submission.
 
-**Related:** [ORALABLE_FTS_36MO.md](./ORALABLE_FTS_36MO.md) · [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` §8–9
+**Related:** [ORALABLE_FTS_36MO.md](./ORALABLE_FTS_36MO.md) · [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` §8–9 · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Strategy:** **Stage A = wellness wearable** (ship now) → **Stage B = medical device** (later). Patent implementation runs through Stage A; clearance is a separate later gate.
 

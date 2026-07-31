@@ -13,7 +13,11 @@ See [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [ED_PEDRO_QUICK_START.md](./E
 
 **Time (Phase 0):** ~45 min · **Time (Phase 1+ Protocol B):** ~90 min
 
-Related: [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · [PILOT_PROTOCOL_ED_PEDRO.md](./PILOT_PROTOCOL_ED_PEDRO.md) *(deferred)*
+Related: [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · [PILOT_PROTOCOL_ED_PEDRO.md](./PILOT_PROTOCOL_ED_PEDRO.md) *(deferred)* · [../FIGURES.md](../FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
+![FIG-CO-022 Charge to temple](../figures/FIG-CO-022-pilot-charge-to-temple.svg)
+
+*Figure FIG-CO-022 — Charge-to-temple pilot flow (placeholder).*
 
 ---
 

@@ -2,9 +2,13 @@
 
 **Status:** Canonical collection plan · July 2026  
 **Audience:** Engineering, pilot ops, clinical partners  
-**Related:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) · [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) · `scripts/generate_mam_model.py` · `scripts/run_protocol_a_session.py`
+**Related:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) · [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) · [FIGURES.md](./FIGURES.md) · `scripts/generate_mam_model.py` · `scripts/run_protocol_a_session.py` · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 Wellness Stage A: model classes are **device-inferred phenotypes** (quiet / tonic / phasic / rescue), not a medical bruxism diagnosis.
+
+![FIG-CO-020 Core ML MAM flow](./figures/FIG-CO-020-coreml-mam-flow.svg)
+
+*Figure FIG-CO-020 — Core ML MAM inference flow (placeholder).*
 
 ---
 

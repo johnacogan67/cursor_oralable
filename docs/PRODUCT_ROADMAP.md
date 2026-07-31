@@ -6,10 +6,26 @@
 
 **North star:** [IP_NORTH_STAR.md](./IP_NORTH_STAR.md) — **first a patent-implementing wellness wearable**, **later a medical device**. Embody the **new US patent being submitted** (Temporalis OMG / IR-DC / TFI / SASHB). Foundation granted US & EU patents are the base layer.
 
-Related: [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [GEN1_GEN2_TRACKING.md](./GEN1_GEN2_TRACKING.md) · [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) · [data_room/REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/GEMINI_TEMPLE_PPG_AVENUES.md)
+Related: [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [GEN1_GEN2_TRACKING.md](./GEN1_GEN2_TRACKING.md) · [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) · [data_room/REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/GEMINI_TEMPLE_PPG_AVENUES.md) · [FIGURES.md](./FIGURES.md) · [ORALABLE_SYSTEM_MAP_DIAGRAMS.md](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
 **Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+
+![FIG-CO-017 Cheek vs temple](./figures/FIG-CO-017-cheek-vs-temple-sites.svg)
+
+*Figure FIG-CO-017 — Cheek vs temple sensor sites (placeholder; pilot = temple).*
+
+### Patient app (Phase 0) — working diagram
+
+Full set: [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).
+
+```mermaid
+flowchart LR
+  Charge[Charge on case] --> Pair[Patient app pair]
+  Pair --> Temple[Temple wear]
+  Temple --> Vitals[HR SpO2 auto-record]
+  Vitals --> Share[Share PDF or CSV]
+```
 
 ---
 
@@ -73,11 +89,11 @@ Related: [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [GEN1_GEN2_
 | Protocol B / muscle calibration | When Phase 0 gates pass |
 | Actigraphy / jaw vibration (LIS2DTW12) | Productized with muscle UX |
 | Oralable for Professionals | After Phase 1+ share gate — **not** Ed/Pedro kit scope |
-| In-app overnight morning card | Hypnogram + BP-style bands in UI (PDF path already shipped — see below) |
+| In-app overnight morning card | **Shipping** — `StateHypnogramView` + band chips (Dashboard + Share preview; adapts FIG-CO-025); PDF for full pack |
 
 **Already shipped as engineering (Jul 2026) — not the same as Phase 1+ pilot complete:**
 
-- Mac night pack + iOS Share clinical PDF (hypnogram-first, dual-rail, event CSV)
+- Mac night pack + iOS Share clinical PDF + **in-app state hypnogram** (**very useful primary** — [FIG-CO-025](./figures/FIG-CO-025-state-hypnogram-exemplar.png) / `TEMPORALIS_20260724`; Dashboard morning card + Share preview; dual-rail in PDF)
 - Provisional BP-style overnight bands ([OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md))
 - Protocol A capture + Core ML Tier 0 retrain; Tier 1 cohort plan ([CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md))
 

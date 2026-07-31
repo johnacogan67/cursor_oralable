@@ -1,7 +1,7 @@
 # Oralable investor data room index
 
 Maps **Balance Points Point A** functional areas to canonical documents.  
-**Pack version:** data room index **1.1.47** · Pilot firmware **1.0.70** · App **4.3.3** · **As at:** 27 Jul 2026 · Ed/Pedro kits **gated** · timeline [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · avenues [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md)
+**Pack version:** data room index **1.1.59** · Pilot firmware **1.0.70** · App **4.3.3** · **As at:** 31 Jul 2026 · Ed/Pedro kits **gated** · timeline [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · avenues [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md) · Nabavi [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · lit [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md) · **Figures:** [../FIGURES.md](../FIGURES.md) · pack copies [figures/](./figures/) · **App diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Product phases / BOM:** [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) (Phase 0 temple vitals now; Phase 1+ muscle; Gen1 = BOM REV8 / REV10; Gen2 = BOM REV9 / REV11; tech avenues §2b)
 
@@ -46,15 +46,23 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 | Doc | Purpose |
 |-----|---------|
 | [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) | **Canonical versions** — FW **1.0.70** · app **4.3.3** · pack stamps |
-| [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) | **Phase 0 Vitals** — one-page Ed/Pedro handout |
-| [HW_ENGINEER_ALTIUM_BRIEF.md](./HW_ENGINEER_ALTIUM_BRIEF.md) | **Altium / HW engineer** — Gen1 CHRSTS + Gen2 pin/net checklist (email-ready) |
+| [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) | **Phase 0 Vitals** — one-page Ed Owens / Pedro handout |
+| [ED_PEDRO_AGENDA_2026-06-07.md](./ED_PEDRO_AGENDA_2026-06-07.md) | Ed/Pedro Gen2 agenda + LoI — **slipped**; reactivate after Nabavi (McGill) interest |
+| [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) | **Canonical** Nabavi collab truth — McGill / RI-MUHC · not Dianyx · people / Altium / clinical |
+| [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md) | Li 2025 ambulatory SB review · BruxScreen · chewing PPG · silicone encaps · thesis |
+| [HW_ENGINEER_ALTIUM_BRIEF.md](./HW_ENGINEER_ALTIUM_BRIEF.md) | **Altium** — Gen1 CHRSTS + Gen2 pin/net · Wout Geeurickx outgoing |
+| [PITCH_KOOROSH.pdf](./PITCH_KOOROSH.pdf) | **Send to Nabavi** — McGill IEEE + optional Altium (10 slides) |
+| [PITCH_KOOROSH.md](./PITCH_KOOROSH.md) | Nabavi pitch source (Research Associate McGill / RI-MUHC) |
+| [PITCH_KOOROSH.html](./PITCH_KOOROSH.html) | Nabavi browser deck (← →) |
+| [KOOROSH_OUTREACH.md](./KOOROSH_OUTREACH.md) | Email to **seyed.nabavi@mcgill.ca** · agenda · share/withhold |
 | [APPS_AND_REVENUE_EVAL.md](./APPS_AND_REVENUE_EVAL.md) | Patient vs professional apps vs revenue (Phase 0/1+ fit) |
 | [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) | Likely costs + timeline (Stage A wearable → Stage B medical) |
 | [PITCH_CEO_CANDIDATE.pdf](./PITCH_CEO_CANDIDATE.pdf) | **Send to CEO candidates** — branded 10-slide overview (Oralable + Word of Mouth™) |
 | [brand/](./brand/) | Logo lockup + trademark notes for pitch decks |
 | [PITCH_CEO_CANDIDATE.md](./PITCH_CEO_CANDIDATE.md) | CEO-candidate pitch source + cover email |
 | [PITCH_CEO_CANDIDATE.html](./PITCH_CEO_CANDIDATE.html) | CEO-candidate browser deck (← →) |
-| [PITCH_DECK_KEN.html](./PITCH_DECK_KEN.html) | **Present to Ken** — 15-slide browser deck (← →) |
+| [PITCH_DECK_KEN.pdf](./PITCH_DECK_KEN.pdf) | **Present to Ken** — branded 15-slide PDF (Oralable® · Word of Mouth™) |
+| [PITCH_DECK_KEN.html](./PITCH_DECK_KEN.html) | Ken browser deck (← →) |
 | [PITCH_DECK_KEN.md](./PITCH_DECK_KEN.md) | BalancePoints pitch source distill (separate from CEO send) |
 | [FINANCIALS_CASH_SNAPSHOT.md](./FINANCIALS_CASH_SNAPSHOT.md) | Bank cash Point A (JAC Dental · Revolut summary — no IBAN in git) |
 | [GEN1_COGS_KAGA_QUOTE.md](./GEN1_COGS_KAGA_QUOTE.md) | Kaga Gen1 sample PCB quote (€95×20 + €1,995 NRE · May 2024) |
@@ -79,7 +87,7 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 | [PILOT_PROTOCOL_ED_PEDRO.md](./PILOT_PROTOCOL_ED_PEDRO.md) | Phase 1 muscle pilot (deferred after vitals) |
 | [../CLINICAL_VALIDATION.md](../CLINICAL_VALIDATION.md) | Prior lab validation runs (March 2026) |
 | [../TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) | Structured phase timing (Protocol A vs B vs overnight ≥6 h) |
-| [../OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) | Overnight bands + **hypnogram-first** graphing (Mac + iOS PDF) |
+| [../OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) | Overnight bands + **state hypnogram = very useful primary** ([FIG-CO-025](../figures/FIG-CO-025-state-hypnogram-exemplar.png)); in-app + PDF |
 | [../CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md) | Protocol A cohort sizes / demographics for Core ML |
 | [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) | **Canonical development timeline** (§3) + tech avenues (§2b) |
 | [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md) | Gemini temple-PPG avenues distill (external — not product claims) |

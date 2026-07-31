@@ -3,7 +3,7 @@
 **Status:** Draft · July 2026  
 **Sources:** `PCB00003-TGM-BOM-REV8` (Gen1) · `PCB00003-TGM-BOM-REV9` (Gen2) · REV10/REV11 pickplace · Kaga ES2832 / ES4L15 datasheets
 
-Related: [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · `oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md`
+Related: [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [VITALS_PHASE_GEN1_GEN2.md](./VITALS_PHASE_GEN1_GEN2.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · `oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md` · [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  

@@ -1,5 +1,7 @@
 # Vitals pilot — firmware & iOS validation plan (Ed / Pedro)
 
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
 **Firmware:** **1.0.70** (hard min 1.0.63; kits must ship **1.0.70**) · **Board:** pcb00003 · **Ground truth:** nRF Connect logs + app nRF-style CSV export  
 **iOS:** TestFlight Oralable **4.3.3+** — recommend FW **1.0.70**, Automatic dock, Device LED STAT mirror
 
@@ -7,6 +9,14 @@ Flash files: [FIRMWARE_1.0.70_FLASH.md](./FIRMWARE_1.0.70_FLASH.md)
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
 **Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+
+```mermaid
+flowchart LR
+  Flash[Flash 1.0.70] --> Case[Case charge STAT]
+  Case --> App[App 4.3.3 pair]
+  App --> Temple[Temple stream]
+  Temple --> Gates[HR SpO2 quality gates]
+```
 
 ---
 

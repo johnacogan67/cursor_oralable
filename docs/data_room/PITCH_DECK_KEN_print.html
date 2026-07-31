@@ -3,159 +3,153 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oralable — Point A → Point B · Ken / BalancePoints</title>
+  <title>Oralable® — Word of Mouth™ · Point A → Point B · Ken / BalancePoints</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
     :root {
-      --bg: #0a0a0a;
-      --fg: #f5f5f5;
-      --muted: #9a9a9a;
-      --line: #2a2a2a;
-      --accent: #e8e8e8;
-      --warn: #c4a35a;
-      --ok: #7a9e7e;
-      --gap: #b87a6a;
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #5a5a5a;
+      --line: #e5e5e5;
+      --accent: #111111;
+      --warn: #8a6a20;
+      --ok: #2a5a32;
+      --gap: #8a3a2a;
+      --soft: #f7f7f7;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       height: 100%;
       background: var(--bg);
       color: var(--fg);
-      font-family: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
-      font-size: 18px;
-      line-height: 1.45;
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 17px;
+      line-height: 1.4;
     }
     .deck { height: 100%; position: relative; overflow: hidden; }
     .slide {
       display: none;
       height: 100%;
-      padding: 48px 64px 72px;
+      padding: 28px 48px 56px;
       flex-direction: column;
       justify-content: flex-start;
-      max-width: 1100px;
+      max-width: 1120px;
       margin: 0 auto;
+      position: relative;
     }
     .slide.active { display: flex; }
-    .eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-    h1 {
-      font-family: "IBM Plex Serif", Georgia, serif;
-      font-weight: 500;
-      font-size: clamp(36px, 5vw, 56px);
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
-    h2 {
-      font-family: "IBM Plex Serif", Georgia, serif;
-      font-weight: 500;
-      font-size: clamp(28px, 3.5vw, 40px);
-      line-height: 1.15;
-      margin-bottom: 28px;
-    }
-    .lede { font-size: 22px; color: var(--muted); max-width: 36em; margin-bottom: 28px; }
-    .stage-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
-    .stage {
-      border: 1px solid var(--line);
-      padding: 16px 20px;
-      min-width: 220px;
-      flex: 1;
-    }
-    .stage strong { display: block; margin-bottom: 6px; }
-    .stage span { color: var(--muted); font-size: 15px; }
-    table { width: 100%; border-collapse: collapse; font-size: 15px; }
-    th, td {
-      text-align: left;
-      padding: 8px 10px;
-      border-bottom: 1px solid var(--line);
-      vertical-align: top;
-    }
-    th { color: var(--muted); font-weight: 500; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
-    ul { margin: 0 0 0 1.1em; }
-    li { margin: 8px 0; }
-    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-    @media (max-width: 800px) {
-      .slide { padding: 28px 20px 64px; }
-      .grid2 { grid-template-columns: 1fr; }
-    }
-    .callout {
-      border-left: 3px solid var(--accent);
-      padding: 12px 16px;
-      margin: 20px 0;
-      color: var(--muted);
-      font-size: 16px;
-    }
-    .callout.warn { border-color: var(--warn); color: #ddd; }
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1px solid var(--line);
-      padding: 3px 8px;
-      margin-right: 6px;
-      color: var(--muted);
-    }
-    .tag.ok { border-color: var(--ok); color: var(--ok); }
-    .tag.gap { border-color: var(--gap); color: var(--gap); }
-    .big-num {
-      font-family: "IBM Plex Serif", Georgia, serif;
-      font-size: 42px;
-      line-height: 1;
-      margin: 8px 0 4px;
-    }
-    .nav {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      height: 48px;
+    .brand-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
-      background: rgba(10,10,10,0.92);
-      border-top: 1px solid var(--line);
-      font-size: 13px;
-      color: var(--muted);
-      z-index: 10;
+      gap: 16px;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+      flex-shrink: 0;
+    }
+    .brand-lockup { display: flex; align-items: center; gap: 12px; }
+    .brand-lockup img.logo { height: 32px; width: auto; display: block; }
+    .brand-tag {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--muted); border-left: 1px solid var(--line); padding-left: 12px;
+    }
+    .brand-tag .tm, .tagline-hero .tm { font-size: 0.7em; vertical-align: super; }
+    .slide-meta {
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); text-align: right; max-width: 45%;
+    }
+    .eyebrow { display: none; }
+    h1 {
+      font-family: "Open Sans", sans-serif; font-weight: 800;
+      font-size: clamp(28px, 4vw, 44px); line-height: 1.12;
+      margin-bottom: 14px; letter-spacing: -0.02em;
+    }
+    h2 {
+      font-family: "Open Sans", sans-serif; font-weight: 700;
+      font-size: clamp(22px, 2.8vw, 32px); line-height: 1.18;
+      margin-bottom: 16px; letter-spacing: -0.015em;
+    }
+    .lede { font-size: 18px; color: var(--muted); max-width: 38em; margin-bottom: 18px; }
+    .stage-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+    .stage {
+      border: 1px solid var(--line); background: var(--soft);
+      padding: 12px 16px; min-width: 180px; flex: 1;
+    }
+    .stage strong { display: block; margin-bottom: 4px; font-weight: 700; }
+    .stage span { color: var(--muted); font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    th, td {
+      text-align: left; padding: 6px 8px;
+      border-bottom: 1px solid var(--line); vertical-align: top;
+    }
+    th {
+      color: var(--muted); font-weight: 600; font-size: 11px;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    ul { margin: 0 0 0 1.1em; }
+    li { margin: 6px 0; }
+    .callout {
+      border-left: 3px solid var(--fg); padding: 10px 14px;
+      background: var(--soft); max-width: 42em; font-size: 15px;
+    }
+    .callout.warn { border-left-color: var(--warn); }
+    .tag {
+      display: inline-block; border: 1px solid var(--line);
+      padding: 2px 7px; font-size: 11px; font-weight: 600;
+    }
+    .tag.ok { border-color: var(--ok); color: var(--ok); }
+    .tag.gap { border-color: var(--gap); color: var(--gap); }
+    .stat-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .stat {
+      flex: 1; min-width: 120px; border: 1px solid var(--line);
+      background: var(--soft); padding: 12px 14px; font-size: 14px;
+    }
+    .stat .lbl {
+      font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 4px;
+    }
+    .stat .big-num { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+    .title-hero {
+      display: flex; flex-direction: column; align-items: flex-start;
+      gap: 10px; flex: 1; justify-content: center;
+    }
+    .logo-hero { height: 56px; width: auto; max-width: 100%; }
+    .tagline-hero {
+      font-size: 18px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em;
+    }
+    .tm-note {
+      position: absolute; left: 48px; right: 48px; bottom: 14px;
+      font-size: 10px; color: #888;
+    }
+    .meta, .speaker { font-size: 13px; color: var(--muted); }
+    .pos-map, pre, .ascii {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px; background: var(--soft); border: 1px solid var(--line);
+      padding: 12px 14px; white-space: pre-wrap; overflow: auto;
+    }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .nav {
+      position: fixed; bottom: 14px; right: 20px;
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.94); border: 1px solid var(--line);
+      padding: 6px 10px; z-index: 10; font-size: 13px;
     }
     .nav button {
-      background: transparent;
-      border: 1px solid var(--line);
-      color: var(--fg);
-      padding: 6px 14px;
-      cursor: pointer;
-      font: inherit;
+      background: var(--fg); color: #fff; border: none;
+      padding: 5px 10px; cursor: pointer; font-family: inherit; font-weight: 600;
     }
-    .nav button:hover { border-color: var(--muted); }
-    .speaker {
-      margin-top: auto;
-      padding-top: 20px;
-      font-size: 13px;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
+    @media (max-width: 800px) {
+      .slide { padding: 24px 20px 64px; }
+      .tm-note { left: 20px; right: 20px; }
+      .brand-tag { display: none; }
+      .grid2 { grid-template-columns: 1fr; }
     }
-    .title-slide { justify-content: center; }
-    .title-slide .meta { margin-top: 40px; color: var(--muted); font-size: 15px; }
-    .pos-map {
-      font-family: "IBM Plex Mono", ui-monospace, monospace;
-      font-size: 14px;
-      white-space: pre;
-      color: var(--muted);
-      line-height: 1.55;
-      margin: 16px 0 24px;
-      overflow-x: auto;
-    }
-    .stat-row { display: flex; gap: 20px; flex-wrap: wrap; margin: 16px 0 24px; }
-    .stat { flex: 1; min-width: 140px; border-top: 1px solid var(--line); padding-top: 12px; }
-    .stat .lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-  
+
     @page { size: landscape; margin: 10mm; }
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    html, body { margin: 0 !important; padding: 0 !important; height: auto !important; background: #fff !important; color: #111 !important; }
-    .deck { height: auto !important; overflow: visible !important; margin: 0 !important; padding: 0 !important; }
+    html, body { margin: 0 !important; padding: 0 !important; height: auto !important; }
+    .deck { height: auto !important; overflow: visible !important; }
     .nav { display: none !important; }
     .slide {
       display: flex !important;
@@ -166,30 +160,27 @@
       page-break-after: always;
       break-after: page;
       page-break-inside: avoid;
-      padding: 28px 36px !important;
-      max-width: none !important;
-      color: #111 !important;
       overflow: hidden !important;
     }
-    .slide:last-child {
-      page-break-after: auto !important;
-      break-after: auto !important;
-    }
-    .eyebrow, .lede, .speaker, .meta, .stage span, .callout, th, .pos-map, .stat .lbl { color: #444 !important; }
-    .stage, th, td { border-color: #ccc !important; }
-    .callout { border-left-color: #333 !important; }
-    .callout.warn { border-left-color: #8a6a20 !important; color: #222 !important; }
-    .tag { border-color: #999 !important; color: #333 !important; }
-    .tag.ok { border-color: #3a6a40 !important; color: #2a4a30 !important; }
-    .tag.gap { border-color: #8a4a3a !important; color: #6a3a2a !important; }
+    .slide:last-child { page-break-after: auto !important; break-after: auto !important; }
 
   </style>
 </head>
 <body>
-  <div class="deck" id="deck">
-
+  <div class="deck">
     <section class="slide active title-slide active" data-n="1">
-      <div class="eyebrow">JAC Dental Solutions · BalancePoints working session · July 2026</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">JAC Dental Solutions · BalancePoints working session · July 2026</div>
+      </div>
+
+      <div class="title-hero">
+      <img class="logo-hero" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+      <div class="tagline-hero">Word of Mouth<span class="tm">™</span></div>
       <h1>Oralable</h1>
       <p class="lede">Temple wearable for overnight vitals → jaw-load awareness → later medical device.</p>
       <div class="stage-row">
@@ -206,10 +197,19 @@
         Point A baseline (Ken, 9 Jun): 1.5 / 5.0 Essential<br />
         Keys: ← → · discuss openly — F&amp;F valuation still open
       </div>
+    </div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="2">
-      <div class="eyebrow">Slide 2 · Point A</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 2 · Point A</div>
+      </div>
+
       <h2>Where we actually are</h2>
       <table>
         <tr><th>Dimension</th><th>July 2026</th></tr>
@@ -225,10 +225,18 @@
         <tr><td>IP</td><td>Provisional 64/033,978 filed · utility 18/289,827 RCE filed · EP/WO grant path</td></tr>
       </table>
       <p class="speaker">Investors form Point A whether we write it or not. This is the honest version.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="3">
-      <div class="eyebrow">Slide 3 · Problem</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 3 · Problem</div>
+      </div>
+
       <h2>Wrong site, episodic tools</h2>
       <p class="lede">Sleep bruxism damages teeth, drives jaw pain, and correlates with overnight oxygen burden.</p>
       <ul>
@@ -237,10 +245,18 @@
         <li><strong>Gap</strong> — no continuous at-home optical + motion record of jaw hemodynamics</li>
       </ul>
       <p class="speaker">Condition-specific problem — not “another sleep tracker.”</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="4">
-      <div class="eyebrow">Slide 4 · Solution</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 4 · Solution</div>
+      </div>
+
       <h2>Oralable</h2>
       <p class="lede">Nordic BLE temple clip + magnetic charging case + iOS patient app.</p>
       <table>
@@ -253,10 +269,18 @@
       </table>
       <div class="callout">Physics: PPG + IR-DC hemodynamic occlusion + jaw accelerometry — not sEMG, not a ring.</div>
       <p class="speaker">Phase 0 proves the substrate; Phase 1+ is the invention story on the same Gen1 hardware.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="5">
-      <div class="eyebrow">Slide 5 · Positioning</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 5 · Positioning</div>
+      </div>
+
       <h2>Why we win</h2>
       <div class="pos-map">General wellness          Condition-specific
         │                         │
@@ -274,10 +298,18 @@ Jaw / temple ──────────── Oralable (PPG / IR-DC)
         <div class="stat"><div class="lbl">SOM sketch</div><div class="big-num">1.4M</div>× wearable interest</div>
       </div>
       <p class="speaker">Phase 0 does not claim that SOM. Sell temple vitals reliability first.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="6">
-      <div class="eyebrow">Slide 6 · Product today</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 6 · Product today</div>
+      </div>
+
       <h2>Shipping truth</h2>
       <table>
         <tr><th>Item</th><th>Spec</th></tr>
@@ -289,10 +321,18 @@ Jaw / temple ──────────── Oralable (PPG / IR-DC)
         <tr><td>Out of scope</td><td>Dentists app · Protocol B · medical claims</td></tr>
       </table>
       <div class="callout">Pilot: Ed &amp; Pedro — patient app only · temple sessions · CSV evidence → unlock Phase 1+.</div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="7">
-      <div class="eyebrow">Slide 7 · Strategy</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 7 · Strategy</div>
+      </div>
+
       <h2>Stage A → Stage B</h2>
       <div class="pos-map">Stage B — Medical device (H2 2027–2028+)
         ▲  evidence + locked claims + QMS
@@ -307,10 +347,18 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
         <tr><td>B</td><td>Medical (later)</td><td>Higher ASP · regulatory gate</td></tr>
       </table>
       <p class="speaker">No FDA/CE claims in App Store, website, or Ed/Pedro materials during Stage A.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="8">
-      <div class="eyebrow">Slide 8 · Intellectual property</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 8 · Intellectual property</div>
+      </div>
+
       <h2>Portfolio — filed &amp; live</h2>
       <table>
         <tr><th>Track</th><th>Status</th></tr>
@@ -322,10 +370,18 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
       </table>
       <div class="callout warn">Still open: assign provisional → JAC · EP register Byteexplain→JAC · FTO memo</div>
       <p class="speaker">Counsel: Peacock (US) · PurdyLucey (EU). No claim text on public site.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="9">
-      <div class="eyebrow">Slide 9 · Go-to-market</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 9 · Go-to-market</div>
+      </div>
+
       <h2>Two paths</h2>
       <div class="grid2">
         <div class="stage">
@@ -344,10 +400,18 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
         <tr><td>Dentist Practice</td><td>€99.99/mo</td></tr>
       </table>
       <p class="callout">Geography: Ireland / UK first → EU → US. Year-1 draft targets unproven. CAC still a gap.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="10">
-      <div class="eyebrow">Slide 10 · Traction</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 10 · Traction</div>
+      </div>
+
       <h2>Honest status</h2>
       <table>
         <tr><th>Evidence</th><th>Status</th></tr>
@@ -359,10 +423,18 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
         <tr><td>Pilot pass-rate for investors</td><td><span class="tag gap">Pending</span> Ed/Pedro</td></tr>
       </table>
       <p class="speaker">First customer-validation evidence Ken asked for = complete Ed/Pedro gates.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="11">
-      <div class="eyebrow">Slide 11 · Technology</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 11 · Technology</div>
+      </div>
+
       <h2>Stack</h2>
       <table>
         <tr><th>Layer</th><th>Stack</th></tr>
@@ -374,10 +446,18 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
         <tr><td>Gen2</td><td>nRF54L15 · BOM REV9 / REV11 · ~30–35 mAh path</td></tr>
       </table>
       <p class="speaker">Open phone-side pipeline — strength for IP embodiment and Stage B evidence.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="12">
-      <div class="eyebrow">Slide 12 · Roadmap &amp; eng cash</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 12 · Roadmap &amp; eng cash</div>
+      </div>
+
       <h2>Planning envelopes</h2>
       <table>
         <tr><th>Window</th><th>Focus</th><th>Mid cash</th></tr>
@@ -387,20 +467,36 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
         <tr><td>H2’27 – 2028</td><td>Stage B exploration</td><td>Through Stage B ~€0.8–1.0M</td></tr>
       </table>
       <div class="callout">Ken Point B raise (€180k by Oct) bridges near-term cash — distinct from full Stage A eng envelope.</div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="13">
-      <div class="eyebrow">Slide 13 · Business model</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 13 · Business model</div>
+      </div>
+
       <h2>What can actually bill</h2>
       <div class="pos-map">Hardware (clip + case)  ──►  now / pilot
 Consumer Premium IAP    ──►  after credible Phase 0–1+ dashboard
 Dentist Practice IAP    ──►  after Phase 1+ share + CloudKit
 Cleared device (Stage B)──►  18–36+ months after wearable proof</div>
       <div class="callout warn">Risk if we sell too early: marketing “bruxism” while shipping temple SpO₂ only.</div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide" data-n="14">
-      <div class="eyebrow">Slide 14 · Cash &amp; ask — discuss with Ken</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 14 · Cash &amp; ask — discuss with Ken</div>
+      </div>
+
       <h2>Point B: €180k by 31 Oct 2026</h2>
       <div class="stat-row">
         <div class="stat"><div class="lbl">Cash now</div><div class="big-num">€1.3k</div>17 Jul closing</div>
@@ -433,10 +529,18 @@ Cleared device (Stage B)──►  18–36+ months after wearable proof</div>
           </ul>
         </div>
       </div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-
     <section class="slide active title-slide" data-n="15">
-      <div class="eyebrow">Slide 15 · Close</div>
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 15 · Close</div>
+      </div>
+
       <h1>Point A is real.<br />Point B needs capital.</h1>
       <p class="lede">Working Gen1 temple wearable in pilot · wellness-only · patent path filed · cash thin and founder-loan funded.</p>
       <p class="lede">Soft-launch Stage A embodiment → Gen2 → Stage B medical when evidence allows.</p>
@@ -447,6 +551,7 @@ Cleared device (Stage B)──►  18–36+ months after wearable proof</div>
       <div class="meta" style="margin-top:40px">
         Next with Ken: price the €50k F&amp;F · use of funds · runway · Voice
       </div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
 
   </div>

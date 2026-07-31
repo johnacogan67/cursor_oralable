@@ -1,8 +1,35 @@
 # Oralable Algorithm Architecture: Python ↔ iOS Swift
 
-**Doc index:** [docs/README.md](./README.md) · **System hub:** [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) (Core ML path, metrics) · **Firmware GATT:** [oralable_nrf/docs/README.md](../../oralable_nrf/docs/README.md)
+**Doc index:** [docs/README.md](./README.md) · **System hub:** [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) (Core ML path, metrics) · **Firmware GATT:** [oralable_nrf/docs/README.md](../../oralable_nrf/docs/README.md) · **Figures:** [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 This document describes the **algorithm split** between Python research and iOS production, what is **implemented today**, and what remains on the roadmap.
+
+**Related literature (not product claims):** ear-hook PPG + audio chewing detection (Papapanagiotou et al. 2017, *IEEE JBHI*) is adjacent awake-mastication prior art — different from overnight **temporalis IR-DC / OMG**. Ambulatory SB commercial devices are mostly sEMG (Li et al. 2025). Distill: [data_room/LITERATURE_AND_PRIOR_ART.md](./data_room/LITERATURE_AND_PRIOR_ART.md).
+
+```mermaid
+flowchart LR
+  Raw[BLE or CSV raw] --> Resample[Resample 50Hz]
+  Resample --> BP[Butterworth 0.5-8 Hz green]
+  Resample --> LP[IR-DC lowpass under 1 Hz]
+  Resample --> Acc[Accel actigraphy]
+  BP --> HR[Heart rate]
+  LP --> Occ[Occlusion trough]
+  Acc --> Sync[Sync taps]
+  Occ --> TFI[TFI SASHB]
+  HR --> TFI
+```
+
+![FIG-CO-007 50 Hz PPG pipeline](./figures/FIG-CO-007-ppg-50hz-pipeline.svg)
+
+*Figure FIG-CO-007 — 50 Hz PPG signal pipeline (placeholder).*
+
+![FIG-CO-006 IR-DC occlusion trough](./figures/FIG-CO-006-ir-dc-occlusion-trough.svg)
+
+*Figure FIG-CO-006 — IR-DC occlusion trough (placeholder; cross-check clench detections).*
+
+![FIG-CO-020 Core ML MAM flow](./figures/FIG-CO-020-coreml-mam-flow.svg)
+
+*Figure FIG-CO-020 — Core ML MAM inference flow (placeholder).*
 
 ---
 
@@ -14,7 +41,7 @@ This document describes the **algorithm split** between Python research and iOS 
 |--------|---------|
 | `src/analysis/features.py` | Butterworth filters, beat detection, **TFI**, window biomarkers |
 | `src/analysis/overnight_states.py` | Overnight quiet/tonic/phasic/rescue/recovery + bouts/KPIs |
-| `scripts/generate_overnight_night_report.py` | Night pack — **hypnogram-first**; see [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) for BP-style bands |
+| `scripts/generate_overnight_night_report.py` | Night pack — **hypnogram-first**; see [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md); iOS adapts via `StateHypnogramView` / `OvernightNightReportBuilder` |
 | `src/validation/self_validate.py` | SASHB, occlusion tiers, swallow/speech FP, rescue gates |
 | `src/utils/sync_align.py` | **3-tap** sync on accel Z (Protocol B validation) |
 | `src/parser/log_parser.py` | TDM / hex parsing, 50 Hz resampling |

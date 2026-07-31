@@ -1,10 +1,34 @@
 # Message to hardware engineer (Altium) — what to look for
 
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
 **From:** Firmware / product (John)  
 **To:** PCB / Altium engineer  
+**Prior / outgoing HW:** **Wout Geeurickx** · Founder WeeGee BV · wout.geeurickx@weegee.be · VAT BE0803634805 · Leuvensebaan 98, 3220 Holsbeek · +32 456 40 10 97 · [LinkedIn](https://www.linkedin.com/in/wout-geeurickx)  
+**Altium custody (31 Jul 2026):** Required Altium packages already shared with **Kaga** and John for manufacture. **Updated / working Altium sources remain with Wout** — John to obtain latest before handoff. Candidate take-over: **Nabavi as personal JAC contractor** (not Dianyx) — see [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md). Jun 2026 Kaga thread: Gen2 BOM dual listing ES4L15BA1 + ES2832AA2 — clean single source of truth is part of handoff.  
 **Projects:** PCB00003 TGM — **Gen1** (BOM REV8 / PCB REV10 / ES2832AA2) and **Gen2** (BOM REV9 / PCB REV11 / ES4L15BA1)  
-**Date:** 2026-07-16 (updated 2026-07-18)  
+**Date:** 2026-07-16 (updated 2026-07-31 — Wout + Nabavi McGill handoff frame)  
 **Context:** Stage A wellness wearable (Gen1 pilot) + Gen2 bring-up in parallel. Cost/timeline planning: [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md).
+
+**Encapsulation note (internal, Mar 2026):** For small skin-contact form factors (~20×7×4 mm class), **silicone tape lamination** suits rapid pilot builds; **silicone potting** is preferred for commercial finish once optical window / dimensions are locked. Keep MAXM86161 window optically clear. Distill: [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md) §4.
+
+**Figures:** [../FIGURES.md](../FIGURES.md)
+
+![FIG-CO-012 Gen1 device](../figures/FIG-CO-012-gen1-device-photo.svg)
+
+*Figure FIG-CO-012 — Gen1 device photo (placeholder).*
+
+![FIG-CO-014 PCB REV10](../figures/FIG-CO-014-pcb-rev10-photo.svg)
+
+*Figure FIG-CO-014 — PCB REV10 photo (placeholder).*
+
+![FIG-CO-015 Altium board overview](../figures/FIG-CO-015-altium-board-overview.svg)
+
+*Figure FIG-CO-015 — Altium board overview (placeholder; from Wout / WeeGee).*
+
+![FIG-CO-023 Tape vs silicone](../figures/FIG-CO-023-silicone-vs-tape.svg)
+
+*Figure FIG-CO-023 — Tape (pilot) vs silicone potting (commercial) (placeholder).*
 
 Copy/paste the email body below, or attach this whole file.
 

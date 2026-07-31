@@ -1,5 +1,7 @@
 # PCB00003 Gen2 — REV11 hardware reference (BOM REV9)
 
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
 **Project:** TGM-REV11 · **Schematic:** REV10 (2026-05-01, ES4L15BA1) · **BOM:** REV9 · **MCU:** Kaga **ES4L15BA1** (nRF54L15)
 
 Source bundle: `PCB00003-TGM-PROD_DATA-REV11_260620/`
@@ -12,7 +14,11 @@ Source bundle: `PCB00003-TGM-PROD_DATA-REV11_260620/`
 | `PCB00003-TGM-PCB-REV11.PDF` | Fab / layer stack |
 | `PCB00003-TGM-ASSEMBLY-REV11.PDF` | Assembly drawing |
 
-Migration context: [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md)
+Migration context: [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · **Figures:** [FIGURES.md](./FIGURES.md)
+
+![FIG-CO-014 PCB REV10](./figures/FIG-CO-014-pcb-rev10-photo.svg)
+
+*Figure FIG-CO-014 — PCB photo placeholder (promote REV10 / REV11 fab photos when available).*
 
 ---
 

@@ -3,7 +3,7 @@
 **Status:** Planning estimate · July 2026 · **not a budget or fundraising model**  
 **Currency:** EUR (aligns with GTM IAP). Ranges are **order-of-magnitude** industry / SMED-wearable norms — replace with Peacock, EMS, CRO, and accountant quotes.
 
-**Related:** [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md) · [APPS_AND_REVENUE_EVAL.md](./APPS_AND_REVENUE_EVAL.md)
+**Related:** [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md) · [APPS_AND_REVENUE_EVAL.md](./APPS_AND_REVENUE_EVAL.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Ken gaps (still open):** F&F valuation/terms · PSSF CLN terms · use-of-funds · runway monthlies · volume kit COGS · Voice.  
 **Near-term ask (Point B):** [FUNDING_POINT_B_AND_CAP_TABLE.md](./FUNDING_POINT_B_AND_CAP_TABLE.md) — €50k F&F + €100k PSSF + €30k HPSU = **€180k by Oct 2026**.  
@@ -19,7 +19,7 @@
 
 ```
 2026 Jul 24    ENG MILESTONE (shipped)
-               Protocol A Mac · Core ML Tier 0 · night-report PDF (hypnogram-first)
+               Protocol A Mac · Core ML Tier 0 · night-report PDF + in-app hypnogram
                       │
 2026 Jul–Sep    PHASE 0 / Ed–Pedro (Stage A) — YOU ARE HERE
                Gen1 stack ready · kits gated (charge-to-temple) · temple vitals · patient app only

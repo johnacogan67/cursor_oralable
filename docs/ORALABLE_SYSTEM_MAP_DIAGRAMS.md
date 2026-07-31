@@ -1,7 +1,10 @@
 # Oralable system map — Mermaid diagrams (pitch / Notion)
 
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
 **As at:** 27 Jul 2026 · Pair with interactive canvas + [ORALABLE_SYSTEM_MAP.csv](./ORALABLE_SYSTEM_MAP.csv)  
-**Timeline truth:** [PRODUCT_ROADMAP.md §3](./PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · avenues [§2b](./PRODUCT_ROADMAP.md#2b-technology-avenues)
+**Timeline truth:** [PRODUCT_ROADMAP.md §3](./PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · avenues [§2b](./PRODUCT_ROADMAP.md#2b-technology-avenues)  
+**Raster / photo placeholders:** [FIGURES.md](./FIGURES.md) (do not convert these Mermaid blocks to PNG)
 
 Paste any block into GitHub, Notion, or a Mermaid-capable slide tool.
 
@@ -134,3 +137,28 @@ flowchart TB
 ```
 
 Source: [GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/GEMINI_TEMPLE_PPG_AVENUES.md) · landscape §4b.
+
+---
+
+## 8. Patient app working model (Phase 0)
+
+Canonical detail + more diagrams: [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0) · placeholders [FIGURES.md](./FIGURES.md) (`FIG-IOS-006`…`008`).
+
+```mermaid
+flowchart LR
+  Charge[Charge on case] --> Pair[Pair BLE]
+  Pair --> Place[Temple placement]
+  Place --> Stream[Worn-gated 50Hz]
+  Stream --> UI[Dashboard HR SpO2]
+  Stream --> Auto[Auto-record]
+  Auto --> Pack[CSV plus clinical PDF]
+```
+
+```mermaid
+flowchart TB
+  Main[MainTabView]
+  Main --> Dash[Dashboard]
+  Main --> Dev[Devices]
+  Main --> Sh[Share]
+  Main --> Set[Settings]
+```

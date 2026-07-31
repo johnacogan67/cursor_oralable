@@ -8,11 +8,21 @@
 
 ## 1. Funnel (hand diagram)
 
+```mermaid
+flowchart TB
+  US[US pop 331m] --> Occ[Occasional grind ~50 percent]
+  Occ --> Reg[Regular grinders ~12 percent ~40m]
+  Reg --> Mod[Modest ~10 percent]
+  Reg --> Sev[Severe ~5 percent ~16.5m]
+  Sev --> Wear[Intersect wearable owners ~35 percent]
+  Wear --> Beach[Beachhead sketch ~5.8m]
+```
+
 | Layer | Label on sketch | Implied pop. (US) |
 |-------|-----------------|-------------------|
 | Universe | US population **331m** (2022) | 331,000,000 |
 | Occasional grind | **~50%** occasionally | ~165m |
-| Regular grinders | **~12%** grinders *(range noted 8–31%)* | ~40m |
+| Regular grinders | **~12%** grinders *(literature: SB adults ~8–16% Li 2025; ~12.8±3.1% Lobbezoo/BruxScreen cites; awake often higher — see [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md))* | ~40m |
 | Modest | **~10%** modest | ~33m |
 | Severe | **~5%** severe | ~16.5m |
 | Wearable owners | **~35%** have a wearable *(overlaps all rings)* | — |

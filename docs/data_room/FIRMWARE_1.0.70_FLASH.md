@@ -1,5 +1,7 @@
 # Firmware 1.0.70 — flash guide (pcb00003 / REV10)
 
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
 **Build date:** July 2026 · **Target:** Stage A Phase 0 Vitals pilot (**Ed/Pedro ship**) · patient app only
 
 **Includes** 1.0.66 BLE RSSI/reconnect + 1.0.68 remapped battery gauge + **LTC4124 STAT activity** (blink = charging / on_dock).

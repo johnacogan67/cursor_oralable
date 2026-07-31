@@ -6,7 +6,26 @@
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
 **Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
-**Canonical product/BOM map:** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)
+**Canonical product/BOM map:** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · **Figures:** [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+
+![FIG-CO-013 Magnetic case](./figures/FIG-CO-013-magnetic-case.svg)
+
+*Figure FIG-CO-013 — Magnetic charge case (placeholder).*
+
+![FIG-CO-022 Charge to temple](./figures/FIG-CO-022-pilot-charge-to-temple.svg)
+
+*Figure FIG-CO-022 — Charge-to-temple pilot flow (placeholder).*
+
+```mermaid
+flowchart LR
+  Case[Oralable magnetic case] --> App[App 4.3.3]
+  App --> FW[FW 1.0.70 STAT]
+  FW --> Temple[Temple HR SpO2]
+  Temple --> Night[Auto overnight record]
+  Night --> Morning[Share clinical PDF]
+```
+
+App diagrams: [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).
 
 ---
 
