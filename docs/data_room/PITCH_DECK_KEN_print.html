@@ -148,38 +148,35 @@
 
     @page { size: landscape; margin: 10mm; }
     * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    html, body { margin: 0 !important; padding: 0 !important; height: auto !important; }
-    .deck { height: auto !important; overflow: visible !important; }
+    html, body { margin: 0 !important; padding: 0 !important; height: auto !important; background: #fff !important; color: #111 !important; }
+    .deck { height: auto !important; overflow: visible !important; margin: 0 !important; padding: 0 !important; }
     .nav { display: none !important; }
     .slide {
-      display: flex !important;
-      box-sizing: border-box !important;
-      height: 100vh !important;
-      min-height: 100vh !important;
-      max-height: 100vh !important;
-      page-break-after: always;
-      break-after: page;
-      page-break-inside: avoid;
-      overflow: hidden !important;
+      display: flex !important; box-sizing: border-box !important;
+      height: 100vh !important; min-height: 100vh !important; max-height: 100vh !important;
+      page-break-after: always; break-after: page;
+      padding: 24px 32px 40px !important; max-width: none !important;
+      color: #111 !important; overflow: hidden !important;
     }
-    .slide:last-child { page-break-after: auto !important; break-after: auto !important; }
+    .slide:last-child { page-break-after: auto; break-after: auto; }
+    .slide.active { display: flex !important; }
 
-  </style>
+</style>
 </head>
 <body>
   <div class="deck">
-    <section class="slide active title-slide active" data-n="1">
+    <section class="slide title-slide active" data-n="1">
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">JAC Dental Solutions · BalancePoints working session · July 2026</div>
       </div>
 
       <div class="title-hero">
-      <img class="logo-hero" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+      <img class="logo-hero" src="brand/oralable_logo_lockup.png" alt="Oralable" />
       <div class="tagline-hero">Word of Mouth<span class="tm">™</span></div>
       <h1>Oralable</h1>
       <p class="lede">Temple wearable for overnight vitals → jaw-load awareness → later medical device.</p>
@@ -204,7 +201,7 @@
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 2 · Point A</div>
@@ -214,8 +211,8 @@
       <table>
         <tr><th>Dimension</th><th>July 2026</th></tr>
         <tr><td>Entity</td><td>JAC Dental Solutions Limited (Ireland)</td></tr>
-        <tr><td>Product</td><td>Gen1 kits · Phase 0 temple HR/SpO₂ · Ed/Pedro pilot</td></tr>
-        <tr><td>Hardware</td><td>BOM REV8 · PCB REV10 · ES2832AA2 · FW 1.0.70 · magnetic case (not Qi)</td></tr>
+        <tr><td>Product</td><td>Gen1 Research Kits · Phase 0 temple HR/SpO₂ · <strong>gated</strong> · target 5 to Pedro by 31 Aug 2026</td></tr>
+        <tr><td>Hardware</td><td>BOM REV8 · PCB REV10 · ES2832AA2 · FW 1.0.82 · magnetic case (not Qi)</td></tr>
         <tr><td>App</td><td>Patient app only — Oralable for Dentists off</td></tr>
         <tr><td>Claims</td><td>Wellness only — not a medical device</td></tr>
         <tr><td>Cash (17 Jul)</td><td>€1,293 close · ~€63.5k director loans · ~€0 product revenue</td></tr>
@@ -231,7 +228,7 @@
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 3 · Problem</div>
@@ -251,7 +248,7 @@
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 4 · Solution</div>
@@ -275,7 +272,7 @@
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 5 · Positioning</div>
@@ -304,7 +301,7 @@ Jaw / temple ──────────── Oralable (PPG / IR-DC)
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 6 · Product today</div>
@@ -315,7 +312,7 @@ Jaw / temple ──────────── Oralable (PPG / IR-DC)
         <tr><th>Item</th><th>Spec</th></tr>
         <tr><td>Clip</td><td>Gen1 · REV10 · ES2832AA2 (nRF52832)</td></tr>
         <tr><td>Charge</td><td>Oralable magnetic case — not phone Qi</td></tr>
-        <tr><td>Firmware</td><td><strong>1.0.70</strong> pilot ship</td></tr>
+        <tr><td>Firmware</td><td><strong>1.0.82</strong> ship</td></tr>
         <tr><td>Placement</td><td>Temple · manual modes (chrsts auto not validated)</td></tr>
         <tr><td>App</td><td>Oralable patient · TestFlight vitals</td></tr>
         <tr><td>Out of scope</td><td>Dentists app · Protocol B · medical claims</td></tr>
@@ -327,7 +324,7 @@ Jaw / temple ──────────── Oralable (PPG / IR-DC)
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 7 · Strategy</div>
@@ -353,7 +350,7 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 8 · Intellectual property</div>
@@ -376,7 +373,7 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 9 · Go-to-market</div>
@@ -406,7 +403,7 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 10 · Traction</div>
@@ -415,7 +412,7 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
       <h2>Honest status</h2>
       <table>
         <tr><th>Evidence</th><th>Status</th></tr>
-        <tr><td>Gen1 kits + FW 1.0.70</td><td><span class="tag ok">Ready</span></td></tr>
+        <tr><td>Gen1 kits + FW 1.0.82</td><td><span class="tag ok">Ready</span></td></tr>
         <tr><td>Ed/Pedro protocol + quick start</td><td><span class="tag ok">Ready</span> — execution in progress</td></tr>
         <tr><td>Prior lab / temporalis runs</td><td><span class="tag">Partial</span></td></tr>
         <tr><td>App Store MAU / MRR</td><td><span class="tag gap">Gap</span></td></tr>
@@ -429,7 +426,7 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 11 · Technology</div>
@@ -452,7 +449,7 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 12 · Roadmap &amp; eng cash</div>
@@ -473,7 +470,7 @@ Phase 1+ → Phase 0 Ed/Pedro → Gen1 → Gen2</div>
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 13 · Business model</div>
@@ -491,7 +488,7 @@ Cleared device (Stage B)──►  18–36+ months after wearable proof</div>
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 14 · Cash &amp; ask — discuss with Ken</div>
@@ -531,11 +528,11 @@ Cleared device (Stage B)──►  18–36+ months after wearable proof</div>
       </div>
       <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · BalancePoints working session.</div>
     </section>
-    <section class="slide active title-slide" data-n="15">
+    <section class="slide title-slide" data-n="15">
       
       <div class="brand-bar">
         <div class="brand-lockup">
-          <img class="logo" src="file:///Users/johnacogan67/work/cursor_oralable/docs/data_room/brand/oralable_logo_lockup.png" alt="Oralable" />
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
           <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
         </div>
         <div class="slide-meta">Slide 15 · Close</div>
@@ -556,8 +553,31 @@ Cleared device (Stage B)──►  18–36+ months after wearable proof</div>
 
   </div>
 
-  
+  <div class="nav">
+    <button type="button" id="prev">← Prev</button>
+    <span id="indicator">1 / 15</span>
+    <button type="button" id="next">Next →</button>
+  </div>
 
-  
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    let i = 0;
+    function show(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+      document.getElementById('indicator').textContent = (i + 1) + ' / ' + slides.length;
+      history.replaceState(null, '', '#' + (i + 1));
+    }
+    document.getElementById('prev').onclick = () => show(i - 1);
+    document.getElementById('next').onclick = () => show(i + 1);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); show(i + 1); }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+      if (e.key === 'Home') show(0);
+      if (e.key === 'End') show(slides.length - 1);
+    });
+    const hash = parseInt(location.hash.slice(1), 10);
+    show(Number.isFinite(hash) && hash >= 1 ? hash - 1 : 0);
+  </script>
 </body>
 </html>

@@ -24,7 +24,7 @@ Temple wearable for overnight vitals → jaw-load awareness → (later) medical 
 **Stage A now:** patent-implementing **wellness wearable**  
 **Stage B later:** **medical device** pathway (not claimed today)
 
-Speaker: One sentence — we ship a working wearable that embodies a new US patent filing first; clearance is a later gate.
+Speaker: One sentence — we ship a working wearable that matches a new US patent filing first; clearance is a later gate.
 
 ---
 
@@ -33,8 +33,8 @@ Speaker: One sentence — we ship a working wearable that embodies a new US pate
 | Dimension | Point A (July 2026) |
 |-----------|---------------------|
 | **Legal entity** | **JAC DENTAL SOLUTIONS LIMITED** (Ireland) |
-| **Product** | Gen1 Phase 0 (temple HR/SpO₂) — kits **built**, **gated** (not yet shipped); charge-to-temple SOC ≥50% |
-| **Hardware** | BOM **REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.70** · Oralable magnetic case (**not Qi**) |
+| **Product** | Gen1 Phase 0 (temple HR/SpO₂) — **Research Kits built, gated** (not yet shipped); target **5 to Pedro by 31 Aug 2026**; charge-to-temple SOC ≥50% |
+| **Hardware** | BOM **REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.82** · Oralable magnetic case (**not Qi**) |
 | **App** | **Patient app only** for this iteration — Oralable for Dentists **off** |
 | **Claims** | Wellness only — **not** a medical device |
 | **IP** | **EP 4 333 691 B1** granted · **IE/UK** validating · **UP** due 8 Aug · US RCE · provisional **64/033,978** — [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · [IP_EVAL_AND_LANDSCAPE.md](./IP_EVAL_AND_LANDSCAPE.md) |
@@ -46,19 +46,19 @@ Speaker: One sentence — we ship a working wearable that embodies a new US pate
 | **Gen1 / Gen2 sample COGS** | Gen1 Kaga ~€3.9k · Gen2 Kaga **€3,735** · Bittele ~$3.46k — see COGS docs |
 | **Still GAP for Ken** | F&F **valuation/terms** · CLN terms · use-of-funds · runway monthlies · Voice · volume EMS |
 
-Speaker: Investors form Point A whether we write it or not. This is the honest version.
+Speaker: Investors form Point A whether we write it down or not. This is the honest version.
 
 ---
 
 ## Slide 3 — Problem
 
-Sleep bruxism (clench / grind) damages teeth, drives jaw pain, and correlates with overnight oxygen burden — but:
+Sleep bruxism (clench / grind) damages teeth, causes jaw pain, and ties to overnight oxygen burden — but:
 
 - **Rings / watches** measure general wellness at finger/wrist — wrong site for jaw load  
 - **Clinic EMG** is accurate but episodic, expensive, not overnight consumer  
 - **Patients and dentists** lack a continuous, at-home optical + motion record of jaw hemodynamics
 
-Speaker: Condition-specific problem at an unusual anatomical site — not “another sleep tracker.”
+Speaker: A condition-specific problem at an unusual site — not “another sleep tracker.”
 
 ---
 
@@ -73,7 +73,7 @@ Speaker: Condition-specific problem at an unusual anatomical site — not “ano
 
 **Physics:** PPG + IR-DC hemodynamic occlusion + jaw accelerometry — **not** sEMG, **not** a ring.
 
-Speaker: Phase 0 proves the substrate; Phase 1+ is the invention story in software on the same Gen1 hardware.
+Speaker: Phase 0 proves the substrate; Phase 1+ puts the invention in software on the same Gen1 hardware.
 
 ---
 
@@ -82,19 +82,19 @@ Speaker: Phase 0 proves the substrate; Phase 1+ is the invention story in softwa
 ```
 General wellness          Condition-specific
         │                         │
-Finger/wrist ── Oura, WHOOP, rings
+Finger/wrist ── Oura, WHOOP, Happy Ring (hAHI)
         │                         │
 Jaw / temple ──────────── Oralable (PPG / IR-DC)
                           ANR / Cometa (EMG clinic)
 ```
 
-- **Orthogonal to rings** — same sensor classes, different physics problem  
+- **Orthogonal to rings** — same sensor classes, different physics  
 - **Adjacent to dental / sleep** — consumer form factor, open 50 Hz pipeline (Swift + Python)  
 - **Two-sided design** — patient app first; dentist share **after** Phase 1+ rollups (not Ed/Pedro)
 
 **US market sketch (founder worksheet):** ~**4.1M** custom nightguard users → ~**1.4M** wearable-adopting “smart nightguard” prospects — [MARKET_SIZING.md](./MARKET_SIZING.md). Phase 0 does **not** claim that SOM yet.
 
-Speaker: Do not sell Phase 0 as “bruxism solved.” Sell reliability of temple vitals, then embodiment.
+Speaker: Do not sell Phase 0 as “bruxism solved.” Sell reliable temple vitals, then embodiment.
 
 ---
 
@@ -104,7 +104,7 @@ Speaker: Do not sell Phase 0 as “bruxism solved.” Sell reliability of temple
 |------|------|
 | Clip | Gen1 · REV10 · ES2832AA2 (nRF52832) |
 | Charge | **Oralable magnetic case** (LTC4124 / LTC6990) — not phone Qi |
-| Firmware | **1.0.70** pilot stack (STAT blink = charging) |
+| Firmware | **1.0.82** (sense-on-BLE · IR-pulse worn · STAT blink = charging) |
 | Placement | **Temple** · Automatic dock on 1.0.70+ (manual modes still available) |
 | App | Oralable patient **4.3.3** · TestFlight vitals phase |
 | Out of scope | Oralable for Dentists · Protocol B muscle · medical claims |
@@ -173,8 +173,8 @@ Geography: Ireland / UK first → EU → US; Android still **GAP**.
 
 | Evidence | Status |
 |----------|--------|
-| Gen1 kits + FW 1.0.70 + app 4.3.3 | **Stack ready** (flash + TestFlight) — **not delivered** to Ed/Pedro yet |
-| Ship gate (charge → worn vitals) | **In progress** — STAT status fixed in 1.0.70; closing energy/coupling on case |
+| Gen1 kits + FW 1.0.82 + app 4.3.3 | **Stack ready** (flash + TestFlight) — **not delivered** to Ed/Pedro yet |
+| Ship gate (charge → worn vitals) | **In progress** — STAT from 1.0.70; 1.0.82 IR-pulse worn; closing energy/coupling on case |
 | Ed/Pedro Phase 0 protocol + quick start | **Docs ready** — handoff after ship gate |
 | Prior lab / temporalis validation runs | **Partial** (science; not consumer MAU) |
 | App Store live MAU / MRR | **GAP** |
@@ -196,7 +196,7 @@ Speaker: Ready ≠ delivered. Traction after Ed/Pedro sessions = first customer-
 | Science | Python gold standard · `cursor_oralable` · clinical protocols |
 | Gen2 (parallel) | nRF54L15 · BOM REV9 / REV11 · ~30 mAh · FW 2.0.x scaffold |
 
-Open pipeline (phone-side) vs black-box ring — strength for IP embodiment and Stage B evidence.
+Open pipeline (phone-side) vs a closed ring — helps IP embodiment and Stage B evidence.
 
 ---
 
@@ -209,8 +209,8 @@ Open pipeline (phone-side) vs black-box ring — strength for IP embodiment and 
 | **2026–2027** | Gen2 bring-up (parallel) | Stage A+Gen2 ~350–450k |
 | **H2 2027 – 2028** | Stage B 510(k) / CE exploration | Through Stage B ~0.8–1.0M |
 
-**Spend now:** pilot, Phase 1+ patient app, patent file, Gen2 EVT only if it unblocks Stage A quality.  
-**Defer:** dentist app activation, full ISO audit, volume EMS PO before COGS known.
+**Spend now:** pilot, Phase 1+ patient app, patent file, Gen2 EVT only when it helps Stage A quality.  
+**Defer:** dentist app launch, full ISO audit, volume EMS PO before COGS is known.
 
 *Ranges = order-of-magnitude planning — replace with EMS / Peacock / CRO / accountant quotes.*
 
@@ -226,7 +226,7 @@ Cleared device (Stage B)──►  18–36+ months after wearable proof
 ```
 
 **Risk if we sell too early:** marketing “bruxism” while shipping temple SpO₂ only.  
-**Policy:** Ed/Pedro = patient evidence only — no professional IAP theatre.
+**Policy:** Ed/Pedro = patient evidence only — no professional IAP show before Phase 1+.
 
 ---
 
@@ -255,8 +255,8 @@ Cleared device (Stage B)──►  18–36+ months after wearable proof
 **Point A:** Working Gen1 temple wearable in pilot; wellness-only; patent path live; **cash thin and founder-loan funded**.  
 **Point B:** Soft-launch Stage A embodiment → Gen2 nights → Stage B medical when evidence allows — **needs capital beyond director loans**.  
 
-We are not claiming to be a medical device today.  
-We are building the wearable that makes that path real.
+We do not claim to be a medical device today.  
+We are building the wearable that makes that path possible.
 
 ---
 

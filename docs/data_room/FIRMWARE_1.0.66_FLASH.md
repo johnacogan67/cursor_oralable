@@ -1,10 +1,10 @@
 # Firmware 1.0.66 — flash guide (pcb00003 / REV10)
 
-**Build date:** July 2026 · **Role:** **Rollback only** (current ship = **1.0.70**) · Ed/Pedro = **patient app only**
+**Build date:** July 2026 · **Role:** **Rollback only** (current ship = **1.0.82**) · Ed/Pedro = **patient app only**
 
-Includes **1.0.65** energy/LED/charge fixes **plus** BLE RSSI + reconnect improvements.
+Includes **1.0.65** energy, LED, and charge fixes **plus** BLE RSSI and reconnect improvements.
 
-> **Superseded for Ed/Pedro ship (2026-07-22):** flash **[1.0.70](./FIRMWARE_1.0.70_FLASH.md)** (STAT blink = charging). Keep 1.0.66 binaries below for rollback only.
+> **Superseded:** flash **[1.0.82](./FIRMWARE_1.0.82_FLASH.md)**. Prior ship [1.0.70](./FIRMWARE_1.0.70_FLASH.md). Keep 1.0.66 binaries for recovery only.
 
 ---
 
@@ -57,4 +57,4 @@ Verify GATT **`3A0FF006`** → **`1.0.66-nrfconnect`**
 
 - [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md)
 - [FIRMWARE_1.0.65_FLASH.md](./FIRMWARE_1.0.65_FLASH.md) (prior release notes)
-- [GEN1_GEN2_TRACKING.md](../GEN1_GEN2_TRACKING.md) · current ship: [FIRMWARE_1.0.70_FLASH.md](./FIRMWARE_1.0.70_FLASH.md)
+- [GEN1_GEN2_TRACKING.md](../GEN1_GEN2_TRACKING.md) · current ship: [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md)

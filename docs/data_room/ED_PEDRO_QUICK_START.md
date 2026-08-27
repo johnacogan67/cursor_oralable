@@ -1,10 +1,11 @@
 # Oralable — Ed & Pedro quick start (Phase 0 Vitals)
 
-**One page · 31 Jul 2026 · Heart rate + SpO₂ on temple (extraoral · temporalis)**
+**One page · 7 Aug 2026 · Heart rate + SpO₂ on temple (extraoral · temporalis)**  
+**Kit program:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) — first worn session on every kit is this vitals path · status [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md)
 
 **Partners:** [Dr Edward Owens](https://beaconconsultantssleephealthclinic.ie/team-member/dr-edward-owens/) · [Dr Pedro Mayoral Sanz](https://beaconconsultantssleephealthclinic.ie/team-member/dr-pedro/) — Beacon Consultants Sleep Health Clinic  
-Full test plan: [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · Flash: [FIRMWARE_1.0.70_FLASH.md](./FIRMWARE_1.0.70_FLASH.md) · Hardware: [VITALS_PHASE_GEN1_GEN2.md](../VITALS_PHASE_GEN1_GEN2.md) · Cost/timeline: [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md)  
-IEEE / McGill track (separate): [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · **Figures:** [../FIGURES.md](../FIGURES.md) · **App working diagrams:** [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+Full test plan: [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · Flash: [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md) · Hardware: [VITALS_PHASE_GEN1_GEN2.md](../VITALS_PHASE_GEN1_GEN2.md) · Cost/timeline: [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md)  
+IEEE / McGill track: [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · **Figures:** [../FIGURES.md](../FIGURES.md) · **App working diagrams:** [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Support:** John Cogan (JAC / Oralable)
 
@@ -12,9 +13,9 @@ IEEE / McGill track (separate): [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL
 
 *Figure FIG-CO-003 — Temporalis clip placement (placeholder).*
 
-![FIG-CO-016 Kit contents](../figures/FIG-CO-016-ed-pedro-kit-contents.svg)
+![FIG-CO-016 Research Kit flat-lay](../figures/FIG-CO-016-research-kit-flatlay.png)
 
-*Figure FIG-CO-016 — Ed/Pedro kit contents (placeholder).*
+*Figure FIG-CO-016 — Research Kit flat-lay (draft photo). Full photo guide: [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md).*
 
 ![FIG-CO-022 Charge to temple](../figures/FIG-CO-022-pilot-charge-to-temple.svg)
 
@@ -37,19 +38,19 @@ Full app diagrams: [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE
 
 ---
 
-## Pilot ship status (as at 24 Jul 2026)
+## Pilot ship status (as at 7 Aug 2026)
 
 | Item | Status |
 |------|--------|
-| **Kits with Ed/Pedro** | **Not yet shipped** |
-| **Build / flash / app** | Gen1 kits + FW **1.0.70** + patient app **4.3.3** — **ready to hand off** once gate clears |
+| **Research Kits with Ed/Pedro** | **Not yet shipped** — target **5 by 31 Aug 2026** ([ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md)) |
+| **Build / flash / app** | Gen1 kits + FW **1.0.82** + patient app **4.3.3** — **ready to hand off** once gate clears |
 | **Ship gate** | Charge on **Oralable case** to a **temple-ready SOC** (target **≥50%** remapped gauge) and hold a short worn **HR + SpO₂** session without brownout |
-| **Charge status (firmware)** | **1.0.70** STAT blink = charging / on_dock — software status path closed; do **not** say “chrsts broken on REV10” |
+| **Charge status (firmware)** | **1.0.82** STAT blink = charging / on_dock; IR-pulse worn; sensors follow BLE. Do **not** say “chrsts broken on REV10” |
 | **Still closing** | Energy / case coupling so the cell **actually rises** to the worn-session floor (hardware + validation, not a missing app) |
 | **After Phase 0 gates** | Reinstate **muscle / occlusion** metrics for patent embodiment; **professional app** later |
 | **Gen2 (parallel)** | Larger cell, re-verified STAT/dock, better SOC / status LED path — removes this class of issue longer term; **not** on these pilot kits |
 
-**One-liner for partners:** *Ready ≠ delivered — two kits ship when charge-to-temple is proven under 1.0.70.*
+**One-liner for partners:** *Ready ≠ delivered — **5 Research Kits** to Pedro by **31 Aug 2026** after charge-to-temple is proven under 1.0.82 on each unit ([ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md)).*
 
 ---
 
@@ -57,35 +58,38 @@ Full app diagrams: [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE
 
 | Item | Version / note |
 |------|----------------|
-| **Firmware** | **1.0.70** ([flash guide](./FIRMWARE_1.0.70_FLASH.md)) — LTC4124 STAT blink = charging |
-| **iOS app** | **Oralable 4.3.3** (TestFlight) — vitals phase; recommends FW **1.0.70**; hard min **1.0.63** |
+| **Firmware** | **1.0.82** ([flash / OTA](./FIRMWARE_1.0.82_FLASH.md)) — sense-on-BLE · IR-pulse worn · STAT blink = charging |
+| **iOS app** | **Oralable 4.3.3** (TestFlight) — vitals phase; recommends FW **1.0.82**; hard min **1.0.63** |
 | **Hardware** | Gen1 · BOM **REV8** · PCB **REV10** · Kaga **ES2832AA2** · Oralable magnetic case (**not Qi / MagSafe**) |
 
 ---
 
 ## What changed (vs Protocol B / older kits)
 
-| Before | Now (Phase 0 · 1.0.70) |
+| Before | Now (Phase 0 · 1.0.82) |
 |--------|-------------------------|
 | Cheek + muscle / Protocol B | **Temple** + **HR / SpO₂ only** |
 | Fit calibration required | **No user calibration** |
-| “chrsts broken” / forced manual only | **STAT blink = on case**; **Automatic OK** on 1.0.70 |
-| Green LED on charger | **Red flash** while charging; **solid red** on charge taper |
+| “chrsts broken” / forced manual only | **STAT blink = on case**; **Automatic OK** on 1.0.70+ |
+| Green LED on charger | Flash **green** / **solid green** on taper — never red (1.0.82) |
 | MagSafe / Qi pads | **Oralable case + USB-C only** |
 | Battery % as fuel gauge | **Rough voltage estimate** (0% ≈ 3.61 V, 100% = 4.35 V) |
 
-**Legacy kits on 1.0.66:** still work with the new app using **manual** placement. Prefer flash to **1.0.70** before Day 1.
+**Legacy kits on 1.0.66 / 1.0.70:** still work with the new app using **manual** or Automatic (1.0.70+). Prefer OTA to **1.0.82** before Day 1.
 
 ---
 
 ## What’s in the kit
 
+**Full program BOM:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) (Oralable MAM + ANR M40 + iOS + Dual A cue card). On day 1, every kit runs Phase 0 vitals below.
+
 | Item | Notes |
 |------|--------|
-| Oralable REV10 clip | Flash **1.0.70** before handoff ([`firmware/oralable_1.0.70_pcb00003_merged.hex`](./firmware/oralable_1.0.70_pcb00003_merged.hex)) |
+| Oralable REV10 clip | Flash **1.0.82** before handoff ([`firmware/oralable_1.0.82_pcb00003_merged.hex`](./firmware/oralable_1.0.82_pcb00003_merged.hex) or [OTA zip](./firmware/oralable_1.0.82_pcb00003_dfu_application.zip)) |
 | **Oralable magnetic charging case** | USB-C — matched LTC6990 TX for this clip |
-| iPhone + **Oralable** (patient) app | TestFlight **4.3.3+** (FW **1.0.70** aligned) · vitals · Automatic · Device LED |
-| This sheet | Keep with the clip |
+| **ANR M40** (Research Kit) | Temporalis sEMG — Dual Protocol A on Mac; see Research Kit doc |
+| iPhone + **Oralable** (patient) app | TestFlight **4.3.3+** (FW **1.0.82** aligned) · vitals · Automatic · Device LED · 1–6 h+ feasibility arms |
+| This sheet + Dual A cue card | Keep with the clip |
 
 **Out of scope:** **Oralable for Dentists**, CloudKit share-to-dentist, practice IAP. Export CSV / session logs from the patient app only.
 
@@ -101,12 +105,12 @@ Full app diagrams: [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE
 
 **Setup / Settings → Device placement** (applied on each BLE connect):
 
-| Mode | When to use | LED (1.0.70) |
-|------|-------------|--------------|
-| **Automatic** | Preferred on **1.0.70** + Oralable case | Red flash while charging; solid on taper |
-| **On wireless charger** | Force “on case” if Automatic unclear | Same red policy |
-| **Off charger (not worn)** | Table / off case | Green flash / solid |
-| **Worn on temple** | Vitals session | Status LEDs off; PPG sensing |
+| Mode | When to use | LED |
+|------|-------------|-----|
+| **Automatic** | Preferred on **1.0.70+** + Oralable case | **≥1.0.72:** flash/solid **green**. 1.0.70: red flash / solid red on taper |
+| **On wireless charger** | Force “on case” if Automatic unclear | Same as Automatic |
+| **Off charger (not worn)** | Table / off case | Status dark (FW ≥ 1.0.72) |
+| **Worn on temple** | Vitals session | Status LEDs off; PPG red/IR is sensing, not status |
 
 **Rules:**
 
@@ -114,15 +118,15 @@ Full app diagrams: [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE
 2. **Never** change placement while connected — disconnect first.
 3. Use **Oralable case + USB-C** only — not MagSafe/Qi.
 
-**App mirror:** Dashboard **Device LED** + **Dock / Charging / Taper** chips. Physical LED is dim by design.
+**App mirror:** Dashboard **Device LED** plus **Dock / Charging / Taper** chips. The physical LED is dim on purpose.
 
 ---
 
 ## Day 1 — Charge on case (3 steps)
 
 1. Seat clip on **Oralable magnetic case** (USB-C) → placement **Automatic** (or **On wireless charger**) → **Connect**. Confirm FW reads **1.0.70** if shown.
-2. Confirm **red flash** (or app Charging + flash Device LED). Leave **30–60 min** (phone within ~30 cm).
-3. When battery **≥50%**, ready for temple. % may step — watch the **trend**. After long charge, LED may go **solid red** (taper) while still on the case — that is expected, not “broken full at 4.2 V.”
+2. Confirm **green flash** on FW ≥ 1.0.72 (1.0.70 kits: red flash), or app Charging + flash Device LED. Leave **30–60 min** (phone within ~30 cm).
+3. When battery **≥50%**, ready for temple. % may step — watch the **trend**. After long charge, LED may go **solid green** (taper, FW ≥ 1.0.72; 1.0.70: solid red) while still on the case — that is expected, not “broken full at 4.2 V.” Never treat red as a status colour on current FW.
 
 Re-open the app later: it should **auto-reconnect**. One attempt; wait ~20 s.
 
@@ -192,6 +196,6 @@ Ed and Pedro each complete:
 - [ ] 1× CSV export per session
 
 Protocol B / overnight muscle study **deferred** until vitals stable.  
-When overnight muscle evaluation starts: **≥ 6 h** worn (goal **8 h**). Review **state hypnogram first** in the **patient app** (Dashboard morning card + Share preview — adapts [FIG-CO-025](../figures/FIG-CO-025-state-hypnogram-exemplar.png)) and/or Share → Clinical Temporalis PDF + Mac `generate_overnight_night_report.py`. Bands Low/Moderate/High per [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md).
+When overnight muscle evaluation starts: **≥ 6 h** worn (goal **8 h**). Review the **state hypnogram first** in the **patient app** (Dashboard morning card + Share preview — adapts [FIG-CO-025](../figures/FIG-CO-025-state-hypnogram-exemplar.png); **that asset is a ~6 min layout exemplar**, not an overnight). Or use Share → Clinical Temporalis PDF + Mac `generate_overnight_night_report.py`. Bands Low/Moderate/High per [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md).
 
 **Sign-off:** [VITALS_PILOT_TEST_PLAN.md § Sign-off](./VITALS_PILOT_TEST_PLAN.md#sign-off)

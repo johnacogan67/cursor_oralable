@@ -2,17 +2,17 @@
 
 **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-**Firmware:** **1.0.70** (hard min 1.0.63; kits must ship **1.0.70**) · **Board:** pcb00003 · **Ground truth:** nRF Connect logs + app nRF-style CSV export  
-**iOS:** TestFlight Oralable **4.3.3+** — recommend FW **1.0.70**, Automatic dock, Device LED STAT mirror
+**Firmware:** **1.0.82** (hard min 1.0.63; kits must ship **1.0.82**) · **Board:** pcb00003 · **Ground truth:** nRF Connect logs + app nRF-style CSV export  
+**iOS:** TestFlight Oralable **4.3.3+** — recommend FW **1.0.82**, Automatic dock, Device LED STAT mirror
 
-Flash files: [FIRMWARE_1.0.70_FLASH.md](./FIRMWARE_1.0.70_FLASH.md)
+Flash files: [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md)
 
-**Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
+**Strategy stack:** Stage A wellness wearable first; Stage B medical later. New US patent embodiment. Ed/Pedro use the patient app only.  
 **Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 ```mermaid
 flowchart LR
-  Flash[Flash 1.0.70] --> Case[Case charge STAT]
+  Flash[Flash 1.0.82] --> Case[Case charge STAT]
   Case --> App[App 4.3.3 pair]
   App --> Temple[Temple stream]
   Temple --> Gates[HR SpO2 quality gates]
@@ -24,14 +24,14 @@ flowchart LR
 
 | # | Step | Pass |
 |---|------|------|
-| A1 | Flash `merged.hex` **1.0.70**, verify `006` reads **1.0.70** | ☐ |
-| A2 | Off pad: green flash (dim asymmetric pulse) or solid if truly full | ☐ |
-| A3 | On **Oralable case** (Automatic or mode 1): red **flash** + `charge_active=1` | ☐ |
-| A4 | Stay on case until STAT taper: solid red, `on_dock=1`, `charge_active=0` | ☐ |
+| A1 | Flash `merged.hex` **1.0.82** (or OTA zip), verify `006` reads **1.0.82** | ☐ |
+| A2 | Off pad, no BLE: **dark** | ☐ |
+| A3 | On **Oralable case** (Automatic or mode 1): **green flash** + `charge_active=1` | ☐ |
+| A4 | Stay on case until STAT taper: **solid green**, `on_dock=1`, `charge_active=0` | ☐ |
 | A5 | Connect probe: **no** dim green for 10 s after BLE connect | ☐ |
 | A6 | Mode 3 worn: PPG/ACC notify @ ~50 Hz in nRF Connect | ☐ |
 | A7 | Disconnect → Oralable reappears in scan within 15 s | ☐ |
-| A8 | TestFlight: gate accepts 1.0.63+; recommends 1.0.70; **Automatic** + Device LED mirror | ☐ |
+| A8 | TestFlight: gate accepts 1.0.63+; recommends 1.0.82; **Automatic** + Device LED mirror | ☐ |
 
 ---
 
@@ -39,16 +39,16 @@ flowchart LR
 
 **Setup:** Subscribe **`3A0FF004`** (battery), **`3A0FF009`** (status). Optional: PPG/ACC for rate check.
 
-### B1 — Charger LED matrix (STAT activity · 1.0.70)
+### B1 — Charger LED matrix (STAT activity · 1.0.82)
 
 1. App placement → **Automatic** (or **On wireless charger**)
 2. Place on **Oralable magnetic charging case** 60 s
 3. Record: LED colour, status bytes `[on_dock, worn, state, bat%, charge_active]`
 
-| Expect (1.0.70) | LED | byte0 `on_dock` | byte4 `charge_active` | Notes |
+| Expect (1.0.82) | LED | byte0 `on_dock` | byte4 `charge_active` | Notes |
 |-----------------|-----|-----------------|------------------------|-------|
-| Charging (STAT blink) | Red flash | **1** | **1** | Prefer Oralable case only |
-| Charge taper (STAT steady) | Solid red | **1** | **0** | Not necessarily 4.2 V full |
+| Charging (STAT blink) | Flash green | **1** | **1** | Prefer Oralable case only |
+| Charge taper (STAT steady) | Solid green | **1** | **0** | Not necessarily 4.2 V full |
 | mV on pad | — | — | — | May read high — rough % only |
 
 ### B2 — Bench LED matrix
@@ -58,7 +58,7 @@ flowchart LR
 
 | Expect | LED |
 |--------|-----|
-| Green flash (or solid if Vmax) | ✓ |
+| Off pad, no BLE | Dark (no status LED) |
 
 ### B3 — Worn streaming
 
@@ -132,7 +132,7 @@ For 60 s worn session, export both:
 
 ## D. Ed / Pedro field protocol (simple)
 
-Each tester (3 sessions minimum):
+Each tester runs three sessions minimum:
 
 | Session | Duration | Placement | Record |
 |---------|----------|-----------|--------|
@@ -150,7 +150,7 @@ Each tester (3 sessions minimum):
 
 | Failure | First action |
 |---------|--------------|
-| Wrong LED colour | Confirm FW **1.0.70** + placement; STAT flash≠taper; use app **Device LED** mirror |
+| Wrong LED colour | Confirm FW **1.0.82** + placement; STAT flash≠taper; use app **Device LED** mirror |
 | No scan | J-Link `--reset`; unplug during RF test |
 | CBError 6 @ low battery | Charge on **Oralable case** (mode 1) |
 | CBError 6 @ good battery | RSSI / distance; retry closer |

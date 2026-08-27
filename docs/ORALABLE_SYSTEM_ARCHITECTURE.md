@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|--------|
 | Last updated | 2026-07-26 |
-| Firmware baseline | pcb00003, nRF52832, TGM GATT `3A0FF000` — **pilot ship 1.0.70** (STAT blink = charging) · see [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
-| iOS | App **4.3.3** · `FirmwareGate` min **1.0.63** · recommend **1.0.70** |
+| Firmware baseline | pcb00003, nRF52832, TGM GATT `3A0FF000` — **pilot ship 1.0.82** (IR-pulse worn · STAT blink = charging) · see [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
+| iOS | App **4.3.3** · `FirmwareGate` min **1.0.63** · recommend **1.0.82** |
 | Python sampling standard | 50 Hz (20 ms), PPG R/G/IR + ACC — **Phase 0:** temple vitals; **Phase 1+:** cheek/temple IR-DC |
 | Primary repos | `oralable_nrf`, `oralable_swift`, `OralableCore`, `cursor_oralable` |
 | Figures | [FIGURES.md](./FIGURES.md) · Mermaid hub [ORALABLE_SYSTEM_MAP_DIAGRAMS.md](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md) |
@@ -130,7 +130,7 @@ When **H-08** wiring is re-verified on bench, update byte0 semantics in §9 and 
 | **BROKEN** | Fails acceptance test on latest build |
 | **BLOCKED** | Depends on unresolved registry row (e.g. H-08) |
 
-**Current firmware reference for this matrix:** pilot ship **1.0.70** ([VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md); [FIRMWARE_1.0.70_FLASH.md](./data_room/FIRMWARE_1.0.70_FLASH.md)).
+**Current firmware reference for this matrix:** pilot ship **1.0.82** ([VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md); [FIRMWARE_1.0.82_FLASH.md](./data_room/FIRMWARE_1.0.82_FLASH.md)). Historical 1.0.70 rows stay below.
 
 ### 3.1 Platform & BLE contract
 
@@ -402,7 +402,7 @@ Aligned with Nordic Academy / Apple CoreBluetooth: **one CCC write at a time**, 
 
 1. Discover services / characteristics (full TGM tree).
 2. Read `3A0FF005` (device ID).
-3. Read `3A0FF006` (firmware) → `FirmwareGate` blocks &lt; **1.0.63** (recommend **1.0.70**).
+3. Read `3A0FF006` (firmware) → `FirmwareGate` blocks &lt; **1.0.63** (recommend **1.0.82**).
 4. Apply manual placement (`00B` 0x09) before streaming CCCs.
 5. Enable battery notify (`004`) — **await CCC confirm**.
 6. **Staggered CCC** (`enableNRFAlignedStreamingNotifications`), each step awaited:

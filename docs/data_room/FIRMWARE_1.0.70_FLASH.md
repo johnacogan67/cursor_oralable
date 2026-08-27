@@ -2,11 +2,13 @@
 
 **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-**Build date:** July 2026 · **Target:** Stage A Phase 0 Vitals pilot (**Ed/Pedro ship**) · patient app only
+**Build date:** July 2026 · **Role:** **Rollback** (current ship = **1.0.82**) · patient app only
+
+> **Superseded for Ed/Pedro ship (2026-08-27):** flash **[1.0.82](./FIRMWARE_1.0.82_FLASH.md)** (sense-on-BLE, 5% floor, IR-pulse worn). Keep 1.0.70 binaries below for rollback.
 
 **Includes** 1.0.66 BLE RSSI/reconnect + 1.0.68 remapped battery gauge + **LTC4124 STAT activity** (blink = charging / on_dock).
 
-> REV10 CHRSTS hardware is **OK**. Pre-1.0.70 firmware required a *stable* GPIO level, so STAT blink never latched → false “chrsts broken.” **1.0.70** treats blink as charging, steady assert as charge taper, steady inactive as undock.
+> REV10 CHRSTS hardware is **OK**. Pre-1.0.70 firmware needed a *stable* GPIO level, so STAT blink never latched — false “chrsts broken.” **1.0.70** treats blink as charging, steady assert as charge taper, steady inactive as undock.
 
 ---
 

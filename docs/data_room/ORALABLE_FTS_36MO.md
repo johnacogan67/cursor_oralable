@@ -13,16 +13,16 @@
 
 ## 1. Purpose and scope
 
-This specification defines the **Oralable MAM platform** for investors and technical diligence:
+This spec describes the **Oralable MAM platform** for investors and technical diligence:
 
-- **Hardware** — PCB00003 clip + Oralable magnetic case; **Gen1** (BOM REV8 / REV10 / ES2832AA2) **ship-ready / kits gated**; **Gen2** (BOM REV9 / REV11 / ES4L15BA1) upcoming
-- **Firmware** — nRF Connect SDK, TGM GATT, worn-gated streaming; pilot ship **1.0.70**
+- **Hardware** — PCB00003 clip + Oralable magnetic case; **Gen1** (BOM REV8 / REV10 / ES2832AA2) **ship-ready / Research Kits gated** (5 → Pedro by 31 Aug 2026); **Gen2** (BOM REV9 / REV11 / ES4L15BA1) upcoming
+- **Firmware** — nRF Connect SDK, TGM GATT, BLE-gated streaming; pilot ship **1.0.82**
 - **Mobile** — iOS consumer + professional apps; Android roadmap — working diagrams [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 - **Algorithms** — Phase 0 temple vitals (HR/SpO₂); Phase 1+ IR-DC occlusion, TFI/SASHB, jaw actigraphy
 - **Data** — local recording, export, optional CloudKit share to dentists
 - **Clinical path** — wellness Phase 0 → Phase 1+ muscle evidence → 510(k) monitoring indication
 
-**Out of scope:** Corporate financials, legal IP assignments, manufacturing contracts (referenced but not reproduced here).
+**Out of scope:** Company financials, legal IP assignments, manufacturing contracts (referenced, not copied here).
 
 ```mermaid
 flowchart LR
@@ -38,7 +38,7 @@ flowchart LR
 
 | Tier | Timeframe | Intended use (draft) |
 |------|-----------|----------------------|
-| **Phase 0 Vitals (stack ready / kits gated)** | Now – Sep 2026 | Temple HR & SpO₂ awareness on Gen1; honest device state. **Not** a diagnosis. |
+| **Phase 0 Vitals (stack ready / Research Kits gated)** | Now – Sep 2026 | Temple HR & SpO₂ on Gen1; Research Kit Dual A optional for Paper A; honest device state. **Not** a diagnosis. |
 | **Phase 1+ Muscle (Gen1 software)** | Q4 2026 – Q1 2027 | Personal awareness of jaw load / bruxism phenotypes (IR-DC, TFI); ≥6 h overnight eval; optional share with dental care provider. |
 | **Clinical investigation** | 6–18 mo | Structured Protocol B under Ed/Pedro after Phase 0 gates; EMG cross-validation (ANR M40). |
 | **Cleared device (target)** | 18–36 mo | Monitor and record nocturnal jaw muscle activity consistent with sleep bruxism (510(k) / CE Class IIa path). |
@@ -72,7 +72,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 
 ## 4. Hardware
 
-### 4.1 Current (pcb00003, ship-ready / kits gated)
+### 4.1 Current (pcb00003, ship-ready / Research Kits gated)
 
 | Item | Specification |
 |------|----------------|
@@ -87,7 +87,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 | BLE | TGM custom GATT `3A0FF000` + SMP OTA |
 | Mounting (Phase 0) | **Temple / temporalis** (HR & SpO₂) |
 | Mounting (Phase 1+) | Cheek / masseter or temporalis for IR-DC / bruxism phenotypes |
-| Firmware (pilot ship) | **1.0.70** (iOS `FirmwareGate` min **1.0.63** / recommend **1.0.70**) · Gen2 **2.0.x** |
+| Firmware (pilot ship) | **1.0.82** (iOS `FirmwareGate` min **1.0.63** / recommend **1.0.82**) · Gen2 **2.0.x** |
 
 ### 4.2 36-month hardware roadmap
 
@@ -186,7 +186,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 | Accelerometer | Median filter, jaw vibration | Phasic grinding, sync taps |
 | Red/IR | SpO₂ path | SASHB / desat context |
 
-**Bruxism logic:** IR-DC trough depth cross-verified with ACC; TFI hourly; rescue events vs SpO₂ desaturation.
+**Bruxism logic:** IR-DC trough depth checked against ACC; TFI hourly; rescue events vs SpO₂ desaturation.
 
 **Validation:** `cursor_oralable` — `self_validate.py`, `validation_dashboard`, protocol phases (Ed/Pedro).  
 **Swift parity:** `OralableCore` algorithms + `UnifiedBiometricProcessor`.
@@ -265,13 +265,13 @@ Aligns with [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [PRODUCT_ROADMAP.m
 
 | Quarter | Deliverable |
 |---------|-------------|
-| **Q3 2026** | **Stage A Phase 0:** Ed/Pedro temple vitals (patient app only); Gen1 FW 1.0.70; data room |
+| **Q3 2026** | **Stage A Phase 0:** Ed/Pedro temple vitals (patient app only); Gen1 FW 1.0.82; data room |
 | **Q4 2026** | **Stage A Phase 1+ start:** TFI/SASHB/IR-DC in patient app; US patent filing push; Gen2 kickoff |
 | **H1 2027** | Phase 1+ embodiment soft-launch; Gen2 EVT / vitals parity; optional consumer Premium |
 | **H2 2027** | Gen2 pilot parity; **Stage B** pre-sub / clinical package start (if funded) |
 | **2028** | Stage B 510(k) / CE MDR exploration; scale manufacturing; professional app clinical role |
 
-**Deferred vs older FTS draft:** dentist channel / CloudKit share **not** in Ed/Pedro Phase 0; Android MVP not on critical path for patent embodiment.
+**Deferred vs older FTS draft:** dentist channel / CloudKit share **not** in Ed/Pedro Phase 0; Android MVP not on the critical path for patent embodiment.
 
 **Planning cash (mid, EUR):** Stage A ~€200–250k · Stage A+Gen2 ~€350–450k · through Stage B ~€0.8–1.0M — see COST_AND_TIMELINE (not a budget).
 
@@ -296,4 +296,4 @@ Aligns with [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [PRODUCT_ROADMAP.m
 |---------|------|--------|--------|
 | 1.0.0 | June 2026 | JAC Dental / engineering | Initial investor FTS draft for Point A gap closure |
 
-*This FTS is a diligence draft, not the IEC 62304 software requirements specification for a cleared device.*
+*This FTS is a diligence draft, not the IEC 62304 software requirements spec for a cleared device.*

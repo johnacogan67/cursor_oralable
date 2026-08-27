@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oralable — Word of Mouth™ · CEO candidate overview</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap');
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --muted: #5a5a5a;
+      --line: #e5e5e5;
+      --accent: #111111;
+      --warn: #8a6a20;
+      --ok: #2a5a32;
+      --gap: #8a3a2a;
+      --soft: #f7f7f7;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      height: 100%;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 18px;
+      line-height: 1.45;
+    }
+    .deck { height: 100%; position: relative; overflow: hidden; }
+    .slide {
+      display: none;
+      height: 100%;
+      padding: 36px 56px 64px;
+      flex-direction: column;
+      justify-content: flex-start;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .slide.active { display: flex; }
+    .brand-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand-lockup {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-lockup img.logo {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+    .brand-tag {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: none;
+      color: var(--muted);
+      border-left: 1px solid var(--line);
+      padding-left: 14px;
+    }
+    .brand-tag .tm { font-size: 0.75em; vertical-align: super; }
+    .slide-meta {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-family: "Open Sans", sans-serif;
+      font-weight: 800;
+      font-size: clamp(32px, 4.5vw, 48px);
+      line-height: 1.12;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+    h2 {
+      font-family: "Open Sans", sans-serif;
+      font-weight: 700;
+      font-size: clamp(26px, 3.2vw, 36px);
+      line-height: 1.18;
+      margin-bottom: 22px;
+      letter-spacing: -0.015em;
+    }
+    .wordmark {
+      font-family: "Open Sans", sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .lede { font-size: 20px; color: var(--muted); max-width: 36em; margin-bottom: 24px; }
+    .stage-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+    .stage {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 16px 20px;
+      min-width: 200px;
+      flex: 1;
+    }
+    .stage strong { display: block; margin-bottom: 6px; font-weight: 700; }
+    .stage span { color: var(--muted); font-size: 15px; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th, td {
+      text-align: left;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    th { color: var(--muted); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+    ul { margin: 0 0 0 1.1em; }
+    li { margin: 8px 0; }
+    .callout {
+      border-left: 3px solid var(--fg);
+      padding: 12px 16px;
+      background: var(--soft);
+      max-width: 40em;
+      font-size: 16px;
+    }
+    .callout.warn { border-left-color: var(--warn); }
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--line);
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 2px;
+    }
+    .tag.ok { border-color: var(--ok); color: var(--ok); }
+    .tag.gap { border-color: var(--gap); color: var(--gap); }
+    .stat-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .stat {
+      flex: 1;
+      min-width: 140px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 14px 16px;
+    }
+    .stat .lbl { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .stat .big-num { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; }
+    .title-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 18px;
+      margin-top: 12px;
+      flex: 1;
+      justify-content: center;
+    }
+    .title-hero img.logo-hero {
+      height: 72px;
+      width: auto;
+      max-width: 100%;
+    }
+    .tagline-hero {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .tagline-hero .tm { font-size: 0.65em; vertical-align: super; }
+    .tm-note {
+      position: absolute;
+      left: 56px;
+      right: 56px;
+      bottom: 18px;
+      font-size: 11px;
+      color: #888;
+    }
+    .meta { font-size: 14px; color: var(--muted); }
+    .nav {
+      position: fixed;
+      bottom: 16px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      z-index: 10;
+      font-size: 14px;
+    }
+    .nav button {
+      background: var(--fg);
+      color: #fff;
+      border: none;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+    }
+    .nav button:hover { opacity: 0.85; }
+    @media (max-width: 800px) {
+      .slide { padding: 28px 24px 72px; }
+      .tm-note { left: 24px; right: 24px; }
+      .brand-tag { display: none; }
+    }
+</style>
+</head>
+<body>
+  <div class="deck">
+
+    <section class="slide title-slide active" data-n="1">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">CEO candidate overview · July 2026</div>
+      </div>
+
+      <div class="title-hero">
+        <img class="logo-hero" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+        <div class="tagline-hero">Word of Mouth<span class="tm">™</span></div>
+        <h1>Temple wearable for overnight vitals → jaw-load awareness</h1>
+        <p class="lede">Stage A now: patent-implementing <strong>wellness wearable</strong>. Stage B later: medical device pathway — not claimed today.</p>
+        <div class="stage-row">
+          <div class="stage"><strong>Stage A</strong><span>Wellness · temple · patient app</span></div>
+          <div class="stage"><strong>Stage B</strong><span>Medical device — later gate</span></div>
+          <div class="stage"><strong>Entity</strong><span>JAC Dental Solutions Ltd (Ireland)</span></div>
+        </div>
+      </div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+    <section class="slide" data-n="2">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 2 · Problem</div>
+      </div>
+
+      <h2>Jaw load is a real overnight problem — measured in the wrong place</h2>
+      <ul>
+        <li><strong>Rings / watches</strong> — general wellness at finger/wrist; wrong site for jaw load</li>
+        <li><strong>Clinic EMG</strong> — accurate but episodic, expensive, not overnight consumer</li>
+        <li><strong>Gap</strong> — no continuous at-home optical + motion record of jaw hemodynamics</li>
+      </ul>
+      <div class="callout" style="margin-top:28px">Condition-specific problem at an unusual anatomical site — not “another sleep tracker.”</div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+    <section class="slide" data-n="3">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 3 · Solution</div>
+      </div>
+
+      <h2><span class="wordmark">Oralable</span> = temple clip + magnetic case + iOS patient app</h2>
+      <table>
+        <tr><th>Now (Phase 0)</th><th>Next (Phase 1+)</th><th>Later (Stage B)</th></tr>
+        <tr>
+          <td>Temple <strong>HR + SpO₂</strong> · honest device state · Gen1 pilot</td>
+          <td><strong>IR-DC</strong>, <strong>TFI</strong>, <strong>SASHB</strong> in patient app · patent embodiment</td>
+          <td>Cleared / CE medical device · separate gate</td>
+        </tr>
+      </table>
+      <p class="lede" style="margin-top:24px;font-size:18px">Physics: PPG + IR-DC hemodynamic occlusion + jaw accelerometry — not sEMG, not a ring, not Gen1-intraoral.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+    <section class="slide" data-n="4">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 4 · Why now / moat</div>
+      </div>
+
+      <h2>Working stack · IP path · open evidence pipeline</h2>
+      <ul>
+        <li><strong>Working Gen1</strong> — hardware, firmware, and patient app on a field path</li>
+        <li><strong>IP (high level)</strong> — EP foundation patent <strong>granted</strong> · US utility in continued prosecution · US provisional on muscle-activity refinements</li>
+        <li><strong>Open 50 Hz pipeline</strong> (Swift + Python) — embodiment and evidence, not a black-box ring</li>
+        <li><strong>Orthogonal to rings</strong> — same sensor classes, different physics (jaw / temple)</li>
+      </ul>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+    <section class="slide" data-n="5">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 5 · Product truth</div>
+      </div>
+
+      <h2>What exists today (July 2026)</h2>
+      <table>
+        <tr><th>Item</th><th>Spec</th></tr>
+        <tr><td>Clip</td><td>Gen1 · REV10 · ES2832AA2 (nRF52832)</td></tr>
+        <tr><td>Charge</td><td><strong>Oralable magnetic case</strong> — not Qi / MagSafe</td></tr>
+        <tr><td>Firmware</td><td><strong>1.0.82</strong> (IR-pulse worn · STAT blink = charging)</td></tr>
+        <tr><td>App</td><td>Patient <strong>4.3.3</strong> TestFlight · dentist app off for pilot</td></tr>
+        <tr><td>Placement / claims</td><td><strong>Temple</strong> · wellness only — not a medical device today</td></tr>
+        <tr><td>Handoff</td><td><strong>Research Kits gated</strong> — target <strong>5 to Pedro by 31 Aug 2026</strong> (charge-to-temple + short worn vitals)</td></tr>
+      </table>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+    <section class="slide" data-n="6">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 6 · Traction (honest)</div>
+      </div>
+
+      <h2>Ready ≠ delivered</h2>
+      <table>
+        <tr><th>Evidence</th><th>Status</th></tr>
+        <tr><td>Gen1 + FW 1.0.82 + app 4.3.3</td><td><span class="tag ok">Stack ready</span></td></tr>
+        <tr><td>Ed/Pedro Research Kits</td><td><span class="tag gap">Pending ship</span> — 5 kits target <strong>31 Aug 2026</strong></td></tr>
+        <tr><td>Live MAU / MRR</td><td><span class="tag gap">Near zero</span> — soft launch gated</td></tr>
+        <tr><td>Funding to date</td><td>Founder-loan funded · cash thin</td></tr>
+        <tr><td>Board</td><td>Founder + Independent Director (Amstrow)</td></tr>
+      </table>
+      <p class="meta" style="margin-top:20px">First customer-validation evidence = patient pilot sessions.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+    <section class="slide" data-n="7">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 7 · Business model</div>
+      </div>
+
+      <h2>What can actually bill — in order</h2>
+      <ul>
+        <li><strong>Hardware</strong> (clip + case) — now / pilot, low volume</li>
+        <li><strong>Consumer Premium IAP</strong> — after credible Phase 0–1+ dashboard</li>
+        <li><strong>Dentist / practice IAP</strong> — after Phase 1+ share (later)</li>
+        <li><strong>Cleared device (Stage B)</strong> — separate regulatory gate</li>
+      </ul>
+      <div class="callout" style="margin-top:28px">Ed/Pedro = patient app only. No medical claims in Stage A marketing.</div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+    <section class="slide" data-n="8">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 8 · The CEO opportunity</div>
+      </div>
+
+      <h2>Commercial CEO · founder stays Exec Chair</h2>
+      <table>
+        <tr><th></th><th>Founder (Exec Chair)</th><th>CEO (this role)</th></tr>
+        <tr><td>Owns</td><td>Product · science · IP</td><td>Capital · commercial · ops</td></tr>
+        <tr><td>Near term</td><td>Pilot quality · Phase 1+ embodiment</td><td><strong>Point B ~€180k</strong></td></tr>
+        <tr><td>Next</td><td>Patent embodiment evidence</td><td>Soft launch · next-round story</td></tr>
+      </table>
+      <div class="stat-row" style="margin-top:24px">
+        <div class="stat"><div class="lbl">F&amp;F</div><div class="big-num">€50k</div>priced equity</div>
+        <div class="stat"><div class="lbl">EI PSSF</div><div class="big-num">€100k</div>CLN</div>
+        <div class="stat"><div class="lbl">HPSU</div><div class="big-num">€30k</div>grant</div>
+      </div>
+      <p class="meta" style="margin-top:16px">Cap table: founder-majority path · cleanup in progress · angels ~16%. Detail under NDA / board process.</p>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+    <section class="slide" data-n="9">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 9 · Package frame</div>
+      </div>
+
+      <h2>Normal early-stage options — earned, not gifted</h2>
+      <table>
+        <tr><th>Element</th><th>Discussion band</th></tr>
+        <tr><td>Title</td><td>Chief Executive Officer</td></tr>
+        <tr><td>Cash</td><td>Modest / deferred until Point B · then lean salary</td></tr>
+        <tr><td>Equity</td><td><strong>~5–10% FD options</strong> (centre ~6–8%)</td></tr>
+        <tr><td>Vesting</td><td><strong>4 years</strong> · <strong>1-year cliff</strong></td></tr>
+        <tr><td>Milestones</td><td>Appointment · F&amp;F · Point B · tenure</td></tr>
+      </table>
+      <div class="callout warn" style="margin-top:24px">Not the frame: ~28% day-one issued founder share transfer. Full brief in CEO job description.</div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+    <section class="slide title-slide" data-n="10">
+      
+      <div class="brand-bar">
+        <div class="brand-lockup">
+          <img class="logo" src="brand/oralable_logo_lockup.png" alt="Oralable" />
+          <span class="brand-tag">Word of Mouth<span class="tm">™</span></span>
+        </div>
+        <div class="slide-meta">Slide 10 · Next step</div>
+      </div>
+
+      <div class="title-hero" style="justify-content:flex-start;padding-top:8px">
+        <img class="logo-hero" src="brand/oralable_logo_lockup.png" alt="Oralable" style="height:48px" />
+        <div class="tagline-hero">Word of Mouth<span class="tm">™</span></div>
+        <h1>Fit on honesty, raise, and founder partnership</h1>
+        <ul style="max-width:36em;margin-bottom:24px">
+          <li>Raised early capital (Ireland / UK / EU)</li>
+          <li>Can operate small hardware + software</li>
+          <li>Keeps Stage A wellness claims honest</li>
+          <li>Partners with technical founder as Exec Chair</li>
+        </ul>
+        <div class="callout">Next: short intro · product walkthrough · board/counsel on terms</div>
+      </div>
+      <div class="tm-note">Oralable® and Word of Mouth™ are trademarks of JAC Dental Solutions Limited. Confidential · CEO candidate overview.</div>
+    </section>
+
+  </div>
+
+  <div class="nav">
+    <button type="button" id="prev">← Prev</button>
+    <span id="indicator">1 / 10</span>
+    <button type="button" id="next">Next →</button>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')];
+    let i = 0;
+    function show(n) {
+      i = Math.max(0, Math.min(slides.length - 1, n));
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
+      document.getElementById('indicator').textContent = (i + 1) + ' / ' + slides.length;
+      history.replaceState(null, '', '#' + (i + 1));
+    }
+    document.getElementById('prev').onclick = () => show(i - 1);
+    document.getElementById('next').onclick = () => show(i + 1);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); show(i + 1); }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); show(i - 1); }
+      if (e.key === 'Home') show(0);
+      if (e.key === 'End') show(slides.length - 1);
+    });
+    const hash = parseInt(location.hash.slice(1), 10);
+    show(Number.isFinite(hash) && hash >= 1 ? hash - 1 : 0);
+  </script>
+</body>
+</html>
