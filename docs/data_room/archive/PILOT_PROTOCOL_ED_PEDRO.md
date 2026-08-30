@@ -1,7 +1,7 @@
 # Pilot protocol — Ed & Pedro (Phase 1+ muscle)
 
 > **DEFERRED (July 2026).** Active Ed/Pedro work is **Phase 0 Vitals** — temple HR/SpO₂.  
-> Printable handout: [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · Test plan: [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · Roadmap: [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md)
+> Printable handout: [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · Test plan: [VITALS_PILOT_TEST_PLAN.md](../clinical/VITALS_PILOT_TEST_PLAN.md) · Roadmap: [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md)
 
 **Do not** run this protocol as the current pilot until Phase 0 vitals gates pass.
 
@@ -10,7 +10,7 @@
 **Protocol leads:** **[Dr Edward Owens](https://beaconconsultantssleephealthclinic.ie/team-member/dr-edward-owens/)** & **[Dr Pedro Mayoral Sanz](https://beaconconsultantssleephealthclinic.ie/team-member/dr-pedro/)** (Beacon · structured validation, protocol fidelity)  
 **Sponsor:** JAC Dental Ltd
 
-**Related:** [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) (**Phase 0 one-pager**) · [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLIST.md) · [../TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) (**Protocol B**) · [../CLINICAL_VALIDATION.md](../../CLINICAL_VALIDATION.md) · [ORALABLE_FTS_36MO.md](../governance/ORALABLE_FTS_36MO.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related:** [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) (**Phase 0 one-pager**) · [PILOT_DRY_RUN_CHECKLIST.md](../clinical/PILOT_DRY_RUN_CHECKLIST.md) · [../TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) (**Protocol B**) · [../CLINICAL_VALIDATION.md](../../CLINICAL_VALIDATION.md) · [ORALABLE_FTS_36MO.md](../governance/ORALABLE_FTS_36MO.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Phase timings:** Same as Protocol B in `TEMPORALIS_COLLECTION_PROTOCOL.md` (do not use Protocol A training timings).
 
@@ -175,7 +175,7 @@ Store under `cursor_oralable/data/raw/pilot_ed_pedro/` (create on first run).
 
 | Deliverable | Location |
 |-------------|----------|
-| Validator one-pager | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) |
+| Validator one-pager | [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) |
 | Phase 1A fidelity reports | `CLINICAL_VALIDATION.md` § Pilot Ed/Pedro 2026 |
 | Plots | `data/plots/pilot_ed_pedro/` — promote embeds via [../FIGURES.md](../../FIGURES.md) |
 | Session log index | `data/raw/pilot_ed_pedro/README.md` |

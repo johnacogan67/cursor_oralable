@@ -112,7 +112,7 @@ Oralable sits in a **niche orthogonal to rings**: same broad sensor classes (PPG
 | Placement (Phase 0) | **Temple** HR/SpO₂ | Muscle/cheek Protocol B = Phase 1+ |
 | BLE | Custom **TGM GATT** service (`3A0FF000`) | Raw 50 Hz PPG (R/G/IR) + ACC + temp + status |
 | OTA | **MCUboot + mcumgr SMP** | Nordic Device Manager on iPhone; open NCS stack |
-| FW version | Gen1 target **1.0.84** (iOS gate min **1.0.63** / recommend **1.0.84**; app **4.3.3** build **5**) · Gen2 **2.0.x** — [VERSION_ALIGNMENT.md](../../cursor_oralable/docs/data_room/VERSION_ALIGNMENT.md) |
+| FW version | Gen1 target **1.0.84** (iOS gate min **1.0.63** / recommend **1.0.84**; app **4.3.3** build **5**) · Gen2 **2.0.x** — [VERSION_ALIGNMENT.md](../VERSION_ALIGNMENT.md) |
 
 **BLE characteristics (TGM service):**
 
@@ -194,7 +194,7 @@ Li et al., *Aust Dent J* 2024;69(Suppl 1):S53–S62 ([doi:10.1111/adj.13057](htt
 
 ## 4b. Modality ladder: where Oralable sits
 
-Broader neural / muscle measurement stack (distilled from external Gemini temple-PPG exploration — **not product claims**). Full matrix: `cursor_oralable/docs/data_room/bookmarks/GEMINI_TEMPLE_PPG_AVENUES.md` · roadmap [PRODUCT_ROADMAP.md §2b](../../cursor_oralable/docs/PRODUCT_ROADMAP.md#2b-technology-avenues).
+Broader neural / muscle measurement stack (distilled from external Gemini temple-PPG exploration — **not product claims**). Full matrix: `cursor_oralable/docs/data_room/bookmarks/GEMINI_TEMPLE_PPG_AVENUES.md` · roadmap [PRODUCT_ROADMAP.md §2b](../../PRODUCT_ROADMAP.md#2b-technology-avenues).
 
 | Class | Examples | What it measures | Oralable relation |
 |-------|----------|------------------|-------------------|

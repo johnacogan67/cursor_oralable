@@ -4,7 +4,7 @@
 
 **Build date:** July 2026 · **Role:** **Rollback** (current target = **1.0.84**; prior archive **1.0.82**) · patient app only
 
-> **Superseded for Ed/Pedro (2026-08-30):** flash **1.0.84** (`oralable_nrf/build_pcb00003/merged.hex`). Prior archive **[1.0.82](../firmware/FIRMWARE_1.0.82_FLASH.md)** (sense-on-BLE, 5% floor, IR-pulse worn). Keep 1.0.70 binaries below for rollback.
+> **Superseded for Ed/Pedro (2026-08-30):** flash **1.0.84** (`oralable_nrf/build_pcb00003/merged.hex`). Prior archive **[1.0.82](../../firmware/FIRMWARE_1.0.82_FLASH.md)** (sense-on-BLE, 5% floor, IR-pulse worn). Keep 1.0.70 binaries below for rollback.
 
 **Includes** 1.0.66 BLE RSSI/reconnect + 1.0.68 remapped battery gauge + **LTC4124 STAT activity** (blink = charging / on_dock).
 
@@ -66,7 +66,7 @@ Verify GATT **`3A0FF006`** → **`1.0.70`** (suffix may include `-nrfconnect` de
 
 ## Related
 
-- [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md)
-- [VITALS_PILOT_TEST_PLAN.md](../clinical/VITALS_PILOT_TEST_PLAN.md)
+- [ED_PEDRO_QUICK_START.md](../../clinical/ED_PEDRO_QUICK_START.md)
+- [VITALS_PILOT_TEST_PLAN.md](../../clinical/VITALS_PILOT_TEST_PLAN.md)
 - [FIRMWARE_1.0.66_FLASH.md](./FIRMWARE_1.0.66_FLASH.md) (prior ship)
-- [HW_ENGINEER_ALTIUM_BRIEF.md](../hardware/HW_ENGINEER_ALTIUM_BRIEF.md) (CHRSTS closed — no ECO)
+- [HW_ENGINEER_ALTIUM_BRIEF.md](../../hardware/HW_ENGINEER_ALTIUM_BRIEF.md) (CHRSTS closed — no ECO)
