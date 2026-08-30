@@ -2,7 +2,7 @@
 
 **Status:** Canonical product direction · July 2026  
 **Audience:** Engineering, pilot ops, patient/dentist UX  
-**Related:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) · [oralable_swift/docs/MOBILE_APP_FLOWS.md](../../oralable_swift/docs/MOBILE_APP_FLOWS.md) · [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md) · [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) · **construct map** [data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) (tonic / phasic / rescue / recovery = labels until F1) · [oralable_swift/docs/MOBILE_APP_FLOWS.md](../../oralable_swift/docs/MOBILE_APP_FLOWS.md) · [data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md) · [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 Wellness wording only — **not** a diagnosis of bruxism, apnea, or disease.
 
@@ -21,7 +21,7 @@ Wellness wording only — **not** a diagnosis of bruxism, apnea, or disease.
 
 ![FIG-CO-025 State hypnogram exemplar](./figures/FIG-CO-025-state-hypnogram-exemplar.png)
 
-*Figure FIG-CO-025 — State hypnogram from TEMPORALIS_20260724 — **primary / very useful overnight measure** (eng exemplar; in-app adapts this).*
+*Figure FIG-CO-025 — State hypnogram from TEMPORALIS_20260724 — **primary / very useful overnight measure** (layout exemplar; in-app adapts this). **Note:** pack `kpi_summary.txt` wear ≈ **6 min** (Protocol A–class) — illustrate states/layout only; not an evaluable ≥6 h overnight ([Paper A validation](./data_room/clinical/PAPER_A_VALIDATION_AND_FUTURE_WORK.md)).*
 
 ![FIG-CO-019 Hypnogram bands](./figures/FIG-CO-019-hypnogram-bands.svg)
 
@@ -29,7 +29,7 @@ Wellness wording only — **not** a diagnosis of bruxism, apnea, or disease.
 
 ```mermaid
 flowchart LR
-  Wear[Wear overnight ge 6h] --> Auto[App auto-record]
+  Wear[Wear ge 1h band unlock; ideal ge 6h] --> Auto[App auto-record]
   Auto --> Class[OvernightStateClassifier]
   Class --> Hypno[State hypnogram PRIMARY]
   Class --> PDF[Clinical Temporalis PDF]
@@ -114,13 +114,15 @@ Rates use `wear_h = wear_seconds / 3600`.
 - Use: Low / Moderate / High (or Elevated for oxygen burden).  
 - Avoid: diagnose, bruxism disorder, AHI, “you have apnea.”  
 - Footer: device-inferred wellness states — not a medical diagnosis.  
-- Empty/short night: “Need ≥6 hours worn for overnight bands.”
+- Empty/short night: “Need ≥1 hour worn for overnight bands.” (iOS `evaluableWearSeconds = 1 h`)  
+- Ideal home overnight / Paper A Arm E/J / band recalibration: still **≥6 h** worn (goal **8 h**). Protocol A/B minutes are not sleep sessions.  
+- Soft corroboration: when skin temp is present and outside **32–38 °C**, iOS treats samples as off-skin (quiet; no wear/SASHB credit). Missing temp → Mac IR+ACC+SpO₂ path. See [data_room/bookmarks/SENSOR_CORROBORATION.md](./data_room/bookmarks/SENSOR_CORROBORATION.md).
 
 ---
 
 ## 5. Calibration path
 
-1. Collect Ed/Pedro (≥6 h) nights with Share PDF + Mac night pack.  
+1. Collect Ed/Pedro (**≥6 h**) nights with Share PDF + Mac night pack (1–2 h Arm P is fine for oxygen arm; not band recalibration).  
 2. Plot distributions of TFI, SASHB/h, rescue/h, tonic min/h.  
 3. Adjust band edges in this doc + code constants together.  
 4. Only then consider cohort percentiles (“among Oralable users”).

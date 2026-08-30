@@ -3,11 +3,11 @@
 **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Owner:** John Cogan · **Updated:** 2026-07-26  
-**Policy:** Single repo, multi-board — **do not fork**. See [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md) · **[PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)** · **[VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)** · **[COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md)** · [FIGURES.md](./FIGURES.md)
+**Policy:** Single repo, multi-board — **do not fork**. See [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md) · **[PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)** · **[VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)** · **[COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md)** · [FIGURES.md](./FIGURES.md)
 
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 ---
 
@@ -126,7 +126,7 @@ Update status: `pending` → `in_progress` → `done` · put date in Notes.
 | # | Owner | Item | Exit |
 |---|-------|------|------|
 | S1 | John | Flash both kits **1.0.70** | `006` reads `1.0.70` |
-| S2 | John | nRF Connect/RTT: blink→charge_active; taper→solid; undock→off | [FIRMWARE_1.0.70_FLASH.md](./data_room/FIRMWARE_1.0.70_FLASH.md) |
+| S2 | John | nRF Connect/RTT: blink→charge_active; taper→solid; undock→off | [FIRMWARE_1.0.70_FLASH.md](./data_room/archive/firmware_guides/FIRMWARE_1.0.70_FLASH.md) |
 | S3 | John | TestFlight **4.3.3** soak: Automatic + Device LED | App pairs with 1.0.70 |
 | S4 | John | Tag `v1.0.70` / `v1.0.70-ed-pedro` after S2 | G1-2 frozen |
 
@@ -137,7 +137,7 @@ Update status: `pending` → `in_progress` → `done` · put date in Notes.
 | L1 | After pairing UX | `CONFIG_MCUMGR_TRANSPORT_BT_PERM_RW_AUTHEN` | Nordic production DFU auth |
 | L2 | Post-pilot | In-app Device Manager / McuManager | OTA still via Nordic Device Manager |
 | L3 | Gen2 | G2-P0…P6 + H1–H5 | See §3 phase checklist |
-| L4 | Optional | Refresh `docs/upload/*` frozen pack | Or keep deprecated |
+| L4 | Optional | Refresh `docs/archive/upload_2026-06/*` frozen pack | Or keep deprecated |
 | L5 | Optional | ACC INT via DT `gpio_dt_spec` (parity with PPG) | ACC still hardcoded ACTIVE_HIGH |
 
 ---

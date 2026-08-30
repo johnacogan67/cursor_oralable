@@ -1,19 +1,19 @@
 # Version alignment (canonical)
 
 **As at:** 30 Aug 2026 · Data room pack **1.1.68** · Docs hub **1.3.17**  
-**Nabavi collab:** [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) (Phase 1 McGill / Koroosh · Phase 2 complementary Dianyx later)  
-**Research Kit:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) — 5 kits → Pedro by **31 Aug 2026** · status [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md)  
-**Paper A field:** [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) — Research Kit feasibility n≈5; Dual A + SpO₂∩EMG nest + Pedro 1–2 h oxygen arm  
-**Sensor corroboration:** [SENSOR_CORROBORATION.md](./SENSOR_CORROBORATION.md) · parity [MAC_PHONE_ALGORITHM_PARITY.md](./MAC_PHONE_ALGORITHM_PARITY.md)  
-**Construct map:** [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) — MAM vs ANR vs Dual A vs AcuPebble vs PSG (iterate there)  
-**Literature distill:** [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md) · full audit [DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md](./DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md)
+**Nabavi collab:** [COLLAB_NABAVI_MCGILL.md](./clinical/COLLAB_NABAVI_MCGILL.md) (Phase 1 McGill / Koroosh · Phase 2 complementary Dianyx later)  
+**Research Kit:** [ORALABLE_RESEARCH_KIT.md](./clinical/ORALABLE_RESEARCH_KIT.md) — 5 kits → Pedro by **31 Aug 2026** · status [PEDRO_STATUS_UPDATE_2026-08.md](./clinical/PEDRO_STATUS_UPDATE_2026-08.md)  
+**Paper A field:** [PAPER_A_FEASIBILITY_PROTOCOL.md](./clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) — Research Kit feasibility n≈5; Dual A + SpO₂∩EMG nest + Pedro 1–2 h oxygen arm  
+**Sensor corroboration:** [SENSOR_CORROBORATION.md](./bookmarks/SENSOR_CORROBORATION.md) · parity [MAC_PHONE_ALGORITHM_PARITY.md](./bookmarks/MAC_PHONE_ALGORITHM_PARITY.md)  
+**Construct map:** [MEASUREMENT_CONSTRUCT_MAP.md](./clinical/MEASUREMENT_CONSTRUCT_MAP.md) — MAM vs ANR vs Dual A vs AcuPebble vs PSG (iterate there)  
+**Literature distill:** [LITERATURE_AND_PRIOR_ART.md](./bookmarks/LITERATURE_AND_PRIOR_ART.md) · full audit [DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md](./governance/DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md)
 
 Use this table when you update flash guides, pilot handouts, architecture, the website, or TestFlight notes. Use these strings. Do not use older “1.0.70 ship” language except as rollback. Prefer **1.0.84** over “1.0.82 ship” for the current Gen1 target (1.0.82 remains a valid prior build).
 
 **Current stack (use these strings):** FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 · kits **gated**.
 
-**Canonical development timeline:** [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · planning mirror [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) §1. · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)  
-**Technology avenues (Gemini distill):** [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md) · roadmap §2b · landscape §4b.
+**Canonical development timeline:** [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · planning mirror [COST_AND_TIMELINE.md](./governance/COST_AND_TIMELINE.md) §1. · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)  
+**Technology avenues (Gemini distill):** [GEMINI_TEMPLE_PPG_AVENUES.md](./bookmarks/GEMINI_TEMPLE_PPG_AVENUES.md) · roadmap §2b · landscape §4b.
 
 ## Milestone — 24 Jul 2026 (Temporalis Mac Protocol A + overnight night report)
 
@@ -24,7 +24,7 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 | **Capture path** | `scripts/run_protocol_a_session.py` (bleak + worn-mode write + timed cues) → `process_temporalis_gold` / `run_temporalis_mam_pipeline.py` |
 | **Night report (Mac)** | `scripts/generate_overnight_night_report.py` (+ hooked from `generate_clinical_report.py`) → `plots/overnight_report/<session>/` |
 | **Night report (iOS)** | Share → Clinical Temporalis PDF: bout hypnogram, smoking-gun dual rail, event CSV (`OvernightStateClassifier` / `NightReportSampleLoader`) |
-| **Overnight UX direction** | [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) — **BP-style bands**; **state hypnogram = very useful primary** ([FIG-CO-025](../figures/FIG-CO-025-state-hypnogram-exemplar.png)); **in-app** `StateHypnogramView` + morning card (flag `showOvernightHypnogram`); PDF for full pack; no sleep-score-first. **FIG-CO-025 pack wear ≈ 6 min** (layout only — not a ≥6 h overnight); see [DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md](./DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md) |
+| **Overnight UX direction** | [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) — **BP-style bands**; **state hypnogram = very useful primary** ([FIG-CO-025](../figures/FIG-CO-025-state-hypnogram-exemplar.png)); **in-app** `StateHypnogramView` + morning card (flag `showOvernightHypnogram`); PDF for full pack; no sleep-score-first. **FIG-CO-025 pack wear ≈ 6 min** (layout only — not a ≥6 h overnight); see [DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md](./governance/DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md) |
 | **Core ML cohort** | [CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md) — Tier 1 ≈ 20–30 users × 3–5 Protocol A; leave-user-out; stratify sex/age/habitus/skin |
 | **Evaluable overnight** | **Ideal / Paper A Arm E/J:** **≥ 6 h** worn (goal **8 h**). **iOS band unlock:** **≥ 1 h** (`evaluableWearSeconds`). Protocol A/B minutes are not sleep sessions |
 | **Ed/Pedro Research Kits** | **Gated** — stack ready; not yet shipped (charge-to-temple); target **5 by 31 Aug 2026** |
@@ -35,13 +35,13 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 |------|--------|
 | **Mac concordance** | `align_anr_oralable_concordance.py` + `src/analysis/emg_spo2_nest.py` → `NEST.md` / `spo2_emg_nest` (AcuPebble-style burden nest; **not** AHI/ODI) |
 | **iOS Dual Protocol A** | Patient app `showDualProtocolA` (default **OFF**) — Developer Settings opt-in; cues + EMG preflight + Share pack; Mac still primary until TestFlight pack aligns |
-| **Claim discipline** | Nest ≠ Bruxoff/GrindCare equivalence; AcuPebble remains Pedro AHI reference — [ACUPEBBLE_VS_ORALABLE_ANR.md](./ACUPEBBLE_VS_ORALABLE_ANR.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) |
+| **Claim discipline** | Nest ≠ Bruxoff/GrindCare equivalence; AcuPebble remains Pedro AHI reference — [ACUPEBBLE_VS_ORALABLE_ANR.md](./bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [ANR_M40_CONCORDANCE.md](./clinical/ANR_M40_CONCORDANCE.md) |
 
 ## Milestone — 10 Aug 2026 (soft corroboration + iOS band unlock)
 
 | Item | Status |
 |------|--------|
-| **Soft ACC + skin temp** | `SensorCorroboration` (32–38 °C) derates live quality / `isWorn`; overnight off-skin → quiet, no wear/SASHB — [SENSOR_CORROBORATION.md](./SENSOR_CORROBORATION.md) |
+| **Soft ACC + skin temp** | `SensorCorroboration` (32–38 °C) derates live quality / `isWorn`; overnight off-skin → quiet, no wear/SASHB — [SENSOR_CORROBORATION.md](./bookmarks/SENSOR_CORROBORATION.md) |
 | **iOS overnight bands** | Unlock at **≥1 h** worn; ideal overnight / cohort recalibration still **≥6 h** |
 | **Dual A default** | Still **OFF**; enable in Developer Settings for research Dual A (~6 min). Sleep is the normal path |
 | **DUAL_PAIR meta** | Optional `skin_temp_mean_c` / `on_skin_fraction` when Oralable temp streams |
@@ -62,7 +62,7 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 | Item | Status |
 |------|--------|
 | **Stack** | FW **1.0.82** · app **4.3.3** · Gen1 REV10 |
-| **OTA** | [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md) — Device Manager zip + signed bin + SWD merged.hex |
+| **OTA** | [FIRMWARE_1.0.82_FLASH.md](./firmware/FIRMWARE_1.0.82_FLASH.md) — Device Manager zip + signed bin + SWD merged.hex |
 | **Sensors** | PPG/ACC on BLE + CCC; off when disconnected; off below 5% / 3.61 V with MCU up |
 | **Worn** | Automatic = IR pulse, not die temperature. Mode 3 still forces worn. |
 | **nRF Connect** | Confirm `3A0FF006` = `1.0.82` after OTA; temple IR-pulse latch is a field check |
@@ -72,7 +72,7 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 | Item | Status |
 |------|--------|
 | **Stack** | FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 |
-| **Build** | `oralable_nrf` `app/VERSION` PATCHLEVEL **84** · archived hex/zip in `data_room/firmware/` · [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md) |
+| **Build** | `oralable_nrf` `app/VERSION` PATCHLEVEL **84** · archived hex/zip in `data_room/firmware/` · [FIRMWARE_1.0.84_FLASH.md](./firmware/FIRMWARE_1.0.84_FLASH.md) |
 | **Recover** | Pad/zombie: idle PPG notify ~4 s → green + advertise; desk/bench: `worn=0` + PPG sensing + ACC flat **10 min** → drop + re-advertise |
 | **Mac Protocol A** | FwLog CCC **off** by default (`--fw-log` opt-in) |
 | **iOS** | Hard min still **1.0.63**; recommend **1.0.84** (`FirmwareGate`) — no new GATT · Protocol A Setup gate default ON · TestFlight build **5** |
@@ -84,12 +84,12 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 | Item | As at 30 Aug 2026 |
 |------|------------------|
 | **Ed/Pedro Research Kits** | **Gated / not yet shipped** — target **5 kits to Pedro by 31 Aug 2026** |
-| **Kit definition** | [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · photos [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md) |
-| **Stack** | FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 — [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md) |
+| **Kit definition** | [ORALABLE_RESEARCH_KIT.md](./clinical/ORALABLE_RESEARCH_KIT.md) · photos [RESEARCH_KIT_PHOTO_SELECTION.md](./clinical/RESEARCH_KIT_PHOTO_SELECTION.md) |
+| **Stack** | FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 — [FIRMWARE_1.0.84_FLASH.md](./firmware/FIRMWARE_1.0.84_FLASH.md) |
 | **Ship gate** | Case charge to **temple-ready SOC (≥50%)** + short worn HR/SpO₂ without brownout **on each unit** |
 | **Status sense** | STAT blink policy from **1.0.70**; **1.0.84** IR-pulse worn + sense-on-BLE + pad/desk recover (do not say “chrsts broken on REV10”) |
 | **Open work** | Cell energy / coupling so voltage **rises** on the Oralable case |
-| **Detail** | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) § Pilot ship status · dry-run §G [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLIST.md) |
+| **Detail** | [ED_PEDRO_QUICK_START.md](./clinical/ED_PEDRO_QUICK_START.md) § Pilot ship status · dry-run §G [PILOT_DRY_RUN_CHECKLIST.md](./clinical/PILOT_DRY_RUN_CHECKLIST.md) |
 
 | Layer | Current | Notes |
 |-------|---------|--------|
@@ -123,9 +123,9 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 
 | Role | Flash | App |
 |------|-------|-----|
-| Ed/Pedro Phase 0 | [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md) | TestFlight **4.3.3** build **5+** (recommend **1.0.84**) |
-| Quick start | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) | Same |
-| Dry run | [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLIST.md) | Archive **4.3.3 (5)** |
+| Ed/Pedro Phase 0 | [FIRMWARE_1.0.84_FLASH.md](./firmware/FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](./firmware/FIRMWARE_1.0.82_FLASH.md) | TestFlight **4.3.3** build **5+** (recommend **1.0.84**) |
+| Quick start | [ED_PEDRO_QUICK_START.md](./clinical/ED_PEDRO_QUICK_START.md) | Same |
+| Dry run | [PILOT_DRY_RUN_CHECKLIST.md](./clinical/PILOT_DRY_RUN_CHECKLIST.md) | Archive **4.3.3 (5)** |
 
 ## Do not say (outdated)
 
@@ -136,3 +136,7 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 - “Charge on Qi / MagSafe”
 - “Kits already with Ed/Pedro” / “shipping” — until ship gate clears (say **gated** / **not yet shipped**)
 - “Recommend 1.0.82” as current — recommend is **1.0.84** (1.0.82 still connects)
+
+## GATT lockstep
+
+TGM UUIDs must match between `oralable_nrf/app/src/tgm_service.h` (`BT_UUID_TGM_*`) and `OralableCore/Sources/OralableCore/BLE/BLEConstants.swift`. Change firmware first; update Core in the same PR wave; validate with nRF Connect.

@@ -1,0 +1,37 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../oralable_nrf"
+		},
+		{
+			"path": "../oralable_swift"
+		},
+		{
+			"path": "../OralableCore"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/build/**": true,
+			"**/build_*/**": true,
+			"**/plots/**": true,
+			"**/.cache/**": true
+		},
+		"search.exclude": {
+			"**/build/**": true,
+			"**/build_*/**": true,
+			"**/plots/**": true,
+			"**/.cache/**": true,
+			"**/docs/data_room/firmware/*.hex": true,
+			"**/docs/data_room/firmware/*.bin": true,
+			"**/docs/data_room/firmware/*.zip": true,
+			"**/artifacts/*.hex": true,
+			"**/artifacts/*.bin": true,
+			"**/artifacts/*.zip": true,
+			"**/docs/data_room/_build/**": true
+		}
+	}
+}

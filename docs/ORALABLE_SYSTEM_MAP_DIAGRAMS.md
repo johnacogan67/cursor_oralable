@@ -136,7 +136,7 @@ flowchart TB
   FNIRS -.->|related_physics| OMG
 ```
 
-Source: [GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/GEMINI_TEMPLE_PPG_AVENUES.md) · landscape §4b.
+Source: [GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/bookmarks/GEMINI_TEMPLE_PPG_AVENUES.md) · landscape §4b.
 
 ---
 

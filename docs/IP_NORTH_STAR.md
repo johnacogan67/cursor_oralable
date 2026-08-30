@@ -3,10 +3,10 @@
 **Status:** Canonical product end-goal · July 2026  
 **Audience:** Engineering, pilot, apps, GTM, counsel (Peacock / Strand Two — portfolio external to git)
 
-**Related:** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [data_room/REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) §14 · [data_room/APPS_AND_REVENUE_EVAL.md](./data_room/APPS_AND_REVENUE_EVAL.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/IP_EVAL_AND_LANDSCAPE.md](./data_room/IP_EVAL_AND_LANDSCAPE.md) · [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related:** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [data_room/governance/REGULATORY_TIMELINE.md](./data_room/governance/REGULATORY_TIMELINE.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) §14 · [data_room/governance/APPS_AND_REVENUE_EVAL.md](./data_room/governance/APPS_AND_REVENUE_EVAL.md) · [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) · [data_room/governance/IP_EVAL_AND_LANDSCAPE.md](./data_room/governance/IP_EVAL_AND_LANDSCAPE.md) · [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 ---
 
@@ -52,7 +52,7 @@ Everything we build — Gen1 Phase 0 → Phase 1+ → Gen2 → patient app → (
 
 | Layer | What it is | In-repo status |
 |-------|------------|----------------|
-| **Foundation patents** | WO **2022234145** / **EP 4 333 691 B1** (certificated Jul 2026) · **UP + IE/UK** instructed + US utility **18/289,827** (RCE) | [data_room/IP_PORTFOLIO_STATUS.md](./data_room/IP_PORTFOLIO_STATUS.md) · [data_room/IP_EVAL_AND_LANDSCAPE.md](./data_room/IP_EVAL_AND_LANDSCAPE.md) |
+| **Foundation patents** | WO **2022234145** / **EP 4 333 691 B1** (certificated Jul 2026) · **UP + IE/UK** instructed + US utility **18/289,827** (RCE) | [data_room/governance/IP_PORTFOLIO_STATUS.md](./data_room/governance/IP_PORTFOLIO_STATUS.md) · [data_room/governance/IP_EVAL_AND_LANDSCAPE.md](./data_room/governance/IP_EVAL_AND_LANDSCAPE.md) |
 | **New US filing** | Track 1 provisional **64/033,978** filed **9 Apr 2026** (title: Apparatus and Method for Muscle Activity Monitoring) | Assign inventor → JAC if needed; convert within 12 months |
 | **Pending US utility** | **18/289,827** — RCE + After Final response **filed 12 Jun 2026** | Continued examination (Peacock) |
 | **Software / trade secrets** | Firmware GATT, OralableCore pipeline, Core ML Temporalis | In repos; FTO memo still a Ken **GAP** |
@@ -99,7 +99,7 @@ flowchart BT
 | Firmware / Gen1–Gen2 | Reliable overnight stream | Same stack; locked builds for clearance |
 | Patient app | Wellness UX embodying patent metrics | IFU-aligned UI; claim-safe copy |
 | Professional app | Off for Ed/Pedro; on after Phase 1+ share | Clinical viewer / CDS (label-dependent) |
-| Regulatory | Wellness disclaimers only | 510(k) / MDR path — [REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) |
+| Regulatory | Wellness disclaimers only | 510(k) / MDR path — [REGULATORY_TIMELINE.md](./data_room/governance/REGULATORY_TIMELINE.md) |
 
 ---
 

@@ -4,7 +4,44 @@
 
 This document describes the **algorithm split** between Python research and iOS production, what is **implemented today**, and what remains on the roadmap.
 
-**Related literature (not product claims):** ear-hook PPG + audio chewing detection (Papapanagiotou et al. 2017, *IEEE JBHI*) is adjacent awake-mastication prior art — different from overnight **temporalis IR-DC / OMG**. Ambulatory SB commercial devices are mostly sEMG (Li et al. 2025). Distill: [data_room/LITERATURE_AND_PRIOR_ART.md](./data_room/LITERATURE_AND_PRIOR_ART.md).
+---
+
+## 0. Mac → Phone reference principle (locked)
+
+**Mac Python is the clinical reference.** Develop and prove algorithms on Mac (`cursor_oralable`), export golden vectors, then port to phone (`OralableCore` + `UnifiedBiometricProcessor`). Default: change the phone to match Mac — not the reverse.
+
+```mermaid
+flowchart LR
+  MacRef[Mac_Python_reference] -->|prove_on_gold_CSV| Gold[Golden_vectors]
+  Gold -->|port_or_fail_CI| Phone[iOS_Unified_plus_OralableCore]
+  Phone -->|allowed_exception| LiveOnly[Live_causal_streaming]
+```
+
+| Owner path | Role |
+|------------|------|
+| `src/analysis/features.py` (`ClinicalBiometricSuite`, `compute_filters`, TFI) | Mac clinical numbers |
+| `src/analysis/overnight_states.py` | Overnight state machine |
+| `src/processing/resampler.py` | 50 Hz linear regrid |
+| `UnifiedBiometricProcessor` + OralableCore algorithms | Phone production consumer |
+| `ParityTests` + `GOLD_STANDARD_*.csv` | CI gate |
+
+### Exceptions registry (phone-only — must stay documented)
+
+| Exception | Why allowed | Not allowed to drift further |
+|-----------|-------------|------------------------------|
+| **Causal / `processSample` filters on live BLE** | Cannot run zero-phase `filtfilt` on an unfinished stream | Offline replay, Share clinical export, and golden tests **must** use `filtfilt` / Mac path |
+| **Trailing (not centered) SpO2 window on live** | Centered 3 s roll needs future samples | Offline `SpO2Service.protocolASpO2Series` matches Mac centered roll |
+| **MAM 10% IR-DC shift activity gate** | Product quiet-gate before Core ML | Classification-only; tensor inputs match train (raw scale, stride 25) |
+| **Soft ACC + skin-temp corroboration** | Product coupling / quality gate (`SensorCorroboration`; 32–38 °C) | Derates **quality** / `isWorn` / overnight wear+SASHB when temp present; **must not** hard-zero SpO₂/HR numbers; missing temp → Mac overnight path |
+| **Legacy `BioMetricCalculator` / `SignalProcessingPipeline`** | Quarantined — must not feed vitals UI/history | Delete or keep unused; never re-wire to dashboard |
+
+**Process:** Mac algorithm change → golden CSV → Swift port → CI parity test **before** claiming phone support. Never invent phone defaults Mac would leave as NaN/missing (e.g. fake SpO2 98%).
+
+**Data-room bookmark:** [data_room/bookmarks/MAC_PHONE_ALGORITHM_PARITY.md](./data_room/bookmarks/MAC_PHONE_ALGORITHM_PARITY.md).
+
+**What Dual A / overnight labels / AcuPebble / PSG actually measure:** [data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) — iterate there; do not copy Table 1.
+
+**Related literature (not product claims):** ear-hook PPG + audio chewing detection (Papapanagiotou et al. 2017, *IEEE JBHI*) is adjacent awake-mastication prior art — different from overnight **temporalis IR-DC / OMG**. Ambulatory SB commercial devices are mostly sEMG (Li et al. 2025). Distill: [data_room/bookmarks/LITERATURE_AND_PRIOR_ART.md](./data_room/bookmarks/LITERATURE_AND_PRIOR_ART.md).
 
 ```mermaid
 flowchart LR
@@ -133,13 +170,15 @@ beat_detection:
   prominence_factor: 0.5    # std * factor
 
 spo2_calibration:
-  # Empirical: SpO2 = a*R² + b*R + c
-  a: -45.060
-  b: 30.354
-  c: 94.845
+  # Mac Protocol A / ClinicalBiometricSuite (linear — not quadratic)
+  # SpO2 = clip(110 - 25*R, 60, 100)
+  formula: linear_110_minus_25R
+  clamp_min: 60
+  clamp_max: 100
+  window_seconds: 3.0
 ```
 
-**Today:** parameters live in `OralableCore/Signal/AlgorithmSpec.swift` and Python `features.py` — keep in sync manually until YAML lands.
+**Today:** `src/config/algorithm_spec.yaml` is the shared spec; Swift mirrors in `OralableCore/Signal/AlgorithmSpec.swift`.
 
 ---
 

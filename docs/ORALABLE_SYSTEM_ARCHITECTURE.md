@@ -19,7 +19,7 @@
 - When behavior changes, update the **Revision log** at the end and bump **Last updated**.
 - **Ground truth for BLE** is always an nRF Connect iOS CSV export, not this markdown file.
 - **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 **Product truth** is locked in **§2 Truth registry**; **where we are** is tracked in **§3 Validation status matrix** — update both before shipping firmware or app changes.
 
@@ -130,7 +130,7 @@ When **H-08** wiring is re-verified on bench, update byte0 semantics in §9 and 
 | **BROKEN** | Fails acceptance test on latest build |
 | **BLOCKED** | Depends on unresolved registry row (e.g. H-08) |
 
-**Current firmware reference for this matrix:** Gen1 target **1.0.84** ([VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md); [FIRMWARE_1.0.84_FLASH.md](./data_room/FIRMWARE_1.0.84_FLASH.md)). Historical 1.0.70 / 1.0.82 rows stay below.
+**Current firmware reference for this matrix:** Gen1 target **1.0.84** ([VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md); [FIRMWARE_1.0.84_FLASH.md](./data_room/firmware/FIRMWARE_1.0.84_FLASH.md)). Historical 1.0.70 / 1.0.82 rows stay below.
 
 ### 3.1 Platform & BLE contract
 
@@ -666,14 +666,14 @@ Export plots: `data/plots/ed_presentation/` after running validation scripts. Na
 
 | Skip | Why |
 |------|-----|
-| `docs/upload/ORALABLE_COMBINED.md` | **Deprecated** duplicate of hub + old 1.0.36 snapshot; PDF export only |
+| `docs/archive/upload_2026-06/ORALABLE_COMBINED.md` | **Deprecated** duplicate of hub + old 1.0.36 snapshot; PDF export only |
 | `PROTOCOL_CONFIRMATION.md`, `ORALABLE_7_*`, `SELF_VALIDATION_*`, `ED_PRESENTATION_*` | Redirect stubs → `CLINICAL_VALIDATION.md` |
 | `docs/CLAUDE_IOS_REFACTOR_INSTRUCTIONS.md` | Redirect → `internal/` |
 
 ### Separate investor notebook
 
 - `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md`
-- `data_room/ORALABLE_FTS_36MO.md`, `REGULATORY_TIMELINE.md`, `GTM_ONE_PAGE.md`
+- `data_room/governance/ORALABLE_FTS_36MO.md`, `REGULATORY_TIMELINE.md`, `GTM_ONE_PAGE.md`
 - Provisional patent PDF
 
 **Suggested NotebookLM prompts:**
@@ -708,7 +708,7 @@ Export plots: `data/plots/ed_presentation/` after running validation scripts. Na
 | 2026-07-26 | Docs align | Docs **1.3.15** / data_room **1.1.42** · PRODUCT_ROADMAP §3 canonical timeline · overnight PARTIAL (PDF done) · Core ML cohort doc |
 | 2026-07-24 | Milestone | App **4.3.3** (build 4) · Temporalis MAM Mac Protocol A retrain · night-report PDF path |
 | 2026-07-22 | Version align | Pilot ship **1.0.70** + iOS **4.3.2**; STAT blink dock; [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
-| 2026-07-16 | Cost/timeline | [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) propagated across docs; Stage A→B cash ranges |
+| 2026-07-16 | Cost/timeline | [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) propagated across docs; Stage A→B cash ranges |
 | 2026-07-16 | IP north star | [IP_NORTH_STAR.md](./IP_NORTH_STAR.md): Stage A wearable → Stage B medical; new US patent embodiment |
 | 2026-07-16 | Product roadmap | [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md): Phase 0/1+/Gen2 feature map + BOM; §2 P-01a/P-01b, H-04b; §4 Phase 0 temple lead |
 | 2026-07-16 | 1.0.67 code cut | `app/VERSION` **1.0.67**; drop `CONFIG_BT_DFU_SMP`; iOS CCC timeouts + hang fixes; [tracking §3b](./GEN1_GEN2_TRACKING.md) S1–S4 / L1–L5 |

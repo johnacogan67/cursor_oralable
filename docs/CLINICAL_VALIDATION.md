@@ -5,9 +5,9 @@
 Consolidated Ed/Pedro protocol evaluations and presentation packages.  
 **Protocol:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) — **Protocol B** (T=0 = **1st 3-tap sync**). Do not use Protocol A (training) timings for validation.
 
-**Scope note (July 2026):** Historical runs below support science. **Current pilot** is Stage A Phase 0 temple vitals ([ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md)); Protocol B / muscle is Phase 1+. Strategy + cost/timeline: [IP_NORTH_STAR.md](./IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md). **Figures:** [FIGURES.md](./FIGURES.md).
+**Scope note (July 2026):** Historical runs below support science. **Current pilot** is Stage A Phase 0 temple vitals ([ED_PEDRO_QUICK_START.md](./data_room/clinical/ED_PEDRO_QUICK_START.md)); Protocol B / muscle is Phase 1+. Strategy + cost/timeline: [IP_NORTH_STAR.md](./IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md). **Figures:** [FIGURES.md](./FIGURES.md).
 
-**Clinical labels / screening (literature):** For practice intake and Paper B phenotype labels, prefer lightweight **BruxScreen** (Lobbezoo et al., *J Oral Rehabil* 2024 — questionnaire + dentist clinical form) rather than full **STAB**. Instrument gold standard for SB diagnosis remains **PSG-AV**; ambulatory sEMG devices are screening-grade per Li et al. 2025. Distill: [LITERATURE_AND_PRIOR_ART.md](./data_room/LITERATURE_AND_PRIOR_ART.md). Oralable device output is **extraoral temporalis optical** phenotype — not a PSG replacement claim in Stage A.
+**Clinical labels / screening (literature):** For practice intake and Paper B phenotype labels, prefer lightweight **BruxScreen** (Lobbezoo et al., *J Oral Rehabil* 2024 — questionnaire + dentist clinical form) rather than full **STAB**. Instrument gold standard for SB diagnosis remains **PSG-AV**; ambulatory sEMG devices are screening-grade per Li et al. 2025. Distill: [LITERATURE_AND_PRIOR_ART.md](./data_room/bookmarks/LITERATURE_AND_PRIOR_ART.md). Oralable device output is **extraoral temporalis optical** phenotype — not a PSG replacement claim in Stage A.
 
 ---
 

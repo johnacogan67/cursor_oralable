@@ -1,12 +1,12 @@
 # ANR M40 Muscle Sense — temporalis sEMG concordance (research)
 
-**As at:** 30 Aug 2026 · Pack **1.1.68** · data-room bookmark [data_room/ANR_M40_CONCORDANCE.md](./data_room/ANR_M40_CONCORDANCE.md)  
+**As at:** 30 Aug 2026 · Pack **1.1.68** · data-room bookmark [data_room/clinical/ANR_M40_CONCORDANCE.md](./data_room/clinical/ANR_M40_CONCORDANCE.md)  
 **Role:** Adjacent **surface EMG** comparator for temple OMG, shipped in the Research Kit. Descriptive Dual A (+ SpO₂∩EMG nest) sits in Paper A methods as a precursor; PSG-AV / Bruxoff diagnostic concordance waits for Paper C. Not a Phase 0 consumer product on its own.  
 **Public docs:** [ANR Corporation — Documentation](https://www.anrcorp.com/documentation/) (M40 product sheet, iPhone/Android guides, BLE Design Guide)  
 **iPhone app:** [anrcorp.com/iphoneapp](https://www.anrcorp.com/iphoneapp/) — graph / log / export / biofeedback (QC; not Dual A concordance)  
-**BLE Design Guide (local):** `…/My Drive/notebook_lm/Sources/BLE_DesignGuide.pdf` (A001S1M40A-DG-23-1) — see [data_room bookmark](./data_room/ANR_M40_CONCORDANCE.md)  
-**Data-room bookmark:** [data_room/ANR_M40_CONCORDANCE.md](./data_room/ANR_M40_CONCORDANCE.md) · kit [data_room/ORALABLE_RESEARCH_KIT.md](./data_room/ORALABLE_RESEARCH_KIT.md) · placement [data_room/TEMPORALIS_ANATOMY_AND_PLACEMENT.md](./data_room/TEMPORALIS_ANATOMY_AND_PLACEMENT.md)  
-**Related:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · **construct map** [data_room/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) · [GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/GEMINI_TEMPLE_PPG_AVENUES.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](./data_room/BRUXOFF_PSG_GOLD_STANDARD.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./data_room/PAPER_A_FEASIBILITY_PROTOCOL.md)
+**BLE Design Guide (local):** `…/My Drive/notebook_lm/Sources/BLE_DesignGuide.pdf` (A001S1M40A-DG-23-1) — see [data_room bookmark](./data_room/clinical/ANR_M40_CONCORDANCE.md)  
+**Data-room bookmark:** [data_room/clinical/ANR_M40_CONCORDANCE.md](./data_room/clinical/ANR_M40_CONCORDANCE.md) · kit [data_room/clinical/ORALABLE_RESEARCH_KIT.md](./data_room/clinical/ORALABLE_RESEARCH_KIT.md) · placement [data_room/clinical/TEMPORALIS_ANATOMY_AND_PLACEMENT.md](./data_room/clinical/TEMPORALIS_ANATOMY_AND_PLACEMENT.md)  
+**Related:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · **construct map** [data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) · [GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/bookmarks/GEMINI_TEMPLE_PPG_AVENUES.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](./data_room/bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./data_room/clinical/PAPER_A_FEASIBILITY_PROTOCOL.md)
 
 **One-liner:** Place ANR M40 on **anterior temporalis** (electrodes **vertical**) next to Oralable. Time-align EMG bursts with IR-DC and Protocol A labels; nest Oralable SpO₂ with ANR EMG (AcuPebble-style burden context — not AHI). Mac dual-BLE remains the methods reference; iOS Dual Protocol A is TestFlight research until parity is proven.
 
@@ -168,7 +168,7 @@ Do this **before** stacking ANR. Not a full Oralable-only Protocol A — a short
 
 Mac Dual Protocol A remains the **primary** path for Paper A methods figures until iOS parity is proven on real Dual A packs.
 
-**Slice 1 (in app, default OFF):** Developer Settings → **Dual Protocol A (research)** (`showDualProtocolA`). Sleep remains the normal path when the flag is off. Dashboard entry runs Mac-parity flow: ANR vertical placement reminder → EMG preflight (rest / hard clench / rest, gate ≥70) → Protocol A cues (~6 min) → Share `TEMPORALIS_RAW_*` + `ANR_EMG_*` + `DUAL_PAIR_*` + **`session.edf` (includes ANR EMG)**. Mac align remains methods reference for nest figures. Oralable-only EDF (no EMG): Developer Settings → Export Oralable-only session.edf. `DUAL_PAIR` may stamp `skin_temp_mean_c` / `on_skin_fraction` ([data_room/SENSOR_CORROBORATION.md](./data_room/SENSOR_CORROBORATION.md)).
+**Slice 1 (in app, default OFF):** Developer Settings → **Dual Protocol A (research)** (`showDualProtocolA`). Sleep remains the normal path when the flag is off. Dashboard entry runs Mac-parity flow: ANR vertical placement reminder → EMG preflight (rest / hard clench / rest, gate ≥70) → Protocol A cues (~6 min) → Share `TEMPORALIS_RAW_*` + `ANR_EMG_*` + `DUAL_PAIR_*` + **`session.edf` (includes ANR EMG)**. Mac align remains methods reference for nest figures. Oralable-only EDF (no EMG): Developer Settings → Export Oralable-only session.edf. `DUAL_PAIR` may stamp `skin_temp_mean_c` / `on_skin_fraction` ([data_room/bookmarks/SENSOR_CORROBORATION.md](./data_room/bookmarks/SENSOR_CORROBORATION.md)).
 
 | Step | Action | Status |
 |------|--------|--------|

@@ -4,7 +4,7 @@
 **Firmware:** **1.0.84** target (minimum 1.0.63) · **App:** **4.3.3** build **5** vitals phase · see [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 **Canonical product/BOM map:** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · **Figures:** [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
@@ -161,6 +161,6 @@ Connect probe restart (0x08) is a no-op when probe duration Kconfig = 0.
 - System architecture matrix: [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md)
 - **Gen1 → Gen2 migration (capabilities, roadmap, repo):** [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md)
 - **Living timeline / G2-P0…P6 checklist:** [GEN1_GEN2_TRACKING.md](./GEN1_GEN2_TRACKING.md)
-- Ed/Pedro test plan: [data_room/VITALS_PILOT_TEST_PLAN.md](./data_room/VITALS_PILOT_TEST_PLAN.md)
-- Flash: [FIRMWARE_1.0.84_FLASH.md](./data_room/FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](./data_room/FIRMWARE_1.0.82_FLASH.md) · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
+- Ed/Pedro test plan: [data_room/clinical/VITALS_PILOT_TEST_PLAN.md](./data_room/clinical/VITALS_PILOT_TEST_PLAN.md)
+- Flash: [FIRMWARE_1.0.84_FLASH.md](./data_room/firmware/FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](./data_room/firmware/FIRMWARE_1.0.82_FLASH.md) · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
 - Kaga modules: ES2832AA2 (Gen1) · ES4L15BA1 (Gen2) datasheets (Seed A data room)

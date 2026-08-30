@@ -16,6 +16,15 @@ venv/
 *.egg-info/
 .eggs/
 
+# Working drafts (OCR, WhatsApp photo drops, scratch)
+.tmp_*/
+
+# Research plot outputs (Dual A / overnight packs)
+plots/
+
+# Data-room HTML / print deck builds
+docs/data_room/_build/
+
 # IDE / OS
 .DS_Store
 .vscode/

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Oralable — Pedro pre-meeting · 7 Aug 2026</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+    @page { size: A4; margin: 12mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Open Sans", -apple-system, sans-serif;
+      font-size: 10pt; line-height: 1.35; color: #111; max-width: 720px; margin: 0 auto; padding: 2px;
+    }
+    h1 { font-size: 14pt; margin: 0 0 4px; }
+    h2 { font-size: 11pt; margin: 12px 0 6px; border-bottom: 1px solid #ddd; padding-bottom: 3px; }
+    .meta { color: #555; font-size: 9pt; margin-bottom: 8px; }
+    ul, ol { margin: 4px 0 4px 1.1em; padding: 0; }
+    li { margin: 2px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 9pt; margin: 6px 0; }
+    th, td { text-align: left; padding: 4px 6px; border-bottom: 1px solid #e5e5e5; vertical-align: top; }
+    th { color: #555; font-size: 8pt; text-transform: uppercase; letter-spacing: 0.04em; }
+    .callout { background: #f7f7f7; border-left: 3px solid #111; padding: 8px 10px; margin: 8px 0; }
+    .warn { border-left-color: #8a6a20; }
+    .grid2 { display: flex; gap: 8px; margin: 6px 0; align-items: flex-start; }
+    .grid2 figure { flex: 1; margin: 0; }
+    .grid2 img, .full img { width: 100%; height: auto; border: 1px solid #e5e5e5; background: #fff; }
+    figcaption, .cap { font-size: 8pt; color: #555; margin-top: 3px; }
+    .full { margin: 6px 0; }
+    .full img { max-height: 200px; object-fit: contain; }
+    .foot { font-size: 8pt; color: #777; margin-top: 10px; }
+    .page-break { page-break-before: always; break-before: page; }
+  </style>
+</head>
+<body>
+  <h1>Oralable Research Kit — status for Pedro</h1>
+  <p class="meta">
+    To: Dr Pedro Mayoral Sanz (Beacon) · cc Dr Edward Owens<br />
+    From: John A. Cogan (JAC / Oralable)<br />
+    As at: 7 Aug 2026 · Meeting today 16:00
+  </p>
+
+  <div class="callout warn">
+    Honest status. What we measured and built — not a wish list.<br />
+    Ready ≠ delivered. Kits still gated on charge-to-temple.
+  </div>
+
+  <h2>Where we are</h2>
+  <ul>
+    <li>Ship stack: Gen1 hardware · firmware <strong>1.0.70</strong> · patient app <strong>4.3.3</strong> (temple HR + SpO₂).</li>
+    <li>Mac Protocol A + overnight report ran on engineering pack TEMPORALIS_20260724. Wear ~<strong>6 minutes</strong> — layout / Core ML only. Not a ≥6 h overnight.</li>
+    <li>Dual Protocol A on Mac (Oralable + ANR M40, shared cues) is scripted for labeled concordance.</li>
+    <li>Partner kits <strong>not yet shipped</strong> until each unit passes charge-to-temple.</li>
+  </ul>
+
+  <h2>Oralable Research Kit</h2>
+  <table>
+    <tr><th>In the kit</th><th>Role</th></tr>
+    <tr><td>Oralable MAM (clip + magnetic case / dock)</td><td>Optical PPG/ACC · vitals now · jaw-load path on same HW</td></tr>
+    <tr><td>ANR M40 + 3M Red Dot</td><td>Temporalis sEMG comparator (Dual Protocol A on Mac)</td></tr>
+    <tr><td>Headband (optional)</td><td>Long-wear compression for Dual A</td></tr>
+    <tr><td>iOS Oralable (TestFlight)</td><td>1–6 h+ BLE collection</td></tr>
+  </table>
+  <p>IEEE Paper A (with Koorosh Nabavi / McGill): n≈5 Beacon · your 1–2 h oxygen / MAD arm · stretch ≥6 h. Landscape vs Bruxoff / AcuPebble / GrindCare. No AHI claims. Oralable does not replace AcuPebble AHI.</p>
+
+  <h2>Commitment</h2>
+  <p>Target: <strong>5 Research Kits to you by 31 August 2026</strong>, each past the charge-to-temple gate. If ANR stock is short, I will say so and ship Oralable first with ANR to follow.</p>
+
+  <h2>Asks for our 16:00 meeting</h2>
+  <ol>
+    <li>Beacon ethics / consent path name + next filing step.</li>
+    <li>First calendar window for dry-run + Arm P (1–2 h ± MAD log).</li>
+    <li>Authorship / Beacon affiliation line for Paper A (with Ed + Koorosh).</li>
+    <li>Bruxoff access for descriptive EMG reference?</li>
+    <li>AcuPebble photo or SKU (SA100 vs Ox100) if easy.</li>
+    <li>Optional: interest in short F&amp;F investor leave-behind.</li>
+  </ol>
+
+  <div class="page-break"></div>
+
+  <h2>Line drawings — kit &amp; wear (partner-safe)</h2>
+  <p class="cap">Matisse contour line figures from research photos (same craft as Dual A stack). Not patent claim text. Not clinical diagnosis figures.</p>
+
+  <div class="grid2">
+    <figure>
+      <img src="../figures/FIG-CO-049-matisse-research-kit-flatlay.png" alt="Kit flat-lay" />
+      <figcaption>FIG-CO-049 — Research Kit flat-lay (Matisse contour craft): headband · charge dock · ANR · Red Dots.</figcaption>
+    </figure>
+    <figure>
+      <img src="../figures/FIG-CO-047-matisse-anr-red-dots.png" alt="ANR + Red Dots" />
+      <figcaption>FIG-CO-047 — ANR Muscle Sense + Red Dot pads (Matisse contour craft).</figcaption>
+    </figure>
+  </div>
+
+  <div class="grid2">
+    <figure>
+      <img src="../figures/FIG-CO-044-matisse-worn-dual-a-headband.png" alt="Worn Dual A" />
+      <figcaption>FIG-CO-044 — Worn Dual A: headband + temple sensor (Matisse contour craft).</figcaption>
+    </figure>
+    <figure>
+      <img src="../figures/FIG-CO-045-matisse-temple-placement-gesture.png" alt="Placement gesture" />
+      <figcaption>FIG-CO-045 — Temple placement gesture (Matisse contour craft).</figcaption>
+    </figure>
+  </div>
+
+  <h2>IP note (pitch-safe)</h2>
+  <p>US provisional <strong>64/033,978</strong> filed 9 Apr 2026 — <em>Apparatus and Method for Muscle Activity Monitoring</em> · <strong>patent pending</strong>. Do not circulate provisional claim text or the full specification PDF.</p>
+
+  <p class="foot">JAC Dental Solutions Limited · Oralable® · Stage A wellness wearable — not FDA/CE claims in this note.</p>
+</body>
+</html>

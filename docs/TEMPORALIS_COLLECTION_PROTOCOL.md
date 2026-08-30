@@ -1,9 +1,9 @@
 # Temporalis collection & validation protocols (REV10)
 
 > **Phase scope:** These protocols are **Phase 1+ / research** (muscle IR-DC, Protocol A/B).  
-> **Current pilot (Phase 0):** temple HR/SpO₂ only — [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md). Do not require Protocol B for Phase 0 kit ship.
+> **Current pilot (Phase 0):** temple HR/SpO₂ only — [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) · [data_room/clinical/ED_PEDRO_QUICK_START.md](./data_room/clinical/ED_PEDRO_QUICK_START.md). Do not require Protocol B for Phase 0 kit ship.
 
-**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · [FIGURES.md](./FIGURES.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · **construct map** [data_room/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) · Firmware **1.0.84** (sense only on BLE; gate min 1.0.63) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · [FIGURES.md](./FIGURES.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · **construct map** [data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) · Firmware **1.0.84** (sense only on BLE; gate min 1.0.63) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Hardware:** Gen1 · BOM REV8 · PCB REV10 · Kaga ES2832AA2  
 **Target site (Phase 1+):** Temporalis anterior (temple / cheek clip)
@@ -37,11 +37,11 @@ Uploading both to NotebookLM without this table causes conflicting answers about
 
 ## Shared: physical setup
 
-1. **Locate target:** Fingers on temple; clench to find peak bulge (**anterior temporalis** — vertical elevating fibers; same site class as GrindCare sEMG in literature; Oralable uses **optical** IR-DC, not electrodes). See [data_room/TEMPORALIS_ANATOMY_AND_PLACEMENT.md](./data_room/TEMPORALIS_ANATOMY_AND_PLACEMENT.md).
+1. **Locate target:** Fingers on temple; clench to find peak bulge (**anterior temporalis** — vertical elevating fibers; same site class as GrindCare sEMG in literature; Oralable uses **optical** IR-DC, not electrodes). See [data_room/clinical/TEMPORALIS_ANATOMY_AND_PLACEMENT.md](./data_room/clinical/TEMPORALIS_ANATOMY_AND_PLACEMENT.md).
 2. **Mounting:** Sensor window over peak bulge (headband or cheek clip per hardware). Dual A: ANR Red Dots **long axis VERTICAL** (‖ anterior fibers) over / pressing the same belly.
 3. **Tension:** Firm but comfortable (target 5–15 mmHg strap equivalent).
 
-**Optional clinical intake (Ed/Pedro / Paper B):** patient completes **BruxScreen-Q** (and dentist **BruxScreen-C** when available) — Lobbezoo et al. 2024. See [LITERATURE_AND_PRIOR_ART.md](./data_room/LITERATURE_AND_PRIOR_ART.md). Do not treat questionnaire alone as instrumented SB diagnosis.
+**Optional clinical intake (Ed/Pedro / Paper B):** patient completes **BruxScreen-Q** (and dentist **BruxScreen-C** when available) — Lobbezoo et al. 2024. See [LITERATURE_AND_PRIOR_ART.md](./data_room/bookmarks/LITERATURE_AND_PRIOR_ART.md). Do not treat questionnaire alone as instrumented SB diagnosis.
 
 ![FIG-CO-024 BruxScreen intake](./figures/FIG-CO-024-bruxscreen-intake.svg)
 
@@ -102,8 +102,8 @@ Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_
 
 **Objective:** Time-align **ANR M40 surface EMG** (anterior temporalis) with Oralable Protocol A IR-DC / labels for research concordance — **not** Phase 0 or Paper A feasibility.
 
-**Full hardware / claim discipline:** [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · data-room bookmark [data_room/ANR_M40_CONCORDANCE.md](./data_room/ANR_M40_CONCORDANCE.md).  
-**What Dual A scores vs labels / AHI:** [data_room/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) — iterate the construct table there.
+**Full hardware / claim discipline:** [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · data-room bookmark [data_room/clinical/ANR_M40_CONCORDANCE.md](./data_room/clinical/ANR_M40_CONCORDANCE.md).  
+**What Dual A scores vs labels / AHI:** [data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) — iterate the construct table there.
 
 | | Dual A |
 |---|--------|
@@ -136,7 +136,7 @@ Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_
 # Escape hatches: --force / --skip-emg-preflight / --skip-ir-preflight
 ```
 
-**Paper ladder:** Dual A feeds **Paper C** tables. Paper A feasibility (n≈5) does **not** require ANR — see [PAPER_A_FEASIBILITY_PROTOCOL.md](./data_room/PAPER_A_FEASIBILITY_PROTOCOL.md).
+**Paper ladder:** Dual A feeds **Paper C** tables. Paper A feasibility (n≈5) does **not** require ANR — see [PAPER_A_FEASIBILITY_PROTOCOL.md](./data_room/clinical/PAPER_A_FEASIBILITY_PROTOCOL.md).
 
 ---
 
@@ -150,7 +150,7 @@ Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_
 
 *Figure FIG-CO-004 — Protocol B 3-tap sync (placeholder).*
 
-Canonical results: [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md). Pilot roles: [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md).
+Canonical results: [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md). Pilot roles: [data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md).
 
 ### Phases (elapsed seconds from **1st 3-tap sync**)
 
@@ -205,7 +205,7 @@ Structured Protocol A/B locks are **minutes**, not sleep. For **evaluable overni
 | **Smoking-gun hourly r** | **≥ 3 hours** of filled hourly buckets | Pearson SASHB vs rescue fraction (needs ≥3 hourly bins) |
 | **Not sleep** | Protocol A (~6 min) / Protocol B (~4.5 min) | Training / pass-fail only |
 
-See also [data_room/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/PILOT_PROTOCOL_ED_PEDRO.md) §4.2.
+See also [data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md) §4.2.
 
 ### Night-report pack (Mac + iOS)
 
