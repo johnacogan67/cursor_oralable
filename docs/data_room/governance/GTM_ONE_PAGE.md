@@ -2,7 +2,7 @@
 
 **Version:** 1.2.0 · **July 2026**
 
-**Related:** [data_room/README.md](./README.md) · [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` §11 · [../FIGURES.md](../FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related:** [data_room/README.md](./README.md) · [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [ORALABLE_MARKET_LANDSCAPE.md](../bookmarks/ORALABLE_MARKET_LANDSCAPE.md) §11 · [../FIGURES.md](../../FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 ---
 
@@ -19,7 +19,7 @@
 **Product:** Gen1 clip (**BOM REV8** / **REV10** / **ES2832AA2** / FW **1.0.84**) + **Oralable magnetic charging case** + **Oralable** patient iOS app (**4.3.3** build **5**).  
 **Promise (Phase 0):** Reliable temple heart rate and SpO₂ with honest device state — **not** a diagnosis · **not** a medical device.  
 **Promise (Phase 1+):** See overnight jaw activity patterns (wellness wearable on the new US patent path).  
-**Later (Stage B):** Medical-device pathway — separate regulatory gate; see [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md).
+**Later (Stage B):** Medical-device pathway — separate regulatory gate; see [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md).
 
 **Ed/Pedro iteration:** **Patient app only** — do **not** ship or activate **Oralable for Dentists** until Phase 0 gates pass and Phase 1+ shareable rollups exist. See [APPS_AND_REVENUE_EVAL.md](./APPS_AND_REVENUE_EVAL.md).
 

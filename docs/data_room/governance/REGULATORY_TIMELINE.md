@@ -3,7 +3,7 @@
 **One-page diligence summary** · **Version:** 1.2.0 · **July 2026**  
 **Not legal advice** — confirm with regulatory counsel before submission.
 
-**Related:** [ORALABLE_FTS_36MO.md](./ORALABLE_FTS_36MO.md) · [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` §8–9 · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related:** [ORALABLE_FTS_36MO.md](./ORALABLE_FTS_36MO.md) · [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [ORALABLE_MARKET_LANDSCAPE.md](../bookmarks/ORALABLE_MARKET_LANDSCAPE.md) §8–9 · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Strategy:** **Stage A = wellness wearable** (ship now). **Stage B = medical device** (later). Build and patent through Stage A. Clearance is a later gate.
 
@@ -54,7 +54,7 @@ Stage A wellness first · Stage B medical later · new US patent embodiment · E
 
 > The Oralable Oral Activity Monitor is intended for use by adults in the home environment to **monitor and record episodes of nocturnal jaw muscle activity consistent with sleep bruxism**. Data are reviewed in a mobile application by the user and, optionally, their dental care provider. **Not intended** to diagnose sleep disorders, replace polysomnography, or guide acute treatment without professional interpretation.
 
-**Predicate strategy:** 510(k) substantial equivalence to **home bruxism / sleep activity monitors** (often EMG-based). Oralable differs on **optical IR-DC at extraoral temporalis** with concordance data (research comparator: ANR M40 / Paper C — [ANR_M40_CONCORDANCE.md](../clinical/ANR_M40_CONCORDANCE.md); not a consumer EMG product).
+**Predicate strategy:** 510(k) substantial equivalence to **home bruxism / sleep activity monitors** (often EMG-based). Oralable differs on **optical IR-DC at extraoral temporalis** with concordance data (research comparator: ANR M40 / Paper C — [ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md); not a consumer EMG product).
 
 ---
 
@@ -78,7 +78,7 @@ Stage A wellness first · Stage B medical later · new US patent embodiment · E
 | **20-device field** | Accuracy vs structured protocol + EMG subset | Q4 2026 |
 | **Pivotal / concordance** | Sensitivity/specificity vs EMG gold standard | 2027 |
 
-Protocol: [PILOT_PROTOCOL_ED_PEDRO.md](../clinical/PILOT_PROTOCOL_ED_PEDRO.md)
+Protocol: [PILOT_PROTOCOL_ED_PEDRO.md](../archive/PILOT_PROTOCOL_ED_PEDRO.md)
 
 ---
 

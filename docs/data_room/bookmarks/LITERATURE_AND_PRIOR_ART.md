@@ -1,13 +1,13 @@
 # Literature & prior-art distill (Seed A TEC pack)
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **As at:** 7 Aug 2026 · Pack **1.1.61**  
 **Sources:** Google Drive `Oralable Seed A Data Room/04_TEC/` (local paths below — not in git)  
 **Use:** Market and clinical framing, Paper A related work, HW enclosure notes, founder CV.  
 **Claim tone:** Stage A wellness. Cite as literature, not as Oralable clearance evidence.
 
-**Canonical product differentiator:** Oralable = **extraoral temporalis** optical (OMG / IR-DC + ACC) — not sEMG, not intraoral appliance sensing. See [COLLAB_NABAVI_MCGILL.md](../clinical/COLLAB_NABAVI_MCGILL.md). **Figures:** [../FIGURES.md](../FIGURES.md).
+**Canonical product differentiator:** Oralable = **extraoral temporalis** optical (OMG / IR-DC + ACC) — not sEMG, not intraoral appliance sensing. See [COLLAB_NABAVI_MCGILL.md](../clinical/COLLAB_NABAVI_MCGILL.md). **Figures:** [../FIGURES.md](../../FIGURES.md).
 
 ![FIG-CO-011 Extraoral vs intraoral](../figures/FIG-CO-011-extraoral-vs-intraoral.svg)
 
@@ -156,9 +156,9 @@ Not bruxism IP. It shows a long founder track record in **clinical–engineering
 
 | Doc | What landed |
 |-----|-------------|
-| [ORALABLE_MARKET_LANDSCAPE.md](../../oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md) (§4c) | Li ambulatory device table + optical gap |
-| [CLINICAL_VALIDATION.md](../CLINICAL_VALIDATION.md) | BruxScreen / STAB screening note |
-| [TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) | Optional BruxScreen-Q intake |
+| [ORALABLE_MARKET_LANDSCAPE.md](./ORALABLE_MARKET_LANDSCAPE.md) (§4c) | Li ambulatory device table + optical gap |
+| [CLINICAL_VALIDATION.md](../../CLINICAL_VALIDATION.md) | BruxScreen / STAB screening note |
+| [TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) | Optional BruxScreen-Q intake |
 | [HW_ENGINEER_ALTIUM_BRIEF.md](../hardware/HW_ENGINEER_ALTIUM_BRIEF.md) | Encapsulation potting vs tape |
 | [JOHN_COGAN_CV.md](../pitches/JOHN_COGAN_CV.md) | Thesis full cite |
 | [PITCH_KOOROSH.md](../pitches/PITCH_KOOROSH.md) / Paper A framing | Related-work gap (no optical ambulatory in Li) |
@@ -166,7 +166,7 @@ Not bruxism IP. It shows a long founder track record in **clinical–engineering
 | [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](../clinical/ED_PEDRO_SB_FEP_DRAFT_PAPER.md) | Owens & Mayoral 2026 SB × FEP (*Front Behav Neurosci*); cite Paper B / Arm P, not Paper A methods |
 | [PAPER_A_VALIDATION_AND_FUTURE_WORK.md](../clinical/PAPER_A_VALIDATION_AND_FUTURE_WORK.md) | DOI/source audit + future investigation |
 | [BRUXOFF_PSG_GOLD_STANDARD.md](./BRUXOFF_PSG_GOLD_STANDARD.md) | Cid-Verdejo 2023 Bruxoff vs PSG; Oralable ladder vs gold standard |
-| [ANR_M40_CONCORDANCE.md](../clinical/ANR_M40_CONCORDANCE.md) | ANR M40 temporalis sEMG Research Kit / Paper A Dual A precursor; BLE ref ≠ nRF Connect |
+| [ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md) | ANR M40 temporalis sEMG Research Kit / Paper A Dual A precursor; BLE ref ≠ nRF Connect |
 | [HAPPY_RING.md](./HAPPY_RING.md) | Happy Ring Oura-like finger HSAT (K240236 / K242224 hAHI) |
 | [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) | Canonical kit BOM · Dual A wear stack · competitor landscape |
 | [MARKET_SIZING.md](../governance/MARKET_SIZING.md) | Prevalence cites (literature) |

@@ -65,4 +65,4 @@ Or use the helper (builds if needed):
 
 - [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md)
 - [VITALS_PILOT_TEST_PLAN.md](../clinical/VITALS_PILOT_TEST_PLAN.md)
-- [VITALS_PHASE_GEN1_GEN2.md](../VITALS_PHASE_GEN1_GEN2.md)
+- [VITALS_PHASE_GEN1_GEN2.md](../../VITALS_PHASE_GEN1_GEN2.md)

@@ -4,7 +4,7 @@
 **Audience:** Ken / Point B diligence · founder prep for Peacock / PurdyLucey  
 **Status:** Working evaluation · counsel PDFs ingested · **not legal advice · not an FTO opinion**  
 **Counsel:** Justin Muehlmeyer (Peacock Law, US) · Michael Lucey (PurdyLucey, EU)  
-**Companion:** [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · [../IP_NORTH_STAR.md](../IP_NORTH_STAR.md)
+**Companion:** [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · [../IP_NORTH_STAR.md](../../IP_NORTH_STAR.md)
 
 **Default scope:** diligence + prosecution timeline + landscape · foundation intraoral **and** Temporalis Stage A · temple-first FTO depth.
 
@@ -55,7 +55,7 @@ flowchart TB
 
 ## 3. Product ↔ claim map (Stage A → Stage B)
 
-Counsel owns claim wording. Engineering builds embodiments that match ([../IP_NORTH_STAR.md](../IP_NORTH_STAR.md) §4).
+Counsel owns claim wording. Engineering builds embodiments that match ([../IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) §4).
 
 | Product embodiment | Primary track | Foundation track role |
 |--------------------|---------------|----------------------|
@@ -244,4 +244,4 @@ Counsel pack also received via Downloads (22 Jul 2026). Do **not** commit unpubl
 
 ---
 
-*Last updated: 2026-07-22 (counsel pack ingested) · Related: [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · [../IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md)*
+*Last updated: 2026-07-22 (counsel pack ingested) · Related: [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · [../IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md)*

@@ -2,7 +2,7 @@
 
 **As at:** 30 Aug 2026 · Pack **1.1.68**  
 **Anatomy source:** Kenhub “Muscles of mastication” tutorial (local NotebookLM PDF: `…/notebook_lm/Sources/description from ken hub of muscels of mastication.pdf`)  
-**Related:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · [../TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md)
+**Related:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · [../TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md)
 
 **One-liner:** Seat Oralable PPG on the **anterior temporalis** elevating belly (vertical fibers). Seat ANR Red Dots **along** those fibers (long axis vertical). MAM measures **optical** load + vitals in that belly; ANR measures **electrical** motor-unit activity of the same belly. Not TMD diagnosis. Not AHI.
 
@@ -92,7 +92,7 @@ Masseter is the strongest elevator but sits over the ramus/cheek (Bruxoff-class 
 - Treat strong EMG as proof of good IR-DC or finger SpO₂.
 - Use ANR alone as OSA grading or SB diagnosis.
 
-**Why (short):** Setup + gate rationale — [ANR_M40_CONCORDANCE.md § Setup / Why these gates](../ANR_M40_CONCORDANCE.md#setup--seat-oralable-alone-first).
+**Why (short):** Setup + gate rationale — [ANR_M40_CONCORDANCE.md § Setup / Why these gates](../../ANR_M40_CONCORDANCE.md#setup--seat-oralable-alone-first).
 
 **Figures:** FIG-CO-056/057 (fiber directions) · FIG-CO-031 (ANR vertical) · FIG-CO-026 (device) · FIG-CO-036 layer cake.
 
@@ -177,5 +177,5 @@ Photograph both sensors for the session folder. Prefer one temple per Dual A run
 | Kenhub muscles of mastication tutorial | Local NotebookLM PDF | Full mastication set + TMD note |
 | Publication schematics | FIG-CO-056 / FIG-CO-057 (`…-temporalis-*.png`) | Anterior elevate vs posterior retract |
 | Kenhub stills (teaching archive) | `figures/research_kit_photo_source/kenhub_temporalis_*.png` | Internal reference only — not paper assets |
-| Canonical Dual A procedure | [../ANR_M40_CONCORDANCE.md](../ANR_M40_CONCORDANCE.md) | Preflight + Mac scripts |
+| Canonical Dual A procedure | [../ANR_M40_CONCORDANCE.md](../../ANR_M40_CONCORDANCE.md) | Preflight + Mac scripts |
 | Kit wear stack | [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) §2b | Layer cake + wear photos |

@@ -6,13 +6,13 @@
 **Status:** Sendable leave-behind · **31 Jul 2026** · Stage A truth  
 **Not (opening ask):** Ken investor Pre-Seed · CEO equity ask · medical-device claims · **Dianyx JV / product merge**  
 **Staged:** Phase 1 = **you / McGill** · Phase 2 = explore **complementary Dianyx** later (intraoral ↔ extraoral)  
-**Canonical truth:** [COLLAB_NABAVI_MCGILL.md](../clinical/COLLAB_NABAVI_MCGILL.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Canonical truth:** [COLLAB_NABAVI_MCGILL.md](../clinical/COLLAB_NABAVI_MCGILL.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 **Pair with:** [KOOROSH_OUTREACH.md](./KOOROSH_OUTREACH.md) · [HW_ENGINEER_ALTIUM_BRIEF.md](../hardware/HW_ENGINEER_ALTIUM_BRIEF.md)
 
 **Present:** [`PITCH_KOOROSH.html`](./PITCH_KOOROSH.html) (← →) · [`PITCH_KOOROSH.pdf`](./PITCH_KOOROSH.pdf)
 
 **Brand:** [`brand/oralable_logo_lockup.png`](./brand/oralable_logo_lockup.png) · Oralable® · Word of Mouth™  
-**Figures:** [../FIGURES.md](../FIGURES.md) · pack copies [`figures/`](./figures/)
+**Figures:** [../FIGURES.md](../../FIGURES.md) · pack copies [`figures/`](./figures/)
 
 ![FIG-CO-003 Temple placement](./figures/FIG-CO-003-temple-placement.svg)
 
@@ -88,7 +88,7 @@ Oralable tests **extraoral temporalis OMG** (IR-DC + ACC) — **outside the mout
 
 Papers and hardware should **embody** the Oralable invention under JAC. Collaboration means **McGill academic** co-authorship (+ optional JAC Altium contractor) — **not** Dianyx inventorship or company data sharing. Paper affiliation: **Research Associate, McGill University / RI-MUHC**. Set IP and authorship rules with counsel before sharing raw logs.
 
-Detail internal only: [IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md)  
+Detail internal only: [IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS.md) · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md)  
 **Do not attach** provisional PDF / claim text in outreach.
 
 ---
@@ -207,4 +207,4 @@ One Oralable device feeds both science and product. Better hardware unlocks over
 
 ---
 
-*Related:* [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md) · [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [PITCH_CEO_CANDIDATE.md](./PITCH_CEO_CANDIDATE.md) (different audience)
+*Related:* [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [CORE_ML_TRAINING_COHORT.md](../../CORE_ML_TRAINING_COHORT.md) · [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [PITCH_CEO_CANDIDATE.md](./PITCH_CEO_CANDIDATE.md) (different audience)

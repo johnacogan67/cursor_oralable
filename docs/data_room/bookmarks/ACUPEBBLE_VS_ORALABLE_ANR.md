@@ -2,7 +2,7 @@
 
 **As at:** 30 Aug 2026 · Pack **1.1.68**  
 **Context:** Pedro Mayoral uses **AcuPebble** (Acurable) for home OSA today. **AcuPebble always uses finger ox.** Oralable is the temple optical layer. ANR M40 is research temporalis sEMG.  
-**Related:** [MEASUREMENT_CONSTRUCT_MAP.md](../clinical/MEASUREMENT_CONSTRUCT_MAP.md) (living construct table — iterate there) · Pedro note [PEDRO_CONSTRUCT_MAP_NOTE.md](../clinical/PEDRO_CONSTRUCT_MAP_NOTE.md) / [PDF](../clinical/PEDRO_CONSTRUCT_MAP_NOTE.pdf) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](../clinical/MAYORAL_METHOD_ORALABLE_VALIDATION.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · [ANR_M40_CONCORDANCE.md](../clinical/ANR_M40_CONCORDANCE.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](./BRUXOFF_PSG_GOLD_STANDARD.md) · [DIANYX_FDA_AND_SMART_OAT_LANDSCAPE.md](./DIANYX_FDA_AND_SMART_OAT_LANDSCAPE.md) · [HAPPY_RING.md](./HAPPY_RING.md) (Oura-like finger HSAT — same AHI-class shelf, not Pedro’s current tool) · [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md)
+**Related:** [MEASUREMENT_CONSTRUCT_MAP.md](../clinical/MEASUREMENT_CONSTRUCT_MAP.md) (living construct table — iterate there) · Pedro note [PEDRO_CONSTRUCT_MAP_NOTE.md](../clinical/PEDRO_CONSTRUCT_MAP_NOTE.md) / [PDF](../clinical/PEDRO_CONSTRUCT_MAP_NOTE.pdf) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](../clinical/MAYORAL_METHOD_ORALABLE_VALIDATION.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · [ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](./BRUXOFF_PSG_GOLD_STANDARD.md) · [DIANYX_FDA_AND_SMART_OAT_LANDSCAPE.md](./DIANYX_FDA_AND_SMART_OAT_LANDSCAPE.md) · [HAPPY_RING.md](./HAPPY_RING.md) (Oura-like finger HSAT — same AHI-class shelf, not Pedro’s current tool) · [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md)
 
 **One-liner:** Three jobs, not one. AcuPebble = Pedro’s **OSA HSAT / AHI + finger SpO₂** (always finger ox). Oralable = temple **vitals and later jaw-load** with any MAD. ANR = **sEMG** bout timing. Dual A SpO₂∩EMG pairing + engineering SASHB are oxygen-burden context only (**not** Azarbarzin HB). Oralable does **not** replace AcuPebble AHI.
 
@@ -16,8 +16,8 @@
 | AcuPebble SA100 (neck acoustic HSAT) | [acurable.com — SA100](https://acurable.com/en-us/products/acupebble-SA100/) |
 | FDA 510(k) Ox100 | [K222950](https://www.accessdata.fda.gov/cdrh_docs/pdf22/K222950.pdf) — Class II ventilatory effort recorder / HSAT class |
 | Azarbarzin hypoxic burden (literature) | Azarbarzin et al., *Eur Respir J* — event-linked SpO₂ area (needs scored respiratory events) |
-| Oralable SASHB (implementation) | `ClinicalBiometricSuite` / [ALGORITHM_ARCHITECTURE.md](../ALGORITHM_ARCHITECTURE.md) — Σ(90 − SpO₂)·dt when SpO₂ &lt; 90% |
-| ANR M40 path | [ANR_M40_CONCORDANCE.md](../clinical/ANR_M40_CONCORDANCE.md) |
+| Oralable SASHB (implementation) | `ClinicalBiometricSuite` / [ALGORITHM_ARCHITECTURE.md](../../ALGORITHM_ARCHITECTURE.md) — Σ(90 − SpO₂)·dt when SpO₂ &lt; 90% |
+| ANR M40 path | [ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md) |
 | Oralable Arm P | [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) |
 
 Acurable lists SA100 and Ox100. **This workspace: AcuPebble always uses finger ox.** Do not write Pedro methods as acoustic-only. Construct lock: [MEASUREMENT_CONSTRUCT_MAP.md](../clinical/MEASUREMENT_CONSTRUCT_MAP.md).
@@ -71,7 +71,7 @@ ANR Dual A (EMG bouts)    ← Research Kit / Paper A descriptive precursor
                               (deeper PSG-AV / Bruxoff concordance → later)
 ```
 
-**Dual A SpO₂∩EMG nest:** Mac `align_anr_oralable_concordance.py` joins Oralable SpO₂ / SASHB with ANR EMG bout timing (`NEST.md`, `metrics.json` → `spo2_emg_nest`). This is AcuPebble-style **oxygen-burden nesting**, not an AHI/ODI clone and not Bruxoff bout equivalence. See [ANR_M40_CONCORDANCE.md](../ANR_M40_CONCORDANCE.md).
+**Dual A SpO₂∩EMG nest:** Mac `align_anr_oralable_concordance.py` joins Oralable SpO₂ / SASHB with ANR EMG bout timing (`NEST.md`, `metrics.json` → `spo2_emg_nest`). This is AcuPebble-style **oxygen-burden nesting**, not an AHI/ODI clone and not Bruxoff bout equivalence. See [ANR_M40_CONCORDANCE.md](../../ANR_M40_CONCORDANCE.md).
 
 ---
 

@@ -153,4 +153,4 @@ B1 references cited (landscape cross-check): includes among others **US2018/0220
 
 ---
 
-*Related:* [IP_EVAL_AND_LANDSCAPE.md](./IP_EVAL_AND_LANDSCAPE.md) · [../IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md) · [FUNDING_POINT_B_AND_CAP_TABLE.md](./FUNDING_POINT_B_AND_CAP_TABLE.md)
+*Related:* [IP_EVAL_AND_LANDSCAPE.md](./IP_EVAL_AND_LANDSCAPE.md) · [../IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md) · [FUNDING_POINT_B_AND_CAP_TABLE.md](./FUNDING_POINT_B_AND_CAP_TABLE.md)

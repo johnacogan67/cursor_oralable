@@ -4,7 +4,7 @@
 **Version:** 1.1.0 · **Date:** July 2026  
 **Manufacturer:** JAC Dental Ltd · **Product:** Oralable Oral Activity Monitor (MAM)
 
-**Related:** [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [data_room/README.md](./README.md) · [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](../ORALABLE_SYSTEM_ARCHITECTURE.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related:** [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [data_room/README.md](./README.md) · [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](../../ORALABLE_SYSTEM_ARCHITECTURE.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 ---
 
@@ -17,7 +17,7 @@ This spec describes the **Oralable MAM platform** for investors and technical di
 
 - **Hardware** — PCB00003 clip + Oralable magnetic case; **Gen1** (BOM REV8 / REV10 / ES2832AA2) **ship-ready / Research Kits gated** (5 → Pedro by 31 Aug 2026); **Gen2** (BOM REV9 / REV11 / ES4L15BA1) upcoming
 - **Firmware** — nRF Connect SDK, TGM GATT, BLE-gated streaming; Gen1 target **1.0.84**
-- **Mobile** — iOS consumer + professional apps; Android roadmap — working diagrams [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+- **Mobile** — iOS consumer + professional apps; Android roadmap — working diagrams [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 - **Algorithms** — Phase 0 temple vitals (HR/SpO₂); Phase 1+ IR-DC occlusion, TFI/SASHB, jaw actigraphy
 - **Data** — local recording, export, optional CloudKit share to dentists
 - **Clinical path** — wellness Phase 0 → Phase 1+ muscle evidence → 510(k) monitoring indication
@@ -116,7 +116,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 
 ## 6. Mobile applications
 
-**Working diagrams (canonical):** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).
+**Working diagrams (canonical):** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).
 
 ### 6.1 Oralable (consumer)
 
@@ -131,7 +131,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 | APP-07 | 6-digit share code → dentist CloudKit | ✅ code · ⏳ prod CloudKit |
 | APP-08 | StoreKit 2 subscriptions (6 products) | ✅ code · ⏳ App Store Connect |
 | APP-09 | HealthKit read/write | ✅ |
-| APP-10 | Unified overnight report (TFI + SASHB + events) | ✅ Share PDF + event CSV; **hypnogram-first**; provisional BP-style bands ([OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md)); Mac night pack; evaluable night **≥ 6 h**; **in-app required:** `StateHypnogramView` Share preview + Dashboard morning card (adapts FIG-CO-025; flag `showOvernightHypnogram`) |
+| APP-10 | Unified overnight report (TFI + SASHB + events) | ✅ Share PDF + event CSV; **hypnogram-first**; provisional BP-style bands ([OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md)); Mac night pack; evaluable night **≥ 6 h**; **in-app required:** `StateHypnogramView` Share preview + Dashboard morning card (adapts FIG-CO-025; flag `showOvernightHypnogram`) |
 
 **Navigation:** `oralable_swift/docs/MOBILE_APP_FLOWS.md`
 
@@ -191,7 +191,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 **Validation:** `cursor_oralable` — `self_validate.py`, `validation_dashboard`, protocol phases (Ed/Pedro).  
 **Swift parity:** `OralableCore` algorithms + `UnifiedBiometricProcessor`.
 
-**ML roadmap:** Core ML `BruxismMAM_Temporalis`; training labels from Protocol A; cohort sizes / demographics in [CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md).
+**ML roadmap:** Core ML `BruxismMAM_Temporalis`; training labels from Protocol A; cohort sizes / demographics in [CORE_ML_TRAINING_COHORT.md](../../CORE_ML_TRAINING_COHORT.md).
 
 ---
 
@@ -231,7 +231,7 @@ Pre-launch dashboard shows **PPG IR waveform** by default; additional cards gate
 | **Event timeline** | Clench/grind state transitions | Pattern awareness | vs EMG gold standard |
 | **HR / SpO₂** | From green/red/IR PPG | General wellness vitals | Temple (Phase 0) → cheek coupling (Phase 1+) |
 
-**Ken gap:** Modelled accuracy specs and population benchmarks — **filled by Ed/Pedro pilot** ([PILOT_PROTOCOL_ED_PEDRO.md](../clinical/PILOT_PROTOCOL_ED_PEDRO.md)).
+**Ken gap:** Modelled accuracy specs and population benchmarks — **filled by Ed/Pedro pilot** ([PILOT_PROTOCOL_ED_PEDRO.md](../archive/PILOT_PROTOCOL_ED_PEDRO.md)).
 
 ---
 
@@ -261,7 +261,7 @@ Pre-launch dashboard shows **PPG IR waveform** by default; additional cards gate
 
 ## 13. 36-month delivery phases
 
-Aligns with [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md).
+Aligns with [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md).
 
 | Quarter | Deliverable |
 |---------|-------------|
@@ -285,7 +285,7 @@ Aligns with [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [PRODUCT_ROADMAP.m
 | Mobile UX | `oralable_swift/docs/MOBILE_APP_FLOWS.md` |
 | BLE / algorithms | `OralableCore/`, `cursor_oralable/docs/ALGORITHM_ARCHITECTURE.md` |
 | Clinical protocol | `TEMPORALIS_COLLECTION_PROTOCOL.md`, `PILOT_PROTOCOL_ED_PEDRO.md` |
-| Market / competitors | `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` |
+| Market / competitors | [ORALABLE_MARKET_LANDSCAPE.md](../bookmarks/ORALABLE_MARKET_LANDSCAPE.md) |
 | Upload pack | `docs/archive/upload_2026-06/01–04_*.txt` |
 
 ---

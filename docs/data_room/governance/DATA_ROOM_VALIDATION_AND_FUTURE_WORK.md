@@ -2,7 +2,7 @@
 
 **As at:** 30 Aug 2026 · Pack **1.1.68** (canonical: [`VERSION`](./VERSION) · [`VERSION_ALIGNMENT.md`](./VERSION_ALIGNMENT.md))  
 **Method:** Re-align after measured Mac Dual A `20260812_085110`, research EDF+, and Paper A / Pedro / feasibility stamp bump. Prior soft corroboration + iOS band unlock (≥1 h) kept.  
-**Related:** Paper A audit [PAPER_A_VALIDATION_AND_FUTURE_WORK.md](../clinical/PAPER_A_VALIDATION_AND_FUTURE_WORK.md) · Nabavi [COLLAB_NABAVI_MCGILL.md](../clinical/COLLAB_NABAVI_MCGILL.md) · kit [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) · feasibility [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · ANR [ANR_M40_CONCORDANCE.md](../clinical/ANR_M40_CONCORDANCE.md) · corroboration [SENSOR_CORROBORATION.md](../bookmarks/SENSOR_CORROBORATION.md) · parity [MAC_PHONE_ALGORITHM_PARITY.md](../bookmarks/MAC_PHONE_ALGORITHM_PARITY.md) · Pedro [PEDRO_STATUS_UPDATE_2026-08.md](../clinical/PEDRO_STATUS_UPDATE_2026-08.md)
+**Related:** Paper A audit [PAPER_A_VALIDATION_AND_FUTURE_WORK.md](../clinical/PAPER_A_VALIDATION_AND_FUTURE_WORK.md) · Nabavi [COLLAB_NABAVI_MCGILL.md](../clinical/COLLAB_NABAVI_MCGILL.md) · kit [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) · feasibility [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · ANR [ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md) · corroboration [SENSOR_CORROBORATION.md](../bookmarks/SENSOR_CORROBORATION.md) · parity [MAC_PHONE_ALGORITHM_PARITY.md](../bookmarks/MAC_PHONE_ALGORITHM_PARITY.md) · Pedro [PEDRO_STATUS_UPDATE_2026-08.md](../clinical/PEDRO_STATUS_UPDATE_2026-08.md)
 
 **Overall verdict:** Pack **1.1.68** aligns Paper A, Research Kit, Pedro status, and ANR/AcuPebble bookmarks with measured Dual A + EDF. **Hard blocker for field *N*:** Ed/Pedro Research Kits are still **gated** (charge-to-temple); target **5 by 31 Aug 2026**. Science watch: short Dual A / Protocol A packs (~6 min) are layout / methods only — not ≥6 h *N*. SASHB ≠ Azarbarzin HB. Feasibility n≈5 ≠ registered clinical trial. Ken equity narrative tension is unchanged.
 
@@ -243,7 +243,7 @@ Legend: **A** aligned · **W** watch · **S** stale stamp · **F** fixed this pa
 
 ### 3 Aug 2026 (ANR align)
 
-1. [ANR_M40_CONCORDANCE.md](../clinical/ANR_M40_CONCORDANCE.md) — BLE Design Guide + ANR iPhone app bookmarks; nRF Connect optional for ANR only.  
+1. [ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md) — BLE Design Guide + ANR iPhone app bookmarks; nRF Connect optional for ANR only.  
 2. Cross-links: BRUXOFF ladder, LITERATURE, PAPER_A_*, MAYORAL, GEMINI, REGULATORY, MARKET_SIZING, README.  
 3. Truth table: Dual A in Paper A + BLE validation refs locked.  
 4. [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) — Pedro AcuPebble (HSAT/AHI) vs Oralable vs ANR; Oralable ≠ AHI clone.

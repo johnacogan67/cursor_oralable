@@ -102,7 +102,7 @@ Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_
 
 **Objective:** Time-align **ANR M40 surface EMG** (anterior temporalis) with Oralable Protocol A IR-DC / labels for research concordance — **not** Phase 0 or Paper A feasibility.
 
-**Full hardware / claim discipline:** [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · data-room bookmark [data_room/clinical/ANR_M40_CONCORDANCE.md](./data_room/clinical/ANR_M40_CONCORDANCE.md).  
+**Full hardware / claim discipline:** [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · data-room bookmark [data_room/bookmarks/ANR_M40_CONCORDANCE.md](./data_room/bookmarks/ANR_M40_CONCORDANCE.md).  
 **What Dual A scores vs labels / AHI:** [data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) — iterate the construct table there.
 
 | | Dual A |
@@ -150,7 +150,7 @@ Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_
 
 *Figure FIG-CO-004 — Protocol B 3-tap sync (placeholder).*
 
-Canonical results: [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md). Pilot roles: [data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md).
+Canonical results: [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md). Pilot roles: [data_room/archive/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/archive/PILOT_PROTOCOL_ED_PEDRO.md).
 
 ### Phases (elapsed seconds from **1st 3-tap sync**)
 
@@ -205,7 +205,7 @@ Structured Protocol A/B locks are **minutes**, not sleep. For **evaluable overni
 | **Smoking-gun hourly r** | **≥ 3 hours** of filled hourly buckets | Pearson SASHB vs rescue fraction (needs ≥3 hourly bins) |
 | **Not sleep** | Protocol A (~6 min) / Protocol B (~4.5 min) | Training / pass-fail only |
 
-See also [data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md) §4.2.
+See also [data_room/archive/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/archive/PILOT_PROTOCOL_ED_PEDRO.md) §4.2.
 
 ### Night-report pack (Mac + iOS)
 

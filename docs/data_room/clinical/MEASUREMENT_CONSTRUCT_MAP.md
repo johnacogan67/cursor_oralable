@@ -8,7 +8,7 @@
 
 **Pedro sendable:** [PEDRO_CONSTRUCT_MAP_NOTE.md](./PEDRO_CONSTRUCT_MAP_NOTE.md) · [PDF](./PEDRO_CONSTRUCT_MAP_NOTE.pdf) — tables + why they matter for AcuPebble / Arm P / Dual A / FEP. Do not paste Table 1 into Paper A.
 
-**Related (detail, not duplicates):** [ANR_M40_CONCORDANCE.md](../ANR_M40_CONCORDANCE.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](../bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) · [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) · [ALGORITHM_ARCHITECTURE.md](../ALGORITHM_ARCHITECTURE.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](./MAYORAL_METHOD_ORALABLE_VALIDATION.md)
+**Related (detail, not duplicates):** [ANR_M40_CONCORDANCE.md](../../ANR_M40_CONCORDANCE.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](../bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) · [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md) · [ALGORITHM_ARCHITECTURE.md](../../ALGORITHM_ARCHITECTURE.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](./MAYORAL_METHOD_ORALABLE_VALIDATION.md)
 
 ---
 
@@ -112,3 +112,4 @@ Hypothesis 3.5.4 (MAD/CPAP cuts RMMA **timed to apnea/hypopnea end**) needs **ev
 | 29 Aug 2026 | Locked: **AcuPebble always uses finger ox.** Collapsed SA100 vs Ox100 columns. Finger ox = AcuPebble or PSG. Dual A still temple PPG. |
 | 29 Aug 2026 | Table 2: dropped **PSG + Dual A** stack. |
 | 29 Aug 2026 | Pedro sendable [PEDRO_CONSTRUCT_MAP_NOTE.md](./PEDRO_CONSTRUCT_MAP_NOTE.md) / PDF — pointer only; tables stay here. |
+| 30 Aug 2026 | Pedro note: glossary (instrument / methods / Dual A / muscle vs infrared / Paper A / FEP). Table 1 unchanged. |

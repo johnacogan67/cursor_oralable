@@ -1,6 +1,6 @@
 # Oralable® — Pitch deck (distilled for Ken / BalancePoints)
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Audience:** Ken Kinsella · [BalancePoints](https://balancepoints.co.uk) (Point A → Point B framing)  
 **Status:** Working draft · July 2026 · strong for **Ken working session**; **not** F&F-close ready until valuation / terms / use-of-funds / runway / Voice  
@@ -294,14 +294,14 @@ We are building the wearable that makes that path possible.
 | Topic | Doc |
 |-------|-----|
 | Founder CV / pitch bio | [`JOHN_COGAN_CV.md`](./JOHN_COGAN_CV.md) |
-| End goal | [`../IP_NORTH_STAR.md`](../IP_NORTH_STAR.md) |
-| Phases / BOM | [`../PRODUCT_ROADMAP.md`](../PRODUCT_ROADMAP.md) |
+| End goal | [`../IP_NORTH_STAR.md`](../../IP_NORTH_STAR.md) |
+| Phases / BOM | [`../PRODUCT_ROADMAP.md`](../../PRODUCT_ROADMAP.md) |
 | Cost / timeline | [`COST_AND_TIMELINE.md`](../governance/COST_AND_TIMELINE.md) |
 | Cash snapshot | [`FINANCIALS_CASH_SNAPSHOT.md`](../governance/FINANCIALS_CASH_SNAPSHOT.md) |
 | Point B ask + cap table | [`FUNDING_POINT_B_AND_CAP_TABLE.md`](../governance/FUNDING_POINT_B_AND_CAP_TABLE.md) |
 | Current governance snapshot | [`CURRENT_GOVERNANCE_STATUS.md`](../governance/CURRENT_GOVERNANCE_STATUS.md) |
 | Corporate structure / Ken & Nigel | [`JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md`](../governance/JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md) |
-| 22 Jul Ken/Nigel meeting brief | [`MEETING_BRIEF_KEN_NIGEL_2026-07-22.md`](../governance/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md) |
+| 22 Jul Ken/Nigel meeting brief | [`MEETING_BRIEF_KEN_NIGEL_2026-07-22.md`](../archive/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md) |
 | Market sizing sketch | [`MARKET_SIZING.md`](../governance/MARKET_SIZING.md) |
 | IP portfolio status | [`IP_PORTFOLIO_STATUS.md`](../governance/IP_PORTFOLIO_STATUS.md) |
 | IP eval + landscape | [`IP_EVAL_AND_LANDSCAPE.md`](../governance/IP_EVAL_AND_LANDSCAPE.md) |
@@ -311,7 +311,7 @@ We are building the wearable that makes that path possible.
 | Regulatory | [`REGULATORY_TIMELINE.md`](../governance/REGULATORY_TIMELINE.md) |
 | Pilot handout | [`ED_PEDRO_QUICK_START.md`](../clinical/ED_PEDRO_QUICK_START.md) |
 | Data room index | [`README.md`](./README.md) |
-| Market landscape | `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` |
+| Market landscape | [ORALABLE_MARKET_LANDSCAPE.md](../bookmarks/ORALABLE_MARKET_LANDSCAPE.md) |
 | FTS | [`ORALABLE_FTS_36MO.md`](../governance/ORALABLE_FTS_36MO.md) |
 
 ---

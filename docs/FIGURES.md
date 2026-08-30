@@ -18,6 +18,13 @@
 4. Do not put confidential claim text in SVG titles meant for external decks.
 5. Clinical raw plots live under `data/plots/`; promote selected embeds here as `FIG-CO-xxx` (symlink path or copy later).
 
+
+## Canonical vs style variants
+
+**Diligence / decks use the paths in the inventory table above** (and symlinks under `data_room/figures/`).
+
+Style exploration folders under `docs/figures/` (e.g. matisse / hokusai / durer / photo_source working crops) are **not** investor diligence. Keep one canonical file per FIG-CO-ID in the table; cull unused variants in a later dedicated pass after picking winners. See also [VISUAL_AND_VOICE_DIRECTION.md](./data_room/brand/VISUAL_AND_VOICE_DIRECTION.md).
+
 ## Template
 
 Copy [`figures/_placeholder.svg`](./figures/_placeholder.svg) → `FIG-CO-NNN-slug.svg`, update the three text lines inside the SVG, then embed:

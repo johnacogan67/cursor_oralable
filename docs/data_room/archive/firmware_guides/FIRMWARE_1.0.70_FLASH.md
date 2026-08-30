@@ -1,6 +1,6 @@
 # Firmware 1.0.70 — flash guide (pcb00003 / REV10)
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Build date:** July 2026 · **Role:** **Rollback** (current target = **1.0.84**; prior archive **1.0.82**) · patient app only
 

@@ -1,8 +1,8 @@
 # Patient app · Professional app · Revenue — where we sit (July 2026)
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-**Status:** Evaluation snapshot · aligns with [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · `MOBILE_APP_FLOWS.md`
+**Status:** Evaluation snapshot · aligns with [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · `MOBILE_APP_FLOWS.md`
 
 **Strategy stack:** Stage A wellness wearable first; Stage B medical later. New US patent embodiment. Ed/Pedro use the patient app only.  
 **Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
@@ -16,13 +16,13 @@ flowchart LR
   Export --> Dentist[Dentist app Phase 1 plus only]
 ```
 
-*Patient app Phase 0 path; dentist / CloudKit stay dark until Phase 1+. Full diagrams: [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).*
+*Patient app Phase 0 path; dentist / CloudKit stay dark until Phase 1+. Full diagrams: [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).*
 
 ---
 
 ## 1. One-line verdict
 
-**North star:** [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) — **Stage A wellness wearable first**, **Stage B medical device later**; ship the **new US patent being submitted** (Temporalis OMG / IR-DC / TFI / SASHB). Foundation granted US and EU patents sit underneath.
+**North star:** [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) — **Stage A wellness wearable first**, **Stage B medical device later**; ship the **new US patent being submitted** (Temporalis OMG / IR-DC / TFI / SASHB). Foundation granted US and EU patents sit underneath.
 
 **Phase 0 Gen1 kits** prove hardware, BLE, and vitals for that invention **as a wearable**. They do **not** yet deliver the bruxism-native UX that drives consumer Premium or dentist Practice subscriptions. Near-term revenue is **hardware plus careful wellness IAP**; durable B2B2C waits on **Phase 1+ embodiment and CloudKit**. **Ed/Pedro use the patient app only.** Do **not** claim medical-device status in this iteration.
 

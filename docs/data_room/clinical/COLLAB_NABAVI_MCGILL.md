@@ -1,11 +1,11 @@
 # Canonical — Nabavi (Koroosh) collaboration truth
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **As at:** 30 Aug 2026 · Pack **1.1.68** (collab truth unchanged; Dual A eng pack + Paper A stamps aligned; stack FW **1.0.84**)  
 **Use this file** when pitch, outreach, Ed/Pedro agenda, or the HW brief disagree with each other.
 
-**Sendables:** [PITCH_KOOROSH.pdf](../pitches/PITCH_KOOROSH.pdf) · [KOOROSH_OUTREACH.md](../pitches/KOOROSH_OUTREACH.md) · Pedro path [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) · **Figures:** [../FIGURES.md](../FIGURES.md) · photo guide [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md)
+**Sendables:** [PITCH_KOOROSH.pdf](../pitches/PITCH_KOOROSH.pdf) · [KOOROSH_OUTREACH.md](../pitches/KOOROSH_OUTREACH.md) · Pedro path [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) · **Figures:** [../FIGURES.md](../../FIGURES.md) · photo guide [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md)
 
 ![FIG-CO-011 Extraoral vs intraoral](../figures/FIG-CO-011-extraoral-vs-intraoral.svg)
 
@@ -112,7 +112,7 @@
 | [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) | Pedro/Ed F&F investor pitch |
 | [HW_ENGINEER_ALTIUM_BRIEF.md](../hardware/HW_ENGINEER_ALTIUM_BRIEF.md) | Altium checklist for handoff |
 | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) | Phase 0 partner handout |
-| [PILOT_PROTOCOL_ED_PEDRO.md](./PILOT_PROTOCOL_ED_PEDRO.md) | Phase 1 muscle protocol |
+| [PILOT_PROTOCOL_ED_PEDRO.md](../archive/PILOT_PROTOCOL_ED_PEDRO.md) | Phase 1 muscle protocol |
 | [LITERATURE_AND_PRIOR_ART.md](../bookmarks/LITERATURE_AND_PRIOR_ART.md) | Paper A related-work / ambulatory SB landscape |
 | [MAYORAL_METHOD_ORALABLE_VALIDATION.md](./MAYORAL_METHOD_ORALABLE_VALIDATION.md) | Oralable as MAD titration ground-truth (complementary to intraoral) |
 | [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) | Owens & Mayoral 2026 SB × FEP — Paper B / Arm P cite; not Paper A methods |

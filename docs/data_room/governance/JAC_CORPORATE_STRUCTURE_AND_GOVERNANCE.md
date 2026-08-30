@@ -3,7 +3,7 @@
 **Status:** Canonical governance brief for Ken / BalancePoints · **as at 22 Jul 2026**  
 **Entity:** JAC Dental Solutions Limited · CRO **697987** · 18 Eaton Square, Blackrock, A94 X023, Ireland  
 **Product brand:** Oralable  
-**Clean snapshot:** [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md) · **Today’s meeting:** [MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](./MEETING_BRIEF_KEN_NIGEL_2026-07-22.md)
+**Clean snapshot:** [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md) · **Today’s meeting:** [MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](../archive/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md)
 
 **Source hierarchy (what wins when older NotebookLM notes conflict):**
 
@@ -45,7 +45,7 @@ These notes replace an older NotebookLM synopsis that mixed P&amp;L, counsel tra
 | Legal name | **JAC Dental Solutions Limited** |
 | Trading / product | **Oralable** |
 | Prior framing | Byteexplain share-issue workbooks (historical dilution / valuations) |
-| Strategy | Wellness-first wearable → clinical / Stage B medical when evidence allows — see [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md), [../IP_NORTH_STAR.md](../IP_NORTH_STAR.md) |
+| Strategy | Wellness-first wearable → clinical / Stage B medical when evidence allows — see [../PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md), [../IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) |
 | Hardware (pointer only) | Gen1 pcb00003 / MAXM86161 optical path; Gen2 nRF54L15 track — not restated here |
 | IP (pointer only) | Portfolio under counsel — [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · [IP_EVAL_AND_LANDSCAPE.md](./IP_EVAL_AND_LANDSCAPE.md) |
 
@@ -448,7 +448,7 @@ Grant clock starts on **signed CEO engagement**. Unvested forfeits on Bad Leaver
 | Topic | Doc |
 |-------|-----|
 | Clean as-at snapshot | [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md) |
-| 22 Jul meeting brief | [MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](./MEETING_BRIEF_KEN_NIGEL_2026-07-22.md) |
+| 22 Jul meeting brief | [MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](../archive/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md) |
 | Cap table + Point B ask | [FUNDING_POINT_B_AND_CAP_TABLE.md](./FUNDING_POINT_B_AND_CAP_TABLE.md) |
 | Cash snapshot | [FINANCIALS_CASH_SNAPSHOT.md](./FINANCIALS_CASH_SNAPSHOT.md) |
 | Ken pitch distill | [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md) |

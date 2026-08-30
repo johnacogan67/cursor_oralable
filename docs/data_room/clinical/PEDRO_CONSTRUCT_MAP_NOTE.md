@@ -18,15 +18,30 @@ Subject: What AcuPebble, Oralable, Dual A, and PSG measure
 
 Pedro,
 
-I have written a two-page note so that we keep each instrument in its own box when we write methods.
+I have written a short note so that we keep each instrument in its own box when we write methods. The first page defines the words we use: instrument, methods, Dual A, muscle versus infrared, Paper A, and the FEP paper. The tables follow.
 
-AcuPebble remains your home AHI and ODI, from neck sound and finger oxygen. Oralable sits on the temple. It does not use a finger probe. Dual A is ANR muscle activity and the Oralable infrared trough on the same temporalis. Those are different measurements. AHI, Azarbarzin hypoxic burden, and our SASHB are not the same number.
+AcuPebble remains your home AHI and ODI, from neck sound and finger oxygen. Oralable sits on the temple. It does not use a finger probe. Dual A is muscle activity (ANR) and the Oralable infrared trough on the same temporalis. AHI, Azarbarzin hypoxic burden, and our SASHB are not the same number.
 
 Table 2 shows what each stack gives you now. Table 1 is the lock on what matches what.
 
 Please tell me which path you want first at Beacon: AcuPebble with Oralable for the 1–2 hour arm; Dual A (muscle versus infrared); or AcuPebble event times lined up with muscle bouts. That last path is for the FEP paper. It is not built, and it is not Paper A.
 
 John
+
+---
+
+## Words we use
+
+| Word | Meaning |
+|------|---------|
+| **Instrument** | The device and what it senses. AcuPebble: neck sound + **finger** oxygen (AHI / ODI). Oralable (MAM): temple light and motion; oxygen is **temple**, not finger. ANR: electrical muscle activity on the same temporalis. PSG-AV: the lab study. |
+| **Methods** | How we write the measurement: site, sample rate, what we scored, what we do not claim. Not your MAD titration method. |
+| **Dual A** | Oralable and ANR on the same anterior temporalis at the same time. Seat Oralable first. Confirm an infrared trough on a hard clench. Then add ANR, electrodes vertical. What we score today: an EMG burst, then an infrared trough about 1–5 seconds later. Not AHI. Not a night. One engineering pack is about six minutes. |
+| **Muscle versus infrared** | Dual A’s main pair. **Muscle** = ANR EMG (the clock). **Infrared** = Oralable IR-DC trough (blood squeezed from the tissue; it lags). Same event, two physics. Not the same units. |
+| **Paper A** | The Oralable kit / feasibility paper (IEEE draft): wear, temple vitals, Dual A as a descriptive precursor. About five people at Beacon. Not a registered trial. Not an AHI claim. It does not test the FEP theory. |
+| **FEP paper** | Owens and Mayoral, *Frontiers in Behavioral Neuroscience*, 2026. Theory: sleep bruxism as predictive regulation. No Oralable cohort. Hypothesis 3.5.4 needs apnea/hypopnea **times** plus a muscle clock. That coupling is not built. Cite for Paper B / Arm P, not as Paper A methods. |
+
+Instruments measure. Dual A pairs muscle with infrared. Methods is how we write that. Paper A is the kit paper. The FEP paper is the theory paper.
 
 ---
 
@@ -56,7 +71,7 @@ Your AcuPebble headline is **AHI / ODI**. That is not Azarbarzin HB unless your 
 |-----------|---------------------|
 | **AcuPebble (today)** | Home AHI + ODI from neck + **finger** SpO₂. Keep this as the apnea reference. Oralable does not replace it. |
 | **Arm P / MAD nights** | MAM can sit beside AcuPebble for temple vitals and later jaw-load. Temple SpO₂ ≠ finger ox. SASHB ≠ AHI ≠ HB. |
-| **Dual A (research)** | Same-site EMG burst → IR-DC trough (~1–5 s lag). One engineering pack: IR↔EMG F1 ≈ 0.61 vs EMG; F1 vs Protocol A labels = 0; ~6 min, not a night. |
+| **Dual A (research)** | Same-site **muscle (EMG)** then **infrared (IR-DC)** trough (~1–5 s lag). One engineering pack: IR↔EMG F1 ≈ 0.61 vs EMG; F1 vs Protocol A labels = 0; ~6 min, not a night. |
 | **FEP / hypothesis 3.5.4** | Needs **event timestamps** plus a bout clock. Nightly AHI is not enough. Closest home path: AcuPebble events + Dual A. **Not built.** Cite FEP for Paper B / Arm P, not Paper A methods. |
 | **PSG-AV** | Gold AHI, RMMA, and HB if scored. Lab, not the home stack we ship. |
 
@@ -70,7 +85,7 @@ Paper A is feasibility / Dual A precursor. It does **not** test FEP endotypes.
 |-------|-------------|----------------|
 | **MAM** (Oralable temple) | IR trough, % drop, SASHB, tonic/phasic/rescue/recovery **labels**, Core ML, **temple** SpO₂ | Finger ox; AHI; HB; electrical onset; FEP latency |
 | **ANR** | EMG onset + amplitude bouts | Finger ox; AHI; HB; IR; Core ML; rescue-as-airway |
-| **Dual A** | EMG→IR trough pair + **temple** SASHB shown beside EMG | Finger ox; AHI; HB; Core ML vs EMG; overnight tonic/phasic F1; FEP latency |
+| **Dual A** | **Muscle (EMG)** versus **infrared (IR-DC)** trough + **temple** SASHB shown beside EMG | Finger ox; AHI; HB; Core ML vs EMG; overnight tonic/phasic F1; FEP latency |
 | **AcuPebble** | AHI + ODI / **finger** SpO₂ (**always**) | HB unless export is event-tied; all jaw rows |
 | **AcuPebble + Dual A** | AHI **plus** EMG→IR. Finger SpO₂ is **AcuPebble only**; Dual A still temple + EMG | Coupling only if event timestamps align — **not built**. Dual A SpO₂ is not the finger channel |
 | **PSG-AV** | AHI **and** HB (if scored) **and** RMMA | Oralable IR-DC / Core ML / SASHB unless MAM is worn |
@@ -106,7 +121,7 @@ Paper A is feasibility / Dual A precursor. It does **not** test FEP endotypes.
 | Do | Do not |
 |----|--------|
 | Keep AcuPebble for AHI / ODI (finger ox) | Call Oralable or Dual A an HSAT or finger-ox channel |
-| Call Dual A primary pair EMG → IR trough | Call the IR trough EMG; call ACC phasic RMMA |
+| Call Dual A primary pair EMG → IR trough (muscle versus infrared) | Call the IR trough EMG; call ACC phasic RMMA |
 | Call tonic / phasic / rescue / Core ML **labels** until F1 | Treat Core ML as scored vs ANR |
 | Call recovery optical–motion settle | Call it homeostatic latency |
 | Call AcuPebble AHI/ODI | Call AHI or ODI Azarbarzin HB unless the export has event-tied SpO₂ area |

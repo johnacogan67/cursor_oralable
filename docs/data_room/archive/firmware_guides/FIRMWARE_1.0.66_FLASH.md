@@ -57,4 +57,4 @@ Verify GATT **`3A0FF006`** → **`1.0.66-nrfconnect`**
 
 - [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md)
 - [FIRMWARE_1.0.65_FLASH.md](./FIRMWARE_1.0.65_FLASH.md) (prior release notes)
-- [GEN1_GEN2_TRACKING.md](../GEN1_GEN2_TRACKING.md) · current target **1.0.84** · prior: [FIRMWARE_1.0.82_FLASH.md](../firmware/FIRMWARE_1.0.82_FLASH.md)
+- [GEN1_GEN2_TRACKING.md](../../GEN1_GEN2_TRACKING.md) · current target **1.0.84** · prior: [FIRMWARE_1.0.82_FLASH.md](../firmware/FIRMWARE_1.0.82_FLASH.md)

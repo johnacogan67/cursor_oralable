@@ -1,6 +1,6 @@
 # Mac → Phone algorithm parity (bookmark)
 
-**Canonical detail:** [../ALGORITHM_ARCHITECTURE.md](../ALGORITHM_ARCHITECTURE.md) §0.
+**Canonical detail:** [../ALGORITHM_ARCHITECTURE.md](../../ALGORITHM_ARCHITECTURE.md) §0.
 
 **One-liner:** Mac Python is the clinical reference. The phone matches unless the registry lists an exception.
 

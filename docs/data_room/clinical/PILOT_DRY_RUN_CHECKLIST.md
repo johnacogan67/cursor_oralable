@@ -11,11 +11,11 @@
 **Ship gate:** Oralable-case charge to temple-ready SOC (≥50%) + short worn HR/SpO₂ without brownout. See [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) § Pilot ship status.
 
 **Hardware identity:** Gen1 · **BOM REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.84** · Oralable magnetic case (not Qi).  
-See [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [FIRMWARE_1.0.84_FLASH.md](../firmware/FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](../firmware/FIRMWARE_1.0.82_FLASH.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md)
+See [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [FIRMWARE_1.0.84_FLASH.md](../firmware/FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](../firmware/FIRMWARE_1.0.82_FLASH.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md)
 
 **Time (Phase 0):** ~45 min · **Time (Phase 1+ Protocol B):** ~90 min
 
-Related: [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · [PILOT_PROTOCOL_ED_PEDRO.md](./PILOT_PROTOCOL_ED_PEDRO.md) *(deferred)* · [../FIGURES.md](../FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+Related: [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · [PILOT_PROTOCOL_ED_PEDRO.md](../archive/PILOT_PROTOCOL_ED_PEDRO.md) *(deferred)* · [../FIGURES.md](../../FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 ![FIG-CO-022 Charge to temple](../figures/FIG-CO-022-pilot-charge-to-temple.svg)
 
@@ -95,7 +95,7 @@ xcodebuild -scheme OralableApp -destination 'generic/platform=iOS' \
 
 > Skip this section for Phase 0 Ed/Pedro vitals kits. Use [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) instead.
 
-Use full phase table in [TEMPORALIS_COLLECTION_PROTOCOL.md § Protocol B](../TEMPORALIS_COLLECTION_PROTOCOL.md#protocol-b--edpedro-structured-validation).
+Use full phase table in [TEMPORALIS_COLLECTION_PROTOCOL.md § Protocol B](../../TEMPORALIS_COLLECTION_PROTOCOL.md#protocol-b--edpedro-structured-validation).
 
 | Step | Action | Pass |
 |------|--------|------|

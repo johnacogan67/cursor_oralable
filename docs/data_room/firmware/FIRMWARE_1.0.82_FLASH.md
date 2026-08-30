@@ -1,6 +1,6 @@
 # Firmware 1.0.82 — flash guide (pcb00003 / REV10)
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Build date:** 27 Aug 2026 · **Role:** **Prior Gen1 ship** (current target **1.0.84**) · Stage A Phase 0 / Research Kit · patient app only  
 **GATT string:** `1.0.82` (boot banner `v1.0.82-76bdb4ba748b`)
@@ -39,7 +39,7 @@ cd ~/work/oralable_nrf
 ./scripts/update_firmware.sh --ota --bin artifacts/oralable_1.0.82_pcb00003_app_update.bin
 ```
 
-Full flow: [OTA_DEVICE_MANAGER.md](../../../oralable_nrf/docs/OTA_DEVICE_MANAGER.md).
+Full flow: [OTA_DEVICE_MANAGER.md](../../../../oralable_nrf/docs/OTA_DEVICE_MANAGER.md).
 
 ---
 

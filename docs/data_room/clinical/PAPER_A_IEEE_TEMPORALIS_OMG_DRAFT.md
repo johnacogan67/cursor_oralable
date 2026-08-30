@@ -8,7 +8,7 @@
 **Review cover:** [PAPER_A_REVIEW_COVER.md](./PAPER_A_REVIEW_COVER.md)  
 **Feasibility protocol:** [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) · kit [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · placement [TEMPORALIS_ANATOMY_AND_PLACEMENT.md](./TEMPORALIS_ANATOMY_AND_PLACEMENT.md)  
 **Alignment audit:** [PAPER_A_VALIDATION_AND_FUTURE_WORK.md](./PAPER_A_VALIDATION_AND_FUTURE_WORK.md)  
-**Canonical collab truth:** [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · lit distill [LITERATURE_AND_PRIOR_ART.md](../bookmarks/LITERATURE_AND_PRIOR_ART.md) · figures [../FIGURES.md](../FIGURES.md) · Ed/Pedro SB theory [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md)
+**Canonical collab truth:** [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · lit distill [LITERATURE_AND_PRIOR_ART.md](../bookmarks/LITERATURE_AND_PRIOR_ART.md) · figures [../FIGURES.md](../../FIGURES.md) · Ed/Pedro SB theory [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md)
 
 **Claim tone (locked for this draft):** Stage A **measurement / methods + small feasibility** paper. Device-inferred overnight states, Dual A concordance, and burden metrics are **engineering phenotypes**, not clinical diagnoses of sleep bruxism, OSA, or disease. No AHI claims. No claim of superiority to Bruxoff. No FDA/CE clearance claims. Patent: “US provisional filed / patent pending” only — **no claim text**.
 
@@ -293,7 +293,7 @@ Dental Sleep Medicine partners at **Beacon** (Owens, Mayoral) run Research Kit f
 | **Protocol A / Dual A** | Labeled training + ANR concordance | 5-tap sync | ~6 min Mac Dual A |
 | **Protocol B** | Validation gates (later) | First 3-tap | ~4.5 min |
 
-Details: [../TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md).
+Details: [../TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md).
 
 **Optional intake:** BruxScreen-Q (± BruxScreen-C) [4] for Paper B labels.  
 **Landscape nesting:** Bruxoff when available [12]; AcuPebble AHI context [13]; GrindCare as peer class in discussion.
@@ -498,10 +498,10 @@ See also the full audit checklist in [PAPER_A_VALIDATION_AND_FUTURE_WORK.md](./P
 3. Papapanagiotou V, Diou C, Zhou L, *et al.* A novel chewing detection system based on PPG, audio, and accelerometry. *IEEE J Biomed Health Inform.* 2017;21(3):607–618. doi:[10.1109/JBHI.2016.2625271](https://doi.org/10.1109/JBHI.2016.2625271).  
 4. Lobbezoo F, Ahlberg J, Verhoeff MC, *et al.* The bruxism screener (BruxScreen): Development, pilot testing and face validity. *J Oral Rehabil.* 2024;51:59–66. doi:[10.1111/joor.13442](https://doi.org/10.1111/joor.13442).  
 5. Oralable collaboration note — McGill / RI-MUHC academic engagement; extraoral temporalis anatomy; not Dianyx JV. Internal: [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md). *(Remove or replace with public URL before submission.)*  
-6. Oralable algorithm architecture — Python ↔ Swift pipeline (Butterworth HR band, IR-DC LP, TFI/SASHB, overnight states). Internal: [../ALGORITHM_ARCHITECTURE.md](../ALGORITHM_ARCHITECTURE.md). *(Replace with citable methods appendix.)*  
-7. Overnight night report — hypnogram-first bands and evaluable-night rules. Internal: [../OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md).  
-8. Product roadmap / Phase 0 temple vitals on Gen1. Internal: [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md).  
-9. Core ML training cohort plan (Tier 1 ≈ 20–30 users). Internal: [../CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md).  
+6. Oralable algorithm architecture — Python ↔ Swift pipeline (Butterworth HR band, IR-DC LP, TFI/SASHB, overnight states). Internal: [../ALGORITHM_ARCHITECTURE.md](../../ALGORITHM_ARCHITECTURE.md). *(Replace with citable methods appendix.)*  
+7. Overnight night report — hypnogram-first bands and evaluable-night rules. Internal: [../OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md).  
+8. Product roadmap / Phase 0 temple vitals on Gen1. Internal: [../PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md).  
+9. Core ML training cohort plan (Tier 1 ≈ 20–30 users). Internal: [../CORE_ML_TRAINING_COHORT.md](../../CORE_ML_TRAINING_COHORT.md).  
 10. `[PLACEHOLDER — OWNER: Koorosh]` Charlton / pulse-wave analysis references as used in PPG morphology methods.  
 11. `[PLACEHOLDER — OWNER: All]` Additional SB / RMMA / ICAB–STAB normative cites for Introduction.  
 12. Cid-Verdejo et al. — Bruxoff vs PSG in OSA (see [BRUXOFF_PSG_GOLD_STANDARD.md](../bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md) for full cite + claim discipline).  

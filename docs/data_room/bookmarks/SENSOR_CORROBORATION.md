@@ -2,7 +2,7 @@
 
 **As at:** 30 Aug 2026 · Pack **1.1.68** (content unchanged from 10 Aug)  
 **Code:** `OralableCore/SensorCorroboration.swift` · live `BiometricProcessor` / `UnifiedBiometricProcessor` · overnight `OvernightStateClassifier`  
-**Parity bookmark:** [MAC_PHONE_ALGORITHM_PARITY.md](./MAC_PHONE_ALGORITHM_PARITY.md) · architecture [../ALGORITHM_ARCHITECTURE.md](../ALGORITHM_ARCHITECTURE.md) §0
+**Parity bookmark:** [MAC_PHONE_ALGORITHM_PARITY.md](./MAC_PHONE_ALGORITHM_PARITY.md) · architecture [../ALGORITHM_ARCHITECTURE.md](../../ALGORITHM_ARCHITECTURE.md) §0
 
 **One-liner:** Skin temperature (32–38 °C) and ACC motion **soft-gate** vitals quality, `isWorn`, and overnight wear / SASHB credit. SpO₂ and HR **numbers** still compute for Mac Protocol A parity. Missing temperature does not block (Mac overnight path unchanged).
 
@@ -27,7 +27,7 @@
 ## Claim discipline
 
 - Soft gate ≠ medical worn-detection claim.  
-- iOS overnight **band unlock** is **≥1 h** worn ([OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md)); Paper A Arm E/J / cohort recalibration still prefer **≥6 h** (goal 8 h).  
+- iOS overnight **band unlock** is **≥1 h** worn ([OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md)); Paper A Arm E/J / cohort recalibration still prefer **≥6 h** (goal 8 h).  
 - Python Mac overnight states are **not** rewritten in this pass.
 
 ---

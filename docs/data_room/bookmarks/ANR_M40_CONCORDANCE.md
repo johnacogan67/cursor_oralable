@@ -4,9 +4,9 @@
 
 **As at:** 30 Aug 2026 · Pack **1.1.68**  
 **Canonical full doc:** [../../ANR_M40_CONCORDANCE.md](../../ANR_M40_CONCORDANCE.md)  
-**Kit:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · photos [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md) (FIG-CO-026 / 031)  
+**Kit:** [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) · photos [RESEARCH_KIT_PHOTO_SELECTION.md](../clinical/RESEARCH_KIT_PHOTO_SELECTION.md) (FIG-CO-026 / 031)  
 **ANR public docs:** [anrcorp.com/documentation](https://www.anrcorp.com/documentation/)  
-**Related:** [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) · [TEMPORALIS_ANATOMY_AND_PLACEMENT.md](./TEMPORALIS_ANATOMY_AND_PLACEMENT.md) · [../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [../bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md](../bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) · [../bookmarks/SENSOR_CORROBORATION.md](../bookmarks/SENSOR_CORROBORATION.md) · [../bookmarks/GEMINI_TEMPLE_PPG_AVENUES.md](../bookmarks/GEMINI_TEMPLE_PPG_AVENUES.md)
+**Related:** [MEASUREMENT_CONSTRUCT_MAP.md](../clinical/MEASUREMENT_CONSTRUCT_MAP.md) · [TEMPORALIS_ANATOMY_AND_PLACEMENT.md](../clinical/TEMPORALIS_ANATOMY_AND_PLACEMENT.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](./ACUPEBBLE_VS_ORALABLE_ANR.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](./BRUXOFF_PSG_GOLD_STANDARD.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · [SENSOR_CORROBORATION.md](./SENSOR_CORROBORATION.md) · [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md)
 
 **One-liner:** ANR M40 is the Research Kit **temporalis sEMG** comparator. Mac Dual A remains the methods reference. Concordance nests Oralable SpO₂ with ANR EMG (AcuPebble-style burden context — **not** AHI) and writes research **`session.edf`**. Measured eng pack: `20260812_085110`. iOS Dual Protocol A (`showDualProtocolA`, default OFF) is optional research. Dual A overnight is later.
 

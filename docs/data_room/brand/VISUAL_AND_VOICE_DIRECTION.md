@@ -3,7 +3,7 @@
 **As at:** 7 Aug 2026 · Pack **1.1.61**  
 **Status:** Canonical style truth for pitches, website, partner PDFs, and iOS look-and-feel guidance  
 **Owner:** John / JAC · brand assets [brand/README.md](./brand/README.md)  
-**Figures index:** [../FIGURES.md](../FIGURES.md) · photo / line catalog [RESEARCH_KIT_PHOTO_SELECTION.md](../clinical/RESEARCH_KIT_PHOTO_SELECTION.md)
+**Figures index:** [../FIGURES.md](../../FIGURES.md) · photo / line catalog [RESEARCH_KIT_PHOTO_SELECTION.md](../clinical/RESEARCH_KIT_PHOTO_SELECTION.md)
 
 **One-liner:** Clean black-on-white brand; Matisse contour for people; **photo** for real hardware; plain Orwell English. Hero hybrid = [FIG-CO-054](../figures/FIG-CO-054-matisse-photo-dual-a-stack.png).
 
@@ -106,11 +106,11 @@ Implementation detail lives with the site repo / `WEBSITE.md` when present; this
 |-------|----------|
 | **Tokens / components** | `OralableCore` DesignSystem · app `DesignSystem.swift` · `Assets.xcassets` (PrimaryBlack / PrimaryWhite / Gray* / Accent) |
 | **Tone** | Calm clinical wellness — black/white/gray; accent for status, not decoration |
-| **Charts** | Clear IR / vitals; hypnogram-first overnight UX ([OVERNIGHT_NIGHT_REPORT](../OVERNIGHT_NIGHT_REPORT.md)); FIG-CO-025 = layout exemplar only |
+| **Charts** | Clear IR / vitals; hypnogram-first overnight UX ([OVERNIGHT_NIGHT_REPORT](../../OVERNIGHT_NIGHT_REPORT.md)); FIG-CO-025 = layout exemplar only |
 | **Onboarding / empty states** | Prefer Matisse contour or hybrid 052–054 over cartoon stock |
 | **Copy** | Short labels; honest device state; no diagnosis language in Phase 0 |
 
-Flows: [MOBILE_APP_FLOWS.md](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md).
+Flows: [MOBILE_APP_FLOWS.md](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md).
 
 ---
 
@@ -148,7 +148,7 @@ Partner email / WhatsApp: same voice as [PEDRO_STATUS_UPDATE_2026-08.md](../clin
 | [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) | Kit BOM · Dual A · ship |
 | [RESEARCH_KIT_PHOTO_SELECTION.md](../clinical/RESEARCH_KIT_PHOTO_SELECTION.md) | Photo / line / hybrid catalog |
 | [brand/README.md](./brand/README.md) | Lockup + trademarks |
-| [../FIGURES.md](../FIGURES.md) | Full FIG-CO index |
+| [../FIGURES.md](../../FIGURES.md) | Full FIG-CO index |
 | [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) | Stack versions for any “current truth” copy |
 
 ---

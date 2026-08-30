@@ -5,7 +5,7 @@
 **Source:** Gemini conversation (share [UiCw1EsJguV6](https://share.gemini.google/UiCw1EsJguV6) · app `b1033d03cf397b38`)  
 **Local capture:** `~/Downloads/Measuring Brain Signals Down Spinal Cord.md`
 
-**Canonical product posture:** [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) §2b · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · landscape [ORALABLE_MARKET_LANDSCAPE.md](../../../oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md) §4b · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Canonical product posture:** [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) §2b · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · landscape [ORALABLE_MARKET_LANDSCAPE.md](./ORALABLE_MARKET_LANDSCAPE.md) §4b · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 ---
 
@@ -26,7 +26,7 @@ Measuring descending motor and cortico-spinal activity runs from invasive electr
 |-------|----------|------------------|-------------------|
 | Direct neural / IOM | MEP, D-wave, ESG, BCI microarrays | Electrical descending tracts | **Orthogonal** — clinic / surgery |
 | Brain electrical | EEG, CMC (+ EMG) | Cortical / corticomuscular sync | **Orthogonal** — PPG may use ANS/HRV proxy only |
-| Muscle electrical | sEMG (ANR M40, Cometa) | Action potentials | **Adjacent** gold standard — Research Kit Dual A / Paper A descriptive precursor ([ANR_M40_CONCORDANCE.md](../clinical/ANR_M40_CONCORDANCE.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md)); not consumer Oralable alone |
+| Muscle electrical | sEMG (ANR M40, Cometa) | Action potentials | **Adjacent** gold standard — Research Kit Dual A / Paper A descriptive precursor ([ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md)); not consumer Oralable alone |
 | Optical muscle (OMG) | Temple / cheek IR-DC PPG | Hemodynamic occlusion | **Oralable core** (Phase 1+) |
 | Scalp fNIRS | Motor cortex blood | Neurovascular coupling | Related physics; different site / claim |
 | Overnight SpO₂ / BP peers | Wellue, Aktiia/Hilo | SpO₂ / BP time series | Same report grammar; different biomarker |
@@ -73,7 +73,7 @@ Measuring descending motor and cortico-spinal activity runs from invasive electr
 
 ## 4. Pointers
 
-- Roadmap avenues table: [PRODUCT_ROADMAP.md §2b](../PRODUCT_ROADMAP.md#2b-technology-avenues)
-- Landscape modality ladder: `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` §4b
-- Overnight bands / hypnogram: [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md)
+- Roadmap avenues table: [PRODUCT_ROADMAP.md §2b](../../PRODUCT_ROADMAP.md#2b-technology-avenues)
+- Landscape modality ladder: [ORALABLE_MARKET_LANDSCAPE.md](./ORALABLE_MARKET_LANDSCAPE.md) §4b
+- Overnight bands / hypnogram: [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md)
 - System map CSV sheet filters: `tech_avenue` rows in [ORALABLE_SYSTEM_MAP.csv](../ORALABLE_SYSTEM_MAP.csv)

@@ -35,7 +35,7 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 |------|--------|
 | **Mac concordance** | `align_anr_oralable_concordance.py` + `src/analysis/emg_spo2_nest.py` → `NEST.md` / `spo2_emg_nest` (AcuPebble-style burden nest; **not** AHI/ODI) |
 | **iOS Dual Protocol A** | Patient app `showDualProtocolA` (default **OFF**) — Developer Settings opt-in; cues + EMG preflight + Share pack; Mac still primary until TestFlight pack aligns |
-| **Claim discipline** | Nest ≠ Bruxoff/GrindCare equivalence; AcuPebble remains Pedro AHI reference — [ACUPEBBLE_VS_ORALABLE_ANR.md](./bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [ANR_M40_CONCORDANCE.md](./clinical/ANR_M40_CONCORDANCE.md) |
+| **Claim discipline** | Nest ≠ Bruxoff/GrindCare equivalence; AcuPebble remains Pedro AHI reference — [ACUPEBBLE_VS_ORALABLE_ANR.md](./bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [ANR_M40_CONCORDANCE.md](./bookmarks/ANR_M40_CONCORDANCE.md) |
 
 ## Milestone — 10 Aug 2026 (soft corroboration + iOS band unlock)
 
@@ -100,7 +100,7 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 | **Oralable patient app** | **4.3.3** | Marketing version; Protocol A Setup gate · vitals phase + STAT LED mirror |
 | **Oralable app build** | **5** | `CURRENT_PROJECT_VERSION` (bump on each TestFlight) |
 | **Gen2 firmware (target)** | **2.0.x** | Not on Ed/Pedro kits |
-| **Prior ship / rollback** | 1.0.82 · 1.0.70 | Keep in `firmware/` |
+| **Prior ship / rollback** | **1.0.82** (N−1 in `data_room/firmware/`) · **1.0.70** (deep recovery in `oralable_nrf/artifacts/` only) | Data room keeps current **1.0.84** + rollback **1.0.82** only — see [FIRMWARE_ROLLBACK.md](./firmware/FIRMWARE_ROLLBACK.md) |
 
 ## Feature milestones folded into 1.0.84
 

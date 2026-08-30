@@ -33,7 +33,7 @@ regulatory, grant applications, architecture reviews).
 MARKDOWN DOC HUBS (canonical, in repos)
 ---------------------------------------
 oralable_nrf/docs/README.md          — firmware + market docs index
-oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md — strategy (v1.2): competitors,
+[ORALABLE_MARKET_LANDSCAPE.md](../bookmarks/ORALABLE_MARKET_LANDSCAPE.md) — strategy (v1.2): competitors,
   appendices A/B (Nordic/PPG), SOND, Wellue, Aktiia/Hilo, regulatory, GTM
 oralable_nrf/docs/DEVELOPMENT.md       — tandem workflow + compatibility matrix
 cursor_oralable/docs/README.md         — algorithms + clinical validation index

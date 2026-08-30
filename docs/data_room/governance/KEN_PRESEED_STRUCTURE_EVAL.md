@@ -157,7 +157,7 @@ JAC Dental Solutions Limited · Oralable®
 
 - [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md) §0b · §1 Ken-assumed table · §5 equity  
 - [FUNDING_POINT_B_AND_CAP_TABLE.md](./FUNDING_POINT_B_AND_CAP_TABLE.md) — near-term €180k stack  
-- [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md)  
+- [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md)  
 - [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md) — unchanged Stage A distill  
 
 ---

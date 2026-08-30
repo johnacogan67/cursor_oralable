@@ -667,12 +667,11 @@ Export plots: `data/plots/ed_presentation/` after running validation scripts. Na
 | Skip | Why |
 |------|-----|
 | `docs/archive/upload_2026-06/ORALABLE_COMBINED.md` | **Deprecated** duplicate of hub + old 1.0.36 snapshot; PDF export only |
-| `PROTOCOL_CONFIRMATION.md`, `ORALABLE_7_*`, `SELF_VALIDATION_*`, `ED_PRESENTATION_*` | Redirect stubs → `CLINICAL_VALIDATION.md` |
-| `docs/CLAUDE_IOS_REFACTOR_INSTRUCTIONS.md` | Redirect → `internal/` |
+| Former redirect stubs (`PROTOCOL_CONFIRMATION`, `ORALABLE_7_*`, `SELF_VALIDATION_*`, `ED_PRESENTATION_*`, `CLAUDE_IOS_REFACTOR` at docs root) | Removed 30 Aug 2026 — use [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [internal/CLAUDE_IOS_REFACTOR_INSTRUCTIONS.md](./internal/CLAUDE_IOS_REFACTOR_INSTRUCTIONS.md) |
 
 ### Separate investor notebook
 
-- `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md`
+- [ORALABLE_MARKET_LANDSCAPE.md](./data_room/bookmarks/ORALABLE_MARKET_LANDSCAPE.md)
 - `data_room/governance/ORALABLE_FTS_36MO.md`, `REGULATORY_TIMELINE.md`, `GTM_ONE_PAGE.md`
 - Provisional patent PDF
 

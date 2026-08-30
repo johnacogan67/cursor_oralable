@@ -204,4 +204,4 @@ Nearly a decade at BiancaMed / ResMed Sensor Technologies on Reassure — non-co
 
 ---
 
-*Related:* [CURRENT_GOVERNANCE_STATUS.md](../governance/CURRENT_GOVERNANCE_STATUS.md) · [IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS.md) · [../IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [PITCH_DECK_KEN.md](./PITCH_DECK_KEN.md)
+*Related:* [CURRENT_GOVERNANCE_STATUS.md](../governance/CURRENT_GOVERNANCE_STATUS.md) · [IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS.md) · [../IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [PITCH_DECK_KEN.md](./PITCH_DECK_KEN.md)

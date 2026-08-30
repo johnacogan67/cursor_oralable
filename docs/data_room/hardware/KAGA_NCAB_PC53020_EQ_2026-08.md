@@ -96,7 +96,7 @@ CTO, JAC Dental Solutions Limited
 | 2 | NCAB EQ xlsx PC53020 / 282000-ITN | Three fab asks + FIG A stackup + Genesis screenshots |
 | 3 | [GEN2_COGS_KAGA_QUOTE.md](./GEN2_COGS_KAGA_QUOTE.md) | Canonical sample-lot €3,735 |
 | 4 | [HW_ENGINEER_ALTIUM_BRIEF.md](./HW_ENGINEER_ALTIUM_BRIEF.md) | Wout / Altium ownership for redline sign-off |
-| 5 | [PCB00003_GEN2_REV11_HARDWARE.md](../PCB00003_GEN2_REV11_HARDWARE.md) | Gen2 REV11 hardware reference |
+| 5 | [PCB00003_GEN2_REV11_HARDWARE.md](../../PCB00003_GEN2_REV11_HARDWARE.md) | Gen2 REV11 hardware reference |
 
 ---
 

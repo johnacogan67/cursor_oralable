@@ -4,8 +4,8 @@
 **Kit program:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) — first worn session on every kit is this vitals path · status [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md)
 
 **Partners:** [Dr Edward Owens](https://beaconconsultantssleephealthclinic.ie/team-member/dr-edward-owens/) · [Dr Pedro Mayoral Sanz](https://beaconconsultantssleephealthclinic.ie/team-member/dr-pedro/) — Beacon Consultants Sleep Health Clinic  
-Full test plan: [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · Flash: [FIRMWARE_1.0.84_FLASH.md](../firmware/FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](../firmware/FIRMWARE_1.0.82_FLASH.md) · Hardware: [VITALS_PHASE_GEN1_GEN2.md](../VITALS_PHASE_GEN1_GEN2.md) · Cost/timeline: [COST_AND_TIMELINE.md](../governance/COST_AND_TIMELINE.md)  
-IEEE / McGill track: [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · **Figures:** [../FIGURES.md](../FIGURES.md) · **App working diagrams:** [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+Full test plan: [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · Flash: [FIRMWARE_1.0.84_FLASH.md](../firmware/FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](../firmware/FIRMWARE_1.0.82_FLASH.md) · Hardware: [VITALS_PHASE_GEN1_GEN2.md](../../VITALS_PHASE_GEN1_GEN2.md) · Cost/timeline: [COST_AND_TIMELINE.md](../governance/COST_AND_TIMELINE.md)  
+IEEE / McGill track: [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · **Figures:** [../FIGURES.md](../../FIGURES.md) · **App working diagrams:** [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Support:** John Cogan (JAC / Oralable)
 
@@ -34,7 +34,7 @@ flowchart LR
   Night --> Share[Share PDF or CSV]
 ```
 
-Full app diagrams: [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).
+Full app diagrams: [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).
 
 ---
 
@@ -196,6 +196,6 @@ Ed and Pedro each complete:
 - [ ] 1× CSV export per session
 
 Protocol B / overnight muscle study **deferred** until vitals stable.  
-When overnight muscle evaluation starts: **≥ 6 h** worn (goal **8 h**). Review the **state hypnogram first** in the **patient app** (Dashboard morning card + Share preview — adapts [FIG-CO-025](../figures/FIG-CO-025-state-hypnogram-exemplar.png); **that asset is a ~6 min layout exemplar**, not an overnight). Or use Share → Clinical Temporalis PDF + Mac `generate_overnight_night_report.py`. Bands Low/Moderate/High per [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md).
+When overnight muscle evaluation starts: **≥ 6 h** worn (goal **8 h**). Review the **state hypnogram first** in the **patient app** (Dashboard morning card + Share preview — adapts [FIG-CO-025](../figures/FIG-CO-025-state-hypnogram-exemplar.png); **that asset is a ~6 min layout exemplar**, not an overnight). Or use Share → Clinical Temporalis PDF + Mac `generate_overnight_night_report.py`. Bands Low/Moderate/High per [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md).
 
 **Sign-off:** [VITALS_PILOT_TEST_PLAN.md § Sign-off](./VITALS_PILOT_TEST_PLAN.md#sign-off)

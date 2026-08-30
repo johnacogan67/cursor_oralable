@@ -184,7 +184,7 @@ Illustrative only — **not agreed / not offered**. The prior working model was 
 |---|----------|------|
 | 1 | **[CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md)** | **This page** — living as-at snapshot |
 | 2 | [JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md](./JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md) | Canonical entity · org · cap table · Ken/Nigel · INTERNAL annex |
-| 3 | [MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](./MEETING_BRIEF_KEN_NIGEL_2026-07-22.md) | 22 Jul prep + **outcomes** |
+| 3 | [MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](../archive/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md) | 22 Jul prep + **outcomes** |
 | 4 | [FUNDING_POINT_B_AND_CAP_TABLE.md](./FUNDING_POINT_B_AND_CAP_TABLE.md) | Point B €180k stack + Register of Members distill |
 | 5 | [KEN_PRESEED_STRUCTURE_EVAL.md](./KEN_PRESEED_STRUCTURE_EVAL.md) | Ken 22 Jul Pre-Seed memo — **proposal eval** + Nigel questions |
 | 5b | [CEO_JOB_DESCRIPTION.md](../pitches/CEO_JOB_DESCRIPTION.md) | CEO search brief for Nigel / Amstrow referrals |

@@ -33,3 +33,6 @@ docs/data_room/_build/
 # Reference repos (separate clones)
 oralable_swift_ref/
 oralable_nrf_ref/
+
+# Local scratch / PDF page rasters
+tmp/

@@ -1,6 +1,6 @@
 # Oralable — Pitch for prospective CEO candidates
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Audience:** CEO candidates (via Independent Director / Amstrow intros)  
 **Status:** Sendable leave-behind · **27 Jul 2026** · Stage A truth  

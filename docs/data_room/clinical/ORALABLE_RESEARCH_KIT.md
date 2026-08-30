@@ -22,7 +22,7 @@
 | **Headband** (e.g. Ridge) | Optional long-wear compression for Dual A |
 | **iPhone + Oralable TestFlight** | App **4.3.3** build **5+** · Protocol A Setup · research / long-wear (1–6 h+) |
 | **Quick start** | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) — first worn session = Phase 0 vitals |
-| **Protocol A Dual cue card** | 5-tap sync + lock sequence ([TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) Dual A) |
+| **Protocol A Dual cue card** | 5-tap sync + lock sequence ([TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) Dual A) |
 | **Export path** | iOS Share/CSV · Mac Dual A logs · `align_anr_oralable_concordance.py` → `NEST.md` + **`session.edf`** |
 
 ![FIG-CO-016 Research Kit flat-lay](../figures/FIG-CO-016-research-kit-flatlay.png)
@@ -92,11 +92,11 @@ ANR does **two jobs:** measure temporalis sEMG **and** press the optical stack i
 | 4 | **Bruxoff** | Masseter sEMG + ECG ambulatory SB tool | **Reference** for ambulatory EMG-class outputs when available — not PSG gold ([BRUXOFF_PSG_GOLD_STANDARD.md](../bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md)) |
 | 5 | **Happy Ring** | Oura-like finger ring; FDA **hAHI** HSAT SaMD | Same AHI-class shelf as AcuPebble — different site; not jaw ([HAPPY_RING.md](../bookmarks/HAPPY_RING.md)) |
 
-Full ranked landscape (rings, OAT, MCU peers): [`ORALABLE_MARKET_LANDSCAPE.md` §7.0](../../../oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md#70-ranked-by-oralable-relevance).
+Full ranked landscape (rings, OAT, MCU peers): [`ORALABLE_MARKET_LANDSCAPE.md` §7.0](../bookmarks/ORALABLE_MARKET_LANDSCAPE.md#70-ranked-by-oralable-relevance).
 
 **Claim discipline:** No AHI equivalence; no “superior to Bruxoff”; Dual A concordance = descriptive; PSG-AV remains diagnostic gold standard for SB.
 
-Figures: FIG-CO-026 ANR · FIG-CO-027 Bruxoff · FIG-CO-028 AcuPebble · FIG-CO-029 GrindCare — placeholders until photos ([FIGURES.md](../FIGURES.md)).
+Figures: FIG-CO-026 ANR · FIG-CO-027 Bruxoff · FIG-CO-028 AcuPebble · FIG-CO-029 GrindCare — placeholders until photos ([FIGURES.md](../../FIGURES.md)).
 
 ---
 

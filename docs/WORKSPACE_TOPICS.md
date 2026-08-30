@@ -141,7 +141,7 @@ State hypnogram is the primary night view. Evaluable overnight ≥6 h worn (goal
 
 Protocol A (training, 5 taps) vs Protocol B (Ed/Pedro, 3-tap T=0). Do not mix. Dual A = MAM + ANR M40. User-facing name is **MAM**; BLE still advertises **Oralable**; GATT/code stays **TGM**.
 
-- **Docs:** [MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) (what MAM / ANR / Dual A / AcuPebble / PSG measure — iterate here) · [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) (**edit full Dual A doc here**; data-room file is a bookmark only) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md)
+- **Docs:** [MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) (what MAM / ANR / Dual A / AcuPebble / PSG measure — iterate here) · [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) (**edit full Dual A doc here**; bookmark only: [data_room/bookmarks/ANR_M40_CONCORDANCE.md](./data_room/bookmarks/ANR_M40_CONCORDANCE.md)) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md)
 - **Paper A:** `docs/data_room/clinical/PAPER_A_*.md`
 - **Code:** `scripts/run_protocol_a_session.py` · `run_anr_emg_session.py` · `src/analysis/emg_spo2_nest.py`
 

@@ -1,6 +1,6 @@
 # Koorosh outreach — McGill first, complementary Dianyx later
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Audience:** Dr **Koroosh Nabavi** (also **Seyedfakhreddin Nabavi**), PhD, P.Eng. — **Research Associate, McGill / RI-MUHC**; optional personal Altium for JAC; Dianyx CIO for **later** complementary path  
 **Contact:** **seyed.nabavi@mcgill.ca** · alt seyedn@dianyxinnovations.com  
@@ -166,4 +166,4 @@ John
 
 ---
 
-*Related:* [IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS.md) · [CORE_ML_TRAINING_COHORT.md](../CORE_ML_TRAINING_COHORT.md) · [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [ED_PEDRO_AGENDA_2026-06-07.md](../archive/ED_PEDRO_AGENDA_2026-06-07.md) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](../clinical/MAYORAL_METHOD_ORALABLE_VALIDATION.md)
+*Related:* [IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS.md) · [CORE_ML_TRAINING_COHORT.md](../../CORE_ML_TRAINING_COHORT.md) · [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [ED_PEDRO_AGENDA_2026-06-07.md](../archive/ED_PEDRO_AGENDA_2026-06-07.md) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](../clinical/MAYORAL_METHOD_ORALABLE_VALIDATION.md)

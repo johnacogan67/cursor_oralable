@@ -2,7 +2,7 @@
 
 **As at:** 30 Aug 2026 · Pack **1.1.68** (bookmark content unchanged)  
 **Context:** Finger **smart-ring** HSAT / physiologic monitor. Oura-like jewelry form. Not a bruxism or temple device.  
-**Related:** [ACUPEBBLE_VS_ORALABLE_ANR.md](./ACUPEBBLE_VS_ORALABLE_ANR.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) · landscape `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md` §7.9
+**Related:** [ACUPEBBLE_VS_ORALABLE_ANR.md](./ACUPEBBLE_VS_ORALABLE_ANR.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) · landscape [ORALABLE_MARKET_LANDSCAPE.md](./ORALABLE_MARKET_LANDSCAPE.md) §7.9
 
 **One-liner:** Happy Ring is an **Oura-class ceramic finger ring** with FDA Class II clearances for **physiologic monitoring** and a **home sleep-test SaMD** that reports **hAHI**. Same overnight-sleep shelf as AcuPebble / Wellue. Different site and job from Oralable (finger HSAT vs temple jaw-load). Complementary nest, not a substitute.
 

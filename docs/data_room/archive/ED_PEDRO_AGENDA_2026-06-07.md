@@ -1,6 +1,6 @@
 # Ed / Pedro agenda — 7 Jun 2026 (slipped; reactivate)
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Status:** Draft meeting pack for **7 Jun 2026** — **slipped**. John will **reactivate after Nabavi (McGill) interest feedback**, not before.  
 **Attendees (planned):** John A. Cogan · [Dr Pedro Mayoral Sanz](https://beaconconsultantssleephealthclinic.ie/team-member/dr-pedro/) · [Dr Edward Owens](https://beaconconsultantssleephealthclinic.ie/team-member/dr-edward-owens/)  
@@ -51,5 +51,5 @@
 ## Related
 
 - [COLLAB_NABAVI_MCGILL.md](../clinical/COLLAB_NABAVI_MCGILL.md) · [KOOROSH_OUTREACH.md](../pitches/KOOROSH_OUTREACH.md) · [PITCH_KOOROSH.md](../pitches/PITCH_KOOROSH.md)  
-- [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [PILOT_PROTOCOL_ED_PEDRO.md](../clinical/PILOT_PROTOCOL_ED_PEDRO.md)  
+- [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [PILOT_PROTOCOL_ED_PEDRO.md](../archive/PILOT_PROTOCOL_ED_PEDRO.md)  
 - [HW_ENGINEER_ALTIUM_BRIEF.md](../hardware/HW_ENGINEER_ALTIUM_BRIEF.md)  

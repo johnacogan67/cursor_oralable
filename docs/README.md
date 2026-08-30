@@ -44,7 +44,7 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 | [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) | ANR M40 temporalis sEMG vs Oralable (Paper C) — Mac dual-BLE first |
 | [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) | **Canonical** overnight bands (BP-style), **state hypnogram = very useful primary** ([FIG-CO-025](./figures/FIG-CO-025-state-hypnogram-exemplar.png)); **in-app** + Mac/iOS PDF; ≥6 h gate |
 | [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md) | **Canonical** Protocol A cohort sizes, users/sessions, demographics, leave-user-out |
-| [data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/clinical/PILOT_PROTOCOL_ED_PEDRO.md) | Phase 1 pilot roles — phases canonical in Protocol B above |
+| [data_room/archive/PILOT_PROTOCOL_ED_PEDRO.md](./data_room/archive/PILOT_PROTOCOL_ED_PEDRO.md) | **Archived** Phase 1 pilot roles (deferred) — phases canonical in Protocol B above |
 
 ## Investor / Point A data room
 
@@ -66,7 +66,7 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 | [data_room/pitches/PITCH_DECK_KEN.md](./data_room/pitches/PITCH_DECK_KEN.md) | Pitch distill for Ken / BalancePoints |
 | [data_room/governance/CURRENT_GOVERNANCE_STATUS.md](./data_room/governance/CURRENT_GOVERNANCE_STATUS.md) | **Governance as-at 22 Jul** — cap table, Conor buyout, Ken/Nigel roles |
 | [data_room/governance/JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md](./data_room/governance/JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md) | Canonical corporate / cap table / INTERNAL annex |
-| [data_room/governance/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](./data_room/governance/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md) | John/Ken/Nigel meeting prep (Conor deadline 23 Jul) |
+| [data_room/archive/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](./data_room/archive/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md) | John/Ken/Nigel meeting prep (Conor deadline 23 Jul) |
 | [data_room/governance/FUNDING_POINT_B_AND_CAP_TABLE.md](./data_room/governance/FUNDING_POINT_B_AND_CAP_TABLE.md) | Point B €180k + Register of Members distill |
 
 ## Clinical evaluation

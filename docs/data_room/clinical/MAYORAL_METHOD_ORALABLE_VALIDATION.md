@@ -3,7 +3,7 @@
 **As at:** 30 Aug 2026 · Pack **1.1.68** (method content unchanged; stack FW **1.0.84** / app **4.3.3** build **5**)  
 **Audience:** Pedro Mayoral Sanz · Ed Owens · John · (later) Paper B  
 **Tone:** Stage A wellness measurement — not AHI diagnosis / not FDA claims  
-**Related:** [ED_PEDRO_AGENDA_2026-06-07.md](../archive/ED_PEDRO_AGENDA_2026-06-07.md) (names “Mayoral Method titration ground-truth”) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) (Owens & Mayoral 2026 SB × FEP — published) · [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) (feasibility n≈5 · Arm P 1–2 h) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [OVERNIGHT_NIGHT_REPORT.md](../OVERNIGHT_NIGHT_REPORT.md) · [PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md)
+**Related:** [ED_PEDRO_AGENDA_2026-06-07.md](../archive/ED_PEDRO_AGENDA_2026-06-07.md) (names “Mayoral Method titration ground-truth”) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) (Owens & Mayoral 2026 SB × FEP — published) · [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) (feasibility n≈5 · Arm P 1–2 h) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md) · [PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md)
 
 ---
 
@@ -108,7 +108,7 @@ Subset with HSAT / PSG-AV AHI vs Oralable SASHB. The **Research Kit** can add op
 
 1. Ethics / consent: Beacon wellness or clinical investigation as Pedro/Ed decide.  
 2. Kits: Gen1 · FW **1.0.84** · app **4.3.3** (build **5**) — temple placement **with MAD** (fit check — clip must not fight appliance straps).  
-3. Evaluable night: **≥6 h** worn ([OVERNIGHT_NIGHT_REPORT](../OVERNIGHT_NIGHT_REPORT.md)).  
+3. Evaluable night: **≥6 h** worn ([OVERNIGHT_NIGHT_REPORT](../../OVERNIGHT_NIGHT_REPORT.md)).  
 4. Export: Share → Clinical Temporalis PDF (hypnogram-first) + CSV; Mac night pack if needed.  
 5. Case report form: MAD settings table + Oralable KPI strip per night.  
 6. Minimum series before expanding: **Pedro ± Ed self-nights** (titration A/B) then 5–10 OAT patients.

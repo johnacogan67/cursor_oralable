@@ -2,7 +2,7 @@
 
 Comprehensive positioning for Oralable MAM across hardware, mobile software, data architecture, competitive landscape, and the path from **wellness wearable** to **regulated medical device**.
 
-**Related docs:** [Appendix A](#appendix-a-nordic-wearables-comparison) · [Appendix B](#appendix-b-ppg-sensor-comparison) · [HARDWARE_ROADMAP_nRF54L15.md](./HARDWARE_ROADMAP_nRF54L15.md) · [OTA_DEVICE_MANAGER.md](./OTA_DEVICE_MANAGER.md) · Engineering hub: [ORALABLE_SYSTEM_ARCHITECTURE.md](../../cursor_oralable/docs/ORALABLE_SYSTEM_ARCHITECTURE.md) (§3 validation matrix) · **Figures:** [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related docs:** [Appendix A](#appendix-a-nordic-wearables-comparison) · [Appendix B](#appendix-b-ppg-sensor-comparison) · [HARDWARE_ROADMAP_nRF54L15.md](../../../../oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md) · [OTA_DEVICE_MANAGER.md](../../../../oralable_nrf/docs/OTA_DEVICE_MANAGER.md) · Engineering hub: [ORALABLE_SYSTEM_ARCHITECTURE.md](../../ORALABLE_SYSTEM_ARCHITECTURE.md) (§3 validation matrix) · **Figures:** [FIGURES.md](../../../../oralable_nrf/docs/FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Cross-repo:** iOS (`oralable_swift`), shared library (`OralableCore`), Python validation (`cursor_oralable`)
 
@@ -20,7 +20,7 @@ flowchart TB
   Oralable --> Screening[Stage A wellness screening phenotype]
 ```
 
-![FIG-NRF-001 Competitor landscape](./figures/FIG-NRF-001-competitor-landscape.svg)
+![FIG-NRF-001 Competitor landscape](../../../../oralable_nrf/docs/figures/FIG-NRF-001-competitor-landscape.svg)
 
 *Figure FIG-NRF-001 — Competitor landscape collage (placeholder).*
 
@@ -136,7 +136,7 @@ Oralable sits in a **niche orthogonal to rings**: same broad sensor classes (PPG
 | PPG | **MAXM86161EFD+** (same silicon) | Deliberate choice *not* to chase Oura 4 / WHOOP 5 discrete **MAX86171/86178** stacks |
 | Form | Still cheek clip | Optical path tuned for masseter, not finger vascular bed |
 
-See [HARDWARE_ROADMAP_nRF54L15.md](./HARDWARE_ROADMAP_nRF54L15.md).
+See [HARDWARE_ROADMAP_nRF54L15.md](../../../../oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md).
 
 ### 3.3 Nordic MCU tier map
 
@@ -216,7 +216,7 @@ Broader neural / muscle measurement stack (distilled from external Gemini temple
 
 ## 5. Mobile apps & data collection
 
-**Canonical UX + working diagrams:** [oralable_swift/docs/MOBILE_APP_FLOWS.md](../../oralable_swift/docs/MOBILE_APP_FLOWS.md) — especially [§2 How the patient app works](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).
+**Canonical UX + working diagrams:** [oralable_swift/docs/MOBILE_APP_FLOWS.md](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md) — especially [§2 How the patient app works](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0).
 
 ```mermaid
 flowchart LR
@@ -1166,7 +1166,7 @@ Best fit: **smallest rings and sensor-heavy bands** where BOM and PCB area matte
 | Product | Form | Primary role of nRF52832 | Sensors / notes | Battery (claimed) | SDK / stack |
 |---------|------|--------------------------|-----------------|-------------------|-------------|
 | **Oralable** (pcb00003, shipping) | Cheek / jaw clip | BLE + app MCU, PPG/ACC/temp | MAXM86161 PPG (R/G/IR), LIS2DTW12 ACC, MCUboot + mcumgr OTA | TBD (design target: multi-day) | nRF Connect SDK (Zephyr) |
-| **Oralable** (next gen, planned) | Cheek / jaw clip | Kaga **ES4L15BA1** / **nRF54L15** | **MAXM86161EFD+** (same PPG), see [roadmap](./HARDWARE_ROADMAP_nRF54L15.md) | TBD | nRF Connect SDK, BLE 6.0 |
+| **Oralable** (next gen, planned) | Cheek / jaw clip | Kaga **ES4L15BA1** / **nRF54L15** | **MAXM86161EFD+** (same PPG), see [roadmap](../../../../oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md) | TBD | nRF Connect SDK, BLE 6.0 |
 | **ArcX** | Ring (or strap mount) | BLE + remote-control logic | Thumb joystick; no health PPG stack | ~5 days use / 20 days standby | nRF5 SDK era |
 | **Polar Vantage V / M** | Watch | BLE link to phone | 9-LED optical HR, GPS, baro (V model) | Multi-day | nRF5 SDK + S132 SoftDevice |
 | **GECA Watch 1.0** | Watch | BLE + hydration algo | Optical hydration sensing | Multi-day | nRF Connect SDK |
@@ -1289,7 +1289,7 @@ Reference designs often use **nRF52840 + ADS1293** because EMG needs **high inpu
 
 | Dimension | Oralable choice | Implication |
 |-----------|-----------------|-------------|
-| MCU | **nRF52832** today → **nRF54L15** (roadmap) | Next gen aligns with IDO IDR01 tier; see [HARDWARE_ROADMAP_nRF54L15.md](./HARDWARE_ROADMAP_nRF54L15.md) |
+| MCU | **nRF52832** today → **nRF54L15** (roadmap) | Next gen aligns with IDO IDR01 tier; see [HARDWARE_ROADMAP_nRF54L15.md](../../../../oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md) |
 | Location | Masseter / cheek | Different optical path than finger PPG rings; closer to muscle occlusion + jaw vibration |
 | Sensors | MAXM86161 (R/G/IR) + ACC | **Named PPG part** vs JCRing/IDO undisclosed modules — see [Appendix B](#appendix-b-ppg-sensor-comparison) |
 | Muscle signal | IR-DC + ACC (not sEMG) | Compare against **Neeno / NeuroNode / ANR M40** EMG path in validation studies |
@@ -1310,7 +1310,7 @@ Reference designs often use **nRF52840 + ADS1293** because EMG needs **high inpu
 - [Ultrahuman Ring Air teardown (Making Studio)](https://makingstudio.blog/2024/09/10/ultrahuman-ring-air-teardown/)
 - [Oura Ring 4 teardown (TechInsights)](https://www.techinsights.com/blog/oura-ring-gen-4-teardown)
 - [WHOOP 5.0 teardown summary (EEPW)](https://www.eepw.com.cn/article/202603/479523.htm)
-- [Oralable OTA workflow](./OTA_DEVICE_MANAGER.md)
+- [Oralable OTA workflow](../../../../oralable_nrf/docs/OTA_DEVICE_MANAGER.md)
 - [PPG sensor comparison (JCRing, IDO, Polar, Withings)](#appendix-b-ppg-sensor-comparison)
 - [Control Bionics NeuroNode + nRF52832 (Nordic)](https://www.nordicsemi.com/Nordic-news/2018/07/nRF52832-SoC-provides-wireless-connectivity-for-Control-Bionics)
 - [Neeno 2 hardware (nRF52840 + sEMG)](https://docs.myneeno.com/hardware/)
@@ -1321,7 +1321,7 @@ Reference designs often use **nRF52840 + ADS1293** because EMG needs **high inpu
 
 ## Appendix B: PPG sensor comparison
 
-![FIG-NRF-006 PPG sensor comparison](./figures/FIG-NRF-006-ppg-sensor-compare.svg)
+![FIG-NRF-006 PPG sensor comparison](../../../../oralable_nrf/docs/figures/FIG-NRF-006-ppg-sensor-compare.svg)
 
 *Figure FIG-NRF-006 — PPG sensor comparison visual (placeholder).*
 
@@ -1500,7 +1500,7 @@ Not a wellness ring — a **clinical-style pulse oximeter** in ring form. **FDA-
 - [IDO IDR01 + nRF54L15 (Nordic)](https://www.nordicsemi.com/Nordic-news/2025/10/IDOs-IDR01-smart-ring-integrates-Nordics-nRF54L15-SoC)
 - [Withings ScanWatch SpO₂ validation (JMIR)](https://www.jmir.org/2021/4/e27503/)
 - [Oura Ring 4 teardown (TechInsights)](https://www.techinsights.com/blog/oura-ring-gen-4-teardown)
-- [MAXM86161 datasheet / Oralable roadmap](./HARDWARE_ROADMAP_nRF54L15.md)
+- [MAXM86161 datasheet / Oralable roadmap](../../../../oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md)
 - [Nordic wearables MCU comparison](#appendix-a-nordic-wearables-comparison)
 - [Market landscape (Wellue, Aktiia, SOND)](./ORALABLE_MARKET_LANDSCAPE.md)
 - [Wellue O2Ring](https://getwellue.com/products/o2ring-wearable-pulse-oximeter)
@@ -1508,8 +1508,8 @@ Not a wellness ring — a **clinical-style pulse oximeter** in ring form. **FDA-
 
 ## References
 
-- [HARDWARE_ROADMAP_nRF54L15.md](./HARDWARE_ROADMAP_nRF54L15.md)
-- [OTA_DEVICE_MANAGER.md](./OTA_DEVICE_MANAGER.md)
+- [HARDWARE_ROADMAP_nRF54L15.md](../../../../oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md)
+- [OTA_DEVICE_MANAGER.md](../../../../oralable_nrf/docs/OTA_DEVICE_MANAGER.md)
 - [DEVELOPMENT.md](./DEVELOPMENT.md)
 - `oralable_swift/OralableApp/LAUNCH_READINESS_CHECKLIST.md`
 - `oralable_swift/OralableApp/CLOUDKIT_PRODUCTION_SETUP.md`

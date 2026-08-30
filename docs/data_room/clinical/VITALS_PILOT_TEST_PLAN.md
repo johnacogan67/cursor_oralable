@@ -1,6 +1,6 @@
 # Vitals pilot — firmware & iOS validation plan (Ed / Pedro)
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Firmware:** **1.0.84** target (hard min 1.0.63; kits flash **1.0.84**) · **Board:** pcb00003 · **Ground truth:** nRF Connect logs + app nRF-style CSV export  
 **iOS:** TestFlight Oralable **4.3.3** build **5+** — recommend FW **1.0.84**, Automatic dock, Device LED STAT mirror

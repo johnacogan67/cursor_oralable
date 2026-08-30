@@ -62,4 +62,4 @@ flowchart TB
 
 ---
 
-*Related:* [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md) · [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md) · `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md`
+*Related:* [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md) · [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md) · [ORALABLE_MARKET_LANDSCAPE.md](../bookmarks/ORALABLE_MARKET_LANDSCAPE.md)

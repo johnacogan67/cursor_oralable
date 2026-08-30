@@ -1,6 +1,6 @@
 # Message to hardware engineer (Altium) — what to look for
 
-**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **From:** Firmware / product (John)  
 **To:** PCB / Altium engineer  
@@ -12,7 +12,7 @@
 
 **Encapsulation note (internal, Mar 2026):** For small skin-contact form factors (~20×7×4 mm class), **silicone tape lamination** suits rapid pilot builds; **silicone potting** is better for a commercial finish once the optical window and dimensions are locked. Keep the MAXM86161 window optically clear. Distill: [LITERATURE_AND_PRIOR_ART.md](../bookmarks/LITERATURE_AND_PRIOR_ART.md) §4.
 
-**Figures:** [../FIGURES.md](../FIGURES.md)
+**Figures:** [../FIGURES.md](../../FIGURES.md)
 
 ![FIG-CO-012 Gen1 device](../figures/FIG-CO-012-gen1-device-photo.svg)
 

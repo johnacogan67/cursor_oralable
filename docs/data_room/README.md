@@ -62,7 +62,7 @@ Corporate / statutory packs stay **outside** this git index.
 | [clinical/PAPER_A_FEASIBILITY_PROTOCOL.md](./clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) | n≈5 feasibility |
 | [clinical/PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf](./clinical/PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf) | Draft PDF |
 | [clinical/MEASUREMENT_CONSTRUCT_MAP.md](./clinical/MEASUREMENT_CONSTRUCT_MAP.md) | Living construct table |
-| [../ANR_M40_CONCORDANCE.md](../ANR_M40_CONCORDANCE.md) | **Edit ANR here** (full) · bookmark [clinical/ANR_M40_CONCORDANCE.md](./clinical/ANR_M40_CONCORDANCE.md) |
+| [../ANR_M40_CONCORDANCE.md](../ANR_M40_CONCORDANCE.md) | **Edit ANR here** (full) · bookmark [bookmarks/ANR_M40_CONCORDANCE.md](./bookmarks/ANR_M40_CONCORDANCE.md) |
 
 ### Nabavi / McGill
 
@@ -98,6 +98,25 @@ Corporate / statutory packs stay **outside** this git index.
 | [figures/](./figures/) | Pitch pack figures (symlinks → `docs/figures/` where possible) |
 | [archive/](./archive/) | Dated scraps · old flash guides · [upload_2026-06](../archive/upload_2026-06/) |
 | [_build/](./_build/) | HTML / print decks (not diligence) |
+
+---
+
+## Path redirect (flat → foldered)
+
+Old bookmarks used a flat `data_room/*.md`. Use these paths:
+
+| Was (basename) | Now |
+|----------------|-----|
+| `PITCH_*` | [`pitches/`](./pitches/) |
+| `PAPER_A_*` · `PEDRO_*` · `ED_PEDRO_*` · `MEASUREMENT_*` · `ORALABLE_RESEARCH_KIT` · `COLLAB_*` · `TEMPORALIS_ANATOMY_*` · `PILOT_*` · `VITALS_PILOT_*` · `MAYORAL_*` | [`clinical/`](./clinical/) |
+| `ANR_M40_CONCORDANCE` (bookmark) | [`bookmarks/ANR_M40_CONCORDANCE.md`](./bookmarks/ANR_M40_CONCORDANCE.md) — **edit full doc** [`../ANR_M40_CONCORDANCE.md`](../ANR_M40_CONCORDANCE.md) |
+| `CURRENT_GOVERNANCE_*` · `JAC_*` · `FUNDING_*` · `FINANCIALS_*` · `GTM_*` · `IP_*` · `REGULATORY_*` · `COST_*` · `MARKET_SIZING` · `ORALABLE_FTS_*` · `KEN_*` · `APPS_*` · `DATA_ROOM_VALIDATION_*` | [`governance/`](./governance/) |
+| `FIRMWARE_*` · binaries | [`firmware/`](./firmware/) |
+| `GEN*_COGS_*` · `BITTELE_*` · `HW_ENGINEER_*` · `KAGA_*` | [`hardware/`](./hardware/) |
+| `DIANYX_*` · `HAPPY_RING` · `BRUXOFF_*` · `SENSOR_*` · `MAC_PHONE_*` · `LITERATURE_*` · `ACUPEBBLE_*` · `GEMINI_*` · `ORALABLE_MARKET_LANDSCAPE` | [`bookmarks/`](./bookmarks/) |
+| `VISUAL_AND_VOICE_*` · logos | [`brand/`](./brand/) |
+| Dated scraps · old flash guides | [`archive/`](./archive/) |
+| HTML / `*_print.html` | [`_build/`](./_build/) (not diligence) |
 
 ---
 

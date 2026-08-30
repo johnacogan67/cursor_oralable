@@ -94,9 +94,9 @@ Evaluable overnight ≥6 h worn; do not mix with shorter in-app unlock gates.
 Topic: clinical
 Read cursor_oralable/docs/WORKSPACE_TOPICS.md § clinical.
 Repos: cursor_oralable only unless Dual A needs app/firmware.
-Start: cursor_oralable/docs/TEMPORALIS_COLLECTION_PROTOCOL.md
+Start: cursor_oralable/docs/TEMPORALIS_COLLECTION_PROTOCOL.md + clinical/MEASUREMENT_CONSTRUCT_MAP.md
 Construct map (MAM vs ANR vs AcuPebble vs PSG): cursor_oralable/docs/data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md — iterate there; do not copy Table 1.
-ANR Dual A procedure: edit cursor_oralable/docs/ANR_M40_CONCORDANCE.md (full); data_room clinical bookmark is stub only.
+ANR Dual A procedure: edit cursor_oralable/docs/ANR_M40_CONCORDANCE.md (full); data_room bookmarks/ANR stub only.
 Do not mix Protocol A (5 taps) and Protocol B (3-tap T=0).
 ```
 
@@ -146,7 +146,7 @@ Wellness wording now; Stage B later.
 ```
 Topic: gtm
 Read cursor_oralable/docs/WORKSPACE_TOPICS.md § gtm.
-Repos: cursor_oralable + oralable_nrf market docs.
+Repos: cursor_oralable docs only (bookmarks landscape is canonical).
 Start: cursor_oralable/docs/data_room/governance/GTM_ONE_PAGE.md
 Competitor detail: cursor_oralable/docs/data_room/bookmarks/ORALABLE_MARKET_LANDSCAPE.md
 ```

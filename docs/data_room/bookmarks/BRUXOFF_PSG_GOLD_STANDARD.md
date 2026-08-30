@@ -71,7 +71,7 @@ Cid-Verdejo R, Domínguez Gordillo AA, Sánchez-Romero EA, Ardizone García I, M
 ### Recommended ladder (do not skip)
 
 1. **Paper A feasibility (now)** — Oralable usable; SpO₂ and ref pulse-ox; Pedro 1–2 h oxygen check as a **subset**; not “beats Bruxoff on SB.”  
-2. **Adjacent gold standard (research)** — **Anterior temporalis sEMG** at the same time as IR-DC / Protocol A labels. Founder path: **ANR M40** Mac dual-BLE ([ANR_M40_CONCORDANCE.md](../clinical/ANR_M40_CONCORDANCE.md)); optional Bruxoff-class masseter later. Expect ~**1–5 s** hemodynamic lag.  
+2. **Adjacent gold standard (research)** — **Anterior temporalis sEMG** at the same time as IR-DC / Protocol A labels. Founder path: **ANR M40** Mac dual-BLE ([ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md)); optional Bruxoff-class masseter later. Expect ~**1–5 s** hemodynamic lag.  
 3. **Diagnostic gold standard** — **PSG (± AV)** for RMMA / SB — same bar used against Bruxoff; full Paper C / Stage B.
 
 **ANR vs Bruxoff (do not conflate)**
