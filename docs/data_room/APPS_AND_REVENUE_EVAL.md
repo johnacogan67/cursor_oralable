@@ -4,7 +4,7 @@
 
 **Status:** Evaluation snapshot · aligns with [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) · [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · `MOBILE_APP_FLOWS.md`
 
-**Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
+**Strategy stack:** Stage A wellness wearable first; Stage B medical later. New US patent embodiment. Ed/Pedro use the patient app only.  
 **Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 ```mermaid
@@ -22,9 +22,9 @@ flowchart LR
 
 ## 1. One-line verdict
 
-**North star:** [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) — **Stage A wellness wearable first**, **Stage B medical device later**; implement the **new US patent being submitted** (Temporalis OMG / IR-DC / TFI / SASHB). Foundation granted US & EU patents are the base layer.
+**North star:** [IP_NORTH_STAR.md](../IP_NORTH_STAR.md) — **Stage A wellness wearable first**, **Stage B medical device later**; ship the **new US patent being submitted** (Temporalis OMG / IR-DC / TFI / SASHB). Foundation granted US and EU patents sit underneath.
 
-**Phase 0 Gen1 kits** prove the hardware/BLE/vitals substrate for that invention **as a wearable**. They do **not** yet fully unlock the bruxism-native UX that drives consumer Premium or dentist Practice subscriptions. Near-term revenue is **hardware + careful wellness IAP**; durable B2B2C waits on **Phase 1+ embodiment + CloudKit**. **Ed/Pedro = patient app only.** Do **not** claim medical-device status in this iteration.
+**Phase 0 Gen1 kits** prove hardware, BLE, and vitals for that invention **as a wearable**. They do **not** yet deliver the bruxism-native UX that drives consumer Premium or dentist Practice subscriptions. Near-term revenue is **hardware plus careful wellness IAP**; durable B2B2C waits on **Phase 1+ embodiment and CloudKit**. **Ed/Pedro use the patient app only.** Do **not** claim medical-device status in this iteration.
 
 ### How money, IP, and regulatory stages relate
 
@@ -47,7 +47,7 @@ flowchart LR
 | Temple HR/SpO₂ reliability gates | Practice / Professional IAP, participant roster |
 | Beacon / clinical partners as **observers of patient-app evidence** | Treating dentist app as part of the pilot protocol |
 
-**Why:** Phase 0 delivers temple vitals, not TFI/SASHB handshake value. Professional app would add support load and clinical-looking UX without a shareable product story. Activate Path B after Phase 0 pass **and** Phase 1+ rollups + CloudKit production. Overnight patient-app logs still feed the **new US patent implementation** evidence path.
+**Why:** Phase 0 delivers temple vitals, not TFI/SASHB handshake value. The professional app would add support load and clinical-looking UX without a shareable product story. Turn on Path B after Phase 0 passes **and** Phase 1+ rollups and CloudKit production are ready. Overnight patient-app logs still feed the **new US patent implementation** evidence path.
 
 ---
 
@@ -63,10 +63,10 @@ flowchart LR
 | Launch flags | `showSubscription` **false** · `showCloudKitShare` **false** | Keep dark until Path B gate |
 | Blockers | Phase 0 field proof · later IAP | Phase 0 pass → Phase 1+ metrics → CloudKit prod → then activate |
 
-**Coupling:** Professional revenue is **patient-mediated**. Until the patient app has shareable overnight muscle/vitals rollups, dentist seats stay **off**.
+**Coupling:** Professional revenue is **patient-mediated**. Until the patient app has shareable overnight muscle and vitals rollups, dentist seats stay **off**.
 
 ```
-Gen1 kit (BOM REV8 / REV10 / FW 1.0.70 · app 4.3.3)
+Gen1 kit (BOM REV8 / REV10 / FW 1.0.84 · app 4.3.3 build 5)
         │
         ▼
  Patient app ──Phase 0 (Ed/Pedro)──► temple vitals ──► CSV / local evidence
@@ -104,21 +104,21 @@ Gen1 kit (BOM REV8 / REV10 / FW 1.0.70 · app 4.3.3)
 ## 5. Strategic fit (honest)
 
 **What is strong now**
-- Dual-app architecture and StoreKit product matrix already coded.
-- Clear B2B2C loop (patient → share → dentist) designed into OralableCore.
-- Phase 0 reduces false promises (no fake muscle UI) while proving Gen1 kit + BLE.
+- Dual-app architecture and StoreKit product matrix are already in code.
+- B2B2C loop (patient → share → dentist) is designed into OralableCore.
+- Phase 0 cuts false promises (no fake muscle UI) while proving Gen1 kit and BLE.
 
 **What is misaligned if we sell too early**
-- Marketing/search terms (“bruxism”, “grinding”) imply Phase 1+; Phase 0 delivers **vitals**.
-- Dentist app copy can read more clinical than wellness posture — keep aligned until Path C.
-- Landscape doc still assumes Jan 2026 Path A launch timing in places — treat as stale vs Mid-2026 Phase 0 reality.
+- Marketing and search terms (“bruxism”, “grinding”) imply Phase 1+; Phase 0 delivers **vitals**.
+- Dentist app copy can read more clinical than wellness posture — keep it aligned until Path C.
+- Landscape doc still assumes Jan 2026 Path A launch timing in places — treat as stale vs mid-2026 Phase 0 reality.
 
 **Recommendation**
 1. **Ed/Pedro Phase 0:** Patient app **only** — no Oralable for Dentists, no share-to-dentist, no practice IAP.  
-2. **Near term otherwise:** Kit / pilot / Beacon evidence; free or soft Premium; Path B dark.  
-3. **Activate professional app** only after Phase 0 pass + Phase 1+ rollups + CloudKit production.  
+2. **Near term otherwise:** Kit, pilot, and Beacon evidence; free or soft Premium; Path B dark.  
+3. **Turn on the professional app** only after Phase 0 pass, Phase 1+ rollups, and CloudKit production.  
 4. **Gate consumer Premium positioning** on overnight report honesty (vitals now; TFI/SASHB when ready).  
-5. **Gen2** is retention/quality, not a new app SKU.
+5. **Gen2** is retention and quality, not a new app SKU.
 
 ---
 
@@ -135,4 +135,4 @@ Gen1 kit (BOM REV8 / REV10 / FW 1.0.70 · app 4.3.3)
 
 ---
 
-*Evaluation only — not financial advice. Numbers from GTM one-pager are draft assumptions.*
+*Evaluation only — not financial advice. Numbers from the GTM one-pager are draft assumptions.*

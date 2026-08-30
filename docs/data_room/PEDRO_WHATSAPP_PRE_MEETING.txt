@@ -1,0 +1,30 @@
+Pedro — quick pre-read for our 16:00 today.
+
+Honest status (not a wish list):
+
+• Ship stack ready: FW 1.0.84 · app 4.3.3 build 5 (temple HR + SpO₂)
+• Dual A Mac measured 12 Aug (Oralable + ANR) — SpO₂ + nest + research EDF; ~6 min layout, not a ≥6 h night
+• Eng Protocol A ~6 min also done (layout / Core ML)
+• Kits still gated on charge-to-temple — ready ≠ delivered
+
+New: Oralable Research Kit = Oralable MAM + ANR M40 + iOS
+IEEE Paper A with Koorosh · feasibility n≈5 · your 1–2 h oxygen/MAD arm
+AcuPebble stays your AHI tool — we don’t replace it
+SASHB = SpO₂<90 AUC — not Azarbarzin HB
+
+Commitment: target 5 Research Kits to you by 31 Aug 2026
+
+PDF attached includes:
+• status + asks for 16:00
+• line drawings: kit flat-lay · ANR + Red Dots · worn Dual A · temple placement
+• patent pending note only — no claim text
+
+For 16:00 I’d like to lock:
+1) ethics / consent path name
+2) dry-run + Arm P calendar slot
+3) Paper A authorship line (you + Ed + Koorosh)
+4) Bruxoff access?
+5) AcuPebble photo/SKU if easy
+6) optional F&F leave-behind interest
+
+John

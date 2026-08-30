@@ -1,7 +1,7 @@
 # Oralable investor data room index
 
 Maps **Balance Points Point A** areas to canonical documents.  
-**Pack version:** data room index **1.1.67** · Pilot firmware **1.0.82** · App **4.3.3** · **As at:** 27 Aug 2026 · Ed/Pedro kits **gated** · Dual A eng pack `20260812_085110` + research EDF · Research Kit [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · Pedro status [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · audit [DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md](./DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md) · timeline [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · avenues [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md) · Nabavi [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · Dianyx/smart OAT [DIANYX_FDA_AND_SMART_OAT_LANDSCAPE.md](./DIANYX_FDA_AND_SMART_OAT_LANDSCAPE.md) · lit [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md) · ANR Dual A + SpO₂ nest + EDF [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · Mac→phone parity [MAC_PHONE_ALGORITHM_PARITY.md](./MAC_PHONE_ALGORITHM_PARITY.md) · soft ACC/temp [SENSOR_CORROBORATION.md](./SENSOR_CORROBORATION.md) · **Figures:** [../FIGURES.md](../FIGURES.md) · pack copies [figures/](./figures/) · **App diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Pack version:** data room index **1.1.68** · Gen1 firmware **1.0.84** · App **4.3.3** (build **5**) · **As at:** 30 Aug 2026 · Ed/Pedro kits **gated** · Dual A eng pack `20260812_085110` + research EDF · Research Kit [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · Pedro status [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · audit [DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md](./DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md) · timeline [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · avenues [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md) · Nabavi [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · Dianyx/smart OAT [DIANYX_FDA_AND_SMART_OAT_LANDSCAPE.md](./DIANYX_FDA_AND_SMART_OAT_LANDSCAPE.md) · lit [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md) · **construct map** [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) · ANR Dual A + SpO₂ nest + EDF [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · Mac→phone parity [MAC_PHONE_ALGORITHM_PARITY.md](./MAC_PHONE_ALGORITHM_PARITY.md) · soft ACC/temp [SENSOR_CORROBORATION.md](./SENSOR_CORROBORATION.md) · **Figures:** [../FIGURES.md](../FIGURES.md) · pack copies [figures/](./figures/) · **App diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Product phases / BOM:** [../PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) (Phase 0 temple vitals now; Phase 1+ muscle; Gen1 = BOM REV8 / REV10; Gen2 = BOM REV9 / REV11; tech avenues §2b)
 
@@ -47,11 +47,11 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 
 | Doc | Purpose |
 |-----|---------|
-| [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) | **Canonical versions** — FW **1.0.82** · app **4.3.3** · pack **1.1.67** · Dual A `20260812_085110` + EDF |
+| [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) | **Canonical versions** — FW **1.0.84** · app **4.3.3** (build **5**) · pack **1.1.68** · Dual A `20260812_085110` + EDF |
 | [SENSOR_CORROBORATION.md](./SENSOR_CORROBORATION.md) | **Bookmark** — soft ACC + skin-temp (32–38 °C) quality / wear gates; SpO₂ numbers unchanged |
 | [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) | **Canonical Research Kit** — MAM + ANR + iOS · Dual A · 5 kits to Pedro by 31 Aug 2026 |
 | [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md) | **Photo guide** — which Dual A / kit shots for pitch · IEEE · Pedro · placeholders |
-| [VISUAL_AND_VOICE_DIRECTION.md](./VISUAL_AND_VOICE_DIRECTION.md) | **Look + voice** — locked FIG-CO-054 hybrid · Matisse contour · Hemingway/Orwell · pitch / web / app |
+| [VISUAL_AND_VOICE_DIRECTION.md](./VISUAL_AND_VOICE_DIRECTION.md) | **Look + voice** — locked FIG-CO-054 hybrid · Matisse contour · Orwell · pitch / web / app |
 | [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) | **Send to Pedro** — Dual A measured + EDF + asks + 5 kits by 31 Aug |
 | [PITCH_PEDRO_ED_FF.md](./PITCH_PEDRO_ED_FF.md) / [`.html`](./PITCH_PEDRO_ED_FF.html) / [`.pdf`](./PITCH_PEDRO_ED_FF.pdf) | **F&F leave-behind** — Pedro & Ed friends-and-family investor pitch |
 | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) | **Phase 0 Vitals** — one-page Ed Owens / Pedro handout (first worn session on each kit) |
@@ -68,6 +68,8 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 | [DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md](./DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md) | **Full data-room audit** — version/HW/collab/IP/governance alignment · future investigation |
 | [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md) | Li 2025 ambulatory SB review · BruxScreen · chewing PPG · silicone encaps · thesis |
 | [BRUXOFF_PSG_GOLD_STANDARD.md](./BRUXOFF_PSG_GOLD_STANDARD.md) | **Bookmark** — Cid-Verdejo 2023 Bruxoff vs PSG in OSA; Oralable position vs gold standard |
+| [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) | **Living table** — MAM vs ANR vs Dual A vs AcuPebble vs PSG constructs (incl. **MAM if verified**); iterate here |
+| [PEDRO_CONSTRUCT_MAP_NOTE.md](./PEDRO_CONSTRUCT_MAP_NOTE.md) / [`.pdf`](./PEDRO_CONSTRUCT_MAP_NOTE.pdf) | **Send to Pedro** — what AcuPebble / MAM / Dual A / PSG measure; Table 1 + Table 2 |
 | [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) | **Bookmark** — ANR Dual A; SpO₂∩EMG nest + research `session.edf`; measured pack `20260812_085110` |
 | [TEMPORALIS_ANATOMY_AND_PLACEMENT.md](./TEMPORALIS_ANATOMY_AND_PLACEMENT.md) | **Bookmark** — FIG-CO-056/057: anterior elevate vs posterior retract → PPG/ANR seat; MAM optical vs ANR electrical (Kenhub anatomy cite) |
 | [ACUPEBBLE_VS_ORALABLE_ANR.md](./ACUPEBBLE_VS_ORALABLE_ANR.md) | **Bookmark** — AcuPebble AHI vs Oralable SASHB vs Azarbarzin HB (table); nest ≠ ODI; Dual A oxygen context |
@@ -105,7 +107,8 @@ Corporate items (solvency, share register, Strand Two IP, financial projections)
 | [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) | WO/EP/US tracks + 18/289,827 OA status |
 | [IP_EVAL_AND_LANDSCAPE.md](./IP_EVAL_AND_LANDSCAPE.md) | **IP eval + landscape** — AESYRA/Kuhar map · product↔claim · doc pull-list |
 | [../IP_NORTH_STAR.md](../IP_NORTH_STAR.md) | **End goal** — Stage A wearable → Stage B medical; new US patent |
-| [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md) | Flash **1.0.82** merged.hex / OTA (current ship — sense-on-BLE, IR-pulse worn) |
+| [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md) | **Current Gen1 target** OTA/SWD pack (`1.0.84`) |
+| [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md) | Prior ship **1.0.82** (rollback) |
 | [FIRMWARE_1.0.70_FLASH.md](./FIRMWARE_1.0.70_FLASH.md) | Prior ship **1.0.70** (rollback — STAT blink) |
 | [FIRMWARE_1.0.66_FLASH.md](./FIRMWARE_1.0.66_FLASH.md) | Prior ship **1.0.66** (rollback) |
 | [FIRMWARE_1.0.65_FLASH.md](./FIRMWARE_1.0.65_FLASH.md) | Prior release notes (1.0.65) |

@@ -16,7 +16,7 @@
 This spec describes the **Oralable MAM platform** for investors and technical diligence:
 
 - **Hardware** — PCB00003 clip + Oralable magnetic case; **Gen1** (BOM REV8 / REV10 / ES2832AA2) **ship-ready / Research Kits gated** (5 → Pedro by 31 Aug 2026); **Gen2** (BOM REV9 / REV11 / ES4L15BA1) upcoming
-- **Firmware** — nRF Connect SDK, TGM GATT, BLE-gated streaming; pilot ship **1.0.82**
+- **Firmware** — nRF Connect SDK, TGM GATT, BLE-gated streaming; Gen1 target **1.0.84**
 - **Mobile** — iOS consumer + professional apps; Android roadmap — working diagrams [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 - **Algorithms** — Phase 0 temple vitals (HR/SpO₂); Phase 1+ IR-DC occlusion, TFI/SASHB, jaw actigraphy
 - **Data** — local recording, export, optional CloudKit share to dentists
@@ -87,7 +87,7 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 | BLE | TGM custom GATT `3A0FF000` + SMP OTA |
 | Mounting (Phase 0) | **Temple / temporalis** (HR & SpO₂) |
 | Mounting (Phase 1+) | Cheek / masseter or temporalis for IR-DC / bruxism phenotypes |
-| Firmware (pilot ship) | **1.0.82** (iOS `FirmwareGate` min **1.0.63** / recommend **1.0.82**) · Gen2 **2.0.x** |
+| Firmware (Gen1 target) | **1.0.84** (iOS `FirmwareGate` min **1.0.63** / recommend **1.0.84**) · Gen2 **2.0.x** |
 
 ### 4.2 36-month hardware roadmap
 
@@ -265,7 +265,7 @@ Aligns with [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [PRODUCT_ROADMAP.m
 
 | Quarter | Deliverable |
 |---------|-------------|
-| **Q3 2026** | **Stage A Phase 0:** Ed/Pedro temple vitals (patient app only); Gen1 FW 1.0.82; data room |
+| **Q3 2026** | **Stage A Phase 0:** Ed/Pedro temple vitals (patient app only); Gen1 FW **1.0.84**; data room |
 | **Q4 2026** | **Stage A Phase 1+ start:** TFI/SASHB/IR-DC in patient app; US patent filing push; Gen2 kickoff |
 | **H1 2027** | Phase 1+ embodiment soft-launch; Gen2 EVT / vitals parity; optional consumer Premium |
 | **H2 2027** | Gen2 pilot parity; **Stage B** pre-sub / clinical package start (if funded) |

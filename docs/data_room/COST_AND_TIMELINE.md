@@ -9,7 +9,7 @@
 **Near-term ask (Point B):** [FUNDING_POINT_B_AND_CAP_TABLE.md](./FUNDING_POINT_B_AND_CAP_TABLE.md) — €50k F&F + €100k PSSF + €30k HPSU = **€180k by Oct 2026**.  
 **Pitch / cash / COGS:** [PITCH_DECK_KEN.md](./PITCH_DECK_KEN.md) · [FINANCIALS_CASH_SNAPSHOT.md](./FINANCIALS_CASH_SNAPSHOT.md) · Gen1/Gen2/Bittele COGS docs.
 
-**Propagated to:** product roadmap, IP north star, Gen1/Gen2 docs, data-room pilots/GTM/regulatory/FTS, system architecture, nRF DEVELOPMENT/README/landscape, iOS MOBILE_APP_FLOWS, website WEBSITE.md (internal only — no € on public pages).
+**Propagated to:** product roadmap, IP north star, Gen1/Gen2 docs, data-room pilots, GTM, regulatory, FTS, system architecture, nRF DEVELOPMENT/README/landscape, iOS MOBILE_APP_FLOWS, website WEBSITE.md (internal only — no € on public pages).
 
 ---
 
@@ -22,7 +22,7 @@
                Protocol A Mac · Core ML Tier 0 · night-report PDF + in-app hypnogram
                       │
 2026 Jul–Sep    PHASE 0 / Ed–Pedro (Stage A) — YOU ARE HERE
-               Gen1 stack ready · kits gated (charge-to-temple) · temple vitals · patient app only
+               Gen1 stack ready · Research Kits gated (5 by 31 Aug) · temple vitals · Dual A Mac optional · patient app only
                       │
 2026 Q4–2027 Q1  PHASE 1+ embodiment (Stage A)
                TFI / SASHB / IR-DC live in patient UX · Protocol B · ≥6 h overnight eval
@@ -43,29 +43,29 @@
 | Window | Focus | Exit criteria |
 |--------|-------|---------------|
 | **24 Jul 2026** | Eng overnight + Core ML Tier 0 | PDF/Mac pack + mlpackage retrain (done) |
-| **Now – Sep 2026** | Phase 0 Ed/Pedro | Temple HR/SpO₂ gates; CSV evidence; kits shipped past charge gate; no pro app |
+| **Now – Sep 2026** | Phase 0 Ed/Pedro Research Kit | Temple HR/SpO₂ gates; CSV evidence; **target 5 Research Kits to Pedro by 31 Aug 2026** after charge-to-temple (currently **gated**); Dual A Mac optional; no pro app |
 | **Q4 2026 – Q1 2027** | Phase 1+ Stage A | TFI/SASHB/IR-DC live in patient UX; Protocol B; overnight ≥6 h eval; patent-table exports |
 | **Q4 2026 – H2 2027** | Gen2 HW/FW | G2-P0…P6; temple parity; CHRSTS/SOC better than Gen1 |
 | **2026–2027** | US patent | Non-provisional submitted; prosecution as needed |
 | **H1 2027+** | Stage B prep | Pre-sub package; clinical concordance plan funded |
 | **H2 2027–2028** | Stage B filing | 510(k) target; CE MDR exploration parallel |
 
-**Calendar risk:** Stage B slips if Phase 0 fails, Gen2 EVT late, or clinical recruitment slow. Stage A wearable can still ship on Gen1.
+**Calendar risk:** Stage B slips if Phase 0 fails, Gen2 EVT is late, or clinical recruitment is slow. Stage A wearable can still ship on Gen1.
 
 ---
 
 ## 2. Cost map by workstream (EUR ranges)
 
-Assumptions: lean team (founder + part-time contractors), Ireland/EU base, Gen1 kits already partially tooled, ~10–30 pilot units then ~100 Stage A soft-launch, Gen2 one EVT spin before pilot parity.
+Assumptions: lean team (founder plus part-time contractors), Ireland/EU base, Gen1 kits already partially tooled, ~10–30 pilot units then ~100 Stage A soft-launch, Gen2 one EVT spin before pilot parity.
 
 ### A. Stage A — wellness wearable (next ~12–18 months)
 
 | Workstream | Low | Mid | High | Notes |
 |------------|-----|-----|------|-------|
-| **Ed/Pedro Phase 0 ops** | 5k | 15k | 35k | Kits already built: travel, phones/TestFlight, time, Beacon liaison, replacements |
+| **Ed/Pedro Phase 0 ops** | 5k | 15k | 35k | Gen1 units exist; partner handoff still **gated** — travel, phones/TestFlight, time, Beacon liaison, replacements |
 | **Gen1 build / scrap / spares** | 10k | 25k | 60k | Sample floors: Kaga Gen1 [GEN1_COGS](./GEN1_COGS_KAGA_QUOTE.md); Bittele PCB00003 [BITTELE](./BITTELE_Q100918A1_PCB_QUOTE.md) (~$173/set); **volume finished-kit COGS still TBD** |
 | **Patient app (Phase 0→1+)** | 20k | 50k | 100k | Contractor iOS / OralableCore; overnight report; StoreKit live; **not** pro app yet |
-| **Firmware 1.0.70 soak / field** | 5k | 15k | 30k | STAT RTT gate + TestFlight 4.3.3; OTA if needed |
+| **Firmware 1.0.84 soak / field** (was 1.0.70 line) | 5k | 15k | 30k | STAT + IR-pulse + pad/desk recover; TestFlight 4.3.3 build 5 |
 | **Phase 1+ science / validation** | 15k | 40k | 80k | Protocol B deferral → muscle gates; Python reports; small concordance |
 | **Cloud / Apple / tools** | 1k | 3k | 8k | Apple Developer, TestFlight, CloudKit (low until scale), CI |
 | **Website / GTM content** | 2k | 8k | 20k | oralable.com updates, screenshots, soft launch ads (optional) |
@@ -106,8 +106,8 @@ Assumptions: lean team (founder + part-time contractors), Ireland/EU base, Gen1 
 
 ### E. People (often the real burn)
 
-If founder time is unpaid, cash burn is contractor-heavy (tables above).  
-If paying 1–2 FTE eng + fractional regulatory:
+If founder time is unpaid, cash burn is mostly contractors (tables above).  
+If you pay 1–2 FTE eng plus fractional regulatory:
 
 | Model | Mid burn / month | 12-month |
 |-------|------------------|----------|
@@ -128,8 +128,8 @@ If paying 1–2 FTE eng + fractional regulatory:
 | **Stage A + Gen2** | Above + REV11 bring-up | **~350–450k** | ~900k |
 | **Through Stage B mid** | Stage A+Gen2 + 510(k) mid clinical | **~800k–1.0M** | ~2M+ |
 
-**Revenue offsets (optimistic, GTM draft — not proven):**  
-Hardware margin on kits + Premium €9.99/mo · dentist seats **after** Phase 1+. Year-1 draft targets (500 downloads / 20 dentists) **do not** self-fund Stage B.
+**Revenue offsets (optimistic GTM draft — not proven):**  
+Hardware margin on kits plus Premium €9.99/mo; dentist seats **after** Phase 1+. Year-1 draft targets (500 downloads / 20 dentists) **do not** pay for Stage B on their own.
 
 ---
 

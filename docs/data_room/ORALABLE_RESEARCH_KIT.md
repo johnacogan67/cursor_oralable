@@ -1,9 +1,9 @@
 # Oralable Research Kit — canonical definition
 
-**As at:** 12 Aug 2026 · Pack **1.1.64**  
+**As at:** 30 Aug 2026 · Pack **1.1.68** · FW **1.0.84** · app **4.3.3** (build **5**)  
 **Status:** Working definition for Beacon / IEEE Paper A feasibility · **5 kits → Pedro by 31 Aug 2026**  
 **Ship gate:** Charge-to-temple on each Oralable unit (see [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md))  
-**Sendables:** [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [PITCH_PEDRO_ED_FF.md](./PITCH_PEDRO_ED_FF.md) · protocol [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) · data handoff [PAPER_A_DATA_HANDOFF_SOP.md](./PAPER_A_DATA_HANDOFF_SOP.md)  
+**Sendables:** [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [PITCH_PEDRO_ED_FF.md](./PITCH_PEDRO_ED_FF.md) · protocol [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) · data handoff [PAPER_A_DATA_HANDOFF_SOP.md](./PAPER_A_DATA_HANDOFF_SOP.md) · construct map [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) · Pedro construct note [PEDRO_CONSTRUCT_MAP_NOTE.md](./PEDRO_CONSTRUCT_MAP_NOTE.md) / [PDF](./PEDRO_CONSTRUCT_MAP_NOTE.pdf)  
 **Visual direction (locked):** [VISUAL_AND_VOICE_DIRECTION.md](./VISUAL_AND_VOICE_DIRECTION.md) · hero [FIG-CO-054](../figures/FIG-CO-054-matisse-photo-dual-a-stack.png) · catalog [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md)  
 **IP (pitch-safe):** US provisional **64/033,978** filed **9 Apr 2026** — *Apparatus and Method for Muscle Activity Monitoring* · Temporalis OMG / IR-DC path · **patent pending** — [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · do **not** attach provisional PDF / claim text
 
@@ -15,12 +15,12 @@
 
 | Item | Spec / role |
 |------|-------------|
-| **Oralable Gen1 clip** | BOM REV8 · PCB REV10 · ES2832AA2 · FW **1.0.82** — temple PPG (R/G/IR) + ACC |
+| **Oralable Gen1 clip** | BOM REV8 · PCB REV10 · ES2832AA2 · FW **1.0.84** — temple PPG (R/G/IR) + ACC |
 | **Magnetic charge case** (or research dock) | USB-C · charge before temple wear — **not** Qi / MagSafe |
 | **ANR M40** + **3M Red Dot** snaps | Temporalis sEMG comparator — Dual Protocol A |
 | **Kapton** + **silicone** tape | Position-lock Oralable under ANR; optical seal / comfort |
 | **Headband** (e.g. Ridge) | Optional long-wear compression for Dual A |
-| **iPhone + Oralable TestFlight** | App **4.3.3+** · research / long-wear sessions (1–6 h+) |
+| **iPhone + Oralable TestFlight** | App **4.3.3** build **5+** · Protocol A Setup · research / long-wear (1–6 h+) |
 | **Quick start** | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) — first worn session = Phase 0 vitals |
 | **Protocol A Dual cue card** | 5-tap sync + lock sequence ([TEMPORALIS_COLLECTION_PROTOCOL.md](../TEMPORALIS_COLLECTION_PROTOCOL.md) Dual A) |
 | **Export path** | iOS Share/CSV · Mac Dual A logs · `align_anr_oralable_concordance.py` → `NEST.md` + **`session.edf`** |
@@ -115,7 +115,7 @@ See § Research Kit ship in [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLI
 | Gate | Owner |
 |------|--------|
 | Charge-to-temple closed on pilot, then each of 5 units | John |
-| Flash/verify 5× FW 1.0.82 · pack cases + clips | John |
+| Flash/verify 5× FW **1.0.84** · pack cases + clips | John |
 | Allocate 5× ANR M40 (state shortfall if any) | John |
 | TestFlight invite Pedro (+ Ed) | John |
 | Print quick start + Dual A cue card | John |

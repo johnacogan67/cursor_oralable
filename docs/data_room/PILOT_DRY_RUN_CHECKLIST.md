@@ -10,8 +10,8 @@
 
 **Ship gate:** Oralable-case charge to temple-ready SOC (≥50%) + short worn HR/SpO₂ without brownout. See [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) § Pilot ship status.
 
-**Hardware identity:** Gen1 · **BOM REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.82** · Oralable magnetic case (not Qi).  
-See [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md)
+**Hardware identity:** Gen1 · **BOM REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.84** · Oralable magnetic case (not Qi).  
+See [PRODUCT_ROADMAP.md](../PRODUCT_ROADMAP.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md)
 
 **Time (Phase 0):** ~45 min · **Time (Phase 1+ Protocol B):** ~90 min
 
@@ -31,14 +31,14 @@ Related: [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [
 | Step | Action | Pass |
 |------|--------|------|
 | A1 | Connect J-Link to pcb00003 | ☐ |
-| A2 | Flash [`firmware/oralable_1.0.82_pcb00003_merged.hex`](./firmware/oralable_1.0.82_pcb00003_merged.hex) (or OTA the zip) | ☐ |
-| A3 | nRF Connect: read `006` → **1.0.82** | ☐ |
+| A2 | Flash **1.0.84** per [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md) (or prior [1.0.82](./FIRMWARE_1.0.82_FLASH.md)) | ☐ |
+| A3 | nRF Connect: read `006` → **1.0.84** | ☐ |
 | A4 | On Oralable case: `on_dock=1` + `charge_active=1` (blink); later taper → `charge_active=0`. LED: **solid green** | ☐ |
 | A5 | **Oralable case** + charged clip (>30% SOC) | ☐ |
 
 ```bash
 cd /Users/johnacogan67/work/oralable_nrf
-./scripts/flash_and_rtt.sh --no-build --hex artifacts/oralable_1.0.82_pcb00003_merged.hex
+./scripts/flash_and_rtt.sh --no-build --hex build_pcb00003/merged.hex   # 1.0.84
 # J-Link SNR default: 1050090445 — export JLINK_SNR=... if different
 ```
 
@@ -48,12 +48,12 @@ cd /Users/johnacogan67/work/oralable_nrf
 
 | Step | Action | Pass |
 |------|--------|------|
-| B1 | Confirm OralableApp **4.3.3** / bump build if needed (`CURRENT_PROJECT_VERSION`) | ☐ |
+| B1 | Confirm OralableApp **4.3.3** build **5+** (`CURRENT_PROJECT_VERSION`) | ☐ |
 | B2 | Archive **OralableApp** scheme, **Release**, device **Any iOS** | ☐ |
 | B3 | Distribute → TestFlight (internal) or Ad Hoc for Ed/Pedro devices | ☐ |
 | B4 | Install on your iPhone; confirm app opens past sign-in + fit gate | ☐ |
 
-**Pilot build must include:** FW gate min **1.0.63** · recommend **1.0.82** · Vitals phase · **Device LED** mirror (STAT flash/taper) · placement picker with **Automatic** · nRF CSV export.
+**Pilot build must include:** FW gate min **1.0.63** · recommend **1.0.84** · Protocol A Setup gate · Vitals phase · **Device LED** mirror (STAT flash/taper) · placement picker with **Automatic** · nRF CSV export.
 
 ```bash
 cd /Users/johnacogan67/work/oralable_swift/OralableApp
@@ -76,9 +76,9 @@ xcodebuild -scheme OralableApp -destination 'generic/platform=iOS' \
 | C6 | Settings → placement shows **Worn** (temple vitals — not cheek muscle UI) | ☐ |
 
 **Fail actions:**
-- Disconnect in first 5 s → confirm FW **1.0.82**; do not enable `00A` in Developer Settings.
+- Disconnect in first 5 s → confirm FW **1.0.84**; do not enable `00A` in Developer Settings.
 - Flat dashboard → placement **Worn**; reconnect; check temple contact / quality.
-- Dock stays 0 on case → confirm Oralable case (not MagSafe); reflash 1.0.82.
+- Dock stays 0 on case → confirm Oralable case (not MagSafe); reflash **1.0.84**.
 
 ---
 
@@ -147,8 +147,8 @@ python -m src.validation.self_validate \
 | Item | Ready |
 |------|-------|
 | Dry-run validation plot archived | ☐ |
-| Pilot clip flashed **1.0.82** + charge-to-temple closed | ☐ |
-| TestFlight invite (1.0.82-aware app) sent to Ed + Pedro | ☐ |
+| Pilot clip flashed **1.0.84** + charge-to-temple closed | ☐ |
+| TestFlight invite (**4.3.3** build **5**, 1.0.84-aware) sent to Ed + Pedro | ☐ |
 | Quick start printed / emailed | ☐ |
 | First kit packed for smoke ship | ☐ |
 
@@ -162,8 +162,8 @@ Canonical BOM: [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md). Hard gate
 
 | Step | Action | Pass |
 |------|--------|------|
-| G1 | Close charge-to-temple on pilot unit (FW 1.0.82) | ☐ |
-| G2 | Flash/verify **5×** Oralable → GATT `006` = **1.0.82** | ☐ |
+| G1 | Close charge-to-temple on pilot unit (FW **1.0.84**) | ☐ |
+| G2 | Flash/verify **5×** Oralable → GATT `006` = **1.0.84** | ☐ |
 | G3 | Pack **5×** magnetic cases + clips (kit IDs RK01–RK05) | ☐ |
 | G4 | Allocate **5× ANR M40** (if shortfall: document count + Oralable-first ship) | ☐ |
 | G5 | Print Dual A cue card + quick start ×5 | ☐ |

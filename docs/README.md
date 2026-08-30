@@ -1,6 +1,6 @@
 # Oralable research & validation documentation index
 
-Python algorithm development, clinical protocols, and gold-standard validation (`cursor_oralable`). **Doc pack:** `docs/VERSION` → **1.3.16** (pilot FW **1.0.82** · app **4.3.3** — Gemini tech avenues + timeline — [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)).
+Python algorithm development, clinical protocols, and gold-standard validation (`cursor_oralable`). **Doc pack:** `docs/VERSION` → **1.3.17** (Gen1 target FW **1.0.84** · app **4.3.3** build **5** — [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)).
 
 **Agent topic map:** [WORKSPACE_TOPICS.md](./WORKSPACE_TOPICS.md) · copy-paste starters [AGENTS.md](../AGENTS.md)
 
@@ -40,6 +40,7 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 | Document | Description |
 |----------|-------------|
 | [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) | **Protocol A** (training, 5 taps) vs **Protocol B** (Ed/Pedro, 3-tap T=0) — read “do not mix” table · Dual A (ANR) |
+| [data_room/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) | **Living table** — MAM vs ANR vs Dual A vs AcuPebble vs PSG (iterate here; **MAM if verified**) |
 | [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) | ANR M40 temporalis sEMG vs Oralable (Paper C) — Mac dual-BLE first |
 | [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) | **Canonical** overnight bands (BP-style), **state hypnogram = very useful primary** ([FIG-CO-025](./figures/FIG-CO-025-state-hypnogram-exemplar.png)); **in-app** + Mac/iOS PDF; ≥6 h gate |
 | [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md) | **Canonical** Protocol A cohort sizes, users/sessions, demographics, leave-user-out |
@@ -49,14 +50,15 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 
 | Document | Description |
 |----------|-------------|
-| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.67** · Research Kit · Dual A measured + EDF · pilot FW **1.0.82** · app **4.3.3** |
+| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.68** · Research Kit · Dual A measured + EDF · FW **1.0.84** · app **4.3.3** (build **5**) |
 | [data_room/COLLAB_NABAVI_MCGILL.md](./data_room/COLLAB_NABAVI_MCGILL.md) | Nabavi collab truth — McGill / RI-MUHC · not Dianyx · Ed/Pedro · Wout Altium |
 | [data_room/LITERATURE_AND_PRIOR_ART.md](./data_room/LITERATURE_AND_PRIOR_ART.md) | TEC literature distill (Li ambulatory SB · BruxScreen · chewing PPG · encaps) |
 | [data_room/PITCH_KOOROSH.pdf](./data_room/PITCH_KOOROSH.pdf) | Nabavi leave-behind (McGill IEEE + optional Altium) |
 | [data_room/KOOROSH_OUTREACH.md](./data_room/KOOROSH_OUTREACH.md) | Email to seyed.nabavi@mcgill.ca |
 | [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) | Phase 0 Vitals one-pager (Ed Owens / Pedro Beacon) |
-| [data_room/VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) | Canonical FW **1.0.82** · app **4.3.3** |
-| [data_room/FIRMWARE_1.0.82_FLASH.md](./data_room/FIRMWARE_1.0.82_FLASH.md) | Pilot flash / OTA guide |
+| [data_room/VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) | Canonical FW **1.0.84** · app **4.3.3** (build **5**) |
+| [data_room/FIRMWARE_1.0.84_FLASH.md](./data_room/FIRMWARE_1.0.84_FLASH.md) | Gen1 target flash / OTA guide |
+| [data_room/FIRMWARE_1.0.82_FLASH.md](./data_room/FIRMWARE_1.0.82_FLASH.md) | Prior ship flash / OTA |
 | [data_room/ORALABLE_FTS_36MO.md](./data_room/ORALABLE_FTS_36MO.md) | 36-month functional & technical specification |
 | [data_room/REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) | Wellness → 510(k) / CE timeline |
 | [data_room/GTM_ONE_PAGE.md](./data_room/GTM_ONE_PAGE.md) | GTM, pricing, CAC assumptions |

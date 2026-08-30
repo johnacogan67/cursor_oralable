@@ -1,7 +1,7 @@
 # Oralable® — Friends & Family brief for Pedro & Ed
 
 **Audience:** Dr Pedro Mayoral Sanz · Dr Edward Owens (Beacon) — clinical partners and friends-and-family investors  
-**Status:** Sendable leave-behind · **12 Aug 2026** · Pack **1.1.64** · Stage A truth · Research Kit · Dual A eng measured  
+**Status:** Sendable leave-behind · **30 Aug 2026** · Pack **1.1.68** · Stage A truth · Research Kit · Dual A eng measured · FW **1.0.84** · app **4.3.3** (build **5**)  
 **Not:** Ken BalancePoints jargon · medical-device / AHI claims · Dianyx JV · Azarbarzin HB from Oralable alone  
 
 **Canonical:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) · funding [FUNDING_POINT_B_AND_CAP_TABLE.md](./FUNDING_POINT_B_AND_CAP_TABLE.md) · Mayoral method [MAYORAL_METHOD_ORALABLE_VALIDATION.md](./MAYORAL_METHOD_ORALABLE_VALIDATION.md)
@@ -29,7 +29,7 @@ Temple Research Kit: overnight vitals, then jaw-load awareness, then IEEE feasib
 
 | Item | Truth (12 Aug 2026) |
 |------|---------------------|
-| **Stack** | FW **1.0.82** · app **4.3.3** · Gen1 REV10 |
+| **Stack** | FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 |
 | **Engineering** | Mac Protocol A + overnight report toolchain proven (~6 min eng pack) |
 | **Dual A** | Mac Oralable + ANR measured (`20260812_085110`) + research EDF; kits still gated |
 | **Kits** | **Gated** (charge-to-temple) — target **5 Research Kits by 31 Aug** |
@@ -151,7 +151,7 @@ Speaker: We ship the temporalis optical system the provisional covers. Pedro and
 |-----|------------------|
 | Kit finish / ship / spares | Close charge-to-temple · 5 kits + ANR |
 | Beacon / Paper A ops | Ethics, dry-run, Arm P windows |
-| App / FW soak | Field stability on 1.0.82 / 4.3.3 |
+| App / FW soak | Field stability on **1.0.84** / **4.3.3** (build **5**) |
 | Bridge to Point B close | Keep runway to PSSF / HPSU |
 
 Full Stage A engineering needs more (~€200–250k mid) — see [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md). This slide is the **F&F slice**, not a full budget.

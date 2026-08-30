@@ -12,7 +12,7 @@ Use this file when you start a Cursor agent and want it to stay on one topic.
 | [ORALABLE_SYSTEM_MAP_DIAGRAMS.md](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md) | Mermaid / pitch diagrams | Agent prompts |
 | [upload/03_GITHUB_REPOS_OVERVIEW.txt](./upload/03_GITHUB_REPOS_OVERVIEW.txt) | **Deprecated** four-repo snapshot | Current truth |
 
-**Versions:** [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) · FW **1.0.82** · app **4.3.3** (do not invent numbers).
+**Versions:** [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) · FW **1.0.84** · app **4.3.3** (build **5**) (do not invent numbers).
 
 ---
 
@@ -63,14 +63,14 @@ Nearby but **not** in this workspace: `oralable-web`. Corporate / legal folders 
 | `core` | Shared parse, biometrics, export, Core ML | `OralableCore` | `OralableCore/docs/README.md` |
 | `algorithms` | Mac Python gold, filters, TFI/SASHB, parity | `cursor_oralable` · `OralableCore` | [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) |
 | `overnight` | Night report, hypnogram, state machine | `cursor_oralable` · `oralable_swift` · `OralableCore` | [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) |
-| `clinical` | Protocol A/B, Dual A, ANR, Paper A | `cursor_oralable` | [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) |
+| `clinical` | Protocol A/B, Dual A, ANR, Paper A | `cursor_oralable` | [MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) |
 | `research-kit` | Ed/Pedro kits, flash, handoff | `cursor_oralable` | [ORALABLE_RESEARCH_KIT.md](./data_room/ORALABLE_RESEARCH_KIT.md) |
 | `data-room` | Investor index, pitches, Ken areas | `cursor_oralable` | [data_room/README.md](./data_room/README.md) |
 | `ip` | Patents, landscape, north star | `cursor_oralable` | [IP_NORTH_STAR.md](./IP_NORTH_STAR.md) · [IP_PORTFOLIO_STATUS.md](./data_room/IP_PORTFOLIO_STATUS.md) |
 | `regulatory` | Wellness → 510(k) / CE | `cursor_oralable` | [REGULATORY_TIMELINE.md](./data_room/REGULATORY_TIMELINE.md) |
 | `gtm` | Market, GTM, competitors | `cursor_oralable` · `oralable_nrf` | [GTM_ONE_PAGE.md](./data_room/GTM_ONE_PAGE.md) · `ORALABLE_MARKET_LANDSCAPE.md` |
 | `governance` | Cap table, Ken/Nigel, funding | `cursor_oralable` | [CURRENT_GOVERNANCE_STATUS.md](./data_room/CURRENT_GOVERNANCE_STATUS.md) |
-| `brand` | Figures, look, Hemingway/Orwell voice | `cursor_oralable` | [FIGURES.md](./FIGURES.md) · [VISUAL_AND_VOICE_DIRECTION.md](./data_room/VISUAL_AND_VOICE_DIRECTION.md) |
+| `brand` | Figures, look, Orwell voice | `cursor_oralable` | [FIGURES.md](./FIGURES.md) · [VISUAL_AND_VOICE_DIRECTION.md](./data_room/VISUAL_AND_VOICE_DIRECTION.md) |
 
 ---
 
@@ -82,7 +82,7 @@ nRF52832 Gen1 ship (`pcb00003`). GATT TGM `3A0FF000`. OTA. nRF Connect is the BL
 
 - **Code:** `oralable_nrf/app/src/` (`main.c`, `tgm_service.c`, `ble.c`, `ppg.c`, `charge_detector.c`)
 - **Boards:** `oralable_nrf/boards/byteexplain/pcb00003/` · Gen2 stub `pcb00003_gen2/`
-- **Docs:** `oralable_nrf/docs/DEVELOPMENT.md` · `OTA_DEVICE_MANAGER.md` · [FIRMWARE_1.0.82_FLASH.md](./data_room/FIRMWARE_1.0.82_FLASH.md)
+- **Docs:** `oralable_nrf/docs/DEVELOPMENT.md` · `OTA_DEVICE_MANAGER.md` · target FW **1.0.84** (`app/VERSION`) · prior OTA [FIRMWARE_1.0.82_FLASH.md](./data_room/FIRMWARE_1.0.82_FLASH.md)
 - **Rule:** `oralable_nrf/.cursor/rules/nrf-connect-validation.mdc`
 - **Do not:** change iOS parse to “fix” a firmware byte without an nRF Connect CSV.
 
@@ -126,7 +126,7 @@ Mac Python is the clinical reference. 50 Hz. Butterworth 0.5–8 Hz for HR. IR-D
 - **Python:** `cursor_oralable/src/analysis/features.py` · `overnight_states.py` · `src/processing/resampler.py`
 - **Scripts:** `scripts/process_temporalis_gold.py` · `generate_clinical_report.py` · `generate_overnight_night_report.py`
 - **Phone:** `OralableCore` + `oralable_swift` `UnifiedBiometricProcessor`
-- **Docs:** [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [MAC_PHONE_ALGORITHM_PARITY.md](./data_room/MAC_PHONE_ALGORITHM_PARITY.md)
+- **Docs:** [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [MAC_PHONE_ALGORITHM_PARITY.md](./data_room/MAC_PHONE_ALGORITHM_PARITY.md) · [MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) (MAM labels vs Dual A / AcuPebble / PSG)
 - **Do not:** invent phone defaults Mac would leave missing (e.g. fake SpO₂ 98%).
 
 ### `overnight`
@@ -135,13 +135,13 @@ State hypnogram is the primary night view. Evaluable overnight ≥6 h worn (goal
 
 - **Python:** `src/analysis/overnight_states.py` · `scripts/generate_overnight_night_report.py`
 - **iOS:** `OvernightNightReportBuilder` · `OvernightStateClassifier` · `StateHypnogramView`
-- **Docs:** [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md)
+- **Docs:** [OVERNIGHT_NIGHT_REPORT.md](./OVERNIGHT_NIGHT_REPORT.md) · [MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) (state names vs EMG / AHI)
 
 ### `clinical`
 
 Protocol A (training, 5 taps) vs Protocol B (Ed/Pedro, 3-tap T=0). Do not mix. Dual A = MAM + ANR M40. User-facing name is **MAM**; BLE still advertises **Oralable**; GATT/code stays **TGM**.
 
-- **Docs:** [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md)
+- **Docs:** [MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) (what MAM / ANR / Dual A / AcuPebble / PSG measure — iterate here) · [TEMPORALIS_COLLECTION_PROTOCOL.md](./TEMPORALIS_COLLECTION_PROTOCOL.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md)
 - **Paper A:** `docs/data_room/PAPER_A_*.md`
 - **Code:** `scripts/run_protocol_a_session.py` · `run_anr_emg_session.py` · `src/analysis/emg_spo2_nest.py`
 
@@ -150,7 +150,7 @@ Protocol A (training, 5 taps) vs Protocol B (Ed/Pedro, 3-tap T=0). Do not mix. D
 Five kits to Pedro, gated on charge-to-temple. Patient app only.
 
 - **Docs:** [ORALABLE_RESEARCH_KIT.md](./data_room/ORALABLE_RESEARCH_KIT.md) · [ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md) · [PAPER_A_DATA_HANDOFF_SOP.md](./data_room/PAPER_A_DATA_HANDOFF_SOP.md) · [PEDRO_STATUS_UPDATE_2026-08.md](./data_room/PEDRO_STATUS_UPDATE_2026-08.md)
-- **Flash:** [FIRMWARE_1.0.82_FLASH.md](./data_room/FIRMWARE_1.0.82_FLASH.md)
+- **Flash:** SWD `oralable_nrf/build_pcb00003/merged.hex` (**1.0.84**) · prior [FIRMWARE_1.0.82_FLASH.md](./data_room/FIRMWARE_1.0.82_FLASH.md)
 
 ### `data-room`
 
@@ -185,10 +185,10 @@ Living snapshot first. Cap table and Point B sit in data room; statutory packs s
 
 ### `brand`
 
-Figure IDs stay locked. Prose is Hemingway/Orwell. Look is locked in the visual note.
+Figure IDs stay locked. Prose is Orwell. Look is locked in the visual note.
 
 - **Docs:** [FIGURES.md](./FIGURES.md) · [VISUAL_AND_VOICE_DIRECTION.md](./data_room/VISUAL_AND_VOICE_DIRECTION.md) · `docs/data_room/brand/`
-- **Rule:** `.cursor/rules/prose-hemingway-orwell.mdc` (all four repos)
+- **Rule:** `.cursor/rules/prose-orwell.mdc` (all four repos)
 
 ---
 
@@ -229,7 +229,7 @@ From [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) §1. O
 
 ## Cursor rules already on disk
 
-Always-on (all four repos): plan-mode switch · bookmark sources · Hemingway/Orwell prose.
+Always-on (all four repos): plan-mode switch · bookmark sources · Orwell prose.
 
 Topic-scoped:
 

@@ -2,9 +2,9 @@
 
 **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-**Build date:** July 2026 · **Role:** **Rollback** (current ship = **1.0.82**) · patient app only
+**Build date:** July 2026 · **Role:** **Rollback** (current target = **1.0.84**; prior archive **1.0.82**) · patient app only
 
-> **Superseded for Ed/Pedro ship (2026-08-27):** flash **[1.0.82](./FIRMWARE_1.0.82_FLASH.md)** (sense-on-BLE, 5% floor, IR-pulse worn). Keep 1.0.70 binaries below for rollback.
+> **Superseded for Ed/Pedro (2026-08-30):** flash **1.0.84** (`oralable_nrf/build_pcb00003/merged.hex`). Prior archive **[1.0.82](./FIRMWARE_1.0.82_FLASH.md)** (sense-on-BLE, 5% floor, IR-pulse worn). Keep 1.0.70 binaries below for rollback.
 
 **Includes** 1.0.66 BLE RSSI/reconnect + 1.0.68 remapped battery gauge + **LTC4124 STAT activity** (blink = charging / on_dock).
 
@@ -57,7 +57,7 @@ Verify GATT **`3A0FF006`** → **`1.0.70`** (suffix may include `-nrfconnect` de
 
 | Area | Expect |
 |------|--------|
-| **FirmwareGate** | Hard min **1.0.63**; recommend **1.0.70** |
+| **FirmwareGate** | Hard min **1.0.63**; recommend **1.0.84** (this build is rollback) |
 | **Automatic** | Preferred on 1.0.70+ (STAT blink); soft warning if device still on 1.0.66 |
 | **Device LED** | Mirror: flash when Charging chip on; solid on Taper while Dock on |
 | **TestFlight** | App **4.3.3+** — vitals phase + Automatic + STAT LED mirror |

@@ -3,12 +3,12 @@
 > **Phase scope:** These protocols are **Phase 1+ / research** (muscle IR-DC, Protocol A/B).  
 > **Current pilot (Phase 0):** temple HR/SpO₂ only — [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md) · [data_room/ED_PEDRO_QUICK_START.md](./data_room/ED_PEDRO_QUICK_START.md). Do not require Protocol B for Phase 0 kit ship.
 
-**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · [FIGURES.md](./FIGURES.md) · Firmware **1.0.70** ship (gate min 1.0.63) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · [FIGURES.md](./FIGURES.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · **construct map** [data_room/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) · Firmware **1.0.84** (sense only on BLE; gate min 1.0.63) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Hardware:** Gen1 · BOM REV8 · PCB REV10 · Kaga ES2832AA2  
 **Target site (Phase 1+):** Temporalis anterior (temple / cheek clip)
 
-**Sampling:** 50 Hz PPG + accelerometer (BLE logger or app)
+**Sampling:** 50 Hz PPG + accelerometer (BLE logger or app). **FW 1.0.84** (since 1.0.80+): sensors run only while a central is connected. A BLE drop stops Oralable PPG/ACC (no FIFO catch-up). Keep Mac or iOS linked for the whole Protocol A / Dual A run. Clip status LED is off while linked; red/IR is PPG. Charge with no phone: flash green = charging, solid green = taper / hold (not always 4.2 V).
 
 ![FIG-CO-003 Temple placement](./figures/FIG-CO-003-temple-placement.svg)
 
@@ -37,8 +37,8 @@ Uploading both to NotebookLM without this table causes conflicting answers about
 
 ## Shared: physical setup
 
-1. **Locate target:** Fingers on temple; clench to find peak bulge (**anterior temporalis** — same site class as GrindCare sEMG in literature; Oralable uses **optical** IR-DC, not electrodes).
-2. **Mounting:** Sensor window over peak bulge (headband or cheek clip per hardware).
+1. **Locate target:** Fingers on temple; clench to find peak bulge (**anterior temporalis** — vertical elevating fibers; same site class as GrindCare sEMG in literature; Oralable uses **optical** IR-DC, not electrodes). See [data_room/TEMPORALIS_ANATOMY_AND_PLACEMENT.md](./data_room/TEMPORALIS_ANATOMY_AND_PLACEMENT.md).
+2. **Mounting:** Sensor window over peak bulge (headband or cheek clip per hardware). Dual A: ANR Red Dots **long axis VERTICAL** (‖ anterior fibers) over / pressing the same belly.
 3. **Tension:** Firm but comfortable (target 5–15 mmHg strap equivalent).
 
 **Optional clinical intake (Ed/Pedro / Paper B):** patient completes **BruxScreen-Q** (and dentist **BruxScreen-C** when available) — Lobbezoo et al. 2024. See [LITERATURE_AND_PRIOR_ART.md](./data_room/LITERATURE_AND_PRIOR_ART.md). Do not treat questionnaire alone as instrumented SB diagnosis.
@@ -95,6 +95,48 @@ Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_
 **Labeling:** Table offsets (e.g. 02:00 tonic) define `label_enum` segment boundaries. Accuracy within **1–2 s** required.
 
 **Milestone log (24 Jul 2026):** `data/raw/TEMPORALIS_RAW_20260724_084345.txt` → OralableCore `BruxismMAM_Temporalis.mlpackage` · app **4.3.3**.
+
+---
+
+## Dual A — Oralable + ANR temporalis (Paper C precursor)
+
+**Objective:** Time-align **ANR M40 surface EMG** (anterior temporalis) with Oralable Protocol A IR-DC / labels for research concordance — **not** Phase 0 or Paper A feasibility.
+
+**Full hardware / claim discipline:** [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · data-room bookmark [data_room/ANR_M40_CONCORDANCE.md](./data_room/ANR_M40_CONCORDANCE.md).  
+**What Dual A scores vs labels / AHI:** [data_room/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/MEASUREMENT_CONSTRUCT_MAP.md) — iterate the construct table there.
+
+| | Dual A |
+|---|--------|
+| **Devices** | Oralable Gen1 (temple clip) + ANR M40 electrodes on **same temporalis region** |
+| **Setup** | **Seat Oralable alone first** (no ANR): peak bulge → hard clench → see IR-DC trough → then Kapton + ANR vertical without sliding the window. Not a full Oralable-only Protocol A. |
+| **Seat order** | Oralable alone → IR trough → stack ANR → Dual A script gates |
+| **Preflight** | EMG gate (default max ≥70) **and** IR optical gate (default drop ≥8% of rest median). SpO₂ AC WARN after IR (non-blocking). EMG alone is not enough. |
+| **Cues** | Same Protocol A table (5 taps at 01:00 on Oralable housing) |
+| **Capture** | Mac dual-BLE: `scripts/run_dual_protocol_a_session.py` |
+| **Score** | `scripts/align_anr_oralable_concordance.py` → `plots/concordance/<session>/` (LP IR-DC overlay + `emg_ir_lag_zoom.png` + nest `spo2_qc`) |
+| **SpO₂** | Nest requires SpO₂ **series + QC line** (`ok`/`warn`/`fail`) — not finger equivalence. Paper A O2 uses QC; Dual A muscle packs may archive with `warn`. |
+| **Expect** | LP IR-DC troughs lag EMG by ~**1–5 s** (hemodynamic) |
+| **Out of scope** | PSG-AV diagnosis; App Store EMG card; Pedro Phase 0 kits; AHI/ODI |
+
+**Why these defaults (practical):** Seat Oralable alone first so ANR does not unload the PPG window. EMG gate **70** (not 100) matches the eng pack that worked under the Dual A stack — contact proof, not hero amplitude. IR drop **8%** is the hard optical gate (EMG alone failed us once). SpO₂ mean is **not** a hard gate (temple means ~89% are common); AC WARN + post-hoc `spo2_qc` flag junk or bias without blocking muscle Dual A. Full setup + rationale: [ANR_M40_CONCORDANCE.md — Setup / Why these gates](./ANR_M40_CONCORDANCE.md#setup--seat-oralable-alone-first).
+
+**Setup (before the script):**
+1. Only Oralable on anterior temporalis peak.  
+2. Hard clench → IR-DC trough.  
+3. Kapton + ANR vertical — press, do not slide.  
+4. Then run Dual A:
+
+```bash
+# Practical: defaults only — get a muscle Dual A pack
+.venv/bin/python scripts/run_dual_protocol_a_session.py
+.venv/bin/python scripts/align_anr_oralable_concordance.py \
+  --oralable data/raw/TEMPORALIS_RAW_YYYYMMDD_HHMMSS.txt \
+  --anr data/raw/ANR_EMG_YYYYMMDD_HHMMSS.txt \
+  --pair data/raw/DUAL_PAIR_YYYYMMDD_HHMMSS.txt
+# Escape hatches: --force / --skip-emg-preflight / --skip-ir-preflight
+```
+
+**Paper ladder:** Dual A feeds **Paper C** tables. Paper A feasibility (n≈5) does **not** require ANR — see [PAPER_A_FEASIBILITY_PROTOCOL.md](./data_room/PAPER_A_FEASIBILITY_PROTOCOL.md).
 
 ---
 
@@ -157,7 +199,8 @@ Structured Protocol A/B locks are **minutes**, not sleep. For **evaluable overni
 
 | Tier | Worn duration | Use |
 |------|---------------|-----|
-| **Canonical minimum** | **≥ 6 hours** | Counts as a completed overnight for Ed/Pedro / night-report evaluation |
+| **iOS band unlock** | **≥ 1 hour** | Morning-card / provisional bands in app (pilot UX) |
+| **Canonical overnight (Paper A / Ed–Pedro eval)** | **≥ 6 hours** | Completed overnight for night-report evaluation / Results |
 | **Goal** | **~8 hours** | Preferred full night |
 | **Smoking-gun hourly r** | **≥ 3 hours** of filled hourly buckets | Pearson SASHB vs rescue fraction (needs ≥3 hourly bins) |
 | **Not sleep** | Protocol A (~6 min) / Protocol B (~4.5 min) | Training / pass-fail only |

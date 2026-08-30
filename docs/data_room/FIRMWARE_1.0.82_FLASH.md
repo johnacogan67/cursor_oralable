@@ -2,7 +2,7 @@
 
 **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-**Build date:** 27 Aug 2026 · **Target:** Stage A Phase 0 Vitals / Research Kit · patient app only  
+**Build date:** 27 Aug 2026 · **Role:** **Prior Gen1 ship** (current target **1.0.84**) · Stage A Phase 0 / Research Kit · patient app only  
 **GATT string:** `1.0.82` (boot banner `v1.0.82-76bdb4ba748b`)
 
 Includes 1.0.70 STAT blink, 1.0.72 green-only status LEDs, 1.0.80 sense-on-BLE, 1.0.81 5% sensor floor, **1.0.82 IR-pulse `worn`**.
@@ -81,7 +81,7 @@ If temple never latches, IR AC/DC is below the on-threshold — say so; do not p
 
 | Area | Expect |
 |------|--------|
-| **FirmwareGate** | Hard min **1.0.63**; recommend **1.0.82** |
+| **FirmwareGate** | Hard min **1.0.63**; current recommend **1.0.84** (this build was ship 27 Aug) |
 | **Automatic** | Preferred (STAT blink). Soft hint if device is still on 1.0.70 |
 | **Device LED** | Flash green charging; solid green taper. LED off while linked |
 | **TestFlight** | App **4.3.3+** |
@@ -99,3 +99,5 @@ Previous ship: [FIRMWARE_1.0.70_FLASH.md](./FIRMWARE_1.0.70_FLASH.md). Older: [F
 - [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md)
 - [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md)
 - [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md)
+
+**Current Gen1 target:** [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md). Keep this 1.0.82 pack for OTA rollback.

@@ -74,7 +74,7 @@ Oralable tests **extraoral temporalis OMG** (IR-DC + ACC) — **outside the mout
 
 **Physics:** PPG + IR-DC hemodynamic occlusion + jaw accelerometry at the **temporalis** — not sEMG, not a finger ring, **not inside the mouth**.
 
-**Ship truth:** Gen1 REV10 · FW **1.0.82** · app **4.3.3** · **Research Kits gated** (charge-to-temple) — target **5 to Pedro by 31 Aug 2026** — ready ≠ delivered · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md).
+**Ship truth:** Gen1 REV10 · FW **1.0.84** · app **4.3.3** (build **5**) · **Research Kits gated** (charge-to-temple) — target **5 to Pedro by 31 Aug 2026** — ready ≠ delivered · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md).
 
 ---
 

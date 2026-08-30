@@ -1,6 +1,6 @@
 ================================================================================
 **DEPRECATED SNAPSHOT** — do not use as current truth.
-Current Gen1 ship: FW **1.0.70** · iOS app **4.3.3**
+Current Gen1 target: FW **1.0.84** · iOS app **4.3.3** (build **5**)
 Canonical: cursor_oralable/docs/data_room/VERSION_ALIGNMENT.md
 Flash: cursor_oralable/docs/data_room/FIRMWARE_1.0.70_FLASH.md
 This file body may still describe older FW (e.g. 1.0.36) for archive/PDF history.

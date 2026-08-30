@@ -65,7 +65,7 @@ This is a **condition-specific** problem at an unusual site — not “another s
 |------|------|
 | Clip | Gen1 · BOM REV8 · PCB REV10 · Kaga ES2832AA2 (nRF52832) |
 | Charge | **Oralable magnetic case** — not phone Qi / MagSafe |
-| Firmware | **1.0.82** (IR-pulse worn · STAT blink = charging) |
+| Firmware | **1.0.84** (IR-pulse worn · STAT blink · pad/desk recover) |
 | App | Oralable patient **4.3.3** (TestFlight) — dentist app **off** for pilot |
 | Placement | **Temple** |
 | Claims | **Wellness only** — not a medical device today |
@@ -77,7 +77,7 @@ This is a **condition-specific** problem at an unusual site — not “another s
 
 | Evidence | Status |
 |----------|--------|
-| Gen1 kits + FW 1.0.82 + app 4.3.3 | **Stack ready** — flash / TestFlight path live |
+| Gen1 kits + FW 1.0.84 + app 4.3.3 (build 5) | **Stack ready** — flash / TestFlight path live |
 | Ed/Pedro Research Kits | **Pending ship** (charge-to-temple) — 5 kits target **31 Aug 2026** |
 | App Store live MAU / MRR | **Near zero** — soft launch gated |
 | Funding to date | **Founder-loan funded** · cash thin |

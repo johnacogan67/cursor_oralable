@@ -5,7 +5,7 @@
 **Reports to:** Board (founder majority owner + Independent Director)  
 **Works with:** Founder as **Executive Chairman** (product, clinical science, IP) — not a “Chief Scientist only” demotion of the founder  
 
-This is a **search brief**, not an offer. Compensation / equity are indicative bands for discussion with counsel and the board.
+This is a **search brief**, not an offer. Pay and equity bands are for discussion with counsel and the board.
 
 **Send with:** company pitch for candidates — [PITCH_CEO_CANDIDATE.md](./PITCH_CEO_CANDIDATE.md) · [PITCH_CEO_CANDIDATE.pdf](./PITCH_CEO_CANDIDATE.pdf) · browser [PITCH_CEO_CANDIDATE.html](./PITCH_CEO_CANDIDATE.html)
 
@@ -13,18 +13,18 @@ This is a **search brief**, not an offer. Compensation / equity are indicative b
 
 ## 1. Company in one paragraph
 
-Oralable is building a **temple-worn optical wearable** (PPG + motion) for overnight **vitals first** (HR / SpO₂), then jaw-load / bruxism-related metrics (IR-DC, TFI, SASHB) as a **Stage A wellness product**. A **Stage B medical-device** path is a later gate — not the current App Store or pilot claim. Hardware is Gen1 (Nordic nRF, magnetic charging case); iOS patient app in TestFlight; pilot kits about to ship once a charge-to-temple gate clears. Near-term capital target is BalancePoints-style **Point B ~€180k** (F&F + EI PSSF CLN + HPSU), then a larger pre-seed/seed when evidence and governance allow.
+Oralable is a **temple-worn optical wearable** (PPG + motion) for overnight **vitals first** (HR / SpO₂), then jaw-load / bruxism-related metrics (IR-DC, TFI, SASHB) as a **Stage A wellness product**. A **Stage B medical-device** path comes later — not the current App Store or pilot claim. Hardware is Gen1 (Nordic nRF, magnetic charging case); iOS patient app in TestFlight (**4.3.3** build **5** · FW **1.0.84**); **Oralable Research Kits** for Ed/Pedro stay **gated / not yet shipped** (target **5 by 31 Aug 2026**) until the charge-to-temple gate clears (ready ≠ delivered — [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md)). Near-term capital target is BalancePoints-style **Point B ~€180k** (F&F + EI PSSF CLN + HPSU), then a larger pre-seed/seed when evidence and governance allow.
 
 ---
 
 ## 2. Why this hire
 
-The founder has built the product, IP narrative, and technical stack and will stay as **Executive Chairman** owning product / science / patents. The company needs a **commercial CEO** who can:
+The founder built the product, IP story, and technical stack and stays **Executive Chairman** on product / science / patents. The company needs a **commercial CEO** who can:
 
-1. Close near-term funding and professionalise the raise  
-2. Run the company day-to-day (ops, partnerships, team)  
+1. Close near-term funding and run a professional raise  
+2. Run day-to-day ops (partnerships, team)  
 3. Keep claims honest (wellness now; medical later)  
-4. Partner with the founder without displacing technical ownership  
+4. Work with the founder without taking over technical ownership  
 
 ---
 
@@ -32,22 +32,22 @@ The founder has built the product, IP narrative, and technical stack and will st
 
 **Full-time (or near full-time) CEO** of an early-stage Irish hardware + software company, based **Ireland / UK** with travel as needed (investors, clinical partners, EMS/Kaga, US later).
 
-**Mission (next 12–18 months):** Take Oralable from Point A (working Gen1 stack, thin cash, pilot pending) through **Point B funding**, successful **patient pilot evidence**, a credible **soft commercial launch** of the Stage A wearable, and a board-ready plan for the next equity round — without overselling medical claims.
+**Mission (next 12–18 months):** Move Oralable from Point A (working Gen1 stack, thin cash, pilot pending) through **Point B funding**, solid **patient pilot evidence**, a credible **soft commercial launch** of the Stage A wearable, and a board-ready plan for the next equity round — without overselling medical claims.
 
 ---
 
 ## 4. Key responsibilities
 
 ### Capital & investors
-- Own the **funding roadmap**: F&F pack, EI PSSF / HPSU path, then pre-seed/seed narrative  
-- Build investor-grade materials with the founder (truthful Stage A story)  
-- Lead investor conversations; close rounds to board-approved terms  
-- Protect runway discipline (cash is currently founder-loan dependent)
+- Own the **funding roadmap**: F&F pack, EI PSSF / HPSU path, then pre-seed/seed story  
+- Build investor materials with the founder (truthful Stage A story)  
+- Lead investor talks; close rounds on board-approved terms  
+- Guard runway (cash now depends on founder loans)
 
 ### Commercial & GTM
-- Define and execute **Stage A GTM** (consumer / dental-adjacent wellness; Ireland/UK first)  
-- Pricing, channel, and early revenue without activating professional clinical theatre before product is ready  
-- Partnerships (clinical observers, KOLs, distribution) consistent with wellness claims  
+- Define and run **Stage A GTM** (consumer / dental-adjacent wellness; Ireland/UK first)  
+- Pricing, channels, early revenue — without professional clinical claims before the product is ready  
+- Partnerships (clinical observers, KOLs, distribution) that match wellness claims  
 
 ### Operations & team
 - Day-to-day company leadership; hiring plan within budget  
@@ -70,7 +70,7 @@ The founder has built the product, IP narrative, and technical stack and will st
 
 | Horizon | Outcomes that matter |
 |---------|----------------------|
-| **0–90 days** | Point B path live (F&F materials + EI process); Conor/cap-table cleanup supported; pilot kits shipped / first field evidence in motion |
+| **0–90 days** | Point B path live (F&F materials + EI process); Conor/cap-table cleanup supported; charge-to-temple gate cleared → **5 Research Kits** shipped / first field evidence in motion |
 | **3–6 months** | Point B (or bridge) closed or clearly on track; Stage A soft-launch plan funded; team/contractor plan clear |
 | **6–12 months** | Credible usage / pilot metrics; next-round story ready; optional medical exploration only as a **gated** workstream |
 
@@ -81,8 +81,8 @@ The founder has built the product, IP narrative, and technical stack and will st
 **Must-have**
 - Raised capital for early-stage companies (ideally Ireland/UK/EU: angels, EI, pre-seed/seed)  
 - Comfortable as **operating CEO** of a small hardware + software company (not advisory-only)  
-- Clear communicator; can sell a **technical product without overclaiming**  
-- Experience with **regulated-adjacent** or consumer health / medtech / deep tech (wellness today, medical awareness for later)  
+- Clear speaker; can sell a **technical product without overclaiming**  
+- **Regulated-adjacent** or consumer health / medtech / deep tech (wellness today, medical path later)  
 - Based in or willing to work primarily in **Ireland or UK**; available for Dublin cadence with founder and Amstrow  
 
 **Strong plus**
@@ -131,7 +131,7 @@ Exact numbers are **not** fixed in this JD — they are set by board resolution 
 | Point B | 25–30% | Point B stack closed (**€180k** path: F&F + PSSF + HPSU as board-agreed) |
 | Tenure / ops | remainder | Continues on the **4-year time vest** (and/or still CEO at 12–24 months) |
 
-**Design intent:** equity is **earned** with fundraising and tenure — not gifted for a title. Board + counsel set final % , pool size, strike, and leaver terms.
+**Design intent:** equity is **earned** through fundraising and tenure — not a title gift. Board + counsel set final % , pool size, strike, and leaver terms.
 
 ---
 
@@ -167,14 +167,14 @@ Nigel,
 
 Thanks again for offering to think about CEO candidates from your network.
 
-I’ve written a short job description of what I need (attached / linked: *CEO_JOB_DESCRIPTION*). In summary:
+I’ve written a short job description of what I need (attached / linked: *CEO_JOB_DESCRIPTION*). Summary:
 
-- I’m looking for a **commercial CEO** to own fundraising, go-to-market, and day-to-day company leadership.
-- I intend to stay as **Executive Chairman** focused on product, clinical/science, and IP — not to step into a “Chief Scientist only” role with no board/product authority.
+- I need a **commercial CEO** to own fundraising, go-to-market, and day-to-day company leadership.
+- I stay **Executive Chairman** on product, clinical/science, and IP — not a “Chief Scientist only” role with no board/product authority.
 - Product truth for candidates: **Stage A** is a **temple** wellness wearable (HR/SpO₂ first, then jaw-load metrics). Medical-device claims are a **later** gate, not the current pilot or App Store story.
-- Near-term priorities: close the **Point B** path (~**€180k**: F&F + EI PSSF + HPSU), get the Ed/Pedro pilot into the field once the charge gate clears, and keep the company investable and claim-honest.
+- Near-term priorities: close the **Point B** path (~**€180k**: F&F + EI PSSF + HPSU), get the Ed/Pedro pilot into the field once the charge gate clears, and keep the company investable with honest claims.
 
-On package, for anyone you introduce, please frame equity as a **normal early-stage option package**, not a large day-one share transfer:
+On package, for anyone you introduce, frame equity as a **normal early-stage option package**, not a large day-one share transfer:
 
 - Discussion band roughly **5–10% fully diluted options** (centre of gravity ~**6–8%**), subject to board and counsel.
 - **4-year vesting** with a **1-year cliff**.

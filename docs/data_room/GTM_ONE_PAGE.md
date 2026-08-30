@@ -16,14 +16,14 @@
 ## Positioning (Phase 0 · Stage A wellness wearable)
 
 **For:** Adults validating overnight temple vitals (HR/SpO₂) with Oralable Gen1 kits; later jaw-load awareness (Phase 1+).  
-**Product:** Gen1 clip (**BOM REV8** / **REV10** / **ES2832AA2** / FW **1.0.70**) + **Oralable magnetic charging case** + **Oralable** patient iOS app.  
+**Product:** Gen1 clip (**BOM REV8** / **REV10** / **ES2832AA2** / FW **1.0.84**) + **Oralable magnetic charging case** + **Oralable** patient iOS app (**4.3.3** build **5**).  
 **Promise (Phase 0):** Reliable temple heart rate and SpO₂ with honest device state — **not** a diagnosis · **not** a medical device.  
-**Promise (Phase 1+):** See overnight jaw activity patterns (wellness wearable embodying the new US patent path).  
+**Promise (Phase 1+):** See overnight jaw activity patterns (wellness wearable on the new US patent path).  
 **Later (Stage B):** Medical-device pathway — separate regulatory gate; see [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [IP_NORTH_STAR.md](../IP_NORTH_STAR.md).
 
 **Ed/Pedro iteration:** **Patient app only** — do **not** ship or activate **Oralable for Dentists** until Phase 0 gates pass and Phase 1+ shareable rollups exist. See [APPS_AND_REVENUE_EVAL.md](./APPS_AND_REVENUE_EVAL.md).
 
-**Voice (target):** User outcomes first — sleep quality, morning jaw comfort — not sensor specs; no medical claims in Stage A.
+**Voice (target):** Lead with user outcomes — sleep quality, morning jaw comfort — not sensor specs; no medical claims in Stage A.
 
 **Hardware note:** Charge only in the Oralable case (not a phone Qi pad). Gen2 (BOM REV9 / REV11) is upcoming — see PRODUCT_ROADMAP.
 
@@ -36,7 +36,7 @@
 | **A — Consumer** | Individual | App Store, website, Amazon/dental retail | **Oralable** (patient) | **In scope** |
 | **B — Professional** | Dental practice | KOL referral, conferences, pilot sites | Patient + **Oralable for Dentists** | **Deferred** — activate post Phase 1+ |
 
-Path B does not require FDA clearance at launch if copy stays **wellness monitoring**; keep Path B dark for Ed/Pedro. Align professional metadata with consumer disclaimers until Path C.
+Path B does not need FDA clearance at launch if copy stays **wellness monitoring**; keep Path B dark for Ed/Pedro. Match professional metadata to consumer disclaimers until Path C.
 
 ---
 
@@ -83,7 +83,7 @@ Path B does not require FDA clearance at launch if copy stays **wellness monitor
 
 | Phase | Geography | Requirement |
 |-------|-----------|-------------|
-| Launch | **Ireland / UK** | English App Store, CE wellness positioning |
+| Launch | **Ireland / UK** | English App Store; **wellness positioning** (no CE medical mark on consumer SKU — [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md)) |
 | +6 mo | **EU core** (DE, FR) | Localization v1.1; GDPR already addressed |
 | +12 mo | **US** primary if not simultaneous | FDA wellness; clearance path separate |
 | Scale | **Android** | Required for EU/Android-heavy referrals — H2 2026 MVP |

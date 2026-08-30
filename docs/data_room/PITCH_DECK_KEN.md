@@ -34,7 +34,7 @@ Speaker: One sentence — we ship a working wearable that matches a new US paten
 |-----------|---------------------|
 | **Legal entity** | **JAC DENTAL SOLUTIONS LIMITED** (Ireland) |
 | **Product** | Gen1 Phase 0 (temple HR/SpO₂) — **Research Kits built, gated** (not yet shipped); target **5 to Pedro by 31 Aug 2026**; charge-to-temple SOC ≥50% |
-| **Hardware** | BOM **REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.82** · Oralable magnetic case (**not Qi**) |
+| **Hardware** | BOM **REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.84** · Oralable magnetic case (**not Qi**) |
 | **App** | **Patient app only** for this iteration — Oralable for Dentists **off** |
 | **Claims** | Wellness only — **not** a medical device |
 | **IP** | **EP 4 333 691 B1** granted · **IE/UK** validating · **UP** due 8 Aug · US RCE · provisional **64/033,978** — [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · [IP_EVAL_AND_LANDSCAPE.md](./IP_EVAL_AND_LANDSCAPE.md) |
@@ -104,7 +104,7 @@ Speaker: Do not sell Phase 0 as “bruxism solved.” Sell reliable temple vital
 |------|------|
 | Clip | Gen1 · REV10 · ES2832AA2 (nRF52832) |
 | Charge | **Oralable magnetic case** (LTC4124 / LTC6990) — not phone Qi |
-| Firmware | **1.0.82** (sense-on-BLE · IR-pulse worn · STAT blink = charging) |
+| Firmware | **1.0.84** (sense-on-BLE · IR-pulse worn · STAT blink · pad/desk recover) |
 | Placement | **Temple** · Automatic dock on 1.0.70+ (manual modes still available) |
 | App | Oralable patient **4.3.3** · TestFlight vitals phase |
 | Out of scope | Oralable for Dentists · Protocol B muscle · medical claims |
@@ -173,8 +173,8 @@ Geography: Ireland / UK first → EU → US; Android still **GAP**.
 
 | Evidence | Status |
 |----------|--------|
-| Gen1 kits + FW 1.0.82 + app 4.3.3 | **Stack ready** (flash + TestFlight) — **not delivered** to Ed/Pedro yet |
-| Ship gate (charge → worn vitals) | **In progress** — STAT from 1.0.70; 1.0.82 IR-pulse worn; closing energy/coupling on case |
+| Gen1 kits + FW 1.0.84 + app 4.3.3 (build 5) | **Stack ready** (flash + TestFlight) — **not delivered** to Ed/Pedro yet |
+| Ship gate (charge → worn vitals) | **In progress** — STAT from 1.0.70; IR-pulse worn (1.0.82+); pad/desk recover (1.0.84); closing energy/coupling on case |
 | Ed/Pedro Phase 0 protocol + quick start | **Docs ready** — handoff after ship gate |
 | Prior lab / temporalis validation runs | **Partial** (science; not consumer MAU) |
 | App Store live MAU / MRR | **GAP** |

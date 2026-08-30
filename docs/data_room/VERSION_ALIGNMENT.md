@@ -1,13 +1,16 @@
 # Version alignment (canonical)
 
-**As at:** 27 Aug 2026 · Data room pack **1.1.67** · Docs hub **1.3.16**  
+**As at:** 30 Aug 2026 · Data room pack **1.1.68** · Docs hub **1.3.17**  
 **Nabavi collab:** [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) (Phase 1 McGill / Koroosh · Phase 2 complementary Dianyx later)  
 **Research Kit:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) — 5 kits → Pedro by **31 Aug 2026** · status [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md)  
 **Paper A field:** [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) — Research Kit feasibility n≈5; Dual A + SpO₂∩EMG nest + Pedro 1–2 h oxygen arm  
 **Sensor corroboration:** [SENSOR_CORROBORATION.md](./SENSOR_CORROBORATION.md) · parity [MAC_PHONE_ALGORITHM_PARITY.md](./MAC_PHONE_ALGORITHM_PARITY.md)  
+**Construct map:** [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) — MAM vs ANR vs Dual A vs AcuPebble vs PSG (iterate there)  
 **Literature distill:** [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md) · full audit [DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md](./DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md)
 
-Use this table when you update flash guides, pilot handouts, architecture, the website, or TestFlight notes. Use these strings. Do not use older “1.0.70 ship” language except as rollback.
+Use this table when you update flash guides, pilot handouts, architecture, the website, or TestFlight notes. Use these strings. Do not use older “1.0.70 ship” language except as rollback. Prefer **1.0.84** over “1.0.82 ship” for the current Gen1 target (1.0.82 remains a valid prior build).
+
+**Current stack (use these strings):** FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 · kits **gated**.
 
 **Canonical development timeline:** [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · planning mirror [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) §1. · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)  
 **Technology avenues (Gemini distill):** [GEMINI_TEMPLE_PPG_AVENUES.md](./GEMINI_TEMPLE_PPG_AVENUES.md) · roadmap §2b · landscape §4b.
@@ -64,32 +67,44 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 | **Worn** | Automatic = IR pulse, not die temperature. Mode 3 still forces worn. |
 | **nRF Connect** | Confirm `3A0FF006` = `1.0.82` after OTA; temple IR-pulse latch is a field check |
 
+## Milestone — 30 Aug 2026 (FW 1.0.84 Gen1 target)
+
+| Item | Status |
+|------|--------|
+| **Stack** | FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 |
+| **Build** | `oralable_nrf` `app/VERSION` PATCHLEVEL **84** · archived hex/zip in `data_room/firmware/` · [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md) |
+| **Recover** | Pad/zombie: idle PPG notify ~4 s → green + advertise; desk/bench: `worn=0` + PPG sensing + ACC flat **10 min** → drop + re-advertise |
+| **Mac Protocol A** | FwLog CCC **off** by default (`--fw-log` opt-in) |
+| **iOS** | Hard min still **1.0.63**; recommend **1.0.84** (`FirmwareGate`) — no new GATT · Protocol A Setup gate default ON · TestFlight build **5** |
+| **nRF Connect** | Confirm `3A0FF006` = `1.0.84` after flash |
+| **Kits** | Still **gated / not yet shipped** — charge-to-temple gate unchanged |
+
 ## Pilot ship status (ready ≠ delivered)
 
-| Item | As at 27 Aug 2026 |
+| Item | As at 30 Aug 2026 |
 |------|------------------|
 | **Ed/Pedro Research Kits** | **Gated / not yet shipped** — target **5 kits to Pedro by 31 Aug 2026** |
 | **Kit definition** | [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · photos [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md) |
-| **Stack** | FW **1.0.82** · app **4.3.3** · Gen1 REV10 — flash/OTA/TestFlight path ready |
+| **Stack** | FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 — [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md) |
 | **Ship gate** | Case charge to **temple-ready SOC (≥50%)** + short worn HR/SpO₂ without brownout **on each unit** |
-| **Status sense** | STAT blink policy from **1.0.70**; **1.0.82** IR-pulse worn + sense-on-BLE (do not say “chrsts broken on REV10”) |
+| **Status sense** | STAT blink policy from **1.0.70**; **1.0.84** IR-pulse worn + sense-on-BLE + pad/desk recover (do not say “chrsts broken on REV10”) |
 | **Open work** | Cell energy / coupling so voltage **rises** on the Oralable case |
 | **Detail** | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) § Pilot ship status · dry-run §G [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLIST.md) |
 
 | Layer | Current | Notes |
 |-------|---------|--------|
-| **Gen1 firmware (ship)** | **1.0.82** | `oralable_nrf` `app/VERSION` · sense-on-BLE · 5% floor · IR-pulse worn · STAT blink · Oralable case only · hex in `data_room/firmware/` |
-| **Gen1 FW GATT string** | `1.0.82` | Read `3A0FF006` after flash / OTA |
+| **Gen1 firmware (target)** | **1.0.84** | `oralable_nrf` `app/VERSION` · 1.0.82 features + pad/zombie recover + desk abandon |
+| **Gen1 FW GATT string** | `1.0.84` | Read `3A0FF006` after flash / OTA |
 | **iOS FirmwareGate hard min** | **1.0.63** | Blocks older research builds |
-| **iOS FirmwareGate recommend** | **1.0.82** | Sense-on-BLE, green pad LEDs, IR-pulse worn |
-| **Oralable patient app** | **4.3.3** | Marketing version; vitals phase + STAT LED mirror + Temporalis MAM refresh |
-| **Oralable app build** | **4** | `CURRENT_PROJECT_VERSION` (bump on each TestFlight) |
+| **iOS FirmwareGate recommend** | **1.0.84** | Soft upgrade hint; 1.0.82 still connects |
+| **Oralable patient app** | **4.3.3** | Marketing version; Protocol A Setup gate · vitals phase + STAT LED mirror |
+| **Oralable app build** | **5** | `CURRENT_PROJECT_VERSION` (bump on each TestFlight) |
 | **Gen2 firmware (target)** | **2.0.x** | Not on Ed/Pedro kits |
-| **Rollback hex (optional)** | 1.0.70 | Keep in `firmware/` · older 1.0.66 also there |
+| **Prior ship / rollback** | 1.0.82 · 1.0.70 | Keep in `firmware/` |
 
-## Feature milestones folded into 1.0.82
+## Feature milestones folded into 1.0.84
 
-| Introduced | Feature | Still true in 1.0.82 |
+| Introduced | Feature | Still true in 1.0.84 |
 |------------|---------|----------------------|
 | 1.0.63 | Probe off | Yes |
 | 1.0.66 | +4 dBm TX; fast reconnect adv | Yes |
@@ -99,17 +114,18 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 | 1.0.72 | Status LEDs **green-only** (never red) | Yes |
 | 1.0.80 | PPG/ACC follow BLE + CCC, not worn | Yes |
 | 1.0.81 | Below 5% / 3.61 V: sensors off, MCU stays up | Yes |
-| **1.0.82** | **Automatic worn = IR pulse** (not die temp) | **Ship** |
+| 1.0.82 | Automatic worn = IR pulse (not die temp) | Yes |
+| **1.0.84** | **Pad/zombie recover + desk/bench abandon** | **Current target** |
 
-**Status LEDs (1.0.82):** green-only. On pad: flash green while charging; **solid green** at STAT taper **or** already ≥ ~70% / 4.05 V. Off pad, no BLE: dark. Red/IR is PPG sensing only while streaming. Do not tell operators to expect red on the pad.
+**Status LEDs (1.0.84):** green-only. On pad: flash green while charging; **solid green** at STAT taper **or** already ≥ ~70% / 4.05 V. Off pad, no BLE: dark. Red/IR is PPG sensing only while streaming. Do not tell operators to expect red on the pad.
 
 ## Flash / app pairing
 
 | Role | Flash | App |
 |------|-------|-----|
-| Ed/Pedro Phase 0 | [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md) | TestFlight **4.3.3+** |
+| Ed/Pedro Phase 0 | [FIRMWARE_1.0.84_FLASH.md](./FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](./FIRMWARE_1.0.82_FLASH.md) | TestFlight **4.3.3** build **5+** (recommend **1.0.84**) |
 | Quick start | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) | Same |
-| Dry run | [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLIST.md) | Archive 4.3.3 |
+| Dry run | [PILOT_DRY_RUN_CHECKLIST.md](./PILOT_DRY_RUN_CHECKLIST.md) | Archive **4.3.3 (5)** |
 
 ## Do not say (outdated)
 
@@ -119,3 +135,4 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 - “Worn follows die temperature” (true only before 1.0.82)
 - “Charge on Qi / MagSafe”
 - “Kits already with Ed/Pedro” / “shipping” — until ship gate clears (say **gated** / **not yet shipped**)
+- “Recommend 1.0.82” as current — recommend is **1.0.84** (1.0.82 still connects)

@@ -41,7 +41,7 @@ flowchart LR
 | Professional app | Optional; **after** Phase 1+; not Ed/Pedro; clinical role grows in Stage B |
 
 ---
-**Version stamps:** [data_room/VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) — Gen1 FW **1.0.70** · iOS **4.3.3**.
+**Version stamps:** [data_room/VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) — Gen1 FW **1.0.84** · iOS **4.3.3** (build **5**).
 
 ## 1. Hardware ↔ BOM map (do not invent)
 
@@ -63,7 +63,7 @@ flowchart LR
 
 ### Phase 0 — Vitals (now – Sep 2026)
 
-**Hardware:** Gen1 · BOM REV8 · PCB REV10 · ES2832AA2 · FW **1.0.70** · App **4.3.3**
+**Hardware:** Gen1 · BOM REV8 · PCB REV10 · ES2832AA2 · FW **1.0.84** · App **4.3.3** (build **5**)
 
 | In scope | Out of scope (until Phase 1+) |
 |----------|-------------------------------|
@@ -157,7 +157,7 @@ Primary on **Gen2** (BOM REV9 / REV11). Gen1 sunset after IR-DC, RF, and iOS soa
 | 2026–2027 | IP | Active | New US patent submission / prosecution (counsel-led) |
 | **H2 2027 – 2028** | **Stage B** | Deferred | Medical device path (510(k) / CE) — not claimed in Stage A |
 
-**Stack now:** FW **1.0.70** · app **4.3.3** · Gen1 REV10 · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
+**Stack now:** FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
 
 Living engineering calendar: [GEN1_GEN2_TRACKING.md §2](./GEN1_GEN2_TRACKING.md#2-timeline-calendar) · **Cost ranges:** [COST_AND_TIMELINE.md](./data_room/COST_AND_TIMELINE.md)
 

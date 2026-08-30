@@ -19,7 +19,7 @@
 | **Gen1 prior** | `oralable_nrf` | tags `v1.0.66` | `pcb00003` | `1.0.66` | Rollback only |
 | **Gen2 bring-up** | `oralable_nrf` | `feature/gen2-nrf54l15` | `pcb00003_gen2` | `2.0.0-gen2-nrfconnect` (target) | **Scaffold** |
 | **Docs / research** | `cursor_oralable` | `main` | — | docs **1.3.16** / data_room **1.1.47** | Tracking live |
-| **iOS / Core** | `oralable_swift` · `OralableCore` | current | — | App **4.3.3** · gate min **1.0.63** / recommend **1.0.70** | No Gen2 fork |
+| **iOS / Core** | `oralable_swift` · `OralableCore` | current | — | App **4.3.3** · gate min **1.0.63** / recommend **1.0.84** | No Gen2 fork |
 
 ### Rules (non-negotiable)
 

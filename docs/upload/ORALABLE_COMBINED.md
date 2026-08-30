@@ -19,7 +19,7 @@ header-includes:
 
 ---
 
-> **Deprecated for NotebookLM / daily engineering:** Current ship is FW **1.0.70** · app **4.3.3** — see [VERSION_ALIGNMENT.md](../data_room/VERSION_ALIGNMENT.md) and [ORALABLE_SYSTEM_ARCHITECTURE.md](../../ORALABLE_SYSTEM_ARCHITECTURE.md). This combined pack body is frozen at **1.0.36** for PDF history only.
+> **Deprecated for NotebookLM / daily engineering:** Current Gen1 target is FW **1.0.84** · app **4.3.3** (build **5**) — see [VERSION_ALIGNMENT.md](../data_room/VERSION_ALIGNMENT.md) and [ORALABLE_SYSTEM_ARCHITECTURE.md](../../ORALABLE_SYSTEM_ARCHITECTURE.md). This combined pack body is frozen at **1.0.36** for PDF history only.
 
 # Part I — Upload Index
 

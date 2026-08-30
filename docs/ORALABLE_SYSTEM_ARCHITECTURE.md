@@ -7,8 +7,8 @@
 | Field | Value |
 |-------|--------|
 | Last updated | 2026-07-26 |
-| Firmware baseline | pcb00003, nRF52832, TGM GATT `3A0FF000` — **pilot ship 1.0.82** (IR-pulse worn · STAT blink = charging) · see [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
-| iOS | App **4.3.3** · `FirmwareGate` min **1.0.63** · recommend **1.0.82** |
+| Firmware baseline | pcb00003, nRF52832, TGM GATT `3A0FF000` — **Gen1 target 1.0.84** (IR-pulse worn · STAT blink · pad/desk recover) · see [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
+| iOS | App **4.3.3** (build **5**) · `FirmwareGate` min **1.0.63** · recommend **1.0.84** |
 | Python sampling standard | 50 Hz (20 ms), PPG R/G/IR + ACC — **Phase 0:** temple vitals; **Phase 1+:** cheek/temple IR-DC |
 | Primary repos | `oralable_nrf`, `oralable_swift`, `OralableCore`, `cursor_oralable` |
 | Figures | [FIGURES.md](./FIGURES.md) · Mermaid hub [ORALABLE_SYSTEM_MAP_DIAGRAMS.md](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md) |
@@ -89,7 +89,7 @@ Repo rule: `oralable_nrf/.cursor/rules/nrf-connect-validation.mdc`
 | ID | Truth | Value (pcb00003) | Source | Registry |
 |----|--------|------------------|--------|----------|
 | P-01 | Product form (target) | Clip on temporalis / masseter region (overnight) | Product | LOCKED |
-| P-01a | **Phase 0 (now)** | **Temple** HR & SpO₂; no muscle-fit calibration; Gen1 BOM REV8 / REV10 / ES2832AA2 / FW **1.0.70** | [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) | LOCKED |
+| P-01a | **Phase 0 (now)** | **Temple** HR & SpO₂; no muscle-fit calibration; Gen1 BOM REV8 / REV10 / ES2832AA2 / FW **1.0.84** | [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) | LOCKED |
 | P-01b | **Phase 1+** | IR-DC / TFI / SASHB / Protocol B on **same Gen1 hardware** | PRODUCT_ROADMAP | LOCKED |
 | P-02 | Charging | **Oralable magnetic case** — clip **LTC4124** RX + case **LTC6990** TX on **same PCB00003 BOM**; **not WPC Qi**; not wired contact dock | BOM REV8 + pickplace | LOCKED |
 | P-03 | Overnight use | Sleep bruxism + vitals + hypoxic burden (Phase 1+ product target; Phase 0 = vitals first) | Product/clinical | LOCKED |
@@ -130,7 +130,7 @@ When **H-08** wiring is re-verified on bench, update byte0 semantics in §9 and 
 | **BROKEN** | Fails acceptance test on latest build |
 | **BLOCKED** | Depends on unresolved registry row (e.g. H-08) |
 
-**Current firmware reference for this matrix:** pilot ship **1.0.82** ([VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md); [FIRMWARE_1.0.82_FLASH.md](./data_room/FIRMWARE_1.0.82_FLASH.md)). Historical 1.0.70 rows stay below.
+**Current firmware reference for this matrix:** Gen1 target **1.0.84** ([VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md); [FIRMWARE_1.0.84_FLASH.md](./data_room/FIRMWARE_1.0.84_FLASH.md)). Historical 1.0.70 / 1.0.82 rows stay below.
 
 ### 3.1 Platform & BLE contract
 
@@ -214,7 +214,7 @@ It combines:
 
 **Primary clinical target:** sleep bruxism and related overnight jaw load, correlated with **SpO₂ burden** and **rescue** physiology (Phase 1+ evidence path after Phase 0 vitals gates).
 
-**Device identity:** Oralable MAM, board **pcb00003** — **Gen1:** ES2832AA2 (nRF52832, **BOM REV8**, PCB **REV10**, FW **1.0.70**) · **Gen2:** ES4L15BA1 (nRF54L15, **BOM REV9**, PCB **REV11**, FW **2.0.x**). Canonical map: [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md).
+**Device identity:** Oralable MAM, board **pcb00003** — **Gen1:** ES2832AA2 (nRF52832, **BOM REV8**, PCB **REV10**, FW **1.0.84**) · **Gen2:** ES4L15BA1 (nRF54L15, **BOM REV9**, PCB **REV11**, FW **2.0.x**). Canonical map: [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md).
 
 ---
 
@@ -402,7 +402,7 @@ Aligned with Nordic Academy / Apple CoreBluetooth: **one CCC write at a time**, 
 
 1. Discover services / characteristics (full TGM tree).
 2. Read `3A0FF005` (device ID).
-3. Read `3A0FF006` (firmware) → `FirmwareGate` blocks &lt; **1.0.63** (recommend **1.0.82**).
+3. Read `3A0FF006` (firmware) → `FirmwareGate` blocks &lt; **1.0.63** (recommend **1.0.84**).
 4. Apply manual placement (`00B` 0x09) before streaming CCCs.
 5. Enable battery notify (`004`) — **await CCC confirm**.
 6. **Staggered CCC** (`enableNRFAlignedStreamingNotifications`), each step awaited:
