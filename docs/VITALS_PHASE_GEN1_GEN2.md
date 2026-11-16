@@ -1,16 +1,16 @@
 # Vitals Phase 0 — hardware generations & pilot workarounds
 
-**Status:** Active pilot direction (July 2026)  
-**Firmware:** **1.0.84** target (minimum 1.0.63) · **App:** **4.3.3** build **5** vitals phase · see [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
+**Status:** Gen 2 is the partner hardware (14 Oct 2026). Bring-up, not ship-ready. Gen 1 workarounds below are the frozen archive the port copies.  
+**Firmware:** Gen 2 **2.0.x** target, not flashed. Install with `oralable_nrf/scripts/flash_and_rtt.sh`, same SWD-then-RTT path as Gen 1. **App:** **4.3.3** build **5**. See [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 continues past Sep 2026 (30 Sep handoff missed) on Gen 2; Phase 1+ Q4’26–Q1’27; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 **Canonical product/BOM map:** [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · **Figures:** [FIGURES.md](./FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-![FIG-CO-013 Magnetic case](./figures/FIG-CO-013-magnetic-case.svg)
+![FIG-CO-013 Charge case](./figures/FIG-CO-013-magnetic-case.svg)
 
-*Figure FIG-CO-013 — Magnetic charge case (placeholder).*
+*Figure FIG-CO-013 — Charge case (coil align now; magnetic dock later). SVG filename is historical.*
 
 ![FIG-CO-022 Charge to temple](./figures/FIG-CO-022-pilot-charge-to-temple.svg)
 
@@ -18,8 +18,8 @@
 
 ```mermaid
 flowchart LR
-  Case[Oralable magnetic case] --> App[App 4.3.3]
-  App --> FW[FW 1.0.84 STAT]
+  Case[Oralable charge case] --> App[App 4.3.3]
+  App --> FW[FW 2.0.x when it streams]
   FW --> Temple[Temple HR SpO2]
   Temple --> Night[Auto overnight record]
   Night --> Morning[Share clinical PDF]
@@ -51,11 +51,11 @@ Both generations use the **same PCB00003 clip + case layout** (one BOM per rev):
 | | **Gen1 (BOM REV8)** | **Gen2 (BOM REV9)** |
 |--|---------------------|---------------------|
 | **U5** | ES2832AA2 | **ES4L15BA1** |
-| **Battery** | CG-320B ~15 mAh (typical build) | **LP260820** 30 mAh |
+| **Battery** | CG-320B ~15 mAh (typical build) | **LP270829** 35 mAh (arrived). BOM name LP260820 ~30 mAh |
 | **32 kHz crystal** | XTL1 ECS-.327-9-1210 | X1 (module-specific) |
-| **Firmware target** | `pcb00003` / nRF52832 (**1.0.84** target) | nRF54L15 board bring-up — see `oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md` |
+| **Firmware** | `pcb00003` / nRF52832 (**1.0.85** frozen) | Evidence-gated port of that app onto `pcb00003_gen2`; use the non-release candidate controls in `oralable_nrf/docs/GEN2_PROGRAM_GATE.md` |
 
-**Ed / Pedro pilot kits (July 2026):** **Hardware Gen1** — **ES2832AA2**, **BOM REV8**, REV10 assembly · flash **1.0.84** · app **4.3.3** (build **5**).
+**Gen2 status:** **ES4L15BA1**, **BOM REV9**, REV11 · cell **LP270829** · firmware **2.0.x** non-release candidate · app **4.3.3** (build **5**) · hardware, stream, update, and iOS compatibility evidence all remain gated. The July Gen1 line is archive.
 
 Source BOMs:
 - Gen1: `PCB00003-TGM-PRODUCTION_DATA-REV8/PCB00003-TGM-BOM-REV8.xlsx`
@@ -63,7 +63,9 @@ Source BOMs:
 
 ---
 
-## 3. Pilot workarounds (Gen1 units)
+## 3. Pilot workarounds (Gen 1 archive — port these behaviors)
+
+These rows describe the frozen Gen 1 units. Gen 2 keeps the same charge, worn, and stream behavior. GPIO numbers change with the nRF54 port. Do not start a second state machine.
 
 | Component | Role | Limitation | Mitigation (software) |
 |-----------|------|------------|------------------------|
@@ -78,41 +80,42 @@ Source BOMs:
 
 ### Pilot state machine (implemented)
 
-| State | Detection | LED (1.0.84) | Streaming |
+| State | Detection | LED (1.0.85) | Streaming |
 |-------|-----------|--------------|-----------|
-| On charger | Manual mode 1 or `on_dock` (STAT activity in 1.0.70+) | Green **flash** while charging; **solid green** on STAT taper | Off unless BLE + CCC |
+| On charger | Manual mode 1 or `on_dock` (STAT activity in 1.0.70+) | Green **flash** below hold (~4.20 V); **rare pulse** in hold | Off unless BLE + CCC |
 | Bench idle | Not on pad, no BLE | Dark | Off |
 | Linked | BLE + PPG/ACC CCC | Off (PPG sensing) | PPG + ACC @ 50 Hz even if `worn=0` |
 | Below ~5% | Gauge &lt; 3.61 V | Status LEDs as above | PPG/ACC off; BLE stays |
 | Vitals ready | App quality ≥0.5 HR & SpO₂ | Same as linked | Display HR / SpO₂ |
 
-### Firmware lineage (folded into target **1.0.84**)
+### Firmware lineage (folded into target **1.0.85**)
 
 - **1.0.63:** connect probe off
 - **1.0.66:** +4 dBm TX; fast reconnect advertising
 - **1.0.67:** `.recycled` adv; PPG DT IRQ; battery discard
 - **1.0.68:** remapped battery gauge (3.61–4.35 V)
 - **1.0.70:** LTC4124 STAT activity — blink = charging / on_dock
-- **≥1.0.72:** status LEDs **green-only** (never red). Taper / hold = **solid green**. Red/IR is PPG only.
+- **≥1.0.72:** status LEDs **green-only** (never red). Red/IR is PPG only. **This tree:** hold = rare green pulse at ≥ ~4.20 V / 80% (not continuous solid; STAT taper below hold stays flash).
 - **1.0.80:** PPG/ACC follow BLE + CCC
 - **1.0.81:** below 5% sensors off, MCU up
 - **1.0.82:** Automatic worn = IR pulse
-- **1.0.84 (target):** Pad/zombie recover + desk/bench abandon
+- **1.0.84:** Pad/zombie recover + desk/bench abandon
+- **1.0.85 (target):** Hold LED — rare green pulse at ≥ ~4.20 V / 80% (not continuous solid)
 
 ### iOS changes (vitals phase · app **4.3.3** build **5**)
 
 - **Vitals phase** feature flag (HR, SpO₂, battery cards; hide Protocol B / EMG / calibration UI)
 - **VitalsDeviceStatusCard** — operational state from `009` + Charging/Taper chips
-- **Device LED mirror** — STAT flash/taper policy via OralableCore
+- **Device LED mirror** — hold vs charging via OralableCore (`statusLED()`)
 - **Automatic** placement preferred on FW **1.0.70+**; manual modes still available
-- **FirmwareGate** min **1.0.63** · recommend **1.0.84**
+- **FirmwareGate** min **1.0.63** · recommend **1.0.85**
 - **Nordic/Apple CCC:** battery → status → PPG → ACC → temp, one-at-a-time awaited
 
 ---
 
-## 4. Gen2 targets (BOM REV9 / REV11)
+## 4. Gen 2 (current — BOM REV9 / REV11)
 
-Improvements expected on **Gen2** (`ES4L15BA1`, LP260820, BOM REV9) vs Gen1 pilot units:
+Board, config, and firmware are a port of Gen 1. First install is the same RTT script. Cell on the arrived unit is **LP270829** 35 mAh.
 
 | Area | Gen2 target | vs Gen1 |
 |------|-------------|---------|
@@ -161,6 +164,6 @@ Connect probe restart (0x08) is a no-op when probe duration Kconfig = 0.
 - System architecture matrix: [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md)
 - **Gen1 → Gen2 migration (capabilities, roadmap, repo):** [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md)
 - **Living timeline / G2-P0…P6 checklist:** [GEN1_GEN2_TRACKING.md](./GEN1_GEN2_TRACKING.md)
-- Ed/Pedro test plan: [data_room/clinical/VITALS_PILOT_TEST_PLAN.md](./data_room/clinical/VITALS_PILOT_TEST_PLAN.md)
-- Flash: [FIRMWARE_1.0.84_FLASH.md](./data_room/firmware/FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](./data_room/firmware/FIRMWARE_1.0.82_FLASH.md) · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
+- Ed/Pedro test plan: Gen 1 text is archived [data_room/archive/VITALS_PILOT_TEST_PLAN.md](./data_room/archive/VITALS_PILOT_TEST_PLAN.md). Gen 2 bench: [data_room/hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md](./data_room/hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md).
+- Flash: [FIRMWARE_1.0.85_FLASH.md](./data_room/firmware/FIRMWARE_1.0.85_FLASH.md) · prior [FIRMWARE_1.0.84_FLASH.md](./data_room/firmware/FIRMWARE_1.0.84_FLASH.md) · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)
 - Kaga modules: ES2832AA2 (Gen1) · ES4L15BA1 (Gen2) datasheets (Seed A data room)

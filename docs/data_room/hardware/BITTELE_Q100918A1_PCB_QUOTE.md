@@ -54,7 +54,7 @@ Bittele quote John sent to Kaga (19 May 2026) as the China PCB reference — see
 | [GEN2_COGS_KAGA_QUOTE.md](./GEN2_COGS_KAGA_QUOTE.md) §2 | Gen2 module-only (early 6848) | €8.06 × 20 + €50 |
 | **This Bittele quote** | Turn-key **PCB00003** sets (two designs; cells short) | **$172.99/set × 20 = $3,459.80** |
 
-Use Bittele as the **best current all-in PCB+assembly sample COGS** for the dual-board set. It is **not** retail clip+case kit (housing, magnetics, Ireland assembly, scrap, test).
+Use Bittele as the **best current all-in PCB+assembly sample COGS** for the dual-board set. It is **not** retail clip+case kit (housing, Ireland assembly, scrap, test). This build charges by coil alignment. A magnetic dock is a possible later case.
 
 ---
 

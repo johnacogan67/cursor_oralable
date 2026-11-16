@@ -1,6 +1,6 @@
 # Bruxoff × PSG gold standard — bookmark & Oralable position
 
-**As at:** 7 Aug 2026 · Pack **1.1.61**  
+**As at:** 12 Sep 2026 · Pack **1.1.69** (study facts unchanged; Dual A = lab precursor, not Beacon patient)  
 **Source PDF (local Google Drive):** `…/My Drive/notebook_lm/Sources/psg_bruxoff.pdf`  
 **Related:** [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md) · [PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md](../clinical/PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](../clinical/MAYORAL_METHOD_ORALABLE_VALIDATION.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](../clinical/ED_PEDRO_SB_FEP_DRAFT_PAPER.md)
 
@@ -79,7 +79,7 @@ Cid-Verdejo R, Domínguez Gordillo AA, Sánchez-Romero EA, Ardizone García I, M
 | | Bruxoff | ANR M40 (research) |
 |--|---------|---------------------|
 | Site / class | Masseter sEMG + EKG | Anterior **temporalis** sEMG |
-| Role for Oralable | Literature ambulatory peer; optional later borrow | Research Kit Dual A / **Paper A descriptive precursor** — bout timing vs IR-DC ([ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md)) |
+| Role for Oralable | Literature ambulatory peer; optional later borrow | **Lab Dual A** / **Paper A descriptive precursor** — bout timing vs IR-DC ([ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md)); **not** in the Beacon box |
 | Product claim | Commercial SB screener | Not an Oralable product; cite ANR docs only |
 
 ---

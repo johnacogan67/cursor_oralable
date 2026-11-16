@@ -1,9 +1,10 @@
 # JAC Dental Solutions — Corporate Structure & Cap Table Synopsis
 
-**Status:** Canonical governance brief for Ken / BalancePoints · **as at 22 Jul 2026**  
+**Status:** Canonical governance brief for Ken / BalancePoints (**investor** — **not** a CEO candidate) · body as at **22 Jul 2026**  
+**Living lock (19 Sep 2026):** **Ken Kinsella is not a CEO candidate.** John remains acting founder-CEO. CEO search is for other candidates. Ken CEO / ~28% path **closed**. Clean snapshot: [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md)  
 **Entity:** JAC Dental Solutions Limited · CRO **697987** · 18 Eaton Square, Blackrock, A94 X023, Ireland  
 **Product brand:** Oralable  
-**Clean snapshot:** [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md) · **Today’s meeting:** [MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](../archive/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md)
+**22 Jul meeting archive:** [MEETING_BRIEF_KEN_NIGEL_2026-07-22.md](../archive/MEETING_BRIEF_KEN_NIGEL_2026-07-22.md)
 
 **Source hierarchy (what wins when older NotebookLM notes conflict):**
 
@@ -13,7 +14,7 @@
 | Cash / Point B ask | [FINANCIALS_CASH_SNAPSHOT.md](./FINANCIALS_CASH_SNAPSHOT.md) + Point B table in funding doc |
 | Ken / Point A | [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md) · [README.md](./README.md) |
 | Nigel board role | **Founder-confirmed Independent Director** — attach CRO Form B10 / minutes when available (**GAP** in git) |
-| PwC / Noonan / CEO redesign | Founder working notes — see [INTERNAL annex](#internal-annex--founder-only); Ken CEO = **proposed** until board resolution + contract |
+| PwC / Noonan / CEO redesign | Founder working notes — see [INTERNAL annex](#internal-annex--founder-only); Ken CEO path **closed 19 Sep** |
 | Conor share purchase | **Live negotiation** (Amstrow Cosec · Jul 2026) — INTERNAL §A; register unchanged until completion |
 
 ---
@@ -30,7 +31,9 @@ Cash is thin: **€1,293** at 17 Jul 2026. ~€63.5k director loans came in duri
 
 Board today: John Cogan (majority shareholder; acting founder-CEO) and **Nigel Woods (Amstrow) as Independent Director**. Amstrow Cosec (Collette Brown) runs corporate secretarial mail on the Conor buyout.
 
-**Proposed** model (not board-approved, not contracted): Ken Kinsella **CEO** (fundraising, commercial); John **Executive Chairman / Founder** (product, clinical, IP); Nigel **Company Secretary + Amstrow finance** (registers, books, R&D tax reclaim). Ken and Nigel are not on the register. Option / success equity stays open with Point B.
+**Living lock (19 Sep):** Ken is **not** a CEO candidate. John remains acting founder-CEO. A later CEO hire (other candidates) may sit beside John as Executive Chairman. Ken stays BalancePoints **advisor** for Point B unless a separate advisor contract is signed.
+
+**Proposed** model (not board-approved, not contracted): John **acting CEO** today; **open CEO search** (not Ken); John **Executive Chairman / Founder** (product, clinical, IP) if a CEO is hired; Nigel **Company Secretary + Amstrow finance** (registers, books, R&D tax reclaim). Ken and Nigel are not on the register. Option / success equity for a **future** CEO stays with the board — not Ken’s 22 Jul ~28% ask.
 
 IP, product, and regulatory detail sit in other data-room docs. This file is entity, register, and roles.
 
@@ -49,13 +52,13 @@ These notes replace an older NotebookLM synopsis that mixed P&amp;L, counsel tra
 | Hardware (pointer only) | Gen1 pcb00003 / MAXM86161 optical path; Gen2 nRF54L15 track — not restated here |
 | IP (pointer only) | Portfolio under counsel — [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · [IP_EVAL_AND_LANDSCAPE.md](./IP_EVAL_AND_LANDSCAPE.md) |
 
-**Ken / Caroline open flags (still open):** Strand Two IP advice · **Conor share purchase completion** (Amstrow Cosec live) · Byteexplain vs JAC entity alignment · balance-sheet / solvency restructure · personal vs corporate IP ownership · proposed Ken CEO contract.
+**Ken / Caroline open flags (still open):** Strand Two IP advice · **Conor share purchase completion** (Amstrow Cosec live) · Byteexplain vs JAC entity alignment · balance-sheet / solvency restructure · personal vs corporate IP ownership. Ken CEO contract is **not** an open flag.
 
 ---
 
 ## 2. Corporate structure (current + proposed)
 
-Equity holders remain separate from executive titles. Ken is **not** on the Register of Members. Nigel is Independent Director (confirmed); fuller CoSec/finance remit and Ken CEO are **proposed**.
+Equity holders remain separate from executive titles. Ken is **not** on the Register of Members and is **not** a CEO candidate. Nigel is Independent Director (confirmed); fuller CoSec/finance remit is **proposed**. CEO hire is an open search.
 
 ```mermaid
 flowchart TB
@@ -71,8 +74,9 @@ flowchart TB
     OtherDir[Other_directors_TBC]
   end
 
-  subgraph exec [Executive_proposed]
-    CEO[Ken_CEO_proposed]
+  subgraph exec [Executive]
+    CEO[John_acting_CEO]
+    Search[CEO_search_open_not_Ken]
     FounderTech[John_Founder_Product_IP]
     Fin[Nigel_Amstrow_CoSec_Finance]
   end
@@ -93,6 +97,7 @@ flowchart TB
   ConorEq --> board
   AngelsEq --> board
   Chair --> CEO
+  Search -.-> CEO
   IndDir --> Fin
   CEO --> JAC
   FounderTech --> JAC
@@ -156,44 +161,39 @@ Sensitive conflict / PwC detail is **not** in this section — see [INTERNAL ann
 
 ---
 
-## 5. Proposed leadership model (working)
+## 5. Leadership model (working)
 
-**Status:** `PROPOSED — not yet board-approved / not yet contracted`
+**Status:** Ken-as-CEO **closed 19 Sep 2026**. John is acting founder-CEO. CEO search is for **other** candidates.
 
 | Seat | Person | Notes |
 |------|--------|-------|
-| **CEO** | Ken Kinsella | External / contracting CEO; fundraising + commercial execution; BalancePoints relationship restructured into CEO engagement |
-| **Executive Chairman / Founder** | John Cogan | Majority shareholder (~63%); retains product, clinical, IP technical authority; chairs board with Nigel |
-| **Independent Director + Company Secretary / Finance lead** | Nigel Woods (Amstrow) | Board independence preserved for governance votes; fuller **operating** remit via Amstrow engagement letter: statutory registers, bookkeeping, R&amp;D tax reclaim, debt-to-equity mechanics with counsel |
+| **Acting CEO** | John Cogan | Majority shareholder (~63%); product, clinical, IP; day-to-day until a hire |
+| **CEO search** | Open | Other candidates via Nigel / Amstrow — [CEO_JOB_DESCRIPTION.md](../pitches/CEO_JOB_DESCRIPTION.md). **Not Ken.** |
+| **Executive Chairman / Founder** | John Cogan | Intended title **if** a CEO is hired — not a Chief Scientist demotion |
+| **Independent Director + Company Secretary / Finance lead** | Nigel Woods (Amstrow) | Board independence preserved; fuller **operating** remit via Amstrow: statutory registers, bookkeeping, R&amp;D tax reclaim, debt-to-equity mechanics with counsel |
 
-**Why this shape:** EI HPSU and many investors want the **founder visible** and an **independent director who is not day-to-day CEO**. Ken as CEO, John as Executive Chairman, Nigel as Independent Director / CoSec-finance keeps register control with John and puts raise and finance on clearer footing.
+**Why this shape:** EI HPSU and many investors want the **founder visible** and an **independent director who is not day-to-day CEO**. A hired CEO (not Ken) plus John as Executive Chairman plus Nigel as Independent Director / CoSec-finance keeps register control with John.
 
-**Transition conditions before calling Ken “CEO” externally:**
+**Before calling anyone “CEO” externally:** board resolution, written engagement, cash/Point B path, signing matrix. Do **not** use Ken’s name in that language.
 
-1. Board resolution appointing / authorising the CEO role  
-2. Written CEO engagement (cash vs success fee; BalancePoints Advisors Limited conflict check)  
-3. Cash or Point B path that can fund the role  
-4. Clear bank / IP signing authority matrix (John vs Ken vs Nigel)
-
-**Recognition package (milestones + equity):** working proposal in [INTERNAL §G](#g-proposed-recognition--ken--nigel-milestones--equity) — not offered / not approved.
+**Recognition package:** Nigel working proposal in [INTERNAL §G](#g-proposed-recognition--ken--nigel-milestones--equity). Ken **6% CEO milestone** package in that annex is **closed**.
 
 ---
 
 ## 6. Ken Kinsella / BalancePoints — role definition
 
-| Attribute | Current | Proposed |
-|-----------|---------|----------|
-| Firm | [BalancePoints](https://balancepoints.co.uk) (Balancepoints Advisors Limited) | Same — restructure engagement into CEO contract |
-| Status | **External advisor** (Point A → Point B) | **CEO** (contracting / hire) — **not yet appointed** |
-| Equity | **Not** on Register of Members | Working proposal: **6% FD** milestone options — [INTERNAL §G](#g-proposed-recognition--ken--nigel-milestones--equity) |
-| Board | **Not** a director | Remains non-director unless separately appointed |
-| Mandate today | Investment readiness; F&amp;F pack; EI PSSF / HPSU pathway; investor interface support | Fundraising + commercial execution reporting to board |
+| Attribute | Current | Not |
+|-----------|---------|-----|
+| Firm | [BalancePoints](https://balancepoints.co.uk) (Balancepoints Advisors Limited) | — |
+| Status | **External advisor** (Point A → Point B) | **Not** a CEO candidate (closed 19 Sep) |
+| Equity | **Not** on Register of Members | 22 Jul ~28% CEO ask **closed**. 6% CEO option sketch in §G **closed** |
+| Board | **Not** a director | Remains non-director |
+| Mandate today | Investment readiness; F&amp;F pack; EI PSSF / HPSU pathway; investor interface support | Fundraising as **CEO** — no |
 | Point A baseline | **1.5 / 5.0** Essential (9 Jun 2026) — see [README.md](./README.md) | — |
-| Point B target | **€180k by 31 Oct 2026** = €50k F&amp;F + €100k EI PSSF CLN + €30k HPSU grant | CEO owns delivery of Point B under board oversight |
-| Commercial evidence in bank skim | **€2,000** · “Oak” (22 May 2026) — [FINANCIALS_CASH_SNAPSHOT.md](./FINANCIALS_CASH_SNAPSHOT.md) | Superseded by new CEO terms when signed |
-| Deferred / success-fee model | Negotiation item | Likely core of pre-cash CEO terms |
+| Point B target | **€180k by 31 Oct 2026** = €50k F&amp;F + €100k EI PSSF CLN + €30k HPSU grant | Ken does not “own” Point B as CEO |
+| Commercial evidence in bank skim | **€2,000** · “Oak” (22 May 2026) — [FINANCIALS_CASH_SNAPSHOT.md](./FINANCIALS_CASH_SNAPSHOT.md) | — |
 
-**Interface rule (target):** Ken as CEO may lead investors and day-to-day commercial work. John stays Executive Chairman and majority owner. Ken does **not** vote John’s shares and does **not** replace the board.
+**Interface rule:** Ken may support the **investor** process as BalancePoints advisor. John stays acting CEO and majority owner. Ken does **not** vote John’s shares, does **not** replace the board, and is **not** in the CEO search.
 
 ---
 
@@ -239,10 +239,10 @@ Older NotebookLM “€15.4k runway / €2.4k corporate” figures are **superse
 | ~€15.4k runway / €2.4k corp cash (mid-June narrative) | Closing **€1,293** (17 Jul 2026) |
 | 95.6% ownership as current | **Current** John ~63%; 95.6% is a **cleanup target**, not register fact |
 | Seed A “clean register” as achieved | Cleanup still an **open** Ken/Caroline flag |
-| Ken forever “advisor only” / John forever sole CEO | **Today:** John acting CEO, Ken advisor. **Proposed:** Ken CEO, John Executive Chairman |
+| Ken forever “advisor only” / John forever sole CEO | **Today:** John acting CEO. Ken = BalancePoints **advisor**, **not** a CEO candidate. CEO search = other people |
 | Nigel appointment “provisional / intended” | **Confirmed** Independent Director; Amstrow Cosec **live** on Conor buyout; CRO evidence still **GAP** |
 | Board 2-to-1 majority as settled fact | **Do not assert** until full director slate confirmed |
-| Conor cleanup only a “thesis” | **Live negotiation** Jul 2026 — counters €10k (keep 400) / €15k (all); deadline **23 Jul 17:00**; register unchanged until done |
+| Conor cleanup only a “thesis” | Transfer **signed** 5 Oct 2026. No cash payable. Register entry still open |
 
 ---
 
@@ -252,7 +252,9 @@ Older NotebookLM “€15.4k runway / €2.4k corporate” figures are **superse
 
 **Disclaimer:** Strategic working notes for Dr. John A. Cogan. **Not legal advice.** Not for F&amp;F packs, EI applications, or external decks. Verify with counsel and board minutes before acting. Do not treat NotebookLM chronology as evidence.
 
-### A. Cap-table cleanup — live Conor Meaney negotiation (Jul 2026)
+### A. Cap-table cleanup — Conor Meaney
+
+**Living lock (5 Oct 2026):** the share transfer is **signed**. No cash is payable. The price tables below are July history. The register still lists Conor’s 2,500 shares until the transfer is entered. See [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md).
 
 **Problem (unchanged until deal closes):** Conor Meaney’s **2,500** ordinary shares (~21%) can block special resolutions (75% threshold).
 
@@ -343,7 +345,7 @@ Background for context. Settlement now runs through **Amstrow Cosec written offe
 3. Documented use of `@pwc.com` email, Spencer Dock meeting rooms (incl. Valerie Rice marketing join), and PwC title in pitch materials toward investors and dental labs.
 4. Tim Murphy investment narrative tied to PwC involvement / EIIS tax framing.
 5. Key investor Derek Delaney declined while dual role unresolved; operational contribution then stalled while shareholding remained.
-6. Prior working preference: quiet share purchase / surrender vs contested forfeiture (€20–30k legal fee band in older estimates). **Current path:** Amstrow letter + Conor cash counters (€10k / €15k).
+6. Prior working preference: quiet share purchase / surrender vs contested forfeiture (€20–30k legal fee band in older estimates). **Signed path (5 Oct 2026):** share transfer signed. No cash payable.
 
 Counsel hooks (Stephen Noonan engagement — evaluate before signing): PwC conflicts documentation is **client’s** to obtain; firm excludes tax advice; €6k+VAT retainer non-returnable but recoupable at €350/hr + VAT; 10-day LSRA cool-off unless waived; Eversheds file release / possible lien; premature IP assignment risk. **Reply to Conor’s 23 Jul deadline may need counsel review given duress/recording allegations.**
 
@@ -357,9 +359,9 @@ Counsel hooks (Stephen Noonan engagement — evaluate before signing): PwC confl
 
 | Actor | Remains / becomes | Does not become |
 |-------|-------------------|-----------------|
-| **John** | Executive Chairman (proposed); majority owner; product / clinical / IP lead; board peer to Nigel | Absent; “Ken will handle the board”; silent on shareholder votes |
-| **Ken** | CEO candidate — reports to board; may lead investor process and commercial ops | Shadow director without appointment; substitute for John’s register votes; **sole negotiator on Conor process allegations** (Ken-only calls 2–3 Jul — Amstrow/counsel should own written buyout replies) |
-| **Nigel** | Independent Director (**confirmed**) + fuller Amstrow CoSec/finance remit (**proposed**) | Day-to-day CEO; spectator while Ken redesigns the board alone; conflicted voter on Amstrow fees without disclosure/recusal |
+| **John** | Acting founder-CEO; majority owner; product / clinical / IP lead; board peer to Nigel | Absent; “Ken will handle the board”; silent on shareholder votes |
+| **Ken** | BalancePoints **advisor** (Point A → Point B). **Not** a CEO candidate | Shadow director; substitute for John’s register votes; **sole negotiator on Conor process allegations** (Ken-only calls 2–3 Jul — Amstrow/counsel should own written buyout replies); CEO hire |
+| **Nigel** | Independent Director (**confirmed**) + fuller Amstrow CoSec/finance remit (**proposed**) | Day-to-day CEO; spectator while anyone redesigns the board alone; conflicted voter on Amstrow fees without disclosure/recusal |
 
 ### E. Accounting pivot (working)
 
@@ -367,28 +369,28 @@ Contracting PLUS indicated R&amp;D tax reclaim is outside their expertise → mi
 
 ### F. CEO appointment checklist
 
-Before external “Ken is CEO” language:
+Before external “X is CEO” language (**not Ken**):
 
 | # | Item | Owner |
 |---|------|-------|
-| 1 | Board resolution (John + Nigel + any other directors) authorising CEO appointment / engagement | Board |
-| 2 | Written CEO term sheet: cash retainer vs success fee; duration; termination; IP / confidentiality | John + Ken + counsel |
-| 3 | BalancePoints Advisors Limited conflict check (advisory fees vs CEO duties) | Ken + John |
+| 1 | Board resolution authorising CEO appointment / engagement | Board |
+| 2 | Written CEO term sheet: cash retainer vs success fee; duration; termination; IP / confidentiality | John + candidate + counsel |
+| 3 | Advisor-firm conflict check if the candidate has a parallel advisory company | Candidate + John |
 | 4 | Signing matrix: bank mandate, contracts, patent counsel instructions | Board |
-| 5 | CRO / public title: whether Ken is also appointed a **director** or remains officer/contractor only | Counsel |
-| 6 | Shadow-director risk: if Ken directs board decisions without formal appointment, document and regularise | Counsel |
-| 7 | Sequencing vs Conor cleanup: prefer not to grant Ken equity or assign personal IP into JAC until veto block path is clear | John + counsel |
-| 8 | Amstrow engagement letter for CoSec + R&amp;D reclaim (parallel track; can precede Ken CEO cash terms) | Nigel + John |
-| 9 | Point B cash path that can fund any cash CEO component | Ken + John |
+| 5 | CRO / public title: whether the hire is also a **director** or remains officer/contractor only | Counsel |
+| 6 | Shadow-director risk: document and regularise if anyone directs the board without appointment | Counsel |
+| 7 | Sequencing vs Conor cleanup: prefer not to grant CEO equity until veto block path is clear | John + counsel |
+| 8 | Amstrow engagement letter for CoSec + R&amp;D reclaim (parallel track) | Nigel + John |
+| 9 | Point B cash path that can fund any cash CEO component | John + board |
 
 ### G. Proposed recognition — Ken & Nigel (milestones + equity)
 
-**Status:** `WORKING PROPOSAL — not offered / not approved`  
-**Not legal advice.** Options / conditional allotments require board authority, constitution check, and tax advice (Amstrow + counsel). Prefer **company pool** instruments — not transfers from John’s personal 7,500. Prefer **no immediate Register of Members certificates** until counsel clears sequencing vs Conor cleanup.
+**Status:** Ken **6% CEO** sketch **closed 19 Sep** (Ken is not a CEO candidate). Nigel **1%** remains a working proposal — not offered / not approved.  
+**Not legal advice.** Options / conditional allotments require board authority, constitution check, and tax advice (Amstrow + counsel).
 
 #### Pool
 
-Create authority for an **~8% fully diluted** option / conditional-allotment pool (~**1,035** new ordinary shares if pool is 8% of post-pool FD on today’s 11,901). Allocate **6%** Ken · **1%** Nigel · **~1%** unallocated reserve.
+Create authority for an **~8% fully diluted** option / conditional-allotment pool (~**1,035** new ordinary shares if pool is 8% of post-pool FD on today’s 11,901). **Ken 6% CEO allocation is closed.** Remaining working sketch: **1%** Nigel · rest unallocated / future CEO hire (not Ken).
 
 ```mermaid
 flowchart LR
@@ -408,9 +410,9 @@ flowchart LR
 | **Ken Kinsella** | Options / conditional ords | **6.0%** | Success fee **3% of cash equity/CLN proceeds actually received**, capped at **€6k**, waived or reduced if he elects higher equity; **no cash salary** until Point B funds |
 | **Nigel Woods** | Options / conditional ords | **1.0%** | Amstrow **monthly retainer** only after Point B (suggest **€1,250/mo** for CoSec + books); separate **15% of net R&amp;D tax cash recovered** (capped) as Amstrow success fee |
 
-#### Ken — milestone vest (6% FD)
+#### Ken — milestone vest (6% FD) — **closed 19 Sep**
 
-Grant clock starts on **signed CEO engagement**. Unvested forfeits on Bad Leaver / resignation without Good Leaver treatment. No acceleration on soft “introductions.” Board certifies each cash milestone. BalancePoints advisory fees stop or fold into CEO terms at K1.
+Do **not** start a grant clock. Ken is not a CEO candidate. Table below is **archive** of the July working sketch only.
 
 | Tranche | % FD | Trigger (objective) |
 |---------|-----:|---------------------|
@@ -457,4 +459,4 @@ Grant clock starts on **signed CEO engagement**. Unvested forfeits on Bad Leaver
 
 ---
 
-*Bump [VERSION](./VERSION) when Ken CEO is contracted and CRO evidence for Nigel is cited; strip or move INTERNAL annex offline before investor-final.*
+*Bump [VERSION](../VERSION) when a CEO (not Ken) is contracted and CRO evidence for Nigel is cited; strip or move INTERNAL annex offline before investor-final.*

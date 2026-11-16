@@ -88,43 +88,26 @@ These nets connect **U5 (ES4L15BA1)** to sensors, power, and charger logic:
 
 **Not available for application:** pins **11–12** (RF), **3–4** (crystal), **1–2** (GND/DECD), **13–15** (GND/SWD partially).
 
+Kaga’s antenna keep-out and the 9 pF 32 kHz crystal are bookmarked in [ES4L15BA1_DATASHEET.md](./data_room/bookmarks/ES4L15BA1_DATASHEET.md).
+
 ---
 
-## 5. GPIO map — status
+## 5. GPIO map
 
-**Schematic PDF text extraction does not yield a reliable pin↔net table.** The ES4L15 symbol lists SoC lines (e.g. P2.01 @ module pin 10, P0.03 @ pin 8, P1.04/AIN0 @ pin 20) but Altium net ties must be confirmed from:
+The old hypothesis table is retired. It put SDA on P0.03, SCL on P2.02, and BATVOL on P1.04. Do not use it.
 
-1. Altium **netlist export** from `PCB00003-TGM-SCHEM-REV10`, or  
-2. **Continuity / scope** on first REV11 boards using test points `SDA`, `SCL`, `CHRSTS`, `SENS_EN`.
+The map for the image on the board is [`pcb00003_gen2_nrf54l15_cpuapp.dts`](../../oralable_nrf/boards/byteexplain/pcb00003_gen2/pcb00003_gen2_nrf54l15_cpuapp.dts). Wout confirmed SDA, SCL, and SENS_EN on 25 Oct 2026. The dated record is [GEN2_BENCH_LEARNINGS_2026-11-02.md](./data_room/hardware/GEN2_BENCH_LEARNINGS_2026-11-02.md), Stage D. G2-P0 and G2-P1 stay pending until a reviewer accepts that note.
 
-### Bring-up probe order (first REV11 unit)
-
-| Step | Action | Pass |
-|------|--------|------|
-| 1 | J-Link via **J1**; read nRF54 device ID | ☐ |
-| 2 | Scope **SDA/SCL** — I²C activity when firmware probes sensors | ☐ |
-| 3 | Read MAXM86161 / LIS2DTW12 WHO_AM_I over I²C | ☐ |
-| 4 | Toggle **SENS_EN** — MAXM86161 LDO responds | ☐ |
-| 5 | Seat on case — **CHRSTS** toggles; compare to Gen1 LTC4124 behavior | ☐ |
-| 6 | **BATVOL** vs DMM on LP260820 | ☐ |
-| 7 | **BATEN** high at boot; rail stays up | ☐ |
-
-Once nets are confirmed, record the definitive map in `oralable_nrf/boards/byteexplain/pcb00003_gen2/pcb00003_gen2.dts`.
-
-### Likely nRF54 candidates (hypothesis — verify)
-
-| Net | Likely GPIO | Module pin | Rationale |
-|-----|-------------|------------|-----------|
-| SDA | **P0.03** | 8 | Listed on ES4L15 symbol next to I²C cluster |
-| SCL | **P2.02** | 23 | P2.x bus alternate |
-| INT_ACC | **P2.01** | 10 | Interrupt-capable; near INT_ACC label on sheet |
-| INT_OPT | **P2.04** | 9 | Interrupt-capable |
-| BATVOL | **P1.04 / AIN0** | 20 | Analog input for divider |
-| CHRSTS | **P1.07** or **P2.05** | 16 or 24 | Digital input; Gen1 used P0.05 |
-| BATEN | **P2.05** or **P1.08** | 24 or 21 | Latch output |
-| SENS_EN | **P1.06** or **P2.02** | 17 or 23 | MAX86161 LDO enable |
-
-**Do not ship Gen2 firmware until this table is bench-verified.**
+| Net | GPIO | Config |
+|-----|------|--------|
+| SDA | P1.07 | TWIM22, pull-up. Wout, 25 Oct |
+| SCL | P1.03 | TWIM22, pull-up. NFC2. Wout, 25 Oct |
+| INT_ACC | P0.03 | Active high. LIS2DTW12 INT1 |
+| INT_OPT | P1.06 | Active low, pull-up. MAXM86161 open-drain |
+| SENS_EN | P1.08 | Active high. Wout, 25 Oct. 10 kΩ pull-ups on this net |
+| CHRSTS | P1.02 | Active low, pull-up. NFC1 |
+| BATEN | P1.04 | Active high |
+| BATVOL | P1.05 | SAADC AIN1, gain 1, 12-bit, internal reference |
 
 ---
 
@@ -148,11 +131,11 @@ Once nets are confirmed, record the definitive map in `oralable_nrf/boards/bytee
 
 | Code | Gen1 assumption | Gen2 action |
 |------|-----------------|-------------|
-| `pcb00003.dts` | nRF52832 QFAA | New **`pcb00003_gen2.dts`** with `nrf54l15` |
+| `pcb00003.dts` | nRF52832 QFAA | **`pcb00003_gen2_nrf54l15_cpuapp.dts`** |
 | `SENS_ENABLE_PIN 8` in `main.c` | Hardcoded nRF52 P0.08 | **Remove** — use DTS `sens-en-gpios` |
 | `baten-gpios` P0.10 | Boost latch | Remap to REV11 net **BATEN** |
 | `chrsts-gpios` P0.05 | LTC4124 STAT | Remap to **CHRSTS** |
-| SAADC channel | AIN4 / P0.28 | Remap to **BATVOL** (likely P1.04 AIN0) |
+| SAADC channel | AIN4 / P0.28 | **BATVOL** P1.05 / AIN1 |
 | `maxm86161` / `lis2dtw12` `int-gpios` | P0.20 / P0.06 | Remap to **INT_OPT** / **INT_ACC**; keep **ACTIVE_LOW|PULL_UP** on OPT (open-drain) |
 | I²C pinctrl | P0.07 / P0.18 | Remap to **SDA** / **SCL** nets |
 | `prj.conf` | `CONFIG_BT_CTLR_TX_PWR_PLUS_4` (nRF52) | nRF54 BLE Kconfig |
@@ -172,7 +155,7 @@ Once nets are confirmed, record the definitive map in `oralable_nrf/boards/bytee
 
 | # | Item | Owner |
 |---|------|-------|
-| 1 | Export Altium netlist → lock §5 GPIO table | HW |
+| 1 | Reviewer accepts the 9 Nov pin map in the bench note | HW |
 | 2 | Confirm **100 µF** bulk cap populated on REV11 | HW |
 | 3 | REV11 RF soak (cheek/temple) vs Gen1 RSSI | FW + HW |
 | 4 | LTC4124 ISET + LP260820 charge profile (~2 h target) | HW |

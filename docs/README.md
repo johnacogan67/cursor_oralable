@@ -1,6 +1,6 @@
 # Oralable research & validation documentation index
 
-Python algorithm development, clinical protocols, and gold-standard validation (`cursor_oralable`). **Doc pack:** `docs/VERSION` → **1.3.17** (Gen1 target FW **1.0.84** · app **4.3.3** build **5** — [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)).
+Python algorithm development, clinical protocols, and gold-standard validation (`cursor_oralable`). **Doc pack:** `docs/VERSION` → **1.3.21** (Gen1 kit FW **1.0.85** · local tree **1.0.86** is not the kit target · app **4.3.3** build **5** — [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)).
 
 **Agent topic map:** [WORKSPACE_TOPICS.md](./WORKSPACE_TOPICS.md) · copy-paste starters [AGENTS.md](../AGENTS.md)
 
@@ -26,12 +26,14 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 | [GEN1_GEN2_TRACKING.md](./GEN1_GEN2_TRACKING.md) | Living Gen1/Gen2 engineering timeline |
 | [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) | Capabilities, BOM delta, firmware map |
 | [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md) | Gen2 REV11 nets / bring-up |
+| [ATTACHMENT.md](./ATTACHMENT.md) | **Canonical** MAM housing + skin attach (ANR pad/snap class) |
 
 ## Algorithms & signal processing
 
 | Document | Description |
 |----------|-------------|
 | [ALGORITHM_ARCHITECTURE.md](./ALGORITHM_ARCHITECTURE.md) | Python ↔ Swift algorithm split, OralableCore integration |
+| [PYTHON_DEVELOPMENT.md](./PYTHON_DEVELOPMENT.md) | Clean Python 3.13 checkout, locked environment, package, test, and verifier workflow |
 | [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) | Cheek IR-DC range (10M–70M), MAXM86161 ADC, `R_G_IR` order |
 | [../README.md](../README.md) | Setup, `process_temporalis_gold.py`, clinical report scripts |
 
@@ -50,15 +52,15 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 
 | Document | Description |
 |----------|-------------|
-| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.68** · Research Kit · Dual A measured + EDF · FW **1.0.84** · app **4.3.3** (build **5**) |
+| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.74** · Research Kit Oralable-only · Dual A lab · kit FW **1.0.85** · app **4.3.3** (build **5**) · **30 Sep** handoff missed |
 | [data_room/clinical/COLLAB_NABAVI_MCGILL.md](./data_room/clinical/COLLAB_NABAVI_MCGILL.md) | Nabavi collab truth — McGill / RI-MUHC · not Dianyx · Ed/Pedro · Wout Altium |
 | [data_room/bookmarks/LITERATURE_AND_PRIOR_ART.md](./data_room/bookmarks/LITERATURE_AND_PRIOR_ART.md) | TEC literature distill (Li ambulatory SB · BruxScreen · chewing PPG · encaps) |
 | [data_room/pitches/PITCH_KOOROSH.pdf](./data_room/pitches/PITCH_KOOROSH.pdf) | Nabavi leave-behind (McGill IEEE + optional Altium) |
 | [data_room/pitches/KOOROSH_OUTREACH.md](./data_room/pitches/KOOROSH_OUTREACH.md) | Email to seyed.nabavi@mcgill.ca |
 | [data_room/clinical/ED_PEDRO_QUICK_START.md](./data_room/clinical/ED_PEDRO_QUICK_START.md) | Phase 0 Vitals one-pager (Ed Owens / Pedro Beacon) |
-| [data_room/VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) | Canonical FW **1.0.84** · app **4.3.3** (build **5**) |
-| [data_room/firmware/FIRMWARE_1.0.84_FLASH.md](./data_room/firmware/FIRMWARE_1.0.84_FLASH.md) | Gen1 target flash / OTA guide |
-| [data_room/firmware/FIRMWARE_1.0.82_FLASH.md](./data_room/firmware/FIRMWARE_1.0.82_FLASH.md) | Prior ship flash / OTA |
+| [data_room/VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) | Canonical FW **1.0.85** · app **4.3.3** (build **5**) |
+| [data_room/firmware/FIRMWARE_1.0.85_FLASH.md](./data_room/firmware/FIRMWARE_1.0.85_FLASH.md) | Gen1 target flash / OTA guide |
+| [data_room/firmware/FIRMWARE_1.0.84_FLASH.md](./data_room/firmware/FIRMWARE_1.0.84_FLASH.md) | Prior ship (N−1) |
 | [data_room/governance/ORALABLE_FTS_36MO.md](./data_room/governance/ORALABLE_FTS_36MO.md) | 36-month functional & technical specification |
 | [data_room/governance/REGULATORY_TIMELINE.md](./data_room/governance/REGULATORY_TIMELINE.md) | Wellness → 510(k) / CE timeline |
 | [data_room/governance/GTM_ONE_PAGE.md](./data_room/governance/GTM_ONE_PAGE.md) | GTM, pricing, CAC assumptions |

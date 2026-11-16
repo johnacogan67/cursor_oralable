@@ -28,7 +28,7 @@
 
 | Is | Is not |
 |----|--------|
-| Assembled **sample PCB** unit cost at N=20 | Full **clip + magnetic case** retail COGS |
+| Assembled **sample PCB** unit cost at N=20 | Full **clip + charge case** retail COGS |
 | Early Gen1 / NEU EMS path via Kaga | Serial / volume price ladder (50 / 100 / 500) |
 | NRE for first sample build | Enclosure / plastics / battery pack / final test / packaging |
 | Evidence that PCB assembly was ~**€95** at sample | 2026 Bittele / other EMS superseding quotes |

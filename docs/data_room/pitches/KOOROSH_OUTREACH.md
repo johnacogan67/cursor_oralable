@@ -38,7 +38,7 @@ I want to reconnect on **Oralable / JAC**, with you in your **McGill / RI-MUHC**
 
 Two tracks:
 
-1. **IEEE (McGill)** — methods + **Research Kit feasibility n≈5** (Beacon; Pedro 1–2 h oxygen arm + optional Mac Dual A ANR precursor) on **extraoral temporalis** optical myography. Clinical partners **[Dr Edward Owens](https://beaconconsultantssleephealthclinic.ie/team-member/dr-edward-owens/)** and **[Dr Pedro Mayoral Sanz](https://beaconconsultantssleephealthclinic.ie/team-member/dr-pedro/)**. See [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · kit [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md). Study ladder: Research Kit n≈5 → 20–30 user Tier 1 → deeper PSG-AV / Bruxoff concordance later. US provisional **64/033,978** filed 9 Apr 2026 — **patent pending** (high level only). Paper affiliations: JAC + **McGill / RI-MUHC** (+ Beacon clinicians).
+1. **IEEE (McGill)** — methods + **Research Kit feasibility n≈5** (Beacon; one-night clinic loaner; **≥4 h**; Pedro oxygen/MAD nest; Dual A = **lab** ANR precursor, not a patient arm) on **extraoral temporalis** optical myography. Clinical partners **[Dr Edward Owens](https://beaconconsultantssleephealthclinic.ie/team-member/dr-edward-owens/)** and **[Dr Pedro Mayoral Sanz](https://beaconconsultantssleephealthclinic.ie/team-member/dr-pedro/)**. See [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · kit [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md). Study ladder: Research Kit n≈5 → 20–30 user Tier 1 → deeper PSG-AV / Bruxoff concordance later. US provisional **64/033,978** filed 9 Apr 2026 — **patent pending** (high level only). Paper affiliations: JAC + **McGill / RI-MUHC** (+ Beacon clinicians).
 
 2. **Optional Altium** — paid JAC consultancy for PCB00003 Gen1/Gen2 (take over from **Wout Geeurickx / WeeGee**). Personal contractor / work-for-hire.
 
@@ -78,8 +78,8 @@ John
 | Min | Topic |
 |-----|--------|
 | 0–5 | Catch-up · **Phase 1 = you / McGill** · Phase 2 complementary Dianyx door (optional, later) |
-| 5–15 | Oralable Research Kit + Stage A (extraoral temporalis, vitals + bruxing load, 50 Hz, Dual A optional; kits gated → 5 by 31 Aug) · IP high level only |
-| 15–25 | **Paper A** — McGill co-author · Research Kit feasibility n≈5 (Ed/Pedro; Dual A optional) · then Tier 1 20–30 · venues |
+| 5–15 | Oralable Research Kit + Stage A (extraoral temporalis, vitals + bruxing load, 50 Hz, Dual A lab only; kits gated; 30 Sep handoff missed; no new date) · IP high level only |
+| 15–25 | **Paper A** — McGill co-author · Research Kit feasibility n≈5 (Ed/Pedro; Dual A lab only) · then Tier 1 20–30 · venues |
 | 25–35 | **Optional Altium** — Gen1/Gen2 · take-over from Wout · JAC WFH personal · rate TBD |
 | 35–40 | Clinical: **Ed Owens** + Pedro (Beacon) · Mayoral MAD titration + Oralable · Jun agenda **slipped** — reactivate if he engages |
 | 40–45 | Next steps · NDA / authorship (JAC + McGill) · when (if ever) to loop Dianyx |
@@ -120,7 +120,7 @@ John
 | Filing numbers in cold email (optional on call) | Prefer “pending” first |
 | Ken Pre-Seed / CEO equity / Conor governance | Wrong audience |
 | FDA / CE medical claims | Wellness Stage A |
-| Raw patient identifiers · kit ship dates as hard promises before gate | Kits gated — **target** 5 Research Kits by 31 Aug 2026 |
+| Raw patient identifiers · kit ship dates as hard promises before gate | Kits gated — **30 Sep 2026** handoff **missed**; five Oralable-only kits; no new date |
 | Asim as primary Oralable clinical story | Backup / Phase 2 bridge only |
 
 ---

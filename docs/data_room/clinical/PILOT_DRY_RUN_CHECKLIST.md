@@ -1,21 +1,21 @@
 # Pilot dry-run checklist (John — before Ed/Pedro handoff)
 
-> **Active path (Aug 2026): Phase 0 Vitals** on each **Oralable Research Kit** — temple HR/SpO₂.  
-> Kit program: [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · **5 kits → Pedro by 31 Aug 2026**.  
+> **Active path (3 Oct 2026): Phase 0 Vitals** on each **Oralable Research Kit** — temple HR/SpO₂.  
+> Kit program: [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · **5 Oralable-only kits**. **30 Sep 2026** handoff **missed**. Still **gated**. No new date.  
 > Protocol B / cheek muscle steps below are **Phase 1+ only** (do after Phase 0 gates pass).
 
-**Goal (Phase 0):** Flash Gen1 kit, temple vitals smoke, honest device state — **ship gate before Pedro handoff** (kits **gated** as at 7 Aug 2026).  
-**Goal (Research Kit):** 5× (Oralable + case + ANR M40 + TestFlight + cue card) after charge-to-temple on each Oralable unit.  
-**Goal (Phase 1+):** Full Protocol B and `self_validate.py` on the same Gen1 hardware (BOM REV8 / REV10).
+**Goal (Phase 0):** No Gen2 kit may enter a temple-vitals or Beacon handoff until the separately reviewed G2-P0…G2-P6 evidence gate is complete. Kits stay **gated**. The historical bench note that one blank board was programmed while PPG and ACC did not stream is not acceptance evidence. [GEN2_WOUT_KAGA_STATUS_2026-10-30.md](../hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md).
+**Goal (Research Kit):** 5× (Oralable + charger + pads/tape + TestFlight + quick start) after charge-to-temple. **No ANR. No headband.**  
+**Goal (Phase 1+):** Full Protocol B and `self_validate.py` only after the same Gen2 hardware satisfies its evidence gate (BOM REV9 / REV11).
 
-**Ship gate:** Oralable-case charge to temple-ready SOC (≥50%) + short worn HR/SpO₂ without brownout. See [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) § Pilot ship status.
+**Future kit gate:** After the Gen2 program closes, the candidate must separately demonstrate Oralable-case charge to temple-ready SOC (≥50%) plus short worn HR/SpO₂ without brownout. See [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) § Pilot ship status.
 
-**Hardware identity:** Gen1 · **BOM REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.84** · Oralable magnetic case (not Qi).  
-See [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [FIRMWARE_1.0.84_FLASH.md](../firmware/FIRMWARE_1.0.84_FLASH.md) · prior [FIRMWARE_1.0.82_FLASH.md](../firmware/FIRMWARE_1.0.82_FLASH.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md)
+**Hardware identity:** Gen2 · **BOM REV9** · PCB **REV11** · Kaga **ES4L15BA1** · cell **LP270829** · FW **2.0.x** candidate · Oralable charger (coil align now; magnetic dock later; not Qi). Controlled hardware work follows `oralable_nrf/docs/GEN2_PROGRAM_GATE.md`; the build helpers intentionally do not program hardware.
+See [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [FIRMWARE_1.0.85_FLASH.md](../firmware/FIRMWARE_1.0.85_FLASH.md) · prior [FIRMWARE_1.0.84_FLASH.md](../firmware/FIRMWARE_1.0.84_FLASH.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md)
 
 **Time (Phase 0):** ~45 min · **Time (Phase 1+ Protocol B):** ~90 min
 
-Related: [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · [PILOT_PROTOCOL_ED_PEDRO.md](../archive/PILOT_PROTOCOL_ED_PEDRO.md) *(deferred)* · [../FIGURES.md](../../FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+Related: [PEDRO_STATUS_UPDATE_2026-09.md](./PEDRO_STATUS_UPDATE_2026-09.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) · [PILOT_PROTOCOL_ED_PEDRO.md](../archive/PILOT_PROTOCOL_ED_PEDRO.md) *(deferred)* · [../FIGURES.md](../../FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 ![FIG-CO-022 Charge to temple](../figures/FIG-CO-022-pilot-charge-to-temple.svg)
 
@@ -24,23 +24,19 @@ Related: [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [
 ---
 
 **Strategy stack:** Stage A wellness wearable first; Stage B medical later. New US patent embodiment. Ed/Pedro use the patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](../governance/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](../governance/COST_AND_TIMELINE.md) — Phase 0 continues past Sep 2026 (30 Sep handoff missed); Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 ## A. Hardware & firmware
 
 | Step | Action | Pass |
 |------|--------|------|
-| A1 | Connect J-Link to pcb00003 | ☐ |
-| A2 | Flash **1.0.84** per [FIRMWARE_1.0.84_FLASH.md](../firmware/FIRMWARE_1.0.84_FLASH.md) (or prior [1.0.82](../firmware/FIRMWARE_1.0.82_FLASH.md)) | ☐ |
-| A3 | nRF Connect: read `006` → **1.0.84** | ☐ |
-| A4 | On Oralable case: `on_dock=1` + `charge_active=1` (blink); later taper → `charge_active=0`. LED: **solid green** | ☐ |
+| A1 | Connect the nRF54L15 DK (J-Link **1057765387**) to the Gen 2 MAM. Tag-Connect on J1. One power source. | ☐ |
+| A2 | Pins in the board file are SDA P1.07, SCL P1.03, SENS_EN P1.08, BATEN P1.04. A merged hex was written on 29 Oct. Do not treat that image as the kit. | ☐ |
+| A3 | nRF Connect: name **Oralable**. Read `006`. Do not call it **2.0.x** until that read says so. PPG and ACC notifies are not a pass until samples arrive. | ☐ |
+| A4 | On the Oralable charger: `on_dock=1` + `charge_active=1` (blink); later taper → `charge_active=0`. LED behavior to port from Gen 1: **flash green** below hold; **rare green pulse** in hold. Not solid green. Not red. | ☐ |
 | A5 | **Oralable case** + charged clip (>30% SOC) | ☐ |
 
-```bash
-cd /Users/johnacogan67/work/oralable_nrf
-./scripts/flash_and_rtt.sh --no-build --hex build_pcb00003/merged.hex   # 1.0.84
-# J-Link SNR default: 1050090445 — export JLINK_SNR=... if different
-```
+Programmer for the 29 Oct write was the nRF54L15 DK, J-Link **1057765387**, not **1050090445**. Image: `artifacts/oralable_gen2_ota_merged.hex`. Unplug Tag-Connect after reset. The nRF5340 DK serial is not this programmer.
 
 ---
 
@@ -53,7 +49,7 @@ cd /Users/johnacogan67/work/oralable_nrf
 | B3 | Distribute → TestFlight (internal) or Ad Hoc for Ed/Pedro devices | ☐ |
 | B4 | Install on your iPhone; confirm app opens past sign-in + fit gate | ☐ |
 
-**Pilot build must include:** FW gate min **1.0.63** · recommend **1.0.84** · Protocol A Setup gate · Vitals phase · **Device LED** mirror (STAT flash/taper) · placement picker with **Automatic** · nRF CSV export.
+**Pilot build must include:** FW gate min **1.0.63** · recommend **1.0.85** · Protocol A Setup (**couple** seat QC) · Vitals phase · **Device LED** mirror (STAT flash / hold pulse) · placement picker with **Automatic** · nRF CSV export.
 
 ```bash
 cd /Users/johnacogan67/work/oralable_swift/OralableApp
@@ -69,16 +65,16 @@ xcodebuild -scheme OralableApp -destination 'generic/platform=iOS' \
 | Step | Action | Pass |
 |------|--------|------|
 | C1 | Placement **Automatic** (or **On wireless charger**) → seat in **Oralable case** → flash green (FW ≥ 1.0.72) / Charging chip | ☐ |
-| C2 | Wait for optional solid green (STAT taper, FW ≥ 1.0.72) while still on case — Dock on, Charging off | ☐ |
+| C2 | Still on case after taper: Dock on, Charging off. **1.0.85** shows a **rare green pulse** in hold, not solid green. (Archived **1.0.84** used solid green at taper.) | ☐ |
 | C3 | Settings → placement **Worn** (manual mode 3) | ☐ |
 | C4 | Mount on **temple** → Connect | ☐ |
 | C5 | Dashboard HR and/or SpO₂ live ≥ 2 min, no disconnect in first 5 min | ☐ |
 | C6 | Settings → placement shows **Worn** (temple vitals — not cheek muscle UI) | ☐ |
 
 **Fail actions:**
-- Disconnect in first 5 s → confirm FW **1.0.84**; do not enable `00A` in Developer Settings.
-- Flat dashboard → placement **Worn**; reconnect; check temple contact / quality.
-- Dock stays 0 on case → confirm Oralable case (not MagSafe); reflash **1.0.84**.
+- Disconnect in first 5 s → read GATT `006` on this Gen 2 board. Do not load Gen 1 firmware. Do not enable `00A` in Developer Settings.
+- Flat dashboard → PPG and ACC are not streaming on the bench image. Placement will not create samples.
+- Dock stays 0 on case → confirm the Oralable case (not MagSafe). Do not reflash **1.0.85**.
 
 ---
 
@@ -93,7 +89,7 @@ xcodebuild -scheme OralableApp -destination 'generic/platform=iOS' \
 
 ## D. Protocol B mini-run — **Phase 1+ only** (~10 min smoke; full ~45 min)
 
-> Skip this section for Phase 0 Ed/Pedro vitals kits. Use [VITALS_PILOT_TEST_PLAN.md](./VITALS_PILOT_TEST_PLAN.md) instead.
+> Skip this section for Phase 0. Phase 0 is section A plus the [30 Oct bench note](../hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md). The old Gen 1 vitals plan is archived.
 
 Use full phase table in [TEMPORALIS_COLLECTION_PROTOCOL.md § Protocol B](../../TEMPORALIS_COLLECTION_PROTOCOL.md#protocol-b--edpedro-structured-validation).
 
@@ -121,8 +117,8 @@ Use full phase table in [TEMPORALIS_COLLECTION_PROTOCOL.md § Protocol B](../../
 | E3 | Copy to `cursor_oralable/data/raw/pilot_ed_pedro/` | ☐ |
 | E4 | Run validation (below) — sync detected, no hard failures | ☐ |
 | E5 | Optional: Share → Clinical Temporalis PDF (bout hypnogram / dual-rail / event CSV) | ☐ |
-| E5b | iOS overnight **bands** unlock at **≥ 1 h**; ideal overnight / Paper A Arm E/J still **≥ 6 h** (goal 8 h); Protocol A/B minutes ≠ sleep | ☐ |
-| E5c | Optional research: Developer Settings → Dual Protocol A ON (default OFF); otherwise sleep path | ☐ |
+| E5b | iOS overnight **bands** unlock at **≥ 1 h**; Beacon evaluable **≥ 4 h** (6 h better); hypnogram figure / Paper A Arm E/J still **≥ 6 h** (goal 8 h); Protocol A/B minutes ≠ sleep | ☐ |
+| E5c | Optional research: Developer Settings → Dual Protocol A ON (default OFF); EMG → MAM **couple** → cues; otherwise sleep path | ☐ |
 
 ```bash
 cd /Users/johnacogan67/work/cursor_oralable
@@ -147,43 +143,41 @@ python -m src.validation.self_validate \
 | Item | Ready |
 |------|-------|
 | Dry-run validation plot archived | ☐ |
-| Pilot clip flashed **1.0.84** + charge-to-temple closed | ☐ |
-| TestFlight invite (**4.3.3** build **5**, 1.0.84-aware) sent to Ed + Pedro | ☐ |
+| Gen 2 unit streams PPG and ACC, then charge-to-temple closes. Do not flash Gen 1 **1.0.85** onto REV11. | ☐ |
+| TestFlight invite (**4.3.3** build **5**, 1.0.85-aware) sent to Ed + Pedro | ☐ |
 | Quick start printed / emailed | ☐ |
 | First kit packed for smoke ship | ☐ |
 
-**After pass:** notify Pedro/Ed with TestFlight link + [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · status [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md).
+**After pass:** notify Pedro/Ed with TestFlight link + [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · status [PEDRO_STATUS_UPDATE_2026-09.md](./PEDRO_STATUS_UPDATE_2026-09.md).
 
 ---
 
-## G. Research Kit ship — 5 kits to Pedro by 31 Aug 2026
+## G. Research Kit ship — 5 Oralable-only kits (30 Sep 2026 missed)
 
-Canonical BOM: [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md). Hard gate: charge-to-temple on **each** Oralable unit before field *N*.
+Canonical BOM: [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md). Hard gate: charge-to-temple on **each** Oralable unit before field *N*. ANR is **not** a ship gate.
 
 | Step | Action | Pass |
 |------|--------|------|
-| G1 | Close charge-to-temple on pilot unit (FW **1.0.84**) | ☐ |
-| G2 | Flash/verify **5×** Oralable → GATT `006` = **1.0.84** | ☐ |
-| G3 | Pack **5×** magnetic cases + clips (kit IDs RK01–RK05) | ☐ |
-| G4 | Allocate **5× ANR M40** (if shortfall: document count + Oralable-first ship) | ☐ |
-| G5 | Print Dual A cue card + quick start ×5 | ☐ |
-| G6 | TestFlight invite Pedro (+ Ed); research/long-wear path confirmed | ☐ |
-| G7 | Dry-run **one** full kit: charge → temple → HR/SpO₂ → Share CSV | ☐ |
-| G8 | Optional: Mac Dual A dry-run (`run_dual_protocol_a_session.py`) on one kit | ☐ |
-| G9 | Hand off / ship **5 kits by 31 Aug 2026** | ☐ |
-| G10 | Calendar Arm P + ethics lock with Pedro | ☐ |
+| G1 | Close charge-to-temple on a Gen 2 unit after it streams | ☐ |
+| G2 | Install/verify **5×** Oralable → GATT `006` = **2.0.x** | ☐ |
+| G3 | Pack **5×** charge cases + clips + pads/tape (kit IDs RK01–RK05) | ☐ |
+| G4 | Pad-attach soak: Gen 2 on temple **without headband** (`couple` logged) | ☐ |
+| G5 | Print quick start ×5 (no Dual A cue card in Beacon box) | ☐ |
+| G6 | TestFlight invite Pedro (+ Ed); one-night path confirmed | ☐ |
+| G7 | Dry-run **one** kit: clinic charge → pad seat → HR/SpO₂ | ☐ |
+| G8 | Optional: Mac Dual A dry-run (John lab only — not a ship blocker) | ☐ |
+| G9 | Hand off / ship **5 kits**. **30 Sep 2026** date **missed**. No replacement date in this checklist. | ☐ |
+| G10 | Calendar first ≥4 h night + ethics lock with Ed + Pedro | ☐ |
 
-| Kit ID | Oralable serial / `005` | ANR serial | Charge gate | Packed |
-|--------|-------------------------|------------|-------------|--------|
-| RK01 | | | ☐ | ☐ |
-| RK02 | | | ☐ | ☐ |
-| RK03 | | | ☐ | ☐ |
-| RK04 | | | ☐ | ☐ |
-| RK05 | | | ☐ | ☐ |
+| Kit ID | Oralable serial / `005` | Charge gate | Pads packed | Packed |
+|--------|-------------------------|-------------|-------------|--------|
+| RK01 | | ☐ | ☐ | ☐ |
+| RK02 | | ☐ | ☐ | ☐ |
+| RK03 | | ☐ | ☐ | ☐ |
+| RK04 | | ☐ | ☐ | ☐ |
+| RK05 | | ☐ | ☐ | ☐ |
 
-**ANR count available:** ______ / 5 · **Notes:** ______
-
-**After handoff:** Pedro dry-run, then Arm P window, then Paper A CRF rows, then Dual A Mac sessions for concordance figures. iOS Dual A overnight hardening is follow-on work (not a ship blocker).
+**After handoff:** Beacon dry-run, then one ≥4 h night, then Paper A CRF rows. Dual A Mac sessions stay John-run.
 
 ---
 

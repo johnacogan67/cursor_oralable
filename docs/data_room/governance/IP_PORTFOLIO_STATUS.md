@@ -1,6 +1,6 @@
 # IP portfolio status — counsel-led (for Ken / pitch)
 
-**Status:** Diligence distill · **22 Jul 2026** (docs ingested from counsel pack) · **not legal advice**  
+**Status:** Diligence distill · body as at **22 Jul 2026** · living pack **1.1.69** (12 Sep 2026) · **not legal advice**  
 **Counsel:** Justin Muehlmeyer (Peacock Law, US) · Michael Lucey / PurdyLucey (EU)  
 **Sources:** Seed A `04_TEC` · Peacock filed RCE pack · EPO Decision to Grant · PurdyLucey UP/UPC notes · Peacock invoice 84566  
 **Eval pack:** [IP_EVAL_AND_LANDSCAPE.md](./IP_EVAL_AND_LANDSCAPE.md)
@@ -15,7 +15,7 @@
 |-------|------|-------------------|---------|-------|-----------------|
 | **1** | **US provisional** — muscle activity monitoring (Temporalis / OMG path) | Inventor **John Cogan** · docket **35803-1001-PROV** | Peacock | **Filed** | “US provisional **64/033,978** filed **9 Apr 2026**” |
 | **2** | **US utility** — bruxism/MAM optical monitoring | **JAC Dental Solutions Ltd** | Peacock | **RCE + response filed 12 Jun 2026** · awaiting examiner | “Pending US utility **18/289,827** — prosecution continued” |
-| **3** | **EP 4 333 691 B1** (app **22728460.1** · WO **2022234145**) | **JAC Dental Solutions Ltd** | PurdyLucey | **Granted + certificate** · IE/UK steps taken · UP due 8 Aug | “European patent **EP 4 333 691 B1** granted — Ireland & UK validating; Unitary Patent pending” |
+| **3** | **EP 4 333 691 B1** (app **22728460.1** · WO **2022234145**) | **JAC Dental Solutions Ltd** | PurdyLucey | **Granted + certificate** · IE/UK steps taken · **UP filing receipt GAP** (8 Aug 2026 clock passed as at 12 Sep) | “European patent **EP 4 333 691 B1** granted — Ireland & UK validating; Unitary Patent pending” |
 | **4** | **US — device case / enclosure / charge ecosystem** | JAC | Peacock | Assignment transfer at USPTO | “Case/enclosure patent assignment in process” |
 
 Published PCT: **WO2022234145**. US pub: **US20240237944A1**. Priority: IE **S20210099** (7 May 2021), IE **S20220038** (25 Feb 2022). Inventors: **John Cogan**, **Lisa Curley**. Original PCT applicant: Byteexplain Limited → US/EP now **JAC**.
@@ -96,7 +96,7 @@ Peacock inv. **84566** (15 Jul 2026): period fees **$2,730** + RCE advance **$30
 
 B1 references cited (landscape cross-check): includes among others **US2018/0220956** (Kuhar — also US OA art).
 
-### Post-grant path — IE/UK **steps taken**; UP still due **8 Aug**
+### Post-grant path — IE/UK **steps taken**; UP receipt still **GAP** (8 Aug clock passed)
 
 **Strategy:** **Unitary Patent** plus validation in **Ireland** and the **United Kingdom** (no divisional — Michael 7 Jul). Cost estimate (7 Jul): UP **€1,550** (incl. translation) · UK **€395** · Ireland **€295**.
 
@@ -104,7 +104,7 @@ B1 references cited (landscape cross-check): includes among others **US2018/0220
 |--------|----------|--------|
 | **Ireland + UK validation** | Hard date was **10 Oct 2026**; counsel acted **22 Jul** | **PARTIAL — CLOSED on counsel side** — Lisa Coffey (22 Jul 14:36): *“we have taken the necessary steps to validate … in Ireland and the United Kingdom”* (ref **P16000GB/IEEP**) |
 | **IE Authorisation of Agent** | ASAP — blocks IE completion | **OPEN — John action** — sign `AOA JAC Dental Solutions Limited.doc` (Patents Act 1992 AoA for PurdyLucey agents · Patent **4 333 691**) and return scan to Lisa/Sheila |
-| **Unitary Patent** request at EPO | **8 Aug 2026** | **Instructed — counsel proceeding** (Sheila 22 Jul AM); formal filing receipt **GAP** |
+| **Unitary Patent** request at EPO | **8 Aug 2026** | **Instructed — counsel proceeding** (Sheila 22 Jul AM); formal filing receipt **GAP** as at **12 Sep 2026** (clock passed — ask PurdyLucey for the receipt; do not invent a file date) |
 | **IE/UK renewals** | **31 May 2027** | Docketed — PurdyLucey will remind |
 | **UPC** | UP under UPC for UP territory; IE/UK national courts | Accepted with UP choice |
 | Opposition watch | Through **8 Apr 2027** | Docketed (inv. 24886-26) |
@@ -126,7 +126,7 @@ B1 references cited (landscape cross-check): includes among others **US2018/0220
 | G4b | UP + IE/UK validation strategy | John / PurdyLucey | Post-grant strategy | **CLOSED** — UP + IE/UK; no divisional |
 | G4c | IE/UK validation lodgement | PurdyLucey | Diligence proof | **PARTIAL** — counsel confirms steps taken (22 Jul); formal register extracts **GAP** |
 | G4d | Sign IE Authorisation of Agent (AoA) | **John** | Completes IE validation | **OPEN — sign & return today** |
-| G4e | UP filing receipt | PurdyLucey | Diligence proof | **OPEN** — due **8 Aug 2026** |
+| G4e | UP filing receipt | PurdyLucey | Diligence proof | **OPEN** — 8 Aug 2026 clock **passed** (12 Sep); receipt still **GAP** |
 | G4f | Clarify inv. 24892-26 “Spain” wording | John / PurdyLucey | Avoid unintended ES validation | **OPEN** |
 | G5 | Track 4 case/enclosure number + recordation | Peacock | Accessory moat | Open |
 | G6 | Written FTO (temple-first) | Peacock | Ken Legal/IP | Open |
@@ -141,7 +141,7 @@ B1 references cited (landscape cross-check): includes among others **US2018/0220
 | Temple / Temporalis Phase 0–1+ | Track **1** provisional **64/033,978** |
 | IR-DC / TFI / SASHB / airway rescue | Track **1** (reserved from Track 2) |
 | Intraoral / masseter optical | Track **2** (US pending) + Track **3** (**EP 4333691 granted**) |
-| Magnetic case / charge ecosystem | Track **4** |
+| Charge case (coil align now; magnetic dock later) / enclosure | Track **4** |
 
 **Counsel split:** Track 2 stays minimal; Temporalis / OMG / Airway Rescue stay in Track 1.
 
@@ -149,7 +149,7 @@ B1 references cited (landscape cross-check): includes among others **US2018/0220
 
 ## 6. Deck one-liner
 
-> Foundation **EP 4 333 691 B1** (granted · certificated · JAC Dental) → **IE/UK validation instructed** (AoA signature **pending**) + **Unitary Patent** (due 8 Aug) + US **18/289,827** (RCE filed) + provisional **64/033,978** + case assignment — Peacock / PurdyLucey.
+> Foundation **EP 4 333 691 B1** (granted · certificated · JAC Dental) → **IE/UK validation instructed** (AoA signature **pending**) + **Unitary Patent** (filing receipt **GAP**) + US **18/289,827** (RCE filed) + provisional **64/033,978** + case assignment — Peacock / PurdyLucey.
 
 ---
 

@@ -4,8 +4,8 @@
 
 **Status:** Evaluation snapshot · aligns with [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · `MOBILE_APP_FLOWS.md`
 
-**Strategy stack:** Stage A wellness wearable first; Stage B medical later. New US patent embodiment. Ed/Pedro use the patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Strategy stack:** Stage A wellness wearable first; Stage B medical later. New US patent embodiment. Ed/Pedro use the patient app only. Paper A n≈5 nights are **unpaid**; Path 0 RKaaS is a later clinic SKU — [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md).  
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 continues past Sep 2026 (30 Sep handoff missed); Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 ```mermaid
 flowchart LR
@@ -24,17 +24,18 @@ flowchart LR
 
 **North star:** [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) — **Stage A wellness wearable first**, **Stage B medical device later**; ship the **new US patent being submitted** (Temporalis OMG / IR-DC / TFI / SASHB). Foundation granted US and EU patents sit underneath.
 
-**Phase 0 Gen1 kits** prove hardware, BLE, and vitals for that invention **as a wearable**. They do **not** yet deliver the bruxism-native UX that drives consumer Premium or dentist Practice subscriptions. Near-term revenue is **hardware plus careful wellness IAP**; durable B2B2C waits on **Phase 1+ embodiment and CloudKit**. **Ed/Pedro use the patient app only.** Do **not** claim medical-device status in this iteration.
+**Phase 0 Gen1 kits** prove hardware, BLE, and vitals for that invention **as a wearable**. They do **not** yet deliver the bruxism-native UX that drives consumer Premium or dentist Practice subscriptions. Near-term cash is **Point B plus founder loans**, not product AR. Paper A n≈5 nights are **unpaid**. A later Path 0 **RKaaS** fee (company-owned kits, €100/report draft) is a clinic SKU after nights run — [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md). Durable B2B2C waits on **Phase 1+ embodiment and CloudKit**. **Ed/Pedro use the patient app only.** Do **not** claim medical-device status in this iteration.
 
 ### How money, IP, and regulatory stages relate
 
 | Priority | Outcome |
 |----------|---------|
 | 1 | **Stage A:** Working wearable embodiment of the new US filing (Phase 1+ in patient app + exports) |
-| 2 | Overnight evidence from Ed/Pedro / Beacon (prosecution + future Stage B dossier) |
-| 3 | Consumer Premium once the wearable embodiment is honest and useful |
-| 4 | Professional app / practice IAP **after** shareable Phase 1+ rollups |
-| 5 | **Stage B (later):** Medical device clearance path — higher ASP, separate gate |
+| 2 | Overnight evidence from Ed/Pedro / Beacon (prosecution + future Stage B dossier) — **n≈5 unpaid** |
+| 3 | Later Path 0 **RKaaS** (clinic lease + per-report fee) only after evaluable nights — not Point B |
+| 4 | Consumer Premium once the wearable embodiment is honest and useful |
+| 5 | Professional app / practice IAP **after** shareable Phase 1+ rollups |
+| 6 | **Stage B (later):** Medical device clearance path — higher ASP, separate gate |
 
 ### Policy: Ed / Pedro Phase 0 — patient app only
 
@@ -66,7 +67,7 @@ flowchart LR
 **Coupling:** Professional revenue is **patient-mediated**. Until the patient app has shareable overnight muscle and vitals rollups, dentist seats stay **off**.
 
 ```
-Gen1 kit (BOM REV8 / REV10 / FW 1.0.84 · app 4.3.3 build 5)
+Gen1 kit (BOM REV8 / REV10 / FW 1.0.85 · app 4.3.3 build 5)
         │
         ▼
  Patient app ──Phase 0 (Ed/Pedro)──► temple vitals ──► CSV / local evidence
@@ -81,7 +82,8 @@ Gen1 kit (BOM REV8 / REV10 / FW 1.0.84 · app 4.3.3 build 5)
 
 | Layer | When it can generate cash | Depends on | Risk if Phase 0 only |
 |-------|---------------------------|------------|----------------------|
-| **Hardware (clip + case)** | Now / pilot → limited retail | Gen1 yield, charging reliability, temple UX | Low volume; not SaaS |
+| **Path 0 RKaaS (processing fee)** | After n≈5 evaluable nights **and** a clinic agrees | Charge-to-temple · ethics named · wellness invoice copy · who pays | **€0** on Paper A. Draft €100/report later. Does **not** replace Point B |
+| **Hardware (clip + case)** | Path A retail later; Path 0 **does not sell** the clip | Gen1 yield, charging reliability, temple UX | Low volume; Path 0 keeps inventory |
 | **Consumer Premium IAP** | After IAP live + credible dashboard | Phase 0: weak vs Oura/Wellue; Phase 1+: strong vs “bruxism clip” | Competing as generic SpO₂ clip = **hard** |
 | **Dentist Professional / Practice IAP** | After CloudKit + shareable clinical rollups | Phase 1+ handshake (TFI/SASHB) | Dentists won’t pay for HR/SpO₂ alone |
 | **Path C (cleared device)** | 18–36+ mo | Clinical evidence, regulatory | Not Year-1 revenue |
@@ -94,7 +96,7 @@ Gen1 kit (BOM REV8 / REV10 / FW 1.0.84 · app 4.3.3 build 5)
 
 | Product phase | Patient app story | Dentist app story | Revenue implication |
 |---------------|-------------------|-------------------|---------------------|
-| **Phase 0 Vitals** | “Temple HR & SpO₂ that works overnight” | **Off for Ed/Pedro** — no professional app in kit | Hardware / pilot evidence only; no B2B ARPU |
+| **Phase 0 Vitals** | “Temple HR & SpO₂ that works overnight” | **Off for Ed/Pedro** — no professional app in kit | Unpaid n≈5 evidence. RKaaS not billed on Paper A nights. No Path B ARPU |
 | **Phase 1+ Muscle** | “See jaw load / grinding patterns; share with dentist” | **Activate** — “Review patient nights (TFI/SASHB)” | **Unlocks** consumer Premium + dentist seats |
 | **Gen2 hardware** | Longer nights, fewer dock/SOC bugs, same apps | Same GATT — apps unchanged | Improves **retention** and overnight sessions → better LTV |
 | **Path C medical** | Locked claims / IFU | Clinical workflow | **Stage B** — highest ASP; after Stage A wearable proof |
@@ -115,10 +117,11 @@ Gen1 kit (BOM REV8 / REV10 / FW 1.0.84 · app 4.3.3 build 5)
 
 **Recommendation**
 1. **Ed/Pedro Phase 0:** Patient app **only** — no Oralable for Dentists, no share-to-dentist, no practice IAP.  
-2. **Near term otherwise:** Kit, pilot, and Beacon evidence; free or soft Premium; Path B dark.  
-3. **Turn on the professional app** only after Phase 0 pass, Phase 1+ rollups, and CloudKit production.  
-4. **Gate consumer Premium positioning** on overnight report honesty (vitals now; TFI/SASHB when ready).  
-5. **Gen2** is retention and quality, not a new app SKU.
+2. **Near term otherwise:** Kit, pilot, and Beacon evidence; free or soft Premium; Path B dark. **Do not invoice** n≈5.  
+3. **Path 0 RKaaS** only after first evaluable nights, if the clinic asks — [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md). No Beacon term sheet until charge-to-temple and ethics / consent are named.  
+4. **Turn on the professional app** only after Phase 0 pass, Phase 1+ rollups, and CloudKit production.  
+5. **Gate consumer Premium positioning** on overnight report honesty (vitals now; TFI/SASHB when ready).  
+6. **Gen2** is retention and quality, not a new app SKU.
 
 ---
 

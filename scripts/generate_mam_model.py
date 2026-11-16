@@ -27,6 +27,8 @@ Legacy BruxismMAM [1,250,3] stub generation was removed; use convert_temporalis_
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import sys
 import tempfile
 from pathlib import Path
@@ -41,10 +43,15 @@ sys.path.insert(0, str(ROOT))
 
 from src.analysis.features import FS, _butter_bandpass, _butter_lowpass
 from src.analysis.label_generator import apply_temporalis_labels_to_frame
+from src.config.algorithm_spec import SPEC, spec_fingerprint
 from src.parser.log_parser import parse_accelerometer_log, parse_oralable_log
 from src.processing.resampler import resample_raw_to_50hz
 
-WINDOW = 50
+MAM_SPEC = SPEC["mam"]
+IR_DC_LOWPASS = SPEC["filters"]["ir_dc_lowpass"]
+TEMPORALIS_BANDPASS = SPEC["filters"]["temporalis_ac_bandpass"]
+WINDOW = int(MAM_SPEC["window_samples"])
+DEFAULT_STRIDE = int(MAM_SPEC["stride_samples"])
 ACCEL_SCALE = 16384.0
 
 # label_enum (Temporalis fine) → MAM class (quiet, phasic, tonic, rescue)
@@ -117,8 +124,17 @@ def _temporalis_filter_columns(df: pd.DataFrame) -> pd.DataFrame:
     ir = df["ir"].astype(float).to_numpy()
     r = df["red"].astype(float).to_numpy()
 
-    b_lp, a_lp = _butter_lowpass(cutoff_hz=0.8, fs=FS, order=4)
-    b_bp, a_bp = _butter_bandpass(0.5, 4.0, fs=FS, order=4)
+    b_lp, a_lp = _butter_lowpass(
+        cutoff_hz=float(IR_DC_LOWPASS["cutoff_hz"]),
+        fs=FS,
+        order=int(IR_DC_LOWPASS["order"]),
+    )
+    b_bp, a_bp = _butter_bandpass(
+        float(TEMPORALIS_BANDPASS["lowcut_hz"]),
+        float(TEMPORALIS_BANDPASS["highcut_hz"]),
+        fs=FS,
+        order=int(TEMPORALIS_BANDPASS["order"]),
+    )
 
     ir_dc = filtfilt(b_lp, a_lp, np.nan_to_num(ir, nan=0.0))
     green_ac = filtfilt(b_bp, a_bp, np.nan_to_num(g - np.nanmean(g), nan=0.0))
@@ -151,11 +167,18 @@ def _fine_enum_to_mam(arr: np.ndarray) -> np.ndarray:
 def build_training_arrays(
     df: pd.DataFrame,
     window: int = WINDOW,
-    stride: int = 25,
-) -> tuple[np.ndarray, np.ndarray]:
+    stride: int = DEFAULT_STRIDE,
+    user_column: str | None = "user_id",
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     feat_cols = ["mam_green_ac", "mam_ir_dc", "mam_red_ac", "mam_ax", "mam_ay", "mam_az"]
     X_list: list[np.ndarray] = []
     y_list: list[int] = []
+    user_list: list[str] = []
+    if user_column is not None and user_column not in df.columns:
+        raise ValueError(
+            f"Training data must include {user_column!r} for user-level validation. "
+            "Use --allow-window-random-research-only only for non-release pipeline experiments."
+        )
 
     fine = df["label_enum"].to_numpy(dtype=np.int16)
     mam = _fine_enum_to_mam(fine)
@@ -177,12 +200,21 @@ def build_training_arrays(
         y = int(np.argmax(counts))
         X_list.append(win.astype(np.float32))
         y_list.append(y)
+        if user_column is not None:
+            users = df[user_column].iloc[start:end].dropna().astype(str).unique()
+            if len(users) != 1:
+                raise ValueError(
+                    f"Window {start}:{end} must map to exactly one {user_column!r}; found {users.tolist()}"
+                )
+            user_list.append(str(users[0]))
+        else:
+            user_list.append("__window_random_research_only__")
 
     if not X_list:
         raise ValueError("No training windows; check label_enum coverage and log duration.")
     X = np.stack(X_list, axis=0)
     y = np.asarray(y_list, dtype=np.int64)
-    return X, y
+    return X, y, np.asarray(user_list, dtype=str)
 
 
 def dataframe_from_log(
@@ -287,7 +319,65 @@ def dataframe_from_gold_csv(path: Path, protocol_path: Path | None) -> pd.DataFr
     return _temporalis_filter_columns(df)
 
 
-def train_and_save(X: np.ndarray, y: np.ndarray, out_h5: Path, epochs: int, val_frac: float) -> None:
+def split_validation_indices(
+    user_ids: np.ndarray,
+    *,
+    val_frac: float,
+    allow_window_random_research_only: bool,
+) -> tuple[np.ndarray, np.ndarray, dict[str, object]]:
+    """Create either a strict user holdout or an explicitly research-only random split."""
+    if not 0.0 < val_frac < 1.0:
+        raise ValueError("val_frac must be between 0 and 1")
+
+    rng = np.random.default_rng(42)
+    n = len(user_ids)
+    if allow_window_random_research_only:
+        n_val = max(1, int(n * val_frac))
+        perm = rng.permutation(n)
+        return perm[n_val:], perm[:n_val], {
+            "strategy": "window_random_research_only",
+            "user_count": int(len(np.unique(user_ids))),
+            "training_user_count": None,
+            "holdout_user_count": None,
+        }
+
+    users = np.unique(user_ids)
+    if len(users) < 2:
+        raise ValueError(
+            "User-level validation needs at least two distinct user IDs. "
+            "Do not use a single-user model as release evidence."
+        )
+    n_holdout = min(len(users) - 1, max(1, int(round(len(users) * val_frac))))
+    holdout_users = set(rng.permutation(users)[:n_holdout].tolist())
+    validation_mask = np.asarray([user in holdout_users for user in user_ids], dtype=bool)
+    train_idx = np.flatnonzero(~validation_mask)
+    val_idx = np.flatnonzero(validation_mask)
+    if len(train_idx) == 0 or len(val_idx) == 0:
+        raise ValueError("User-level validation produced an empty train or holdout partition")
+    return train_idx, val_idx, {
+        "strategy": "user_holdout",
+        "user_count": int(len(users)),
+        "training_user_count": int(len(set(user_ids[train_idx].tolist()))),
+        "holdout_user_count": int(len(holdout_users)),
+    }
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def train_and_save(
+    X: np.ndarray,
+    y: np.ndarray,
+    out_h5: Path,
+    epochs: int,
+    train_idx: np.ndarray,
+    val_idx: np.ndarray,
+) -> dict[str, float]:
     try:
         import tensorflow as tf
         from tensorflow import keras
@@ -296,11 +386,6 @@ def train_and_save(X: np.ndarray, y: np.ndarray, out_h5: Path, epochs: int, val_
 
     tf.keras.utils.set_random_seed(42)
 
-    n = X.shape[0]
-    n_val = max(1, int(n * val_frac))
-    perm = np.random.permutation(n)
-    val_idx = perm[:n_val]
-    train_idx = perm[n_val:]
     X_train, y_train = X[train_idx], y[train_idx]
     X_val, y_val = X[val_idx], y[val_idx]
 
@@ -327,7 +412,7 @@ def train_and_save(X: np.ndarray, y: np.ndarray, out_h5: Path, epochs: int, val_
     for c in range(4):
         cw_d.setdefault(c, 1.0)
 
-    model.fit(
+    history = model.fit(
         X_train,
         y_train,
         validation_data=(X_val, y_val),
@@ -341,6 +426,59 @@ def train_and_save(X: np.ndarray, y: np.ndarray, out_h5: Path, epochs: int, val_
     out_h5.parent.mkdir(parents=True, exist_ok=True)
     model.save(out_h5)
     print(f"Saved Keras model → {out_h5}")
+    evaluation = model.evaluate(X_val, y_val, verbose=0, return_dict=True)
+    return {
+        "training_accuracy": float(history.history["accuracy"][-1]),
+        "validation_accuracy": float(evaluation.get("accuracy", float("nan"))),
+        "validation_loss": float(evaluation.get("loss", float("nan"))),
+    }
+
+
+def write_training_provenance(
+    path: Path,
+    *,
+    out_h5: Path,
+    source_input: Path,
+    split: dict[str, object],
+    metrics: dict[str, float],
+    stride: int,
+) -> None:
+    """Write an auditable run record; it deliberately never grants release eligibility."""
+    payload = {
+        "schema_version": "1.0.0",
+        "model_name": "BruxismMAM_Temporalis",
+        "lifecycle": {
+            "status": "research_only" if split["strategy"] != "user_holdout" else "research_candidate",
+            "release_eligible": False,
+            "stub_model": False,
+            "reason": "Independent cohort review and release approval are required before app bundling.",
+        },
+        "artifact": {
+            "keras_path": str(out_h5),
+            "keras_sha256": _sha256(out_h5),
+            "input_shape": [1, WINDOW, 6],
+            "class_order": ["quiet", "phasic", "tonic", "rescue"],
+        },
+        "algorithm_spec": {
+            "id": SPEC["metadata"]["id"],
+            "version": SPEC["metadata"]["version"],
+            "sha256": spec_fingerprint(),
+        },
+        "dataset": {
+            "source_path": str(source_input),
+            "source_sha256": _sha256(source_input),
+        },
+        "validation": {**split, "metrics": metrics},
+        "training": {
+            "window_samples": WINDOW,
+            "stride_samples": stride,
+            "sampling_hz": float(SPEC["sampling"]["ppg_hz"]),
+            "random_seed": 42,
+        },
+    }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    print(f"Saved model provenance → {path}")
 
 
 def main() -> int:
@@ -376,9 +514,21 @@ def main() -> int:
         help="Output Keras H5 path",
     )
     ap.add_argument("--epochs", type=int, default=60)
-    ap.add_argument("--stride", type=int, default=25, help="Window stride (samples at 50 Hz)")
+    ap.add_argument(
+        "--stride",
+        type=int,
+        default=DEFAULT_STRIDE,
+        help="Window stride in samples (default: algorithm_spec.yaml mam.stride_samples)",
+    )
     ap.add_argument("--val-frac", type=float, default=0.15)
     ap.add_argument("--channel-order", type=str, default=None, help="PPG order, e.g. R_G_IR")
+    ap.add_argument("--user-column", type=str, default="user_id", help="Column identifying the participant")
+    ap.add_argument(
+        "--allow-window-random-research-only",
+        action="store_true",
+        help="Permit a random-window split when user IDs are unavailable; output is explicitly non-release.",
+    )
+    ap.add_argument("--provenance", type=Path, default=None, help="Output JSON run record (default: next to --out)")
     args = ap.parse_args()
 
     proto = args.protocol if args.protocol.exists() else None
@@ -388,21 +538,49 @@ def main() -> int:
             print(f"--session-50hz not found: {args.session_50hz}", file=sys.stderr)
             return 1
         df = dataframe_from_session_50hz_csv(args.session_50hz, protocol_path=proto)
+        source_input = args.session_50hz
     elif args.gold:
         if not args.gold.exists():
             print(f"--gold not found: {args.gold}", file=sys.stderr)
             return 1
         df = dataframe_from_gold_csv(args.gold, protocol_path=proto)
+        source_input = args.gold
     else:
         if not args.input.exists():
             print(f"--input not found: {args.input}", file=sys.stderr)
             return 1
         df = dataframe_from_log(args.input, protocol_path=proto, channel_order=args.channel_order)
+        source_input = args.input
 
-    X, y = build_training_arrays(df, window=WINDOW, stride=args.stride)
+    user_column = None if args.allow_window_random_research_only else args.user_column
+    try:
+        X, y, user_ids = build_training_arrays(
+            df,
+            window=WINDOW,
+            stride=args.stride,
+            user_column=user_column,
+        )
+        train_idx, val_idx, split = split_validation_indices(
+            user_ids,
+            val_frac=args.val_frac,
+            allow_window_random_research_only=args.allow_window_random_research_only,
+        )
+    except ValueError as error:
+        print(f"Training eligibility error: {error}", file=sys.stderr)
+        return 2
     print(f"Windows: {X.shape[0]}, shape {X.shape}, labels: {np.bincount(y, minlength=4)}")
-    train_and_save(X, y, args.out, epochs=args.epochs, val_frac=args.val_frac)
-    print("Next: python scripts/convert_temporalis_mam.py --keras", args.out)
+    print(f"Validation: {split}")
+    metrics = train_and_save(X, y, args.out, epochs=args.epochs, train_idx=train_idx, val_idx=val_idx)
+    provenance = args.provenance or args.out.with_suffix(".provenance.json")
+    write_training_provenance(
+        provenance,
+        out_h5=args.out,
+        source_input=source_input,
+        split=split,
+        metrics=metrics,
+        stride=args.stride,
+    )
+    print("Next: review the provenance record, then convert only an approved model artifact.")
     return 0
 
 

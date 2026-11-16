@@ -1,7 +1,7 @@
 # Temple PPG avenues — Gemini exploration distill
 
 **Status:** External exploration distill · **not** Oralable clinical evidence or product claims  
-**As at:** 27 Jul 2026  
+**As at:** 27 Jul 2026 (distill unchanged) · living pack **1.1.69** (12 Sep: Dual A = lab, not Beacon box)  
 **Source:** Gemini conversation (share [UiCw1EsJguV6](https://share.gemini.google/UiCw1EsJguV6) · app `b1033d03cf397b38`)  
 **Local capture:** `~/Downloads/Measuring Brain Signals Down Spinal Cord.md`
 
@@ -26,7 +26,7 @@ Measuring descending motor and cortico-spinal activity runs from invasive electr
 |-------|----------|------------------|-------------------|
 | Direct neural / IOM | MEP, D-wave, ESG, BCI microarrays | Electrical descending tracts | **Orthogonal** — clinic / surgery |
 | Brain electrical | EEG, CMC (+ EMG) | Cortical / corticomuscular sync | **Orthogonal** — PPG may use ANS/HRV proxy only |
-| Muscle electrical | sEMG (ANR M40, Cometa) | Action potentials | **Adjacent** gold standard — Research Kit Dual A / Paper A descriptive precursor ([ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md)); not consumer Oralable alone |
+| Muscle electrical | sEMG (ANR M40, Cometa) | Action potentials | **Adjacent** gold standard — **lab Dual A** / Paper A descriptive precursor ([ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md)); not Beacon patient; not consumer Oralable alone |
 | Optical muscle (OMG) | Temple / cheek IR-DC PPG | Hemodynamic occlusion | **Oralable core** (Phase 1+) |
 | Scalp fNIRS | Motor cortex blood | Neurovascular coupling | Related physics; different site / claim |
 | Overnight SpO₂ / BP peers | Wellue, Aktiia/Hilo | SpO₂ / BP time series | Same report grammar; different biomarker |

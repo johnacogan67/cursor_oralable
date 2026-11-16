@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "workspace": {
+    "name": "Oralable",
+    "workspace_file": "oralable.code-workspace",
+    "canonical_repository_ids": [
+      "research",
+      "firmware",
+      "core",
+      "ios"
+    ],
+    "external_repository_ids": [
+      "public_web",
+      "mam_web"
+    ]
+  },
+  "repositories": [
+    {
+      "id": "research",
+      "path": ".",
+      "role": "Python reference algorithms, BLE-log tooling, research exports, documentation, and Core ML conversion support.",
+      "release_inputs": [
+        "src/",
+        "scripts/",
+        "tests/",
+        "requirements.txt",
+        "workspace.manifest.json"
+      ],
+      "generated_patterns": [
+        ".venv/**",
+        ".venv_ci/**",
+        ".venv_mam/**",
+        ".pytest_cache/**",
+        "**/__pycache__/**",
+        ".matplotlib/**",
+        "data/**",
+        "plots/**",
+        "tmp/**"
+      ]
+    },
+    {
+      "id": "firmware",
+      "path": "../oralable_nrf",
+      "role": "Zephyr/NCS firmware, boards, TGM BLE GATT service, sensor drivers, MCUboot, and DFU tooling.",
+      "release_inputs": [
+        "app/",
+        "boards/",
+        "drivers/",
+        "scripts/",
+        "west.yml",
+        "CMakeLists.txt",
+        "prj.conf"
+      ],
+      "generated_patterns": [
+        ".cache/**",
+        ".west/**",
+        "build/**",
+        "build_*/**",
+        "app/build/**",
+        "compile_commands.json",
+        "**/__pycache__/**",
+        "**/.DS_Store"
+      ]
+    },
+    {
+      "id": "core",
+      "path": "../OralableCore",
+      "role": "Shared Swift package for BLE parsing, biometrics, Core ML, exports, and shared presentation components.",
+      "release_inputs": [
+        "Package.swift",
+        "Sources/",
+        "Tests/"
+      ],
+      "generated_patterns": [
+        ".build/**",
+        ".swiftpm/**",
+        "DerivedData/**",
+        "**/.DS_Store"
+      ]
+    },
+    {
+      "id": "ios",
+      "path": "../oralable_swift",
+      "role": "Patient and professional SwiftUI apps, CoreBluetooth lifecycle, application persistence, Apple platform integrations, and user experience.",
+      "release_inputs": [
+        "OralableApp/",
+        "docs/",
+        ".github/"
+      ],
+      "generated_patterns": [
+        ".work/**",
+        "**/DerivedData/**",
+        "**/.build/**",
+        "**/SourcePackages/**",
+        "**/xcuserdata/**",
+        "**/*.xcuserstate",
+        "**/.DS_Store"
+      ]
+    },
+    {
+      "id": "public_web",
+      "path": "../oralable-web",
+      "role": "Static Netlify source for oralable.com.",
+      "release_inputs": [
+        "*.html",
+        "styles.css",
+        "images/",
+        "netlify.toml"
+      ],
+      "generated_patterns": [
+        "**/.DS_Store"
+      ]
+    },
+    {
+      "id": "mam_web",
+      "path": "../mam-website",
+      "role": "Static MAM Diagnostics site and versioned Google Apps Script lead-intake source.",
+      "release_inputs": [
+        "*.html",
+        "*.js",
+        "apps-script/",
+        "netlify.toml",
+        "CRM_WORKFLOW.md"
+      ],
+      "generated_patterns": [
+        "**/.DS_Store"
+      ]
+    }
+  ],
+  "contract_owners": [
+    {
+      "contract": "TGM BLE GATT service and payload semantics",
+      "owner": "firmware",
+      "consumers": [
+        "research",
+        "core",
+        "ios"
+      ]
+    },
+    {
+      "contract": "Reference 50 Hz algorithms and model-training provenance",
+      "owner": "research",
+      "consumers": [
+        "core",
+        "ios"
+      ]
+    },
+    {
+      "contract": "Shared Swift parsing, domain objects, Core ML package, and export APIs",
+      "owner": "core",
+      "consumers": [
+        "ios"
+      ]
+    },
+    {
+      "contract": "iOS connection lifecycle, platform integrations, user storage, and app UX",
+      "owner": "ios",
+      "consumers": []
+    }
+  ],
+  "release_baseline_policy": {
+    "required": [
+      "Every canonical repository must have a recorded Git revision and a reviewed working-tree state.",
+      "Non-generated untracked paths must be committed, deliberately removed, or explicitly accepted before a release tag.",
+      "Generated build/cache paths are not evidence of a reproducible release and must not substitute for source and manifests.",
+      "Firmware, Core, iOS, and reference-algorithm revisions must be recorded together for a compatibility baseline.",
+      "A release requires component build/test evidence and a captured device-to-app BLE validation artifact."
+    ],
+    "not_automated_by_this_manifest": [
+      "Git commits, pushes, deletions, or ignore-rule changes.",
+      "Build, test, flash, OTA, or external-service operations.",
+      "Approval of clinical, regulatory, or public-product claims."
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 # IP evaluation and competitive landscape — Ken diligence
 
-**As at:** **26 Jul 2026** · Pack aligns with data room **1.1.42**  
+**As at:** **26 Jul 2026** (body frozen at counsel ingest) · living pack **1.1.69** (12 Sep 2026) · **UP filing receipt still GAP** (8 Aug clock passed)  
 **Audience:** Ken / Point B diligence · founder prep for Peacock / PurdyLucey  
 **Status:** Working evaluation · counsel PDFs ingested · **not legal advice · not an FTO opinion**  
 **Counsel:** Justin Muehlmeyer (Peacock Law, US) · Michael Lucey (PurdyLucey, EU)  
@@ -16,7 +16,7 @@
 2. **US utility still pending** — **18/289,827** RCE filed **12 Jun 2026**; awaiting examiner.
 3. **Product–claim mismatch is the main issue** — Stage A ships **temple / Temporalis**; the foundation covers **intraoral masseter** optical monitoring. Stage A commercial IP depends on provisional **64/033,978**.
 4. **AESYRA US2020/0345536 is competitor landscape**, not Oralable IP. B1 cited art includes **Kuhar** US2018/0220956.
-5. **Post-grant:** IE/UK validation **steps taken** (Lisa 22 Jul); **John must sign IE Authorisation of Agent** and return. **UP** still due **8 Aug 2026**. Renewals IE/UK **31 May 2027**.
+5. **Post-grant:** IE/UK validation **steps taken** (Lisa 22 Jul); **John must sign IE Authorisation of Agent** and return. **UP filing receipt still GAP** (8 Aug 2026 clock passed as at 12 Sep). Renewals IE/UK **31 May 2027**.
 6. **Ken gaps left:** sign AoA · UP receipt · clarify inv. “Spain” · provisional→JAC · Lisa Curley deed · Track 4 · temple FTO · post-RCE US status.
 
 ---
@@ -63,7 +63,7 @@ Counsel owns claim wording. Engineering builds embodiments that match ([../IP_NO
 | IR-DC hemodynamic occlusion / TFI | **1** | Reserved from Track 2 narrowing |
 | SASHB / SpO₂ ↔ muscle crash timing | **1** | Reserved |
 | Intraoral masseter PPG / OMG | **2** + **3** | Core foundation — **EP granted** |
-| Magnetic case / charger | **4** | N/A |
+| Charge case (coil align now; magnetic dock later) / charger | **4** | N/A |
 | Stage B medical labeling | Same families + evidence | Regulatory, not new inventorship by default |
 
 **Counsel strategy (unchanged):** Track 2 gets a minimal response. Do not put Temporalis / Airway Rescue into the old claim set during RCE.
@@ -100,7 +100,8 @@ Counsel owns claim wording. Engineering builds embodiments that match ([../IP_NO
 ### 4.4 Differentiation thesis (diligence language — not claim text)
 
 1. **Foundation (EP granted):** tooth-fixed buccal support, optical sensor toward masseter, interior muscle hemodynamics / OMG — not bite-force pads, not surface-only reflection, not skin-topography facial sensors.
-2. **Stage A provisional themes:** Temporalis, IR-DC / TFI / SASHB, ear-anchor / pouch matrix (Master IP Status 26 Mar 2026).
+2. **Stage A provisional themes:** Temporalis, IR-DC / TFI / SASHB, ear-anchor / pouch matrix (Master IP Status 26 Mar 2026).  
+3. **Conversion broadening (7 Sep 2026 — themes only, not claim text):** phone-assisted temporalis seat from **ear and face landmarks** (craniofacial morphology, not race); combined optical PPG + surface EMG housing with pad attach and recessed electrode wells; clinic-return overnight SKU with USB-C on the pod and silicone overmold. Ask Peacock: second provisional vs fold into convert of **64/033,978** (due **~9 Apr 2027**). Meeting: [ED_PEDRO_MEETING_2026-09-07.md](../clinical/ED_PEDRO_MEETING_2026-09-07.md).
 
 ---
 
@@ -137,7 +138,7 @@ Track 1 conversion hard stop: **~9 Apr 2027**.
 ### May say (counsel-aligned, high level)
 
 - European patent **EP 4 333 691 B1** (*Masseter Muscle Activity Monitoring*) granted to **JAC Dental Solutions Limited** (2026) from the **WO2022234145** family; certificate issued.
-- Post-grant: national validation in **Ireland** and the **UK** underway (counsel confirms steps taken); **Unitary Patent** request in progress (deadline 8 Aug 2026).
+- Post-grant: national validation in **Ireland** and the **UK** underway (counsel confirms steps taken); **Unitary Patent** request was instructed; **filing receipt still GAP** as at 12 Sep 2026 (8 Aug clock passed).
 - US utility **18/289,827** pending; prosecution continued via RCE (Jun 2026).
 - New US provisional (Apr 2026) covers muscle-activity monitoring refinements for the Temporalis / OMG product path.
 - Counsel: Peacock (US) / PurdyLucey (EU).
@@ -146,7 +147,7 @@ Track 1 conversion hard stop: **~9 Apr 2027**.
 
 - Unpublished provisional claim text or detailed amendment language on oralable.com or decks.
 - “Patents granted in US” until a US grant issues.
-- That the **Unitary Patent** is already registered (still to be filed by 8 Aug).
+- That the **Unitary Patent** is already registered (filing receipt still **GAP**).
 - Listing **AESYRA** or other third-party pubs as company patents.
 - FDA/CE medical clearance from patent status alone (Stage A = wellness wearable).
 - That temple Temporalis product is covered by the foundation masseter buccal claims without counsel sign-off.
@@ -239,8 +240,9 @@ Counsel pack also received via Downloads (22 Jul 2026). Do **not** commit unpubl
 2. **Ask Lisa** to confirm inv. **24892-26** “Spain” line is a typo (strategy is IE/UK only).
 3. **Track UP** filing by **8 Aug 2026** (~€1,550) — get receipt into diligence pack.
 4. Ask Justin for post-RCE Patent Center status on **18/289,827**.
-5. Assign provisional **64/033,978** → JAC; Lisa Curley deeds; Track 4 number; temple FTO.
-6. Calendar: IE/UK renewals **31 May 2027**; opposition to **8 Apr 2027**; provisional convert before **~9 Apr 2027**.
+5. Assign provisional **64/033,978** → JAC; Lisa Curley deeds; Track 4 number; temple FTO.  
+6. Calendar: IE/UK renewals **31 May 2027**; opposition to **8 Apr 2027**; provisional convert before **~9 Apr 2027**.  
+7. **Q4 2026:** Peacock call on second provisional vs conversion embodiments (ear/landmark placement + combined PPG/EMG pad-pod + USB-C clinic SKU). Do not put claim text in git.
 
 ---
 

@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=82"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oralable-research"
+version = "0.1.0"
+description = "Reference signal-processing, BLE parsing, and validation tools for Oralable research."
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+license = { text = "Proprietary" }
+authors = [{ name = "Oralable" }]
+dependencies = [
+  "numpy==2.4.2",
+  "pandas==3.0.1",
+  "PyYAML==6.0.3",
+  "scipy==1.17.1",
+]
+
+[project.optional-dependencies]
+bluetooth = ["bleak==2.1.1"]
+reporting = [
+  "matplotlib==3.10.8",
+  "plotly==6.6.0",
+  "pyEDFlib==0.1.42",
+]
+model = [
+  "coremltools==9.0",
+  "scikit-learn==1.8.0",
+  "tensorflow==2.21.0",
+]
+test = [
+  "pyEDFlib==0.1.42",
+  "pytest==9.0.2",
+]
+full = [
+  "bleak==2.1.1",
+  "coremltools==9.0",
+  "matplotlib==3.10.8",
+  "plotly==6.6.0",
+  "pyEDFlib==0.1.42",
+  "pytest==9.0.2",
+  "scikit-learn==1.8.0",
+  "tensorflow==2.21.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src", "src.*"]
+namespaces = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-ra"

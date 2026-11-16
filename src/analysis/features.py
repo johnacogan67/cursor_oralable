@@ -33,8 +33,15 @@ import numpy as np
 import pandas as pd
 from scipy.signal import butter, filtfilt, find_peaks
 
+from src.config.algorithm_spec import SPEC
 
-FS = 50.0  # Hz (per .cursorrules, session_50hz is on a 50 Hz grid)
+FS = float(SPEC["sampling"]["ppg_hz"])
+PPG_BANDPASS = SPEC["filters"]["ppg_bandpass"]
+IR_DC_LOWPASS = SPEC["filters"]["ir_dc_lowpass"]
+BEAT_DETECTION = SPEC["beat_detection"]
+SPO2_SPEC = SPEC["spo2"]
+AIRWAY_RESCUE_SPEC = SPEC["airway_rescue"]
+SASHB_SPEC = SPEC["sashb"]
 
 
 @dataclass
@@ -89,13 +96,22 @@ def compute_filters(df: pd.DataFrame) -> pd.DataFrame:
     sig_green = df["green"].astype(float).to_numpy()
     sig_ir = df["ir"].astype(float).to_numpy()
 
-    # Low-pass < 1 Hz for DC (use 0.8 Hz cutoff for some margin)
-    b_lp, a_lp = _butter_lowpass(cutoff_hz=0.8, fs=FS, order=4)
+    # Low-pass < 1 Hz for DC; parameters are declared in algorithm_spec.yaml.
+    b_lp, a_lp = _butter_lowpass(
+        cutoff_hz=float(IR_DC_LOWPASS["cutoff_hz"]),
+        fs=FS,
+        order=int(IR_DC_LOWPASS["order"]),
+    )
     ir_dc = filtfilt(b_lp, a_lp, np.nan_to_num(sig_ir, nan=0.0))
     df["ir_dc"] = ir_dc
 
-    # Band-pass 0.5–8 Hz on Green for beat detection and morphology
-    b_bp, a_bp = _butter_bandpass(0.5, 8.0, fs=FS, order=4)
+    # Band-pass Green for beat detection and morphology.
+    b_bp, a_bp = _butter_bandpass(
+        float(PPG_BANDPASS["lowcut_hz"]),
+        float(PPG_BANDPASS["highcut_hz"]),
+        fs=FS,
+        order=int(PPG_BANDPASS["order"]),
+    )
     # Optional: remove mean before filtering to reduce edge effects
     sig_green_detrended = sig_green - np.nanmean(sig_green)
     green_bp = filtfilt(b_bp, a_bp, np.nan_to_num(sig_green_detrended, nan=0.0))
@@ -137,8 +153,12 @@ def detect_beats_from_green_bp(df: pd.DataFrame) -> List[BeatFeature]:
         return []
 
     # Peak detection parameters
-    min_distance_samples = int(0.4 * FS)  # at most ~150 bpm
-    prom = np.nanstd(sig) * 0.5 if np.isfinite(np.nanstd(sig)) else 0.0
+    min_distance_samples = int(float(BEAT_DETECTION["min_distance_seconds"]) * FS)
+    prom = (
+        np.nanstd(sig) * float(BEAT_DETECTION["prominence_factor"])
+        if np.isfinite(np.nanstd(sig))
+        else 0.0
+    )
     peaks, props = find_peaks(sig, distance=min_distance_samples, prominence=prom if prom > 0 else None)
     if len(peaks) < 2:
         return []
@@ -251,11 +271,11 @@ def build_feature_dataframe(
 # --- Clinical Biometric Suite ---
 
 DT_50HZ = 1.0 / FS  # 0.02 s
-SPO2_WINDOW_SAMPLES = int(3.0 * FS)  # 3 s for stable R
-AIRWAY_RESCUE_WINDOW_MS = 500
+SPO2_WINDOW_SAMPLES = int(float(SPO2_SPEC["window_seconds"]) * FS)
+AIRWAY_RESCUE_WINDOW_MS = int(AIRWAY_RESCUE_SPEC["window_ms"])
 AIRWAY_RESCUE_WINDOW_SAMPLES = int(AIRWAY_RESCUE_WINDOW_MS / 1000.0 * FS)  # 25 at 50 Hz
-AIRWAY_RESCUE_THRESHOLD = -0.10  # -10% drop
-SPO2_DIP_THRESHOLD = 90.0
+AIRWAY_RESCUE_THRESHOLD = float(AIRWAY_RESCUE_SPEC["ir_dc_drop_threshold"])
+SPO2_DIP_THRESHOLD = float(SASHB_SPEC["spo2_threshold"])
 
 
 class ClinicalBiometricSuite:
@@ -314,9 +334,9 @@ class ClinicalBiometricSuite:
         ir_ratio = ir_ac_rms / (ir_dc_roll + eps)
         r = np.where(ir_ratio > eps, red_ratio / ir_ratio, np.nan)
 
-        # Oralable calibration: SpO2 = 110 - 25*R, clamp 60-100
-        spo2 = 110.0 - 25.0 * r
-        spo2 = np.clip(spo2, 60.0, 100.0)
+        # Oralable Protocol A calibration is declared in algorithm_spec.yaml.
+        spo2 = float(SPO2_SPEC["intercept"]) - float(SPO2_SPEC["r_coefficient"]) * r
+        spo2 = np.clip(spo2, float(SPO2_SPEC["clamp_min"]), float(SPO2_SPEC["clamp_max"]))
         spo2 = np.where(np.isfinite(spo2), spo2, np.nan)
         return pd.Series(spo2, index=df.index)
 
@@ -669,4 +689,3 @@ if __name__ == "__main__":
     print(f"Extracted {len(features)} beats -> {out_arg or (base / 'features_labeled.csv')}")
     print(f"Window biomarkers -> {base / 'features_windows_5s.csv'}")
     print(features.head(10))
-

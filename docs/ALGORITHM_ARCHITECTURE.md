@@ -99,11 +99,11 @@ flowchart LR
 | `ClinicalReportGenerator` | **Implemented** | Multi-page overnight PDF + event CSV |
 | `NRFConnectBLELogger` | **Implemented** | nRF-style CSV export |
 | `ProfessionalHandshakeExport` | **Implemented** | Hourly TFI + SASHB + Temporalis rollups |
-| `algorithm_spec.yaml` (Python) | **Planned** | Single YAML loaded by both runtimes |
+| `algorithm_spec.yaml` + parity verifier | **Implemented** | Python runtime source; Swift compile-time mirror checked by `verify_algorithm_spec.py` |
 | `SyncTapDetector.swift` | **Partial** | Logic in Python; not standalone Swift module |
 | Full Python↔Swift numeric parity tests | **Partial** | Golden-file diff not automated in CI |
 
-**Summary:** Core filters, BLE parsing, Core ML inference, TFI/SASHB, and handshake export are **in production Swift**. Remaining work is **YAML spec parity**, **sync-tap Swift module**, and **automated golden tests** — not “Swift has no filters.”
+**Summary:** Core filters, BLE parsing, TFI/SASHB, and handshake export are **in production Swift**. The MAM model route is provenance-gated; only a reviewed, user-holdout-backed, non-stub artifact can enable packaged inference. Remaining work is **sync-tap Swift module**, **automated golden tests**, and validated MAM cohort evidence — not “Swift has no filters.”
 
 ---
 
@@ -132,7 +132,7 @@ flowchart LR
 
 ## 3. Roadmap (not all shipped)
 
-### Phase 1: Algorithm spec YAML (planned)
+### Phase 1: Algorithm spec YAML and parity gate (implemented)
 
 Create `src/config/algorithm_spec.yaml`:
 
@@ -178,7 +178,7 @@ spo2_calibration:
   window_seconds: 3.0
 ```
 
-**Today:** `src/config/algorithm_spec.yaml` is the shared spec; Swift mirrors in `OralableCore/Signal/AlgorithmSpec.swift`.
+**Today:** Python reference code loads `src/config/algorithm_spec.yaml` at runtime. Swift mirrors the values in `OralableCore/Signal/AlgorithmSpec.swift`; `scripts/verify_algorithm_spec.py --strict` is the compatibility gate, so production code does not need a runtime YAML parser.
 
 ---
 
@@ -200,9 +200,9 @@ OralableCore/Sources/OralableCore/
 
 ---
 
-### Phase 3: Core ML (shipped)
+### Phase 3: Core ML (provenance-gated)
 
-**Production model:** `BruxismMAM_Temporalis.mlpackage` — input `[1, 50, 6]`, four Temporalis classes. See [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) §13.
+`BruxismMAM_Temporalis.mlpackage` has input `[1, 50, 6]` and four Temporalis classes. It is eligible for production inference only when its sidecar provenance records a reviewed non-stub artifact with user-level holdout evidence. See [MODEL_PROVENANCE.md](./MODEL_PROVENANCE.md).
 
 Pipeline: `scripts/generate_mam_model.py` → `scripts/convert_temporalis_mam.py` → bundle in OralableCore Resources.
 
@@ -238,7 +238,8 @@ UnifiedBiometricProcessor / DashboardViewModel
 ```
 src/
   config/
-    algorithm_spec.yaml      # Planned — not yet shared load
+    algorithm_spec.yaml      # Python runtime source of truth
+    algorithm_spec.py        # typed loader + validation
   analysis/
     features.py
   utils/
@@ -281,11 +282,11 @@ cursor_oralable/scripts/convert_temporalis_mam.py  → mlpackage in OralableCore
 
 ## 6. Quick Start
 
-1. **Create the spec:** Add `src/config/algorithm_spec.yaml` with the parameters above.
+1. **Verify the spec:** Run `python scripts/verify_algorithm_spec.py --strict` before changing a shared parameter.
 2. **Add a Python export script:** `scripts/export_filter_coeffs.py` to generate Swift-ready coefficients.
 3. **Implement `ButterworthFilter.swift`** in OralableCore using vDSP or a biquad implementation.
 4. **Replace placeholder logic** in `SignalProcessingPipeline` and `UnifiedBiometricProcessor` with calls to the new Algorithms module.
-5. **Train and export** any ML model to Core ML when ready.
+5. **Train, document, and review** a user-holdout-backed model before allowing Core ML package export; see [MODEL_PROVENANCE.md](./MODEL_PROVENANCE.md).
 
 ---
 

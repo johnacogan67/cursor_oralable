@@ -1,12 +1,13 @@
 # Oralable® — Friends & Family brief for Pedro & Ed
 
 **Audience:** Dr Pedro Mayoral Sanz · Dr Edward Owens (Beacon) — clinical partners and friends-and-family investors  
-**Status:** Sendable leave-behind · **30 Aug 2026** · Pack **1.1.68** · Stage A truth · Research Kit · Dual A eng measured · FW **1.0.84** · app **4.3.3** (build **5**)  
-**Not:** Ken BalancePoints jargon · medical-device / AHI claims · Dianyx JV · Azarbarzin HB from Oralable alone  
+**Status:** Sendable leave-behind · **7 Sep 2026** · Pack **1.1.68** · Stage A truth · Oralable-only Research Kit · Dual A lab only · FW **1.0.84** · app **4.3.3** (build **5**)  
+**Current kit (30 Oct):** **Gen 2** REV11 · **ES4L15BA1** · **LP270829** · kits **gated**. Gen 1 is legacy. Slides below are the 7 Sep leave-behind. Do not present that row as the hardware now. [GEN2_WOUT_KAGA_STATUS_2026-10-30.md](../hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md).  
+**Not:** Ken BalancePoints jargon · medical-device / AHI claims · Dianyx JV · Azarbarzin HB from Oralable alone · ANR on the patient  
 
-**Canonical:** [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) · [PEDRO_STATUS_UPDATE_2026-08.md](../clinical/PEDRO_STATUS_UPDATE_2026-08.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · funding [FUNDING_POINT_B_AND_CAP_TABLE.md](../governance/FUNDING_POINT_B_AND_CAP_TABLE.md) · Mayoral method [MAYORAL_METHOD_ORALABLE_VALIDATION.md](../clinical/MAYORAL_METHOD_ORALABLE_VALIDATION.md)
+**Canonical:** [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) · [PEDRO_STATUS_UPDATE_2026-09.md](../clinical/PEDRO_STATUS_UPDATE_2026-09.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · meeting [ED_PEDRO_MEETING_2026-09-07.md](../clinical/ED_PEDRO_MEETING_2026-09-07.md) · funding [FUNDING_POINT_B_AND_CAP_TABLE.md](../governance/FUNDING_POINT_B_AND_CAP_TABLE.md)
 
-**Present:** [`PITCH_PEDRO_ED_FF.html`](./PITCH_PEDRO_ED_FF.html) (← → keys) · print [`PITCH_PEDRO_ED_FF_print.html`](./PITCH_PEDRO_ED_FF_print.html) · [`PITCH_PEDRO_ED_FF.pdf`](./PITCH_PEDRO_ED_FF.pdf) (10 landscape pages · regenerated 27 Aug)
+**Present:** [`PITCH_PEDRO_ED_FF.html`](./PITCH_PEDRO_ED_FF.html) (← → keys) · print [`PITCH_PEDRO_ED_FF_print.html`](./PITCH_PEDRO_ED_FF_print.html) · [`PITCH_PEDRO_ED_FF.pdf`](./PITCH_PEDRO_ED_FF.pdf) (regenerated **7 Sep 2026** from print HTML)
 
 **Brand:** [`brand/oralable_logo_lockup.png`](./brand/oralable_logo_lockup.png) · Oralable® · Word of Mouth™
 
@@ -27,16 +28,16 @@ Temple Research Kit: overnight vitals, then jaw-load awareness, then IEEE feasib
 
 ## Slide 2 — Where we are (honest)
 
-| Item | Truth (12 Aug 2026) |
+| Item | Truth (7 Sep 2026) |
 |------|---------------------|
-| **Stack** | FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 REV10 |
+| **Stack (7 Sep record)** | Then FW **1.0.84** · app **4.3.3** (build **5**) · Gen 1 REV10. **Now:** Gen 2 REV11 · kits still gated · sensors do not stream. |
 | **Engineering** | Mac Protocol A + overnight report toolchain proven (~6 min eng pack) |
-| **Dual A** | Mac Oralable + ANR measured (`20260812_085110`) + research EDF; kits still gated |
-| **Kits** | **Gated** (charge-to-temple) — target **5 Research Kits by 31 Aug** |
-| **Paper A** | Research Kit rewrite · n≈5 with Koorosh (McGill) |
+| **Dual A** | Mac Oralable + ANR measured (`20260812_085110`) — **lab methods**. Patients do **not** wear ANR |
+| **Kits** | **Gated** (charge-to-temple) — target **5 Oralable-only kits by 30 Sep** · no headband · pad/tape · one night · clinic charge · ≥4 h |
+| **Paper A** | n≈5 Beacon feasibility with Koorosh (McGill) |
 | **Cash plan** | Point B **€180k by Oct 2026** = €50k F&F + €100k EI PSSF CLN + €30k HPSU |
 
-Speaker: Ready ≠ delivered. Close the charge gate. Then ship the kits.
+Speaker: Ready ≠ delivered. Close the charge gate. Then ship Oralable-only kits.
 
 ---
 
@@ -53,17 +54,18 @@ Sleep bruxism and overnight oxygen burden matter in dental sleep medicine. But:
 
 ## Slide 4 — Research Kit solution
 
-**Oralable Research Kit** = temple MAM + charge dock/case + **ANR M40** sEMG + iOS app
+**Oralable Research Kit** (Beacon box) = temple MAM + charge case + pads/tape + iOS app. **No ANR. No headband.**
 
 ![FIG-CO-016 Kit flat-lay](../figures/FIG-CO-016-research-kit-flatlay.png)
 
-*FIG-CO-016 — Kit flat-lay (draft photo).*
+*FIG-CO-016 — Engineering Dual A flat-lay (includes ANR + headband). Beacon ship is Oralable + case + pads — not this full stack.*
 
 | Mode | What you get |
 |------|----------------|
-| Core / Arm P | Temple **HR + SpO₂** · 1–2 h oxygen burden ± MAD (not AHI) |
-| Stretch | **≥6 h** state hypnogram |
-| Dual A (Mac) | Labeled Oralable ↔ ANR concordance |
+| Core / Beacon night | Temple **HR + SpO₂** · **one night** · clinic charge · **≥4 h** (6 h better) |
+| Arm P (Pedro) | Oxygen burden ± MAD (not AHI) — often the same night |
+| Hypnogram figure | **≥6 h** when a longer night exists |
+| Dual A (Mac, John) | Labeled Oralable ↔ ANR concordance — **not patients** |
 | Landscape | Compare output classes vs Bruxoff / GrindCare / AcuPebble |
 
 **Physics:** PPG + IR-DC hemodynamic occlusion + jaw ACC — **outside the mouth**.  
@@ -131,17 +133,18 @@ Speaker: We ship the temporalis optical system the provisional covers. Pedro and
 ## Slide 9 — The ask (clinical + F&F)
 
 **Clinical**
-1. Ethics / consent path named  
-2. Dry-run + first Arm P window  
-3. Authorship line for Paper A  
-4. Photos / Bruxoff access if available  
+1. Confirm use rules (one night, clinic charge, pads, no ANR, ≥4 h)  
+2. Ethics / consent path named  
+3. First calendar night  
+4. Authorship line for Paper A  
+5. Clinic pad brand; photos / Bruxoff if available  
 
 **Friends & family (Point B stack)**  
 - Near-term F&F equity ask: **€50k** (priced equity) within Point B **€180k by 31 Oct 2026**  
 - Remaining Point B: EI PSSF CLN €100k + HPSU €30k (company path)  
 - **Valuation / share terms:** still **open** — not set in this deck; counsel and Ken pack to follow  
 
-**Kits:** 5 Research Kits to Pedro by **31 Aug 2026** (charge-to-temple gate).
+**Kits:** 5 **Oralable-only** kits to Beacon by **30 Sep 2026** (charge-to-temple gate).
 
 ---
 
@@ -149,7 +152,7 @@ Speaker: We ship the temporalis optical system the provisional covers. Pedro and
 
 | Use | Role of €50k F&F |
 |-----|------------------|
-| Kit finish / ship / spares | Close charge-to-temple · 5 kits + ANR |
+| Kit finish / ship / spares | Close charge-to-temple · 5 Oralable-only kits |
 | Beacon / Paper A ops | Ethics, dry-run, Arm P windows |
 | App / FW soak | Field stability on **1.0.84** / **4.3.3** (build **5**) |
 | Bridge to Point B close | Keep runway to PSSF / HPSU |
@@ -160,9 +163,9 @@ Full Stage A engineering needs more (~€200–250k mid) — see [COST_AND_TIMEL
 
 ## Cover email (optional)
 
-Subject: Oralable Research Kit — F&F leave-behind + 5 kits by end of August
+Subject: Oralable Research Kit — F&F leave-behind (Oralable-only kits)
 
-Pedro / Ed — attached is a short friends-and-family leave-behind with the Research Kit status note. Clinical asks first. Capital terms stay open until counsel sets valuation. Happy to walk through on a call.
+Pedro / Ed — attached is a short friends-and-family leave-behind. Clinical use is one night, clinic charge, pads, no ANR. Capital terms stay open until counsel sets valuation. Happy to walk through on a call.
 
 John
 

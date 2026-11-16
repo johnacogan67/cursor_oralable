@@ -57,6 +57,7 @@ flowchart TB
 
 - Cite **primary sources** for 12% / 5% / 8k×262×2  
 - Ireland / UK home-market cut (launch geography)  
+- Canada / EU / ROW TAM cuts (watch map only: [GOOGLE_ALERTS_WATCH_MAP.md](../bookmarks/GOOGLE_ALERTS_WATCH_MAP.md) — not a substitute for sizing)  
 - Competitive share vs ambulatory **sEMG class** (e.g. ANR M40 / Bruxoff / GrindCare — research/clinic peers, not Oralable product) / rings / Wellue  
 - € revenue model from 1.4m (ASP × attach × Year-1 penetration)
 

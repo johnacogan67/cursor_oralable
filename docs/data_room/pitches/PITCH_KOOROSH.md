@@ -65,7 +65,7 @@ Oralable tests **extraoral temporalis OMG** (IR-DC + ACC) — **outside the mout
 
 ## Slide 3 — Solution (device)
 
-**Oralable** = Nordic BLE **temple clip** + **magnetic charging case** + **iOS patient app** · 50 Hz BLE stream
+**Oralable** = Nordic BLE **temple clip** + **charge case (coil align now; magnetic dock later)** + **iOS patient app** · 50 Hz BLE stream
 
 | Now (Phase 0 / Research Kit) | Next (Phase 1+) | Later |
 |------------------------------|-----------------|-------|
@@ -74,7 +74,7 @@ Oralable tests **extraoral temporalis OMG** (IR-DC + ACC) — **outside the mout
 
 **Physics:** PPG + IR-DC hemodynamic occlusion + jaw accelerometry at the **temporalis** — not sEMG, not a finger ring, **not inside the mouth**.
 
-**Ship truth:** Gen1 REV10 · FW **1.0.84** · app **4.3.3** (build **5**) · **Research Kits gated** (charge-to-temple) — target **5 to Pedro by 31 Aug 2026** — ready ≠ delivered · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md).
+**Ship truth:** Gen1 REV10 · FW **1.0.85** · app **4.3.3** (build **5**) · **Research Kits gated** (charge-to-temple) — **30 Sep 2026** handoff **missed**; five Oralable-only kits; no new date — ready ≠ delivered · Dual A = lab precursor, not a patient arm · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md).
 
 ---
 
@@ -110,7 +110,7 @@ Detail internal only: [IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS
 
 | Layer | Design | Purpose |
 |-------|--------|---------|
-| **Paper A field** | Research Kit · Beacon **n≈5** · Arm P 1–2 h + optional Dual A | Usability, wear, descriptive landscape |
+| **Paper A field** | Research Kit · Beacon **n≈5** · one night · ≥4 h · Dual A **lab only** | Usability, wear, descriptive landscape |
 | **Phase 0 Day-1** | Ed Owens + Pedro · temple vitals on each kit | Substrate: HR/SpO₂, coupling, device state |
 | **Core ML Tier 1** | **20–30** users × **3–5** Protocol A (leave-user-out) | Research-grade model / Paper B fuel |
 | **Field / concordance** | ~**20** devices · pivotal **n≈20–50+** vs PSG-AV / Bruxoff | Later Paper C / Stage B evidence |
@@ -123,7 +123,7 @@ Sources: [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTO
 
 | Paper | Focus | Feasible when |
 |-------|-------|----------------|
-| **A (near)** | Research Kit methods — temple PPG–OMG @ 50 Hz, Dual A precursor, Beacon feasibility **n≈5** | Kits ship + ethics |
+| **A (near)** | Research Kit methods — temple PPG–OMG @ 50 Hz, Dual A **lab** precursor, Beacon feasibility **n≈5** (no patient ANR) | Kits ship + ethics |
 | **B** | Overnight phenotype — TFI / SASHB / hypnogram-style bands vs clinical labels | Pedro / Beacon labels · Tier 1 |
 | **C (later)** | Deeper concordance vs PSG-AV / Bruxoff subset | n≈20–50 |
 

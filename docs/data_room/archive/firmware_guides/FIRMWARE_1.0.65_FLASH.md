@@ -1,6 +1,6 @@
 # Firmware 1.0.65 — flash guide (pcb00003 / REV10)
 
-**Build date:** July 2026 · **Target:** Phase 0 Vitals pilot (Ed and Pedro)
+**Build date:** July 2026 · **Legacy Gen 1.** Do not flash this on Gen 2.
 
 ---
 
@@ -43,7 +43,7 @@ Or use the helper (builds if needed):
 
 1. nRF Connect → connect → read **`3A0FF006`** → expect **`1.0.65-nrfconnect`**
 2. Off pad: **green** status flash (dimmer than 1.0.64; asymmetric timing)
-3. **Oralable magnetic charging case** + app **On wireless charger**: **red** flash; **Charge** chip should track within ~2 min on pilot units
+3. **Oralable charge case** (coils aligned on this build; magnetic dock is a later case) + app **On wireless charger**: **red** flash; **Charge** chip should track within ~2 min on pilot units
 4. iOS app **4.3.1+**: Dashboard **Device LED** row mirrors clip colour/pattern
 
 ---

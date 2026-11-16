@@ -2,8 +2,8 @@
 
 **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-**Audience:** Ken Kinsella · [BalancePoints](https://balancepoints.co.uk) (Point A → Point B framing)  
-**Status:** Working draft · July 2026 · strong for **Ken working session**; **not** F&F-close ready until valuation / terms / use-of-funds / runway / Voice  
+**Audience:** Ken Kinsella · [BalancePoints](https://balancepoints.co.uk) (Point A → Point B **investor** framing)  
+**Status:** Working draft · **19 Sep 2026** (Point A facts) · **Ken is not a CEO candidate** · July 2026 session frame kept · strong for **Ken working session**; **not** F&F-close ready until valuation / terms / use-of-funds / runway / Voice  
 
 **Present this:** open [`PITCH_DECK_KEN.html`](./PITCH_DECK_KEN.html) in a browser (← → keys) · PDF [`PITCH_DECK_KEN.pdf`](./PITCH_DECK_KEN.pdf).  
 This `.md` file is the source distill for edits.
@@ -33,11 +33,11 @@ Speaker: One sentence — we ship a working wearable that matches a new US paten
 | Dimension | Point A (July 2026) |
 |-----------|---------------------|
 | **Legal entity** | **JAC DENTAL SOLUTIONS LIMITED** (Ireland) |
-| **Product** | Gen1 Phase 0 (temple HR/SpO₂) — **Research Kits built, gated** (not yet shipped); target **5 to Pedro by 31 Aug 2026**; charge-to-temple SOC ≥50% |
-| **Hardware** | BOM **REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.84** · Oralable magnetic case (**not Qi**) |
+| **Product** | Gen1 Phase 0 (temple HR/SpO₂) — **Research Kits built, gated** (not yet shipped); **30 Sep 2026** handoff **missed**; five Oralable-only clinic-loaner kits; no new date; charge-to-temple SOC ≥50% |
+| **Hardware** | BOM **REV8** · PCB **REV10** · Kaga **ES2832AA2** · FW **1.0.85** · Oralable charge case (coil align now; magnetic dock later; **not Qi**) |
 | **App** | **Patient app only** for this iteration — Oralable for Dentists **off** |
 | **Claims** | Wellness only — **not** a medical device |
-| **IP** | **EP 4 333 691 B1** granted · **IE/UK** validating · **UP** due 8 Aug · US RCE · provisional **64/033,978** — [IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS.md) · [IP_EVAL_AND_LANDSCAPE.md](../governance/IP_EVAL_AND_LANDSCAPE.md) |
+| **IP** | **EP 4 333 691 B1** granted · **IE/UK** validating · **UP filing receipt GAP** (8 Aug clock passed) · US RCE · provisional **64/033,978** — [IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS.md) · [IP_EVAL_AND_LANDSCAPE.md](../governance/IP_EVAL_AND_LANDSCAPE.md) |
 | **Revenue** | Near-zero live — hardware + IAP coded, soft launch gated |
 | **Cash (17 Jul 2026)** | **€1,293** closing · period in €65k / out €73k · **~€63.5k director loans** (founder-funded) |
 | **Cash plan (mid)** | Stage A eng ~€200–250k · **Ken Point B raise €180k by Oct 2026** — [FUNDING_POINT_B_AND_CAP_TABLE.md](../governance/FUNDING_POINT_B_AND_CAP_TABLE.md) |
@@ -64,7 +64,7 @@ Speaker: A condition-specific problem at an unusual site — not “another slee
 
 ## Slide 4 — Solution
 
-**Oralable** = Nordic BLE temple clip + magnetic charging case + iOS patient app  
+**Oralable** = Nordic BLE temple clip + charge case (coil align now; magnetic dock later) + iOS patient app  
 
 | Now (Phase 0) | Next (Phase 1+) | Later (Stage B) |
 |---------------|-----------------|-----------------|
@@ -103,8 +103,8 @@ Speaker: Do not sell Phase 0 as “bruxism solved.” Sell reliable temple vital
 | Item | Spec |
 |------|------|
 | Clip | Gen1 · REV10 · ES2832AA2 (nRF52832) |
-| Charge | **Oralable magnetic case** (LTC4124 / LTC6990) — not phone Qi |
-| Firmware | **1.0.84** (sense-on-BLE · IR-pulse worn · STAT blink · pad/desk recover) |
+| Charge | **Oralable charge case** (LTC4124 RX coil aligned to LTC6990 TX now; magnetic dock later) — not phone Qi |
+| Firmware | **1.0.85** (sense-on-BLE · IR-pulse worn · STAT blink · pad/desk recover · hold LED) |
 | Placement | **Temple** · Automatic dock on 1.0.70+ (manual modes still available) |
 | App | Oralable patient **4.3.3** · TestFlight vitals phase |
 | Out of scope | Oralable for Dentists · Protocol B muscle · medical claims |
@@ -173,8 +173,8 @@ Geography: Ireland / UK first → EU → US; Android still **GAP**.
 
 | Evidence | Status |
 |----------|--------|
-| Gen1 kits + FW 1.0.84 + app 4.3.3 (build 5) | **Stack ready** (flash + TestFlight) — **not delivered** to Ed/Pedro yet |
-| Ship gate (charge → worn vitals) | **In progress** — STAT from 1.0.70; IR-pulse worn (1.0.82+); pad/desk recover (1.0.84); closing energy/coupling on case |
+| Gen1 kits + FW 1.0.85 + app 4.3.3 (build 5) | **Stack ready** (flash + TestFlight) — **not delivered** to Ed/Pedro yet |
+| Ship gate (charge → worn vitals) | **In progress** — STAT from 1.0.70; IR-pulse worn (1.0.82+); pad/desk recover (1.0.84); hold LED (1.0.85); closing energy/coupling on case |
 | Ed/Pedro Phase 0 protocol + quick start | **Docs ready** — handoff after ship gate |
 | Prior lab / temporalis validation runs | **Partial** (science; not consumer MAU) |
 | App Store live MAU / MRR | **GAP** |
@@ -204,7 +204,7 @@ Open pipeline (phone-side) vs a closed ring — helps IP embodiment and Stage B 
 
 | Window | Focus | Mid cash (EUR) |
 |--------|-------|----------------|
-| **Now – Sep 2026** | Phase 0 Ed/Pedro | ~30–50k (P0) |
+| **Phase 0 (Sep window ended)** | Phase 0 Ed/Pedro | ~30–50k (P0) |
 | **Q4 2026 – Q1 2027** | Phase 1+ embodiment + US patent file | Toward Stage A ~200–250k |
 | **2026–2027** | Gen2 bring-up (parallel) | Stage A+Gen2 ~350–450k |
 | **H2 2027 – 2028** | Stage B 510(k) / CE exploration | Through Stage B ~0.8–1.0M |
@@ -236,7 +236,7 @@ Cleared device (Stage B)──►  18–36+ months after wearable proof
 
 **Point B ask (BalancePoints, Jun 2026):** **€180k by 31 Oct 2026** = **€50k F&F** priced equity + **€100k EI PSSF CLN** + **€30k HPSU grant** — [FUNDING_POINT_B_AND_CAP_TABLE.md](../governance/FUNDING_POINT_B_AND_CAP_TABLE.md).
 
-**Cap table:** John ~63% · Conor ~21% · angels ~16% (11,901 ords) — Conor purchase via Amstrow Cosec **in negotiation** (counters €10k/€15k; detail INTERNAL in [JAC governance](../governance/JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md)).
+**Cap table:** John ~63% · Conor ~21% · angels ~16% (11,901 ords) until the signed Conor transfer is entered. No cash payable. Detail: [CURRENT_GOVERNANCE_STATUS.md](../governance/CURRENT_GOVERNANCE_STATUS.md).
 
 | Ready for discussion | Still needs fill |
 |----------------------|------------------|
@@ -280,7 +280,7 @@ We are building the wearable that makes that path possible.
 | GTM & Sales | 9, 13 | PARTIAL |
 | User Traction & Revenue | 10, 13 | GAP until pilot + live |
 | Financials | 12, 14 | PARTIAL (cash snapshot; ask/accounts still GAP) |
-| Team & Governance | 14 + [current status](../governance/CURRENT_GOVERNANCE_STATUS.md) + [JAC governance](../governance/JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md) | PARTIAL (Conor buyout live to 23 Jul; Nigel Independent Director; **proposed** Ken CEO; CRO/CEO contract GAP) |
+| Team & Governance | 14 + [current status](../governance/CURRENT_GOVERNANCE_STATUS.md) + [JAC governance](../governance/JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md) | PARTIAL (Conor buyout live; Nigel Independent Director; **Ken not a CEO candidate**; CEO search = other people; CRO evidence GAP) |
 | Legal, IP & Corp | 8 | PARTIAL ([IP_PORTFOLIO_STATUS.md](../governance/IP_PORTFOLIO_STATUS.md) · [IP_EVAL_AND_LANDSCAPE.md](../governance/IP_EVAL_AND_LANDSCAPE.md)) |
 | Risk / Regulation | 7 | PARTIAL |
 | International | 9 | GAP (Android) |

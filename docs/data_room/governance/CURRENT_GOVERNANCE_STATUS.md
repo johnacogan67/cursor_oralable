@@ -1,14 +1,17 @@
 # JAC Dental Solutions — Current governance status
 
-**As at:** **30 Aug 2026** · living snapshot · Pack **1.1.68** ([VERSION](./VERSION)) · governance body below still as at 7 Aug where noted  
+**As at:** **5 Oct 2026** · living snapshot · Pack **1.1.74** ([VERSION](../VERSION)) · governance body below still as at 7 Aug where noted  
+**Conor:** share transfer **signed** (John, 5 Oct 2026). No cash is payable on that transfer. Register of Members in this note is still the pre-registration distill.  
 **Entity:** JAC Dental Solutions Limited · CRO **697987** · Oralable  
-**Stack truth:** Gen1 FW **1.0.84** · app **4.3.3** (build **5**) · Ed/Pedro **Research Kits gated** (target **5 by 31 Aug 2026**) — [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) · audit [DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md](./DATA_ROOM_VALIDATION_AND_FUTURE_WORK.md)
+**Stack truth:** **Gen 2** REV11 · kits **gated** · app **4.3.3** (build **5**) · Gen 1 is legacy. Bench: [GEN2_WOUT_KAGA_STATUS_2026-10-30.md](../hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md) — [VERSION_ALIGNMENT.md](../VERSION_ALIGNMENT.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md)
+
+**Ken Kinsella is not a CEO candidate.** BalancePoints remains the Point A → Point B advisor path. John remains acting founder-CEO. CEO search is for **other** candidates via Nigel / Amstrow. The 22 Jul ~28% CEO equity ask is **closed**.
 
 This page is the **single cleaned snapshot** of cap table, leadership, and the **Aug 2026 operating frame**. Linked docs hold detail. If anything conflicts, **this page and the Register of Members distill win** over older NotebookLM notes **and over Ken’s Pre-Seed discussion memo**.
 
-**The Register of Members does not change until Conor signs the SPA and the transfer is registered.** “Post-deal” or “Ken assumed” figures are **not** CRO fact.
+**Conor’s share transfer is signed** (John, 5 Oct 2026). No cash is payable on it. The Register of Members in this note stays John **7,500** / Conor **2,500** / angels **1,901** until that transfer is entered. Intended result after entry: John **10,000** shares / Conor **0**. Those figures are not CRO fact yet. “Ken assumed” figures are not CRO fact.
 
-**22 Jul meeting outcomes** are still the last board decisions on Conor and Ken equity (§0–§5). Those sections stand. Aug adds product, Paper A, and F&F context only.
+**22 Jul** share-count direction still stands: all 2,500 to John (§2). The July cash figure does not. Ken CEO / ~28% equity is **not** a live path (§3, §5).
 
 ---
 
@@ -16,17 +19,17 @@ This page is the **single cleaned snapshot** of cap table, leadership, and the *
 
 | Topic | Status |
 |-------|--------|
-| **Cap table / Conor** | Register still John **7,500** / Conor **2,500** / angels **1,901**. Verbal path (**€10k when available**, all 2,500 → John) **not yet SPA-complete** |
-| **Ken CEO equity** | ~**28%** ask (**⅓ of John’s** post-Conor 10,000) — **asked, not agreed**; prior working model **6% FD** milestones still the only written working frame |
+| **Cap table / Conor** | Share transfer **signed** (John, 5 Oct 2026). No cash payable. All **2,500** → John once entered. Register in this note still John **7,500** / Conor **2,500** / angels **1,901** |
+| **Ken / CEO** | **Not a CEO candidate** (closed 19 Sep). Point B advisor path unchanged. 22 Jul ~**28%** CEO ask **not proceeding**. CEO search = other candidates — [CEO_JOB_DESCRIPTION.md](../pitches/CEO_JOB_DESCRIPTION.md) |
 | **Cash** | Last skim **€1,293** (17 Jul) — no fresher bank PDF in git; founder-loan funded |
 | **Point B** | Still **€180k by 31 Oct 2026** = €50k F&F + €100k EI PSSF CLN + €30k HPSU |
-| **Research Kits** | **Gated** (charge-to-temple) — target **5 full kits to Pedro by 31 Aug 2026** |
-| **Paper A** | Rewritten as **Research Kit feasibility n≈5** (Dual A Mac precursor in methods) — [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) |
+| **Research Kits** | **Gated** (charge-to-temple) — **30 Sep 2026** handoff **missed**. Five Oralable-only kits. No new date. No ANR, no headband. |
+| **Paper A** | Beacon n≈5 one-night clinic loaner · Dual A **lab methods only** — [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) |
 | **Nabavi** | Phase 1 = **McGill / RI-MUHC** — [COLLAB_NABAVI_MCGILL.md](../clinical/COLLAB_NABAVI_MCGILL.md) |
-| **Pedro / Ed sendables** | Status note + F&F leave-behind ready — [PEDRO_STATUS_UPDATE_2026-08.md](../clinical/PEDRO_STATUS_UPDATE_2026-08.md) · [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) |
-| **IP** | Provisional **64/033,978** filed 9 Apr 2026 · EP **4 333 691 B1** granted · **UP due 8 Aug 2026** (confirm counsel close) · IE AoA signature still a watch |
+| **Pedro / Ed sendables** | Use [PEDRO_STATUS_UPDATE_2026-09.md](../clinical/PEDRO_STATUS_UPDATE_2026-09.md) · F&F [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) (PDF regenerated 7 Sep) |
+| **IP** | Provisional **64/033,978** filed 9 Apr 2026 · EP **4 333 691 B1** granted · **UP filing receipt GAP** (8 Aug 2026 clock passed as at 12 Sep) · IE AoA signature still a watch |
 
-**Since 22 Jul (product / ops, not governance votes):** Research Kit definition, Paper A Dual A in-scope, kit ship date, Pedro F&F pitch, pack **1.1.61**. Cap table and Ken’s equity ask are **unchanged**.
+**Since 22 Jul (product / ops, not governance votes):** Research Kit definition, Paper A Dual A **lab** methods, kit ship date was **30 Sep** (that date **missed** as at 3 Oct; pack **1.1.74**), Pedro Sep status. August Pedro status archived. **Ken CEO path closed 19 Sep.** **Conor share transfer signed 5 Oct 2026** (John). Register entry still open in this note.
 
 ---
 
@@ -34,10 +37,10 @@ This page is the **single cleaned snapshot** of cap table, leadership, and the *
 
 | Topic | Outcome (verbal) |
 |-------|------------------|
-| **Conor** | Told **Nigel** he will accept **€10,000 when it becomes available** (deferred / funding-linked — not cash-at-transfer counters) |
+| **Conor** | July talk recorded a deferred cash figure for all 2,500. **Signed transfer (5 Oct 2026): no cash payable.** |
 | **Paper** | **Nigel / Amstrow** to send Conor an **agreement to sign** |
 | **Shares** | On completion: Conor’s **2,500** ordinary shares transfer to **John** → John **10,000** / 11,901 (~**84.0%**); Conor **0** |
-| **Ken CEO equity** | Ken looking for **⅓ of John’s post-deal shares** (⅓ of **10,000** ≈ **3,333** · ~**28%** of company) to become CEO — **asked, not agreed** (see §5) |
+| **Ken CEO equity** | Ken looking for **⅓ of John’s post-deal shares** (⅓ of **10,000** ≈ **3,333** · ~**28%** of company) to become CEO — **asked that day, not agreed**. **Living lock (19 Sep): not a CEO candidate; ask closed** (see §5) |
 
 ---
 
@@ -51,13 +54,13 @@ This page is the **single cleaned snapshot** of cap table, leadership, and the *
 | `Oralable Pre Seed Structure.pdf` | Project Oak Pre-Seed discussion memo (€1.25m @ €5.5–7m) |
 | `Kinsella 0726.pdf` | Ken CV |
 
-**Not company position.** Do not treat memo percentages, “Chief Scientist,” or intraoral medical narrative as Oralable truth until the board, John, and Nigel agree.
+**Not company position.** Do not treat memo percentages, “Chief Scientist,” or intraoral medical narrative as Oralable truth. **Ken is not a CEO candidate** (19 Sep).
 
 ---
 
 ## 1. Cap table
 
-### Register today (until SPA + transfer)
+### Register in this note (until the signed transfer is entered)
 
 | Member | Shares | ≈ % |
 |--------|-------:|----:|
@@ -68,7 +71,7 @@ This page is the **single cleaned snapshot** of cap table, leadership, and the *
 
 Special resolutions need **~75%**. Conor’s ~21% blocks them **until** the purchase completes.
 
-### Intended post-Conor completion (before any Ken grant)
+### Intended post-Conor completion (before any later equity grant)
 
 | Member | Shares | ≈ % |
 |--------|-------:|----:|
@@ -89,7 +92,7 @@ From `Oralable Pre Seed Structure.pdf` (Project Oak · 22 Jul 2026):
 | Kenneth Kinsella — CEO & Co-founder | **28.00%** | ~⅓ of John’s post-Conor 10,000 |
 | “EIIS Investors” | **15.98%** | ≈ current angels (~16%) — not a separate EIIS vehicle unless created |
 
-**Roles in memo:** Ken **CEO** · John **Chief Scientist** (conflicts with working **Executive Chairman / Founder** — §3, §5).
+**Roles in memo:** Ken **CEO** · John **Chief Scientist** — **not accepted**. Living lock: Ken is **not** a CEO candidate.
 
 ---
 
@@ -99,27 +102,27 @@ From `Oralable Pre Seed Structure.pdf` (Project Oak · 22 Jul 2026):
 |------|--------|
 | Broker | Amstrow Cosec (Collette Brown) · **Nigel Woods** channel |
 | Purchaser | **John Cogan** |
-| **Agreed direction (verbal, 22 Jul)** | **€10,000 for all 2,500**, payable **when funds become available** (funding / Point B linked) |
-| Prior counters (19 Jul) | €10k cash-at-transfer for 2,100 (keep 400) · or €15k cash-at-transfer for all — **superseded by today’s verbal accept** if SPA matches |
-| Next step | Nigel sends **SPA / purchase agreement** for Conor to sign |
-| Register | **Unchanged** until signed + transferred |
-| Company cash | Bank **€1,293** (17 Jul) cannot fund €10k — payment waits on availability (F&F / Point B / personal bridge as structured in SPA) |
-| **7 Aug note** | No SPA completion recorded in data room — treat as **still open** |
+| **Signed transfer (5 Oct 2026)** | All **2,500** → John. **No cash payable.** July price talks are history. |
+| Next step | Enter the signed transfer on the Register of Members |
+| Register | Still John **7,500** / Conor **2,500** / angels **1,901** until entered |
+| **7 Aug note** | No completion recorded in the data room on that date |
+| **5 Oct note** | John: the share transfer is **signed**. No cash payable. |
 
 ---
 
-## 3. Board & proposed leadership
+## 3. Board & leadership
 
 | Seat | Person | Status |
 |------|--------|--------|
-| Acting founder-CEO / majority owner | John Cogan | Current |
+| Acting founder-CEO / majority owner | John Cogan | **Current** |
 | Independent Director | Nigel Woods (Amstrow) | **Confirmed** (CRO Form B10 cite still GAP in git) |
-| Cosec admin | Amstrow / Collette Brown | **Live** — drafting Conor agreement |
-| **Proposed** CEO | Ken Kinsella (BalancePoints) | Not contracted · not on register · **equity ask in play (§5)** · Pre-Seed memo assumes CEO |
-| **Proposed** Executive Chairman / Founder (product, IP) | John Cogan | Not yet formalised · Ken memo instead labels **Chief Scientist** (not accepted) |
+| Cosec admin | Amstrow / Collette Brown | **Live** — Conor transfer signed; register entry still open |
+| Ken Kinsella (BalancePoints) | External **advisor** (Point A → Point B) | **Not** a CEO candidate · **not** on register · 22 Jul CEO / ~28% ask **closed** |
+| CEO hire | Open search | Other candidates via Nigel / Amstrow — [CEO_JOB_DESCRIPTION.md](../pitches/CEO_JOB_DESCRIPTION.md) · [PITCH_CEO_CANDIDATE.md](../pitches/PITCH_CEO_CANDIDATE.md) |
+| **Proposed** Executive Chairman / Founder (product, IP) | John Cogan | If / when a CEO is hired — **not** a Chief Scientist demotion |
 | **Proposed** CoSec + Amstrow finance (books, R&D reclaim) | Nigel / Amstrow | Cosec live; fuller remit proposed |
 
-Do **not** claim 2-to-1 board math until the full director slate is confirmed. Do **not** say Ken is already CEO.
+Do **not** claim 2-to-1 board math until the full director slate is confirmed. Do **not** name Ken as CEO. Do **not** send Ken the CEO candidate pack as if he is in the search.
 
 ---
 
@@ -133,14 +136,15 @@ Do **not** claim 2-to-1 board math until the full director slate is confirmed. D
 | Point B (Ken) by 31 Oct 2026 | **€180k** = €50k F&F + €100k EI PSSF CLN + €30k HPSU grant |
 | F&F leave-behind (Pedro/Ed) | [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) — clinical + €50k F&F slice; valuation open |
 | Ken Pre-Seed sketch (memo only) | **€1.25m** equity @ **€5.5–7m** pre (Q1–Q2 ’27) — [KEN_PRESEED_STRUCTURE_EVAL.md](./KEN_PRESEED_STRUCTURE_EVAL.md) |
-| Conor consideration | **€10k when available** (tied to funding path in SPA) |
 | Point A score (9 Jun) | **1.5 / 5.0** Essential |
 
 ---
 
-## 5. Recognition / Ken CEO equity (22 Jul — clarify before any offer)
+## 5. Recognition / Ken CEO equity (22 Jul history — **closed 19 Sep**)
 
-### Prior working model (pre-meeting · not withdrawn on paper)
+**Living lock:** Ken is **not** a CEO candidate. Do not offer CEO equity, a CEO term sheet, or the CEO candidate pack to Ken. The 22 Jul ~28% ask is **not proceeding**. A later CEO hire (other candidates) uses the market band in [CEO_JOB_DESCRIPTION.md](../pitches/CEO_JOB_DESCRIPTION.md) (~5–10% FD options), not a founder-share transfer.
+
+### Prior working model (pre-meeting · not withdrawn on paper for **Nigel**; Ken CEO tranches **closed**)
 
 | Person | Equity proposal | Cash alongside |
 |--------|-----------------|----------------|
@@ -159,9 +163,9 @@ Do **not** claim 2-to-1 board math until the full director slate is confirmed. D
 
 Illustrative only — **not agreed / not offered**. The prior working model was **6% FD** milestones; this ask is ~**4–5×** that.
 
-**John (22 Jul pm):** The ask does **not** feel reasonable as framed. He wants **Nigel** (Independent Director / Amstrow) to stress-test before any counter-offer. **Still open as of 7 Aug.**
+**John (22 Jul pm):** The ask does **not** feel reasonable as framed. He wanted **Nigel** to stress-test before any counter-offer.
 
-**Open before any term sheet:** options vs issued shares · vesting / milestones · fully diluted vs current · timing vs Conor SPA · board approval · counsel · F&F optics (founder ~56% / CEO ~28% pre-round).
+**Living lock (19 Sep):** Closed. Ken is not a CEO candidate. No counter-offer. No CEO term sheet for Ken.
 
 ### Evaluation frame for Nigel (founder prep — not legal advice)
 
@@ -172,7 +176,7 @@ Illustrative only — **not agreed / not offered**. The prior working model was 
 | **Control** | Post-grant John ~**56%** — still majority ordinary, but **special resolutions need ~75%**; John alone no longer clears 75% (needs Ken or angels) |
 | **F&F / EI optics** | Incoming CEO at ~**28%** pre-round is unusual for a pre-revenue Stage A wearable; can scare F&F and complicate PSSF/HPSU governance narrative |
 | **Cash vs equity** | Ken’s cash ask was modest (no salary until Point B); large equity often trades against salary — here both “cheap cash” and “large equity” stack |
-| **Sequence** | Conor SPA not signed yet; locking CEO % before register cleanup + F&F terms puts cart before horse |
+| **Sequence** | Conor transfer signed 5 Oct 2026. No cash payable. Register entry still sits in front of any later equity grant |
 
 **Bands to discuss with Nigel (discussion only):** move back toward **~5–10% FD** options with milestones (CEO signed → F&F €50k → Point B €180k → time), or **smaller issued % + options**; do not transfer ~⅓ of the founder stack as day-one issued shares.
 
@@ -190,20 +194,20 @@ Illustrative only — **not agreed / not offered**. The prior working model was 
 | 5b | [CEO_JOB_DESCRIPTION.md](../pitches/CEO_JOB_DESCRIPTION.md) | CEO search brief for Nigel / Amstrow referrals |
 | 6 | [FINANCIALS_CASH_SNAPSHOT.md](./FINANCIALS_CASH_SNAPSHOT.md) | Bank skim Point A (€1,293 · 17 Jul) |
 | 7 | [PITCH_DECK_KEN.md](../pitches/PITCH_DECK_KEN.md) | Investor/Ken pitch distill (Stage A — not rewritten to Pre-Seed memo) |
-| 8 | [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) | Pedro/Ed F&F leave-behind (Aug 2026) |
-| 9 | [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) | Kit BOM · Dual A · 5 kits / 31 Aug |
+| 8 | [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) | Pedro/Ed F&F leave-behind (7 Sep 2026) |
+| 9 | [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) | Kit BOM · Oralable-only · 5 kits · 30 Sep missed |
 | 10 | [README.md](./README.md) | Data room index |
-| 11 | [VERSION](./VERSION) | Pack version stamp |
+| 11 | [VERSION](../VERSION) | Pack version stamp |
 
 **External sources (not in git — hold in Drive / private folder):**
-- Forthcoming Amstrow Conor SPA (Nigel to issue)
+- Conor share transfer — **signed** (John, 5 Oct 2026); copy sits outside git
 - `Gmail - Update.pdf` · `Oralable Pre Seed Structure.pdf` · `Kinsella 0726.pdf` (Ken 22 Jul 18:01)
 - `Amstrow_JAC_Letter of offer to CM_17.07.2026_final verison_JC Signed.pdf`
 - `Gmail - FW_ Offer to Purchase Shares in JAC Dental Solutions Limited.pdf`
 - Register of Members PDF / Byteexplain share-issue workbooks (Seed A `02_LEG`)
 
 **Related product / money:**
-- [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) — Gen1 FW **1.0.84** · app **4.3.3** (build **5**)
+- [VERSION_ALIGNMENT.md](../VERSION_ALIGNMENT.md) — Gen1 FW **1.0.85** · app **4.3.3** (build **5**)
 - [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [GEN2_COGS_KAGA_QUOTE.md](../hardware/GEN2_COGS_KAGA_QUOTE.md) · [IP_PORTFOLIO_STATUS.md](./IP_PORTFOLIO_STATUS.md) · [MARKET_SIZING.md](./MARKET_SIZING.md)
 
 ---
@@ -212,21 +216,19 @@ Illustrative only — **not agreed / not offered**. The prior working model was 
 
 ### Governance / capital (from 22 Jul — still open)
 
-1. Nigel issues Conor **agreement** (€10k when available · all 2,500 → John)  
-2. Conor **signs**; transfer mechanics + register update  
-3. Nigel stress-tests Ken **~28% / Chief Scientist / Pre-Seed memo** — [KEN_PRESEED_STRUCTURE_EVAL.md](./KEN_PRESEED_STRUCTURE_EVAL.md)  
-4. Decide response to Ken equity ask vs prior **6% FD** model — before any CEO equity offer  
-5. Point B / F&F path that makes the €10k “available”  
-6. CEO search: share [CEO_JOB_DESCRIPTION.md](../pitches/CEO_JOB_DESCRIPTION.md) with Nigel for candidate intros  
-7. CEO term sheet date (any candidate) · Nigel Amstrow fee quote · recognition for Nigel (1% model still working-only)  
+1. Conor share transfer **signed** (John, 5 Oct 2026) — all 2,500 → John. No cash payable.  
+2. Enter the transfer on the Register of Members  
+3. Ken CEO / ~28% / Chief Scientist path — **closed 19 Sep**. Pre-Seed memo stays **proposal archive** only — [KEN_PRESEED_STRUCTURE_EVAL.md](./KEN_PRESEED_STRUCTURE_EVAL.md)  
+4. CEO search: share [CEO_JOB_DESCRIPTION.md](../pitches/CEO_JOB_DESCRIPTION.md) with Nigel for **other** candidate intros — **not Ken**  
+5. CEO term sheet date (**any candidate except Ken**) · Nigel Amstrow fee quote · recognition for Nigel (1% model still working-only)  
 
-### Product / clinical (Aug path)
+### Product / clinical (Sep path)
 
-8. Close **charge-to-temple** gate; ship **5 Research Kits** to Pedro by **31 Aug 2026**  
-9. Send Pedro status + F&F leave-behind when ready  
-10. Lock Beacon ethics / Arm P CRF for Paper A n≈5  
-11. Confirm counsel close on **Unitary Patent** (due **8 Aug 2026**) + IE AoA signature  
+7. Close **charge-to-temple** gate; ship **5 Oralable-only kits**. **30 Sep 2026** **missed**. No new date.  
+8. Send [PEDRO_STATUS_UPDATE_2026-09.md](../clinical/PEDRO_STATUS_UPDATE_2026-09.md) (use rules only)  
+9. Lock Beacon ethics / one-night CRF for Paper A n≈5  
+10. Confirm counsel **UP filing receipt** (8 Aug 2026 clock passed) + IE AoA signature  
 
 ---
 
-*The 22 Jul verbal Conor path still supersedes “decide by 23 Jul 17:00 counters.” Everything still needs a signed SPA. Aug Research Kit, Paper A, and F&F materials do not change cap-table facts.*
+*The share transfer is signed (John, 5 Oct 2026). No cash is payable on it. The register in this note changes when that transfer is entered. Aug Research Kit, Paper A, and F&F materials do not change cap-table facts.*

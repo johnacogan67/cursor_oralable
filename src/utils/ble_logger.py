@@ -1,7 +1,7 @@
 """
-Live BLE logger for Oralable MAM.
+Live BLE logger for the Oralable MAM (advertises as Oralable).
 
-Connects to the Oralable device, subscribes to PPG (50 Hz), accelerometer (~100 Hz),
+Connects to the MAM, subscribes to PPG (50 Hz), accelerometer (~100 Hz),
 temperature (1 Hz), and battery, then streams notifications to a timestamped .txt
 file in data/raw/. Compatible with log_parser.py.
 
@@ -23,14 +23,47 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+from src.utils.mam_last_connection import (
+    USER_FACING_DEVICE_NAME,
+    firmware_log_header,
+    format_last_known,
+    read_and_persist_firmware,
+)
+
 # UUIDs match log_parser.py / oralable_nrf tgm_service.h
 PPG_CHAR_UUID = "3A0FF001-98C4-46B2-94AF-1AEE0FD4C48E"
 ACCEL_CHAR_UUID = "3A0FF002-98C4-46B2-94AF-1AEE0FD4C48E"
 TEMP_CHAR_UUID = "3A0FF003-98C4-46B2-94AF-1AEE0FD4C48E"
 BATTERY_CHAR_UUID = "3A0FF004-98C4-46B2-94AF-1AEE0FD4C48E"
-BATTERY_STATS_CHAR_UUID = "3A0FFEF2-98C4-46B2-94AF-1AEE0FD4C48E"  # Power telemetry: 6-byte payload
+BATTERY_USAGE_CHAR_UUID = "3A0FF00D-98C4-46B2-94AF-1AEE0FD4C48E"  # FW >= 1.0.86, 8-byte usage model
+# Backward-compatible import name used by session scripts. It now points at the
+# firmware-defined usage characteristic rather than the unsupported 3A0FFEF2.
+BATTERY_STATS_CHAR_UUID = BATTERY_USAGE_CHAR_UUID
+STATUS_CHAR_UUID = "3A0FF009-98C4-46B2-94AF-1AEE0FD4C48E"  # 5-byte on_dock/worn/state/bat/charge
+FW_LOG_CHAR_UUID = "3A0FF00A-98C4-46B2-94AF-1AEE0FD4C48E"  # UTF-8 fw: lines
 DEVICE_NAME = "Oralable"
 RAW_DIR = Path(__file__).resolve().parents[2] / "data" / "raw"
+
+
+def parse_status_5byte(data: bytes) -> dict[str, int] | None:
+    """Parse 3A0FF009: [on_dock, worn, device_state, battery_pct, charge_active]."""
+    if len(data) < 5:
+        return None
+    return {
+        "on_dock": int(data[0]),
+        "worn": int(data[1]),
+        "device_state": int(data[2]),
+        "battery_pct": int(data[3]),
+        "charge_active": int(data[4]),
+    }
+
+
+def format_status_line(status: dict[str, int]) -> str:
+    return (
+        f"on_dock={status['on_dock']} worn={status['worn']} "
+        f"state={status['device_state']} bat={status['battery_pct']}% "
+        f"charge={status['charge_active']}"
+    )
 
 
 def _bytes_to_hex_line(data: bytes) -> str:
@@ -52,19 +85,23 @@ def _format_log_line(uuid: str, data: bytes, ts: datetime | None = None) -> str:
     return f"{time_str} - Characteristic ({uuid}) notified: <{hex_str}>\n"
 
 
-def _parse_battery_stats_6byte(data: bytes) -> str | None:
-    """
-    Parse 6-byte BatteryStats payload: [V_HI, V_LO, Pct, mAh_HI, mAh_LO, Est_Mins].
-    Returns [BATT] line for log_parser, or None if invalid.
-    """
-    if len(data) < 6:
+def _parse_battery_usage_8byte(data: bytes) -> str | None:
+    """Parse `3A0FF00D` little-endian battery usage telemetry from firmware 1.0.86+."""
+    if len(data) < 8:
         return None
-    voltage_mv = (data[0] << 8) | data[1]
+    voltage_mv = int.from_bytes(data[0:2], "little")
     percent = data[2]
-    mah_scaled = (data[3] << 8) | data[4]
+    flags = data[3]
+    mah_scaled = int.from_bytes(data[4:6], "little")
     mah_used = mah_scaled / 100.0
-    est_min = data[5]
-    return f"V: {voltage_mv}mV | %: {percent}% | Used: {mah_used:.2f}mAh | Rem: {est_min}min"
+    est_min = int.from_bytes(data[6:8], "little")
+    remaining = "n/a" if est_min == 0xFFFF else f"{est_min}min"
+    return f"V: {voltage_mv}mV | %: {percent}% | Flags: 0x{flags:02X} | Used: {mah_used:.2f}mAh | Rem: {remaining}"
+
+
+def _parse_battery_stats_6byte(data: bytes) -> str | None:
+    """Compatibility alias for callers that used the former BatteryStats helper name."""
+    return _parse_battery_usage_8byte(data)
 
 
 async def _scan_for_oralable() -> str | None:
@@ -99,7 +136,8 @@ async def _run_logger(
         chars.append(TEMP_CHAR_UUID)
     if subscribe_battery:
         chars.append(BATTERY_CHAR_UUID)
-        # BatteryStats (3A0FFEF2) optional - only on firmware with power telemetry
+        # Battery usage is optional and appears on firmware 1.0.86+.
+        chars.append(BATTERY_USAGE_CHAR_UUID)
     if not chars:
         chars = [PPG_CHAR_UUID]
 
@@ -111,9 +149,9 @@ async def _run_logger(
         line = _format_log_line(char_uuid, bytes(data))
         with open(out_path, "a+", encoding="utf-8") as f:
             f.write(line)
-            # Emit [BATT] line for BatteryStats (power telemetry) - parseable by log_parser
-            if char_uuid.lower() == BATTERY_STATS_CHAR_UUID.lower():
-                batt_line = _parse_battery_stats_6byte(bytes(data))
+            # Emit [BATT] line for the firmware-defined battery usage model.
+            if char_uuid.lower() == BATTERY_USAGE_CHAR_UUID.lower():
+                batt_line = _parse_battery_usage_8byte(bytes(data))
                 if batt_line:
                     ts = datetime.now(timezone.utc).strftime("%H:%M:%S.%f")[:-3]
                     f.write(f"{ts} - [BATT] {batt_line}\n")
@@ -126,11 +164,15 @@ async def _run_logger(
                 last_status_at = t
                 print(f"\rLogged {count} packets...", end="", flush=True)
 
-    print(f"Connecting to {address}...")
+    print(f"Connecting to {address} ({USER_FACING_DEVICE_NAME}; advertises as {DEVICE_NAME})...")
     print(f"Logging to {out_path}")
+    print(format_last_known())
     print("Press Ctrl+C to stop.\n")
 
     async with BleakClient(address) as client:
+        firmware = await read_and_persist_firmware(client, address)
+        with open(out_path, "a+", encoding="utf-8") as f:
+            f.write(firmware_log_header(firmware, address))
         for uuid in chars:
             def make_handler(char_uuid):
                 def h(sender, data):
@@ -139,21 +181,10 @@ async def _run_logger(
             try:
                 await client.start_notify(uuid, make_handler(uuid))
             except Exception as e:
-                if uuid.lower() == BATTERY_STATS_CHAR_UUID.lower():
-                    print(f"  (BatteryStats not found - use power telemetry firmware for [BATT] lines)")
+                if uuid.lower() == BATTERY_USAGE_CHAR_UUID.lower():
+                    print(f"  (Battery usage not found - requires firmware 1.0.86+ for [BATT] lines)")
                 else:
                     raise e
-        # Try BatteryStats if not in main list (power telemetry, 60s interval)
-        if subscribe_battery:
-            try:
-                def make_handler(char_uuid):
-                    def h(sender, data):
-                        notification_handler(char_uuid, data)
-                    return h
-                await client.start_notify(BATTERY_STATS_CHAR_UUID, make_handler(BATTERY_STATS_CHAR_UUID))
-                print("  BatteryStats (power telemetry) subscribed.")
-            except Exception:
-                pass
         print("Subscribed. Recording...")
         try:
             while True:

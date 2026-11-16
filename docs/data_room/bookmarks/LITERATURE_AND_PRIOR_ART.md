@@ -37,7 +37,7 @@
 | GrindCare | **anterior temporalis** sEMG (+ biofeedback impulse) | Diagnostic sens/spec ~60% in cited adult work |
 | Bruxoff | masseter sEMG + ECG | Better than EMG-only in some reports; still overestimates RMMA — see [BRUXOFF_PSG_GOLD_STANDARD.md](./BRUXOFF_PSG_GOLD_STANDARD.md) (Cid-Verdejo 2023 vs PSG in OSA) |
 | NOX T3 / Sleep Profiler | Type II PSG multi-channel | Mixed; more channels needed for fair SB assessment |
-| Sunrise | mandibular movement | Episodic sens. high; tonic clench / non-OSA gaps |
+| Sunrise | mandibular movement | Episodic sens. high; tonic clench / non-OSA gaps — mechanism and FDA letters: [SUNRISE_MANDIBULAR_MOVEMENT.md](./SUNRISE_MANDIBULAR_MOVEMENT.md) |
 | ISFDD | pressure in maxillary splint | Intraoral force — different class |
 
 - **Conclusion (authors):** select ambulatory devices are **promising as screening tools**, but need more PSG-AV validation before widespread clinical/domestic adoption.

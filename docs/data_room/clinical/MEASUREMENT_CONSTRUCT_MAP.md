@@ -1,14 +1,14 @@
 # Measurement construct map — MAM · ANR · Dual A · AcuPebble · PSG
 
-**As at:** 30 Aug 2026 · Pack **1.1.68**  
+**As at:** 12 Sep 2026 · Pack **1.1.69**  
 **Status:** Living table — iterate here; other docs **point**, they do not copy the matrix  
 **Agent slug:** `clinical` · start this file when the question is “what does X measure vs Y”
 
-**One-liner:** Four instrument families, different physics. Dual A already scores **EMG burst → LP IR-DC trough**. Other MAM names stay **labels** until F1 (or an event clock) says otherwise. **AHI**, **HB**, and **SASHB** are three different oxygen numbers. **AcuPebble always uses finger ox** (AHI + finger SpO₂ / ODI). PSG-AV = AHI **and** RMMA. **MAM and ANR do not use finger ox.** MAM SpO₂ / SASHB is **temple PPG**. ANR is EMG only. MAM never becomes AHI or Azarbarzin HB.
+**One-liner:** Four instrument families, different physics. Dual A already scores **EMG burst → LP IR-DC trough** in the **lab** (not a Beacon patient arm). Other MAM names stay **labels** until F1 (or an event clock) says otherwise. **AHI**, **HB**, and **SASHB** are three different oxygen numbers. **AcuPebble always uses finger ox** (AHI + finger SpO₂ / ODI). PSG-AV = AHI **and** RMMA. **MAM and ANR do not use finger ox.** MAM SpO₂ / SASHB is **temple PPG**. ANR is EMG only. MAM never becomes AHI or Azarbarzin HB.
 
 **Pedro sendable:** [PEDRO_CONSTRUCT_MAP_NOTE.md](./PEDRO_CONSTRUCT_MAP_NOTE.md) · [PDF](./PEDRO_CONSTRUCT_MAP_NOTE.pdf) — tables + why they matter for AcuPebble / Arm P / Dual A / FEP. Do not paste Table 1 into Paper A.
 
-**Related (detail, not duplicates):** [ANR_M40_CONCORDANCE.md](../../ANR_M40_CONCORDANCE.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](../bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) · [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md) · [ALGORITHM_ARCHITECTURE.md](../../ALGORITHM_ARCHITECTURE.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](./MAYORAL_METHOD_ORALABLE_VALIDATION.md)
+**Related (detail, not duplicates):** [DENTIST_APPROXIMATE.md](./DENTIST_APPROXIMATE.md) (aim vs current bar — living shortcomings) · [ANR_M40_CONCORDANCE.md](../../ANR_M40_CONCORDANCE.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](../bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) · [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md) · [ALGORITHM_ARCHITECTURE.md](../../ALGORITHM_ARCHITECTURE.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](./MAYORAL_METHOD_ORALABLE_VALIDATION.md)
 
 ---
 
@@ -77,7 +77,7 @@ Columns: **now** = what exists in code / Dual A today. **MAM if verified** = the
 |-------|-------------|----------------|
 | **MAM** | IR trough, % drop, SASHB, tonic/phasic/rescue/recovery **labels**, Core ML, **temple** SpO₂ | Finger ox; AHI; HB; electrical onset; FEP latency |
 | **ANR** | EMG onset + amplitude bouts | Finger ox; AHI; HB; IR; Core ML; rescue-as-airway |
-| **Dual A** | Table 1 rows **4–6** + **temple** SASHB shown beside EMG | Finger ox; AHI; HB; Core ML vs EMG; tonic/phasic F1; FEP latency |
+| **Dual A** | Table 1 rows **4–6** + **temple** SASHB shown beside EMG | Finger ox; AHI; HB; Core ML vs EMG; tonic/phasic F1; FEP latency. **Not a Beacon patient stack.** |
 | **AcuPebble** | AHI + ODI / **finger** SpO₂ (**always**) | HB unless export is event-tied; all jaw rows |
 | **AcuPebble + Dual A** | AHI **plus** EMG→IR. Finger SpO₂ is **AcuPebble only**; Dual A still temple + EMG | Coupling **only if** event timestamps align — **not built**. Still not HB unless event-tied area. Do not treat Dual A SpO₂ as the finger channel |
 | **PSG-AV** | AHI **and** HB (if scored) **and** RMMA | Oralable IR-DC / Core ML / SASHB unless MAM is worn |
@@ -98,7 +98,7 @@ Hypothesis 3.5.4 (MAD/CPAP cuts RMMA **timed to apnea/hypopnea end**) needs **ev
 | Call recovery optical–motion settle | Call it homeostatic latency |
 | Call AcuPebble Pedro’s AHI/ODI tool (finger ox) | Call AcuPebble AHI or ODI **Azarbarzin HB** unless the export has event-tied SpO₂ area |
 | Keep AcuPebble for AHI | Claim a temple microphone would score AHI (Gen1 has no mic; wrong site vs neck HSAT) |
-| Paper A = feasibility / Dual A precursor | Paper A tests FEP endotypes |
+| Paper A = feasibility / Dual A **lab** precursor | Paper A tests FEP endotypes · patients wear ANR + MAM |
 
 ---
 
@@ -113,3 +113,5 @@ Hypothesis 3.5.4 (MAD/CPAP cuts RMMA **timed to apnea/hypopnea end**) needs **ev
 | 29 Aug 2026 | Table 2: dropped **PSG + Dual A** stack. |
 | 29 Aug 2026 | Pedro sendable [PEDRO_CONSTRUCT_MAP_NOTE.md](./PEDRO_CONSTRUCT_MAP_NOTE.md) / PDF — pointer only; tables stay here. |
 | 30 Aug 2026 | Pedro note: glossary (instrument / methods / Dual A / muscle vs infrared / Paper A / FEP). Table 1 unchanged. |
+| 12 Sep 2026 | Dual A = **lab methods** (not Beacon patient). Pack **1.1.69**. Table 1 numbers unchanged. |
+| 24 Sep 2026 | Pointer only: [DENTIST_APPROXIMATE.md](./DENTIST_APPROXIMATE.md). Table 1 unchanged. |

@@ -3,7 +3,7 @@
 **When:** Wed **22 Jul 2026**  
 **Who:** John Cogan · Ken Kinsella (BalancePoints) · Nigel Woods (Amstrow / Independent Director)  
 **Status:** INTERNAL · prep retained below · **outcomes recorded** · not legal advice  
-**Clean snapshot (living as at 7 Aug):** [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md) — this brief remains the **22 Jul** meeting archive  
+**Clean snapshot (living):** [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md) — **Ken is not a CEO candidate** (closed 19 Sep). This brief remains the **22 Jul** meeting archive.  
 **Full detail:** [JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md](./JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md) INTERNAL §A / §G
 
 ---

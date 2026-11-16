@@ -1,15 +1,17 @@
 # Regulatory timeline — wellness wearable first, medical device later
 
-**One-page diligence summary** · **Version:** 1.2.0 · **July 2026**  
+**One-page diligence summary** · **Version:** 1.2.1 · **12 Sep 2026**  
 **Not legal advice** — confirm with regulatory counsel before submission.
 
 **Related:** [ORALABLE_FTS_36MO.md](./ORALABLE_FTS_36MO.md) · [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [ORALABLE_MARKET_LANDSCAPE.md](../bookmarks/ORALABLE_MARKET_LANDSCAPE.md) §8–9 · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Strategy:** **Stage A = wellness wearable** (ship now). **Stage B = medical device** (later). Build and patent through Stage A. Clearance is a later gate.
 
-Stage A wellness first · Stage B medical later · new US patent embodiment · Ed/Pedro = patient app only.
+Stage A wellness first · Stage B medical later · new US patent embodiment · Beacon = patient app only.
 
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 continues past Sep 2026 (30 Sep handoff missed); Phase 1+ Q4’26–Q1’27; Gen2 parallel or skip if Gen4; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+
+**Do not say:** extraoral skin-worn, or USB-C on the pod, cancels FDA or MDR. Classification follows **intended use and claims**. Counsel, not this page, classifies the device ([ED_PEDRO_MEETING_2026-09-07.md](../clinical/ED_PEDRO_MEETING_2026-09-07.md) §1.6).
 
 ---
 
@@ -22,7 +24,7 @@ Stage A wellness first · Stage B medical later · new US patent embodiment · E
 | **App claims** | Metadata compliance tests block "diagnose", "FDA cleared", "medical device" |
 | **Software infrastructure** | `RegulatoryPackageBuilder`, ISO 14971-style risk entries, clinical PDF export |
 | **Pilot evidence path** | **Phase 0** temple vitals on Gen1 → **Phase 1+** muscle IR-DC / TFI → Gen2 → **then** Stage B 510(k) target |
-| **Ed/Pedro** | Patient app only; wellness wearable validation |
+| **Ed/Pedro** | Patient app only; one-night **clinic loaner**; Dual A **lab only** |
 
 ---
 
@@ -73,10 +75,10 @@ Stage A wellness first · Stage B medical later · new US patent embodiment · E
 
 | Study | Purpose | Timing |
 |-------|---------|--------|
-| **Ed/Pedro pilot** | Operating evidence; protocol fidelity; false-positive gates | Q2–Q3 2026 |
-| **5-user pilot** | Usage retention, export workflow, dentist handshake | Q3 2026 |
-| **20-device field** | Accuracy vs structured protocol + EMG subset | Q4 2026 |
-| **Pivotal / concordance** | Sensitivity/specificity vs EMG gold standard | 2027 |
+| **Beacon n≈5 clinic loaner** | Operating evidence; ≥4 h nights; PDF/CSV; wellness copy | **Q4 2026** after kits clear charge-to-temple |
+| **Hypnogram figure nights** | Band recalibration; replace FIG-CO-025 | When a consented **≥6 h** night exists |
+| **20-device field** | Accuracy vs structured protocol + **lab** EMG subset | After n≈5 is running — not a Beacon patient ANR arm |
+| **Pivotal / concordance** | Sensitivity/specificity vs EMG gold standard | 2027 · Paper C |
 
 Protocol: [PILOT_PROTOCOL_ED_PEDRO.md](../archive/PILOT_PROTOCOL_ED_PEDRO.md)
 

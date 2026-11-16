@@ -27,9 +27,11 @@
 - **Run** `scripts/check_ir_dc_scaling.py` on new logs to verify.
 
 ## 6. Agent Workflow
-- **Plan Mode:** When I ask for a new feature, first research the `src/` directory and propose a plan in Markdown.
+- **Topic routing:** Name a slug from [docs/WORKSPACE_TOPICS.md](docs/WORKSPACE_TOPICS.md) or copy a starter from [AGENTS.md](AGENTS.md).
+- **Plan Mode:** When I ask for a new feature, first inspect the topic's owning repository and propose a plan in Markdown; do not assume every feature belongs in `src/`.
 - **Verification:** Always check for 'Baseline Wander' when calculating SpO2.
 - **Sync:** When processing logs, look for 3 consecutive high-G spikes in the Accelerometer (Sync Taps) to anchor the start time.
+- **Prose:** Docs, data-room notes, pitches, and partner emails use plain Orwell English — see `.cursor/rules/prose-orwell.mdc`.
 
 ## 7. Firmware & nRF Connect
 - **Any firmware change** (`oralable_nrf/`) must be validated against **nRF Connect** before it is considered complete.

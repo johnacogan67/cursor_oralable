@@ -1,6 +1,7 @@
 # Chief Executive Officer — Oralable / JAC Dental Solutions Limited
 
 **Status:** Working draft for Nigel / Amstrow candidate referrals · **23 Jul 2026**  
+**Living lock (19 Sep 2026):** **Ken Kinsella is not a CEO candidate.** Do not send this brief to Ken as if he is in the search.  
 **Entity:** JAC Dental Solutions Limited (Ireland) · CRO **697987** · product brand **Oralable**  
 **Reports to:** Board (founder majority owner + Independent Director)  
 **Works with:** Founder as **Executive Chairman** (product, clinical science, IP) — not a “Chief Scientist only” demotion of the founder  
@@ -13,7 +14,7 @@ This is a **search brief**, not an offer. Pay and equity bands are for discussio
 
 ## 1. Company in one paragraph
 
-Oralable is a **temple-worn optical wearable** (PPG + motion) for overnight **vitals first** (HR / SpO₂), then jaw-load / bruxism-related metrics (IR-DC, TFI, SASHB) as a **Stage A wellness product**. A **Stage B medical-device** path comes later — not the current App Store or pilot claim. Hardware is Gen1 (Nordic nRF, magnetic charging case); iOS patient app in TestFlight (**4.3.3** build **5** · FW **1.0.84**); **Oralable Research Kits** for Ed/Pedro stay **gated / not yet shipped** (target **5 by 31 Aug 2026**) until the charge-to-temple gate clears (ready ≠ delivered — [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md)). Near-term capital target is BalancePoints-style **Point B ~€180k** (F&F + EI PSSF CLN + HPSU), then a larger pre-seed/seed when evidence and governance allow.
+Oralable is a **temple-worn optical wearable** (PPG + motion) for overnight **vitals first** (HR / SpO₂), then jaw-load / bruxism-related metrics (IR-DC, TFI, SASHB) as a **Stage A wellness product**. A **Stage B medical-device** path comes later — not the current App Store or pilot claim. Hardware is Gen1 (Nordic nRF, charge case — coil align now; magnetic dock later); iOS patient app in TestFlight (**4.3.3** build **5** · FW **1.0.85**); **Oralable Research Kits** for Beacon stay **gated / not yet shipped** (**30 Sep 2026** handoff **missed**; five Oralable-only kits; no new date) until the charge-to-temple gate clears (ready ≠ delivered — [VERSION_ALIGNMENT.md](../VERSION_ALIGNMENT.md) · [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md)). Near-term capital target is BalancePoints-style **Point B ~€180k** (F&F + EI PSSF CLN + HPSU), then a larger pre-seed/seed when evidence and governance allow.
 
 ---
 
@@ -70,7 +71,7 @@ The founder built the product, IP story, and technical stack and stays **Executi
 
 | Horizon | Outcomes that matter |
 |---------|----------------------|
-| **0–90 days** | Point B path live (F&F materials + EI process); Conor/cap-table cleanup supported; charge-to-temple gate cleared → **5 Research Kits** shipped / first field evidence in motion |
+| **0–90 days** | Point B path live (F&F materials + EI process); Conor/cap-table cleanup supported; charge-to-temple gate cleared → **5 Oralable-only Research Kits** shipped / first field evidence in motion |
 | **3–6 months** | Point B (or bridge) closed or clearly on track; Stage A soft-launch plan funded; team/contractor plan clear |
 | **6–12 months** | Credible usage / pilot metrics; next-round story ready; optional medical exploration only as a **gated** workstream |
 

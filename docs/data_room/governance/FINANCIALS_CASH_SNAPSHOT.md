@@ -57,7 +57,7 @@ An accountant still needs to sort this for a P&L. This note is a bank-statement 
 
 **Ken narrative:** Product Point A is real. **Financials Point A** is founder-loan runway with little cash left — the raise is due now, not optional.
 
-**Governance link (22 Jul 2026):** Conor Meaney buyout counters (€10k / €15k cash at transfer) **cannot** be paid from this bank balance — personal / bridge cash. See [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md).
+**Governance link (5 Oct 2026):** Conor share transfer is signed. No cash is payable on it. See [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md).
 
 ---
 

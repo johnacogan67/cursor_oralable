@@ -1,8 +1,9 @@
 # Extraoral Temporalis Optical Myography at 50 Hz: Research Kit, Pipeline, and Feasibility — Draft (Paper A)
 
-**PDF:** [PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf) · [HTML](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.html)  
+**PDF:** [PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf) *(regenerated 7 Sep 2026)* · [HTML](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.html)  
 **Status:** Working draft for co-author review (Koorosh Nabavi / McGill–RI-MUHC · Dr Edward Owens · Dr Pedro Mayoral Sanz · John A. Cogan)  
-**As at:** 30 Aug 2026 · Pack **1.1.68** · Research Kit + Dual A SpO₂∩EMG nest + **measured Mac Dual A** `20260812_085110` + research EDF+  
+**As at:** 7 Sep 2026 · Pack **1.1.68** · Beacon kit = Oralable-only (no patient ANR) · Dual A = Mac methods precursor `20260812_085110` + research EDF+ · meeting [ED_PEDRO_MEETING_2026-09-07.md](./ED_PEDRO_MEETING_2026-09-07.md)  
+**Living stack (30 Oct):** **Gen 2 only** · BOM REV9 · PCB REV11 · **ES4L15BA1** · cell **LP270829** · app **4.3.3** (build **5**) · pack **1.1.74** · kits **gated**. Bench image 29 Oct is not kit firmware **2.0.x**. PPG and ACC do not stream. Gen 1 is legacy. [GEN2_WOUT_KAGA_STATUS_2026-10-30.md](../hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md). PDF still **7 Sep**.  
 **Intended venue:** `[PLACEHOLDER — OWNER: Koorosh]` IEEE JBHI / EMBC / Sensors / other — shortlist 2–3  
 **Format note:** Markdown for markup; convert to IEEEtran after venue lock.  
 **Review cover:** [PAPER_A_REVIEW_COVER.md](./PAPER_A_REVIEW_COVER.md)  
@@ -43,10 +44,10 @@
 
 ## Abstract
 
-Sleep bruxism (SB) assessment still leans on polysomnography with audio-visual recording (PSG-AV). Ambulatory tools are mostly surface EMG (GrindCare, Bruxoff), mandibular motion, acoustic home sleep tests (AcuPebble), or intraoral force sensing. Recent reviews list few **extraoral temporalis** optical ambulatory devices. We describe the **Oralable Research Kit**: extraoral temple PPG plus accelerometry (MAM) seated on the **anterior temporalis** elevating belly, optional temporalis sEMG (ANR M40) for Dual Protocol A concordance, and a **50 Hz** optical myography (OMG) pipeline. MAM senses hemodynamic occlusion (IR-DC) and vitals; ANR senses electrical motor activity of the same belly. IR-DC occlusion features feed a **state hypnogram** and engineering burden metrics over multi-hour wear (1–6 h+). A Beacon feasibility protocol (n≈5) nests Pedro Mayoral’s 1–2 h oxygen / MAD arm with AcuPebble AHI context. We do not claim AHI equivalence.
+Sleep bruxism (SB) assessment still leans on polysomnography with audio-visual recording (PSG-AV). Ambulatory tools are mostly surface EMG (GrindCare, Bruxoff), mandibular motion, acoustic home sleep tests (AcuPebble), or intraoral force sensing. Recent reviews list few **extraoral temporalis** optical ambulatory devices. We describe the **Oralable Research Kit**: extraoral temple PPG plus accelerometry (MAM) seated on the **anterior temporalis** elevating belly, a **50 Hz** optical myography (OMG) pipeline, and (as a methods precursor, not a patient requirement) optional temporalis sEMG Dual Protocol A with ANR M40. MAM senses hemodynamic occlusion (IR-DC) and vitals. IR-DC occlusion features feed a **state hypnogram** and engineering burden metrics over multi-hour wear (Beacon evaluable **≥4 h**; 6 h better). A Beacon feasibility protocol (n≈5) uses a **clinic-loaner** one-night workflow (no headband; pad/tape attach) and nests Pedro Mayoral’s oxygen / MAD arm with AcuPebble AHI context. We do not claim AHI equivalence.
 
 > **[PLACEHOLDER — OWNER: John]** Results sentences — fill after pilot *N*, e.g.:  
-> *“In *N*=[ ] Research Kit participants, [ ]% of sessions exported CSV; Arm P windows *n*=[ ]; Dual A Mac sessions *n*=[ ]; ≥6 h nights *n*=[ ].”*
+> *“In *N*=[ ] Research Kit participants, [ ]% of sessions exported; Arm P windows *n*=[ ]; ≥4 h nights *n*=[ ]; ≥6 h nights *n*=[ ]. Dual A remained lab methods only.”*
 
 **Index terms**—photoplethysmography, optical myography, temporalis, sleep bruxism, wearable sensors, surface EMG, overnight monitoring, SpO₂, accelerometry.
 
@@ -56,20 +57,20 @@ Sleep bruxism (SB) assessment still leans on polysomnography with audio-visual r
 
 Sleep bruxism is repetitive masticatory muscle activity during sleep. Clinicians often judge masseter and temporalis patterns against PSG-AV. Ambulatory devices are mainly screening tools until validation improves [1].
 
-Through late 2024, commercial ambulatory systems are mostly **sEMG**, Type II PSG, mandibular movement, or **intra-splint force** [1]. That leaves room for a small **extraoral** optical sensor on the anterior temporalis—outside the mouth—for multi-night home wear.
+Through late 2024, commercial ambulatory systems are mostly **sEMG**, Type II PSG, mandibular movement, or **intra-splint force** [1]. That leaves room for a small **extraoral** optical sensor on the anterior temporalis—outside the mouth—for overnight clinic-loaner wear.
 
 Prior jaw-adjacent optical work includes (i) **intraoral** PPG for sleep cardiorespiratory monitoring [2], and (ii) **awake** chewing detection with ear-hook PPG, audio, and accelerometry [3]. Neither targets overnight **temporalis OMG** via IR-DC hemodynamic occlusion for jaw-load phenotyping.
 
 This Paper A contributes:
 
-1. A system description of the **Oralable Research Kit** (Gen1 temple MAM + ANR M40 sEMG + iOS/Mac capture paths, 50 Hz research grid), including anterior temporalis seat rationale.  
-2. A signal-processing pipeline for heart-rate band PPG, IR-DC occlusion features, overnight state classification, and Dual Protocol A alignment vs temporalis sEMG (optical vs electrical paths on the same belly).  
-3. An overnight **state hypnogram** as the primary at-a-glance map for multi-hour wear (1–2 h Arm P; stretch ≥6 h).  
-4. A Beacon feasibility protocol (n≈5) with Pedro Mayoral’s oxygen / MAD arm and a descriptive competitor landscape (Bruxoff, GrindCare, AcuPebble).
+1. A system description of the **Oralable Research Kit** (Gen 2 temple MAM + iOS capture; ANR Dual A as a **lab methods** path, not a Beacon patient requirement), including anterior temporalis seat rationale.  
+2. A signal-processing pipeline for heart-rate band PPG, IR-DC occlusion features, overnight state classification, and (optional) Dual Protocol A alignment vs temporalis sEMG.  
+3. An overnight **state hypnogram** as the primary at-a-glance map for multi-hour wear (Beacon evaluable ≥4 h; hypnogram figure / band recalibration ≥6 h).  
+4. A Beacon feasibility protocol (n≈5): one-night clinic loaner, pad/tape attach, Pedro Mayoral’s oxygen / MAD arm, and a descriptive competitor landscape (Bruxoff, GrindCare, AcuPebble).
 
-Paper **B** (clinical phenotype / intake labels) and deeper PSG-AV concordance are future work (§IX). Dual A / ANR descriptive concordance is **in scope for methods + precursor results** in this rewrite; diagnostic SB claims are not.
+Paper **B** (clinical phenotype / intake labels) and deeper PSG-AV concordance are future work (§IX). Dual A / ANR descriptive concordance is **in scope for methods + precursor results**; it is **not** a patient arm. Diagnostic SB claims are not.
 
-**Scope note (Research Kit):** Field sessions start with temple HR/SpO₂ and wear QC on Gen1 hardware. The same kit supports Dual Protocol A (Mac) and longer iOS wear. IR-DC jaw-load and Dual A outputs are engineering phenotypes. Research Kits stay **gated / not yet shipped** until charge-to-temple clears; target **5 kits to Pedro by 31 Aug 2026** [8].
+**Scope note (Research Kit):** Field sessions are Oralable-only on Gen 2: temple HR/SpO₂, wear QC, one night, clinic recharge. Dual Protocol A remains Mac/lab. IR-DC jaw-load and Dual A outputs are engineering phenotypes. Research Kits stay **gated / not yet shipped**. The boards are Gen 2. A bench image is on one of them. Sensors do not stream. The **30 Sep 2026** handoff **missed**. Five Oralable-only kits. No new date [8].
 
 ---
 
@@ -81,7 +82,7 @@ Li *et al.* review ambulatory SB devices. EMG-only tools can overestimate SB wit
 
 | Device / class | Modality | Primary outputs | Role vs Oralable |
 |----------------|----------|-----------------|------------------|
-| **ANR M40** | Temporalis research sEMG | EMG amplitude / bouts | **In-kit** Dual A comparator |
+| **ANR M40** | Temporalis research sEMG | EMG amplitude / bouts | **Lab** Dual A comparator (not a Beacon patient device) |
 | **AcuPebble** | Neck acoustic HSAT ± SpO₂ | **AHI / ODI** | Pedro’s OSA reference — nest, do not replace [13] |
 | **GrindCare** | Anterior temporalis **sEMG** | Muscle activity / biofeedback | Peer class at same site; Oralable is **optical** OMG |
 | **Bruxoff** | Masseter sEMG + ECG | Ambulatory SB-oriented counts | **Reference** ambulatory EMG (not PSG gold) [12] |
@@ -114,13 +115,14 @@ Owens and Mayoral outline an FEP-informed account of SB endotypes and a MAD-sele
 
 ### A. Kit definition
 
-The **Oralable Research Kit** combines (i) Gen1 Oralable temple MAM, (ii) ANR M40 temporalis sEMG, (iii) magnetic charge case, and (iv) iOS Oralable app for 1–6 h+ BLE collection, with Mac Dual Protocol A for labeled concordance [8], [14], [15].
+The **Oralable Research Kit** for Beacon is (i) Gen 2 Oralable temple MAM, (ii) charger used **in clinic** (coils aligned now; magnetic dock later), (iii) ECG/pad or tape attach (**no headband**), and (iv) iOS Oralable app for ≥4 h one-night collection [8], [14], [15]. ANR M40 Dual Protocol A remains a **lab methods** path (Mac); patients do not combine ANR and MAM.
 
 | Kit item | Role |
 |----------|------|
-| Oralable Gen1 clip + case | Temple PPG/ACC · FW **1.0.84** |
-| ANR M40 | Temporalis Analog EMG (~10 Hz notify) |
-| iOS Oralable **4.3.3** | Long-wear vitals / overnight export |
+| Oralable Gen 2 MAM + charger | Temple PPG/ACC · bench image is not the kit · sensors do not stream · clinic charge |
+| Pads / tape | Temple attach (Ed: AccuPebble/Sunrise class or ECG pads) |
+| iOS Oralable **4.3.3** | One-night vitals / overnight export |
+| ANR M40 (lab only) | Temporalis Analog EMG — Dual A methods precursor |
 | Mac Dual A scripts | Shared Protocol A cues · paired logs |
 
 ![Fig. 1 — Extraoral vs intraoral](../figures/FIG-CO-011-extraoral-vs-intraoral.svg)
@@ -152,7 +154,7 @@ EMG bout onset typically **leads** the IR-DC trough by about **1–5 s** (hemody
 
 ![Fig. 2d — Device photo](../figures/FIG-CO-012-gen1-device-photo.svg)
 
-*Fig. 2(d). Gen1 Oralable device. Asset: FIG-CO-012 — **[PLACEHOLDER — OWNER: John]**.*
+*Fig. 2(d). Gen 2 arrival, 14 Oct 2026: TGM charger, small MAM, and LP270829 cell. Bare boards and cell, not a worn housing. Assets: [2026-10-14_wa_gen2_charger_mam_back.jpg](../../figures/attachment_photo_source/2026-10-14_wa_gen2_charger_mam_back.jpg) · [2026-10-14_wa_gen2_charger_mam_front.jpg](../../figures/attachment_photo_source/2026-10-14_wa_gen2_charger_mam_front.jpg).*
 
 ![Fig. 2e — Research Kit](../figures/FIG-CO-016-ed-pedro-kit-contents.svg)
 
@@ -176,10 +178,11 @@ EMG bout onset typically **leads** the IR-DC trough by about **1–5 s** (hemody
 |------|---------------------|
 | PPG | Maxim **MAXM86161** (multi-wavelength; Red / Green / IR used in pipeline) |
 | Accelerometer | **LIS2DTW12** (actigraphy / sync taps / motion context) |
-| MCU / radio | Kaga **ES2832AA2** (nRF52832) Gen1 |
-| BOM / PCB | Gen1 · BOM REV8 · PCB REV10 |
+| MCU / radio | Kaga **ES4L15BA1** (nRF54L15) Gen 2 |
+| BOM / PCB | Gen 2 · BOM REV9 · PCB REV11 |
+| Cell | **LP270829** 35 mAh |
 | Stream | BLE notify path; research grid **50 Hz** (20 ms) after resampling |
-| Firmware (pilot) | **1.0.70** ship (min gate 1.0.63) |
+| Firmware (pilot) | **2.0.x** target. Port of the Gen 1 app. Not flashed. Install with `flash_and_rtt.sh`, same as Gen 1. |
 | Companion app | iOS Oralable patient app **4.3.3** (vitals + overnight report path) |
 | Dual A sEMG | ANR M40 Automation IO Analog EMG `0x2A58` |
 
@@ -261,11 +264,11 @@ Epochs are labeled into device-inferred states: **quiet**, **tonic**, **phasic**
 
 The primary overnight graphic is a **state hypnogram**—a barcode-style map of quiet / tonic / phasic / rescue / recovery across the night. Layout resembles a sleep-stage hypnogram, but bands show **device-inferred jaw-load / recovery states**, not PSG sleep stages [7].
 
-**Evaluable night rule (Paper A / Arm E/J):** primary overnight Results and band recalibration require **≥6 h** worn (goal 8 h). The iOS app may unlock provisional morning-card bands from **≥1 h** for pilot UX; do not treat 1 h sessions as Paper A overnight *N*. Protocol A/B minutes are not sleep sessions.
+**Evaluable night rule:** Beacon feasibility *N* counts **≥4 h** worn (6 h better). Primary overnight **figure** replacement and **band recalibration** still want **≥6 h** (goal 8 h). The iOS app may unlock provisional morning-card bands from **≥1 h** for pilot UX; do not treat 1 h sessions as overnight Results. Protocol A/B minutes are not sleep sessions.
 
 ![Fig. 5 — State hypnogram exemplar](../figures/FIG-CO-025-state-hypnogram-exemplar.png)
 
-*Fig. 5. Illustrative state hypnogram from engineering pack TEMPORALIS_20260724 (asset FIG-CO-025). **Important:** wear ≈ **6.0 min** — **not** an evaluable ≥6 h overnight. A second layout pack from Dual A `20260812_085110` is at `plots/overnight_report/TEMPORALIS_20260812_085110_dualA/02_state_hypnogram.png` (also ~6 min). Replace with consented ≥6 h nights before claiming overnight results.*
+*Fig. 5. Illustrative state hypnogram from engineering pack TEMPORALIS_20260724 (asset FIG-CO-025). **Important:** wear ≈ **6.0 min** — **not** an evaluable ≥4 h Beacon night and **not** a ≥6 h figure night. A second layout pack from Dual A `20260812_085110` is at `plots/overnight_report/TEMPORALIS_20260812_085110_dualA/02_state_hypnogram.png` (also ~6 min). Replace with consented ≥6 h nights before claiming overnight band results; ≥4 h nights still count for feasibility wear *N*.*
 
 ![Fig. 5b — Band chips stub](../figures/FIG-CO-019-hypnogram-bands.svg)
 
@@ -281,16 +284,17 @@ Canonical ops protocol: [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_
 
 ### A. Clinical setting
 
-Dental Sleep Medicine partners at **Beacon** (Owens, Mayoral) run Research Kit feasibility: home or clinic wear, chairside review of the overnight map, and Pedro’s MAD titration context nested with AcuPebble AHI when available [8], [13].
+Dental Sleep Medicine partners at **Beacon** (Owens, Mayoral) run Research Kit feasibility: **one-night clinic loaner**, pad/tape attach (no headband), chairside review of the overnight map, and Pedro’s MAD titration context nested with AcuPebble AHI when available [8], [13]. Patients do not wear ANR with the MAM.
 
 ### B. Structured collection
 
 | Protocol / arm | Purpose | Anchor | Duration |
 |----------------|---------|--------|----------|
-| **Core** | Setup, comfort, HR/SpO₂ QC, export | Temple mount | ≥5–10 min |
-| **Arm P (Pedro)** | Oxygen burden ± MAD | Continuous wear | **1–2 h** |
-| **Arm E/J** | Evaluable overnight hypnogram | Home wear | **≥6 h** (goal 8 h) |
-| **Protocol A / Dual A** | Labeled training + ANR concordance | 5-tap sync | ~6 min Mac Dual A |
+| **Core** | Setup, comfort, HR/SpO₂ QC | Temple pad/tape | ≥5–10 min |
+| **Beacon night** | Feasibility wear / hypnogram | Clinic loaner · one night | **≥4 h** (6 h better) |
+| **Arm P (Pedro)** | Oxygen burden ± MAD | Same night or short window | **1–2 h** window or full night |
+| **Hypnogram figure** | Replace FIG-CO-025; band recalibration | When a longer night exists | **≥6 h** (goal 8 h) |
+| **Protocol A / Dual A** | Labeled training + ANR concordance | **Lab (John)** · 5-tap sync | ~6 min Mac Dual A |
 | **Protocol B** | Validation gates (later) | First 3-tap | ~4.5 min |
 
 Details: [../TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md).
@@ -308,10 +312,11 @@ Details: [../TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROT
 
 | Tier | Target | Use |
 |------|--------|-----|
-| **Paper A feasibility** | **n≈5** Beacon (Pedro ± Ed first, then +3) | Wear, QC, Arm P, Dual A precursor, landscape |
-| Research Kit ship | **5 kits by 31 Aug 2026** | Field *N* gate [14] |
+| **Paper A feasibility** | **n≈5** Beacon (Pedro ± Ed first, then +3) | Wear, QC, ≥4 h nights, Arm P, landscape |
+| Research Kit ship | **5 Oralable-only kits**. **30 Sep 2026** **missed**. No new date. | Field *N* gate [14] · ANR not in box |
 | Tier 1 (later) | ≈ **20–30** users × 3–5 Protocol A | Core ML cohort [9] |
-| Overnight subset | ≥6 h nights | Hypnogram / band recalibration |
+| Overnight figure subset | ≥6 h nights | Hypnogram / band recalibration |
+| Dual A | Lab methods precursor | Not a patient arm |
 | Deeper EMG / PSG-AV | Later papers | Bruxoff/PSG-AV diagnostic concordance |
 
 > **[PLACEHOLDER — OWNER: All]** Lock inclusion/exclusion, demographics stratification (sex, age, habitus, skin tone) [9].
@@ -329,6 +334,7 @@ Details: [../TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROT
 | Enrolled *N* | `[PLACEHOLDER — OWNER: Ed/Pedro + John]` |
 | Evaluable overnight nights (*n*) | `[PLACEHOLDER]` |
 | Mean ± SD wear hours | `[PLACEHOLDER]` |
+| % nights ≥4 h | `[PLACEHOLDER]` |
 | % nights ≥6 h | `[PLACEHOLDER]` |
 | Demographics | `[PLACEHOLDER]` |
 
@@ -353,7 +359,7 @@ Details: [../TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROT
 
 ### D. Illustrative short-session examples (non-inferential)
 
-Two ~6 min engineering packs demonstrate layout / Dual A toolchain. **Neither** is an evaluable ≥6 h overnight.
+Two ~6 min engineering packs demonstrate layout / Dual A toolchain. **Neither** is an evaluable ≥4 h Beacon night.
 
 | KPI | TEMPORALIS_20260724 | Dual A 20260812_085110 |
 |-----|---------------------|-------------------------|
@@ -376,8 +382,8 @@ Two ~6 min engineering packs demonstrate layout / Dual A toolchain. **Neither** 
 | Mac Dual Protocol A + align + SpO₂∩EMG nest | **Measured** pack `20260812_085110` |
 | Research EDF+ (`session.edf` with ANR EMG) | Mac default on; iOS Dual A Share |
 | iOS Oralable long wear (1–6 h+) | Supported (no hard duration cap) |
-| iOS Dual A overnight / ≥6 h paired | Follow-on |
-| Research Kits with Pedro | **Gated** — target 5 kits by 31 Aug 2026 |
+| iOS Dual A overnight / ≥6 h paired | Follow-on (lab) · **not** Beacon patient path |
+| Research Kits with Beacon | **Gated** — 5 **Oralable-only** kits. **30 Sep 2026** handoff **missed**. No new date. |
 
 ### F. Agreement endpoints
 
@@ -395,7 +401,7 @@ Two ~6 min engineering packs demonstrate layout / Dual A toolchain. **Neither** 
 
 ### A. Positioning
 
-This draft treats the **Oralable Research Kit** as an **extraoral anterior-temporalis OMG** system for multi-hour jaw-load and vitals mapping [15]. Oralable MAM and ANR sense the same elevating belly by different physics (optical occlusion + vitals vs surface EMG). The kit complements PSG-AV diagnosis [1] and AcuPebble AHI [13]; finger HSAT rings such as Happy Ring [16] sit on the same AHI-class shelf. It does not replace them. Bruxoff and GrindCare are the ambulatory EMG peer class [1], [12]. ANR Dual A is the in-kit electrical comparator. The state hypnogram is the proposed primary display for 1–6 h+ home wear.
+This draft treats the **Oralable Research Kit** as an **extraoral anterior-temporalis OMG** system for multi-hour jaw-load and vitals mapping [15]. Oralable MAM measures optical occlusion + vitals. ANR Dual A is a **lab** electrical comparator on the same elevating belly — not a Beacon patient requirement. The kit complements PSG-AV diagnosis [1] and AcuPebble AHI [13]; finger HSAT rings such as Happy Ring [16] sit on the same AHI-class shelf. It does not replace them. Bruxoff and GrindCare are the ambulatory EMG peer class [1], [12]. The state hypnogram is the proposed primary display for ≥4 h clinic-loaner nights.
 
 ### B. Competitor output comparison (plan)
 
@@ -439,7 +445,7 @@ flowchart LR
 
 | Paper | Focus | Dependencies |
 |-------|-------|--------------|
-| **A** (this draft) | Research Kit methods, Dual A precursor, hypnogram, Beacon n≈5 | Ethics + 5 kits + pilot *N* |
+| **A** (this draft) | Research Kit methods, Dual A **lab** precursor, hypnogram, Beacon n≈5 | Ethics + 5 Oralable-only kits + ≥4 h *N* |
 | **B** | Phenotype vs intake / dentist labels; overnight band recalibration; optional Owens–Mayoral endotype / MAD-selective RMMA tests [17] | BruxScreen pathway [4]; ≥6 h nights; MAD setting log |
 | **C** | Deeper EMG / Bruxoff / **PSG-AV** concordance | Larger *N*; lab PSG-AV |
 
@@ -450,16 +456,16 @@ flowchart LR
 
 See also the full audit checklist in [PAPER_A_VALIDATION_AND_FUTURE_WORK.md](./PAPER_A_VALIDATION_AND_FUTURE_WORK.md) §7.
 
-1. **True overnight corpus** — consented temple nights with wear ≥6 h (goal 8 h); regenerate Fig. 5; recalibrate band cutoffs.  
+1. **True overnight corpus** — consented temple nights with wear ≥4 h for feasibility *N*; ≥6 h (goal 8 h) to regenerate Fig. 5 and recalibrate band cutoffs.  
 2. **Publishable algorithm appendix** — filter SOS/order, state-machine thresholds, SpO₂ curve coefficients; Python↔Swift epoch parity report.  
 3. **Signal QC endpoints** — IR-DC coupling in-range fraction (10M–70M raw class), green SNR post-bandpass, SpO₂ quality-gate rate, BLE gap statistics (Table II).  
 4. **Motion / orofacial confounding** — ACC-informed rejection of false tonic/phasic; compare to awake PPG+ACC chewing literature [3] without conflating goals.  
 5. **Literature refresh** — re-verify Li ambulatory gap for temple optical devices published after Dec 2024.  
 6. **Clinical labels (Paper B)** — BruxScreen-Q/C vs device-inferred load fractions; chairside hypnogram usability. Natural home for Owens & Mayoral (2026) endotypes and homeostatic-latency operationalization [17] — not Paper A endpoints.  
-7. **Deeper EMG / PSG-AV (Paper C)** — expand Dual A precursor (in Paper A) to Bruxoff/PSG-AV RMMA subsets.  
+7. **Deeper EMG / PSG-AV (Paper C)** — expand Dual A precursor (lab) to Bruxoff/PSG-AV RMMA subsets.  
 8. **Ethics / data governance** — Beacon + optional McGill REB; DPA before raw log exchange; COI text finalized.  
-9. **Hardware enablement** — charge-to-temple + **5 Research Kits to Pedro by 31 Aug 2026**; publication photos replacing placeholder SVGs (FIG-CO-012/016/026–029).  
-10. **iOS Dual A overnight** — harden dual central + paired export after kit handoff.
+9. **Hardware enablement** — charge-to-temple + **5 Oralable-only kits** (**30 Sep 2026** handoff **missed**; no new date); publication photos replacing placeholder SVGs (FIG-CO-012/016/026–029).  
+10. **Combined-pod form factor** — later (not a Paper A field gate): pad-attach EMG+PPG housing; USB-C clinic SKU.
 
 ---
 
@@ -500,7 +506,7 @@ See also the full audit checklist in [PAPER_A_VALIDATION_AND_FUTURE_WORK.md](./P
 5. Oralable collaboration note — McGill / RI-MUHC academic engagement; extraoral temporalis anatomy; not Dianyx JV. Internal: [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md). *(Remove or replace with public URL before submission.)*  
 6. Oralable algorithm architecture — Python ↔ Swift pipeline (Butterworth HR band, IR-DC LP, TFI/SASHB, overnight states). Internal: [../ALGORITHM_ARCHITECTURE.md](../../ALGORITHM_ARCHITECTURE.md). *(Replace with citable methods appendix.)*  
 7. Overnight night report — hypnogram-first bands and evaluable-night rules. Internal: [../OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md).  
-8. Product roadmap / Phase 0 temple vitals on Gen1. Internal: [../PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md).  
+8. Product roadmap / Phase 0 temple vitals on Gen 2. Internal: [../PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md).  
 9. Core ML training cohort plan (Tier 1 ≈ 20–30 users). Internal: [../CORE_ML_TRAINING_COHORT.md](../../CORE_ML_TRAINING_COHORT.md).  
 10. `[PLACEHOLDER — OWNER: Koorosh]` Charlton / pulse-wave analysis references as used in PPG morphology methods.  
 11. `[PLACEHOLDER — OWNER: All]` Additional SB / RMMA / ICAB–STAB normative cites for Introduction.  

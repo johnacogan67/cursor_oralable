@@ -1,7 +1,7 @@
 # Ken Pre-Seed Structure — evaluation (proposal only)
 
-**As at:** 26 Jul 2026 · Data room pack **1.1.42**  
-**Status:** Distill of Ken’s evening email pack — **not company position · not a term sheet**  
+**As at:** 26 Jul 2026 · Data room pack **1.1.42** (body frozen)  
+**Living lock (19 Sep 2026 · pack 1.1.73):** **Ken is not a CEO candidate.** This memo assumed him as CEO at ~28%. That path is **closed**. Distill remains **not company position · not a term sheet**.  
 **Canonical governance:** [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md)  
 **Sources (Downloads / private Drive — not in git):**
 - `Gmail - Update.pdf` (Ken → John + Nigel, 22 Jul 2026 18:01)
@@ -53,7 +53,7 @@ BalancePoints founder; prior CEO/operator track (BABB/ReDeFi, Baobab, Gaia, publ
 |-------|---------------------------|----------|
 | **Equity** | Ken **~28% asked, not agreed**; John seeking Nigel + Jon Chase eval | John **56.02%** / Ken **28%** / EIIS **15.98%** written as table fact |
 | **John’s role** | Working **Executive Chairman / Founder** (product, IP) | **Chief Scientist** |
-| **Form factor** | Gen1 **temple clip** + Oralable magnetic case | **Intraoral** form factor |
+| **Form factor** | Gen1 **temple clip** + Oralable charge case (coil align now; magnetic dock later) | **Intraoral** form factor |
 | **Stage** | **Stage A wellness wearable first** → Stage B medical later | Pre-Seed as capital that **exits wellness into medical-grade** |
 | **Pilot** | Ed/Pedro **not yet shipped** (charge-to-temple gate) | Medical / Beacon / 510(k) path as primary story |
 | **Angels** | Named ordinary holders ~**16%** | Labelled **“EIIS Investors”** (not a vehicle unless created) |
@@ -104,7 +104,7 @@ Same substance as Nigel’s list; friend/advisor voice. **Do not** forward Ken�
 ```
 Hi Jon — confidential, when you have a moment.
 
-Ken (BalancePoints) sent a Pre-Seed sketch: €1.25m @ €5.5–7m pre, him as CEO at ~28%, me as Chief Scientist. Not agreed. Not a term sheet.
+Ken (BalancePoints) sent a Pre-Seed sketch: €1.25m @ €5.5–7m pre, him as CEO at ~28%, me as Chief Scientist. **That CEO path is closed. Ken is not a CEO candidate.** Not a term sheet.
 
 Near term is Point B €180k (F&F + EI PSSF + HPSU) and finishing the Conor buyout. Product truth is temple / Stage A wellness first — his memo drifts to intraoral medical.
 
@@ -131,7 +131,7 @@ Ken Kinsella (BalancePoints) sent an evening pack with a Pre-Seed discussion mem
 | Roles | Ken = CEO · me = Chief Scientist |
 | Cap table (assumed) | Me ~56% · Ken 28% · “EIIS Investors” ~16% |
 
-**Company truth today:** Ken’s ~28% is **asked, not agreed**. I am working as founder / acting CEO with a proposed shift to Executive Chairman (product, IP). Independent Director is Nigel Woods. Near-term gate is Point B **€180k by Oct 2026** (F&F €50k + EI PSSF CLN €100k + HPSU €30k) and completing the Conor share purchase. Gen1 product is a **temple** Stage A wellness wearable — not the intraoral medical story in his memo.
+**Company truth today:** Ken is **not** a CEO candidate. The ~28% CEO ask is **closed**. I am working as founder / acting CEO. Independent Director is Nigel Woods. Near-term gate is Point B **€180k by Oct 2026** (F&F €50k + EI PSSF CLN €100k + HPSU €30k) and completing the Conor share purchase. Gen1 product is a **temple** Stage A wellness wearable — not the intraoral medical story in his memo.
 
 I want your read on five points:
 

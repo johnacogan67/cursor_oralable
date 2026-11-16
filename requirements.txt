@@ -1,10 +1,5 @@
-pandas
-numpy
-pytest
-scipy
-matplotlib
-coremltools
-scikit-learn
-tensorflow>=2.15
-bleak
-plotly
+# Compatibility entry point for existing setup commands.
+#
+# The validated, fully pinned macOS/Python 3.13 environment is maintained in
+# requirements.lock. Update pyproject.toml and regenerate that snapshot together.
+-r requirements.lock

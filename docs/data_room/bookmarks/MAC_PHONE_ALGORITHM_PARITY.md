@@ -17,6 +17,6 @@
 
 **Dual A SpO₂∩EMG nest:** Mac-only offline (`scripts/align_anr_oralable_concordance.py` + `src/analysis/emg_spo2_nest.py`). iOS Dual Protocol A shows live SpO₂ and exports PPG for Mac nest — phone does not re-implement nest metrics yet. Claim: nest ≠ AHI/ODI. `DUAL_PAIR` may include `skin_temp_mean_c` / `on_skin_fraction`.
 
-**iOS overnight band unlock:** ≥**1 h** worn (`OvernightNightReportBuilder.evaluableWearSeconds`). Ideal / Paper A Arm E/J / cohort recalibration still **≥6 h** (goal 8 h).
+**iOS overnight band unlock:** ≥**1 h** worn (`OvernightNightReportBuilder.evaluableWearSeconds`). Beacon feasibility **≥4 h**. Hypnogram figure / cohort recalibration still **≥6 h** (goal 8 h).
 
-**As at:** 30 Aug 2026 · Pack **1.1.68** (parity rules unchanged; Dual A EDF is research export)
+**As at:** 7 Sep 2026 · Pack **1.1.68** (parity rules unchanged; Dual A EDF is research export; Dual A is lab only)

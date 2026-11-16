@@ -17,7 +17,7 @@ CURRENT PILOT TRUTH (22 Jul 2026)
 --------------------------------
 Gen1 FW:     **1.0.70** (STAT blink = charging)
 iOS app:     **4.3.3** (FirmwareGate min 1.0.63 / recommend 1.0.70)
-Hardware:    BOM REV8 · PCB REV10 · Kaga ES2832AA2 · Oralable magnetic case (NOT Qi)
+Hardware:    BOM REV8 · PCB REV10 · Kaga ES2832AA2 · Oralable charge case (coil align now; magnetic dock later; NOT Qi)
 Gen2:        BOM REV9 · PCB REV11 · ES4L15BA1 · FW 2.0.x (not shipping)
 Phase 0:     temple HR/SpO2 · Phase 1+: muscle IR-DC/TFI (same Gen1 HW)
 

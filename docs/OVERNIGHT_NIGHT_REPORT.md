@@ -115,14 +115,14 @@ Rates use `wear_h = wear_seconds / 3600`.
 - Avoid: diagnose, bruxism disorder, AHI, “you have apnea.”  
 - Footer: device-inferred wellness states — not a medical diagnosis.  
 - Empty/short night: “Need ≥1 hour worn for overnight bands.” (iOS `evaluableWearSeconds = 1 h`)  
-- Ideal home overnight / Paper A Arm E/J / band recalibration: still **≥6 h** worn (goal **8 h**). Protocol A/B minutes are not sleep sessions.  
+- **Beacon feasibility:** **≥4 h** worn is enough (6 h better). **Hypnogram figure / band recalibration:** still **≥6 h** (goal **8 h**). Protocol A/B minutes are not sleep sessions.  
 - Soft corroboration: when skin temp is present and outside **32–38 °C**, iOS treats samples as off-skin (quiet; no wear/SASHB credit). Missing temp → Mac IR+ACC+SpO₂ path. See [data_room/bookmarks/SENSOR_CORROBORATION.md](./data_room/bookmarks/SENSOR_CORROBORATION.md).
 
 ---
 
 ## 5. Calibration path
 
-1. Collect Ed/Pedro (**≥6 h**) nights with Share PDF + Mac night pack (1–2 h Arm P is fine for oxygen arm; not band recalibration).  
+1. Collect Beacon (**≥4 h** evaluable; **≥6 h** for band recalibration) nights with Share PDF + Mac night pack (1–2 h Arm P is fine for oxygen nest; not band recalibration).  
 2. Plot distributions of TFI, SASHB/h, rescue/h, tonic min/h.  
 3. Adjust band edges in this doc + code constants together.  
 4. Only then consider cohort percentiles (“among Oralable users”).

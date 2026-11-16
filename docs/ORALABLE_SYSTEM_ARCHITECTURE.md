@@ -6,9 +6,9 @@
 
 | Field | Value |
 |-------|--------|
-| Last updated | 2026-07-26 |
-| Firmware baseline | pcb00003, nRF52832, TGM GATT `3A0FF000` — **Gen1 target 1.0.84** (IR-pulse worn · STAT blink · pad/desk recover) · see [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
-| iOS | App **4.3.3** (build **5**) · `FirmwareGate` min **1.0.63** · recommend **1.0.84** |
+| Last updated | 2026-09-19 |
+| Firmware baseline | pcb00003, nRF52832, TGM GATT `3A0FF000` — **Gen1 target 1.0.85** (IR-pulse worn · STAT blink · pad/desk recover · hold LED) · see [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
+| iOS | App **4.3.3** (build **5**) · `FirmwareGate` min **1.0.63** · recommend **1.0.85** |
 | Python sampling standard | 50 Hz (20 ms), PPG R/G/IR + ACC — **Phase 0:** temple vitals; **Phase 1+:** cheek/temple IR-DC |
 | Primary repos | `oralable_nrf`, `oralable_swift`, `OralableCore`, `cursor_oralable` |
 | Figures | [FIGURES.md](./FIGURES.md) · Mermaid hub [ORALABLE_SYSTEM_MAP_DIAGRAMS.md](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md) |
@@ -19,7 +19,7 @@
 - When behavior changes, update the **Revision log** at the end and bump **Last updated**.
 - **Ground truth for BLE** is always an nRF Connect iOS CSV export, not this markdown file.
 - **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 continues past Sep 2026 (30 Sep handoff missed); Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 **Product truth** is locked in **§2 Truth registry**; **where we are** is tracked in **§3 Validation status matrix** — update both before shipping firmware or app changes.
 
@@ -35,7 +35,7 @@ This process exists because assumptions (wired dock, GPIO invert without measure
 
 | Layer | What is “truth” | Authoritative source | Lock before… |
 |-------|-----------------|----------------------|--------------|
-| **L0 Product** | Wear site, use case, charging type (Oralable magnetic case), regulatory intent | This doc §2 + product brief | Any UX or clinical claim |
+| **L0 Product** | Wear site, use case, charging type (Oralable charge case: coil align now; magnetic dock later), regulatory intent | This doc §2 + product brief | Any UX or clinical claim |
 | **L1 Hardware** | Pins, parts, GPIO polarity, ADC divider | `pcb00003.dts`, schematic, BOM | Firmware `chrsts`/battery/LED |
 | **L2 BLE contract** | UUIDs, payload sizes, endianness, notify order | `tgm_service.c`, nRF Connect CSV | iOS connect flow changes |
 | **L3 Firmware policy** | Worn, charger detect, LED semantics, streaming gates | `main.c`, `charge_detector.c`, nRF CSV | App worn/stream assumptions |
@@ -89,9 +89,9 @@ Repo rule: `oralable_nrf/.cursor/rules/nrf-connect-validation.mdc`
 | ID | Truth | Value (pcb00003) | Source | Registry |
 |----|--------|------------------|--------|----------|
 | P-01 | Product form (target) | Clip on temporalis / masseter region (overnight) | Product | LOCKED |
-| P-01a | **Phase 0 (now)** | **Temple** HR & SpO₂; no muscle-fit calibration; Gen1 BOM REV8 / REV10 / ES2832AA2 / FW **1.0.84** | [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) | LOCKED |
+| P-01a | **Phase 0 (now)** | **Temple** HR & SpO₂; no muscle-fit calibration; Gen1 BOM REV8 / REV10 / ES2832AA2 / FW **1.0.85** | [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) | LOCKED |
 | P-01b | **Phase 1+** | IR-DC / TFI / SASHB / Protocol B on **same Gen1 hardware** | PRODUCT_ROADMAP | LOCKED |
-| P-02 | Charging | **Oralable magnetic case** — clip **LTC4124** RX + case **LTC6990** TX on **same PCB00003 BOM**; **not WPC Qi**; not wired contact dock | BOM REV8 + pickplace | LOCKED |
+| P-02 | Charging | **Oralable charge case** — clip **LTC4124** RX coil aligned to case **LTC6990** TX on **same PCB00003 BOM**. This build is coil alignment. A magnetic dock is a possible later case. **Not WPC Qi**; not a wired contact dock | BOM REV8 + pickplace | LOCKED |
 | P-03 | Overnight use | Sleep bruxism + vitals + hypoxic burden (Phase 1+ product target; Phase 0 = vitals first) | Product/clinical | LOCKED |
 | H-01 | MCU (Gen1) | Kaga **ES2832AA2** → nRF52832-QFAA-G-R | **BOM REV8** U5 · PCB **REV10** | LOCKED |
 | H-01b | MCU (Gen2) | Kaga **ES4L15BA1** → nRF54L15 | **BOM REV9**, PCB **REV11** | LOCKED |
@@ -130,7 +130,7 @@ When **H-08** wiring is re-verified on bench, update byte0 semantics in §9 and 
 | **BROKEN** | Fails acceptance test on latest build |
 | **BLOCKED** | Depends on unresolved registry row (e.g. H-08) |
 
-**Current firmware reference for this matrix:** Gen1 target **1.0.84** ([VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md); [FIRMWARE_1.0.84_FLASH.md](./data_room/firmware/FIRMWARE_1.0.84_FLASH.md)). Historical 1.0.70 / 1.0.82 rows stay below.
+**Current firmware reference for this matrix:** Gen1 target **1.0.85** ([VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md); [FIRMWARE_1.0.85_FLASH.md](./data_room/firmware/FIRMWARE_1.0.85_FLASH.md)). Historical 1.0.70 / 1.0.82 / 1.0.84 rows stay below.
 
 ### 3.1 Platform & BLE contract
 
@@ -203,7 +203,7 @@ Bench script: notify **`004` + `009` only** · off case 60 s → on **Oralable c
 
 ## 4. Product summary
 
-Oralable is a **clip + magnetic-case** monitor on the **PCB00003** family. **Phase 0 (now)** focuses on **temple** heart rate and SpO₂ with honest device state on **Gen1** kits. **Phase 1+** adds jaw-load / bruxism phenotypes (IR-DC, TFI, SASHB) on the **same Gen1 hardware**, then Gen2.
+Oralable is a **clip + charge-case** monitor on the **PCB00003** family. **Phase 0 (now)** focuses on **temple** heart rate and SpO₂ with honest device state on **Gen1** kits. **Phase 1+** adds jaw-load / bruxism phenotypes (IR-DC, TFI, SASHB) on the **same Gen1 hardware**, then Gen2.
 
 It combines:
 
@@ -214,7 +214,7 @@ It combines:
 
 **Primary clinical target:** sleep bruxism and related overnight jaw load, correlated with **SpO₂ burden** and **rescue** physiology (Phase 1+ evidence path after Phase 0 vitals gates).
 
-**Device identity:** Oralable MAM, board **pcb00003** — **Gen1:** ES2832AA2 (nRF52832, **BOM REV8**, PCB **REV10**, FW **1.0.84**) · **Gen2:** ES4L15BA1 (nRF54L15, **BOM REV9**, PCB **REV11**, FW **2.0.x**). Canonical map: [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md).
+**Device identity:** Oralable MAM, board **pcb00003** — **Gen1:** ES2832AA2 (nRF52832, **BOM REV8**, PCB **REV10**, FW **1.0.85**) · **Gen2:** ES4L15BA1 (nRF54L15, **BOM REV9**, PCB **REV11**, FW **2.0.x**). Canonical map: [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md).
 
 ---
 
@@ -280,7 +280,7 @@ west build -b pcb00003 -d build_pcb00003 app --sysbuild
 | Battery ADC | P0.28 / AIN4 | Divider ×11; CG-320B 15 mAh |
 | `chrsts` | P0.05 | Active-low in DTS; **wireless charge active** into nRF |
 | `baten` | P0.10 | Must stay HIGH — boost latch |
-| Charging | **Oralable magnetic case** (LTC4124 RX + LTC6990 TX, same BOM) | Not WPC Qi; not a wired contact dock |
+| Charging | **Oralable charge case** (LTC4124 RX coil aligned to LTC6990 TX, same BOM). Coil align now; magnetic dock later | Not WPC Qi; not a wired contact dock |
 
 **LED semantics (off-body, not worn):**
 
@@ -402,7 +402,7 @@ Aligned with Nordic Academy / Apple CoreBluetooth: **one CCC write at a time**, 
 
 1. Discover services / characteristics (full TGM tree).
 2. Read `3A0FF005` (device ID).
-3. Read `3A0FF006` (firmware) → `FirmwareGate` blocks &lt; **1.0.63** (recommend **1.0.84**).
+3. Read `3A0FF006` (firmware) → `FirmwareGate` blocks &lt; **1.0.63** (recommend **1.0.85**).
 4. Apply manual placement (`00B` 0x09) before streaming CCCs.
 5. Enable battery notify (`004`) — **await CCC confirm**.
 6. **Staggered CCC** (`enableNRFAlignedStreamingNotifications`), each step awaited:
@@ -472,7 +472,7 @@ After sync alignment (3-tap accel anchor in research logs), all analysis uses **
 
 ```bash
 # 1. Parse nRF Connect / device log → aligned 50 Hz CSV
-python scripts/run_temporalis_mam_pipeline.py --log path/to/log.txt
+python scripts/run_temporalis_mam_pipeline.py --raw path/to/log.txt
 
 # 2. Self-validation (SpO₂, SASHB, occlusion, rescue)
 python -m src.validation.self_validate
@@ -480,9 +480,9 @@ python -m src.validation.self_validate
 # 3. Clinical summary for IEEE / patent tables
 python scripts/generate_clinical_report.py --csv path/to/gold.csv
 
-# 4. Train Keras model + export Core ML
-python scripts/generate_mam_model.py
-python scripts/convert_temporalis_mam.py --keras path/to/model.h5
+# 4. Train with participant-level validation, then review provenance before Core ML export
+python scripts/generate_mam_model.py --gold path/to/multi_user_gold.csv --user-column user_id
+python scripts/convert_temporalis_mam.py --keras path/to/model.h5 --provenance path/to/model.provenance.json
 ```
 
 ### 12.2 Core Python modules
@@ -536,16 +536,17 @@ Shared parameters target: `OralableCore` `AlgorithmSpec` / `TransferFunctionFilt
 | **Quiet** | Baseline muscle / perfusion |
 | **Phasic** | Rhythmic grinding (RMMA-like) |
 | **Tonic** | Sustained clench |
-| **Rescue** | Airway-related jaw event (validated vs desaturation windows) |
+| **Rescue** | Airway-related candidate phenotype; not an overnight diagnosis |
 
-### 13.3 Creation paths
+### 13.3 Creation and release path
 
-1. **Production path:** `scripts/generate_mam_model.py` trains on labeled windows → Keras `.h5` → `convert_temporalis_mam.py` → mlpackage.
-2. **Stub path:** `convert_temporalis_mam.py` without `--keras` builds a small MIL placeholder for app integration tests.
+1. **Research training:** `scripts/generate_mam_model.py` requires a participant-level holdout by default and writes a Keras `.h5` plus provenance JSON.
+2. **Core ML export:** `convert_temporalis_mam.py` requires the Keras artifact and matching provenance. It has no stub-model fallback.
+3. **Production replacement:** the default `OralableCore` bundle path is blocked until provenance records a reviewed non-stub artifact with user-holdout metrics and explicit release eligibility. See [MODEL_PROVENANCE.md](./MODEL_PROVENANCE.md).
 
 ### 13.4 Runtime (`MAMInferenceManager.swift`)
 
-- Loads `BruxismMAM_Temporalis` from package bundle
+- Loads `BruxismMAM_Temporalis` only when its bundle sidecar is explicitly release-eligible and non-stub
 - `CoreMLTemporalisClassifier` runs 1 s windows in real time during worn sessions
 - Probabilities feed UI and hourly rollups
 
@@ -704,6 +705,9 @@ Export plots: `data/plots/ed_presentation/` after running validation scripts. Na
 
 | Date | Author | Changes |
 |------|--------|---------|
+| 2026-10-05 | Milestone | One MAM boots: **Oralable** on the phone, green on the case. Archived 1.0.85 merged hex is 119 bytes over the swap-move sector and stays in MCUboot. Kit target stays **1.0.85**. Pack stays **1.1.74**. |
+| 2026-10-03 | Docs align | Docs **1.3.21** / data_room **1.1.74** · kit FW **1.0.85** · local **1.0.86** is not the kit target · **30 Sep** handoff missed |
+| 2026-09-19 | Docs align | Docs **1.3.20** / data_room **1.1.73** · Gen1 target **1.0.85** · Ken not a CEO candidate |
 | 2026-07-26 | Docs align | Docs **1.3.15** / data_room **1.1.42** · PRODUCT_ROADMAP §3 canonical timeline · overnight PARTIAL (PDF done) · Core ML cohort doc |
 | 2026-07-24 | Milestone | App **4.3.3** (build 4) · Temporalis MAM Mac Protocol A retrain · night-report PDF path |
 | 2026-07-22 | Version align | Pilot ship **1.0.70** + iOS **4.3.2**; STAT blink dock; [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md) |
@@ -719,7 +723,8 @@ Export plots: `data/plots/ed_presentation/` after running validation scripts. Na
 | 2026-06-07 | Doc pack 1.3.0 | Cross-links: landscape, data_room index, PILOT FW note |
 | 2026-06-07 | System doc | NotebookLM guide: drop COMBINED; engineering vs investor bundles |
 | 2026-06-07 | System doc | Added §1 product truth lockdown process, §2 truth registry, §3 validation status matrix + scenario table |
-| 2026-06-07 | System doc | Initial living architecture: 4 repos, nRF gold standard, iOS mirror, Core ML path, TFI/SASHB/rescue metrics; charging noted historically as “Qi” — **superseded:** Oralable magnetic case LTC4124/LTC6990, not WPC Qi |
+| 2026-09-24 | Charge case | This build charges by coil alignment (LTC4124 RX / LTC6990 TX). A magnetic dock is a possible later case. Not WPC Qi |
+| 2026-06-07 | System doc | Initial living architecture: 4 repos, nRF gold standard, iOS mirror, Core ML path, TFI/SASHB/rescue metrics; charging noted historically as “Qi” — **superseded:** Oralable charge case LTC4124/LTC6990, not WPC Qi |
 
 ---
 

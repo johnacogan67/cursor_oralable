@@ -1,73 +1,80 @@
 #!/usr/bin/env python3
-"""
-Convert Temporalis MAM classifier to BruxismMAM_Temporalis.mlpackage (Core ML).
+"""Convert a reviewed Temporalis MAM Keras model to Core ML.
 
-Priority:
-  1. If --keras points to a saved Keras model (*.h5, SavedModel dir, etc.), convert via coremltools.
-  2. Else build a placeholder MIL program with input shape [1, 50, 6] (1 s @ 50 Hz, six channels).
-
-Keras → Core ML often exposes the softmax vector as output name ``Identity``; ``CoreMLTemporalisClassifier``
-also checks ``probabilities`` first (MIL stub), then ``Identity``.
-
-Typical channel order for inference (must match iOS tensor layout):
-  0: Green AC — Butterworth bandpass 0.5–4 Hz (Temporalis research)
-  1: IR DC — lowpass 0.8 Hz
-  2: Red AC — bandpass 0.5–4 Hz
-  3–5: Accelerometer x, y, z (g)
-
-Usage:
-  python scripts/convert_temporalis_mam.py [--keras PATH] [--output PATH]
-
-Default output: ../OralableCore/Sources/OralableCore/Resources/BruxismMAM_Temporalis.mlpackage
-  (relative to cursor_oralable repo root)
+A Keras artifact and its JSON provenance record are always required. The former
+placeholder MIL model path is intentionally removed: generated stub models must
+never be written to the bundled OralableCore production resource location.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import shutil
 from pathlib import Path
+from typing import Any
 
 
 def _default_output(root: Path) -> Path:
-    cand = root.parent / "OralableCore" / "Sources" / "OralableCore" / "Resources" / "BruxismMAM_Temporalis.mlpackage"
-    if cand.parent.is_dir():
-        return cand
-    return root / "BruxismMAM_Temporalis.mlpackage"
+    candidate = (
+        root.parent
+        / "OralableCore"
+        / "Sources"
+        / "OralableCore"
+        / "Resources"
+        / "BruxismMAM_Temporalis.mlpackage"
+    )
+    return candidate if candidate.parent.is_dir() else root / "BruxismMAM_Temporalis.mlpackage"
 
 
-def _mil_stub(out_path: Path) -> None:
-    import coremltools as ct
-    from coremltools.converters.mil import Builder as mb
-    import numpy as np
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
-    np.random.seed(42)
-    d_in = 50 * 6
-    w1 = np.random.randn(96, d_in).astype(np.float32) * 0.05
-    b1 = np.zeros(96, dtype=np.float32)
-    w2 = np.random.randn(48, 96).astype(np.float32) * 0.05
-    b2 = np.zeros(48, dtype=np.float32)
-    w3 = np.random.randn(4, 48).astype(np.float32) * 0.05
-    b3 = np.zeros(4, dtype=np.float32)
 
-    @mb.program(input_specs=[mb.TensorSpec(shape=(1, 50, 6))])
-    def prog(input):
-        x = mb.reshape(x=input, shape=(1, d_in), name="flatten")
-        x = mb.linear(x=x, weight=w1, bias=b1, name="fc1")
-        x = mb.relu(x=x, name="relu1")
-        x = mb.linear(x=x, weight=w2, bias=b2, name="fc2")
-        x = mb.relu(x=x, name="relu2")
-        x = mb.linear(x=x, weight=w3, bias=b3, name="fc3")
-        x = mb.softmax(x=x, axis=-1, name="probabilities")
-        return x
+def _sha256_tree(path: Path) -> str:
+    digest = hashlib.sha256()
+    for child in sorted(path.rglob("*")):
+        if not child.is_file():
+            continue
+        digest.update(child.relative_to(path).as_posix().encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(_sha256_file(child).encode("ascii"))
+        digest.update(b"\n")
+    return digest.hexdigest()
 
-    mlmodel = ct.convert(prog, convert_to="mlprogram", minimum_deployment_target=ct.target.iOS16)
-    mlmodel.author = "Oralable"
-    mlmodel.short_description = "Temporalis MAM: Quiet, Phasic, Tonic, Rescue (@ 50x6)"
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    if out_path.exists():
-        shutil.rmtree(out_path)
-    mlmodel.save(str(out_path))
+
+def _read_provenance(path: Path, keras_path: Path) -> dict[str, Any]:
+    try:
+        provenance = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise ValueError(f"invalid provenance record {path}: {error}") from error
+
+    artifact = provenance.get("artifact")
+    lifecycle = provenance.get("lifecycle")
+    validation = provenance.get("validation")
+    if not isinstance(artifact, dict) or not isinstance(lifecycle, dict) or not isinstance(validation, dict):
+        raise ValueError("provenance requires artifact, lifecycle, and validation objects")
+    if artifact.get("keras_sha256") != _sha256_file(keras_path):
+        raise ValueError("provenance Keras SHA-256 does not match --keras")
+    if lifecycle.get("stub_model") is not False:
+        raise ValueError("provenance must explicitly declare stub_model: false")
+    return provenance
+
+
+def _require_release_approval(provenance: dict[str, Any]) -> None:
+    lifecycle = provenance["lifecycle"]
+    validation = provenance["validation"]
+    if lifecycle.get("release_eligible") is not True:
+        raise ValueError("production Core ML export requires lifecycle.release_eligible: true")
+    if validation.get("strategy") != "user_holdout":
+        raise ValueError("production Core ML export requires validation.strategy: user_holdout")
+    if not validation.get("metrics"):
+        raise ValueError("production Core ML export requires recorded validation metrics")
 
 
 def _convert_keras(keras_path: Path, out_path: Path) -> None:
@@ -80,44 +87,57 @@ def _convert_keras(keras_path: Path, out_path: Path) -> None:
         inputs=[ct.TensorType(shape=(1, 50, 6), name="input")],
     )
     mlmodel.author = "Oralable"
-    mlmodel.short_description = "Temporalis MAM (from Keras)"
+    mlmodel.short_description = "Temporalis MAM (reviewed Keras export)"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     if out_path.exists():
         shutil.rmtree(out_path)
     mlmodel.save(str(out_path))
 
 
+def _write_coreml_provenance(source: dict[str, Any], out_path: Path) -> Path:
+    record = dict(source)
+    artifact = dict(record["artifact"])
+    artifact.update(
+        {
+            "coreml_path": str(out_path),
+            "coreml_tree_sha256": _sha256_tree(out_path),
+            "input_shape": [1, 50, 6],
+            "class_order": ["quiet", "phasic", "tonic", "rescue"],
+        }
+    )
+    record["artifact"] = artifact
+    target = out_path.with_suffix(".provenance.json")
+    target.write_text(json.dumps(record, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return target
+
+
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build BruxismMAM_Temporalis.mlpackage")
-    parser.add_argument("--keras", default=None, help="Keras model path (.h5 or SavedModel)")
-    parser.add_argument("--output", "-o", default=None, help="Output .mlpackage directory")
+    parser = argparse.ArgumentParser(description="Convert a provenance-backed Keras Temporalis MAM model to Core ML")
+    parser.add_argument("--keras", required=True, type=Path, help="Reviewed Keras model path (.h5 or SavedModel)")
+    parser.add_argument("--provenance", required=True, type=Path, help="Training provenance JSON emitted by generate_mam_model.py")
+    parser.add_argument("--output", "-o", type=Path, default=None, help="Output .mlpackage directory")
     args = parser.parse_args()
 
     root = Path(__file__).resolve().parents[1]
-    out_path = Path(args.output) if args.output else _default_output(root)
+    out_path = args.output if args.output else _default_output(root)
+    production_path = _default_output(root).resolve()
 
-    keras_path = Path(args.keras) if args.keras else None
-
+    if not args.keras.exists():
+        print(f"Keras path not found: {args.keras}")
+        return 1
     try:
+        provenance = _read_provenance(args.provenance, args.keras)
+        if out_path.resolve() == production_path:
+            _require_release_approval(provenance)
         import coremltools  # noqa: F401
-    except ImportError:
-        print("Install: pip install coremltools (and tensorflow if using --keras)")
+        _convert_keras(args.keras, out_path)
+        target = _write_coreml_provenance(provenance, out_path)
+    except (ImportError, ValueError, OSError) as error:
+        print(f"Core ML export blocked: {error}")
         return 1
 
-    if keras_path is not None:
-        if not keras_path.exists():
-            print(f"Keras path not found: {keras_path}")
-            return 1
-        try:
-            _convert_keras(keras_path, out_path)
-        except Exception as e:
-            print(f"Keras conversion failed: {e}")
-            return 1
-        print(f"Converted Keras → {out_path}")
-        return 0
-
-    _mil_stub(out_path)
-    print(f"Created stub MIL model → {out_path}")
+    print(f"Converted reviewed Keras model → {out_path}")
+    print(f"Wrote Core ML provenance → {target}")
     return 0
 
 

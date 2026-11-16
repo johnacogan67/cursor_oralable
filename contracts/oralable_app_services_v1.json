@@ -1,0 +1,128 @@
+{
+  "contract": "oralable-app-services",
+  "version": "1.0.0",
+  "owner": "Oralable workspace",
+  "scope": "Local source, test configuration, and release documentation. This file does not create or modify Apple Developer, App Store Connect, CloudKit Console, or HealthKit portal configuration.",
+  "apps": {
+    "consumer": {
+      "display_name": "Oralable",
+      "bundle_identifier": "com.jacdental.oralable",
+      "release_status": "patient_app_pre_release",
+      "app_store_submission": "blocked_pending_release_gates"
+    },
+    "professional": {
+      "display_name": "Oralable for Professionals",
+      "bundle_identifier": "com.jacdental.oralable.professionals",
+      "release_status": "deferred_phase_1_plus",
+      "app_store_submission": "not_authorized"
+    }
+  },
+  "cloudkit": {
+    "container_identifier": "iCloud.com.jacdental.oralable.shared",
+    "database_scope": "public",
+    "production_schema_status": "not_verified_or_deployed",
+    "record_types": {
+      "ShareInvitation": {
+        "fields": {
+          "patientID": "String",
+          "shareCode": "String",
+          "createdDate": "DateTime",
+          "expiryDate": "DateTime",
+          "isActive": "Int64",
+          "professionalID": "String (optional until redeemed)",
+          "dentistID": "String (legacy migration alias; write/read only during migration)"
+        },
+        "queryable_fields": ["shareCode", "isActive", "patientID", "expiryDate"]
+      },
+      "SharedPatientData": {
+        "fields": {
+          "patientID": "String",
+          "professionalID": "String",
+          "shareCode": "String",
+          "accessGrantedDate": "DateTime",
+          "isActive": "Int64",
+          "professionalName": "String (optional)",
+          "patientName": "String (optional)",
+          "lastDataUpdate": "DateTime (optional)",
+          "dentistID": "String (legacy migration alias; write/read only during migration)",
+          "dentistName": "String (legacy migration alias; write/read only during migration)"
+        },
+        "queryable_fields": ["patientID", "professionalID", "dentistID", "isActive", "shareCode"]
+      },
+      "HealthDataRecord": {
+        "fields": {
+          "patientID": "String",
+          "recordingDate": "DateTime",
+          "sessionDuration": "Double",
+          "bruxismEvents": "Int64",
+          "averageIntensity": "Double",
+          "peakIntensity": "Double",
+          "heartRateData": "Bytes (JSON-encoded array)",
+          "oxygenSaturation": "Bytes (JSON-encoded array)",
+          "sensorDataCompressed": "Bytes (LZFSE-compressed JSON)",
+          "sensorDataUncompressedSize": "Int64"
+        },
+        "queryable_fields": ["patientID", "recordingDate"]
+      }
+    },
+    "migration": {
+      "canonical_professional_fields": ["professionalID", "professionalName"],
+      "legacy_dentist_fields": ["dentistID", "dentistName"],
+      "writer_behavior": "Write canonical and legacy aliases while existing development/test records require compatibility.",
+      "reader_behavior": "Read canonical values first and fall back to legacy aliases.",
+      "removal_gate": "Do not remove aliases until production schema deployment, record migration, and two-app hardware validation are documented."
+    }
+  },
+  "storekit": {
+    "consumer": {
+      "subscription_group": "Oralable Premium",
+      "products": {
+        "premium_monthly": "com.jacdental.oralable.premium.monthly",
+        "premium_yearly": "com.jacdental.oralable.premium.yearly"
+      },
+      "app_store_connect_status": "not_verified"
+    },
+    "professional": {
+      "subscription_group": "Oralable for Professionals",
+      "products": {
+        "professional_monthly": "com.jacdental.oralable.professional.monthly",
+        "professional_yearly": "com.jacdental.oralable.professional.yearly",
+        "practice_monthly": "com.jacdental.oralable.practice.monthly",
+        "practice_yearly": "com.jacdental.oralable.practice.yearly"
+      },
+      "app_store_connect_status": "deferred_not_verified"
+    }
+  },
+  "healthkit": {
+    "authorization_required": true,
+    "read_quantity_types": ["heartRate", "oxygenSaturation"],
+    "write_quantity_types": ["heartRate", "oxygenSaturation"],
+    "write_policy": "At most one downsampled heart-rate or oxygen-saturation sample per five-second interval; only valid source samples are written.",
+    "not_written": ["sleep stages", "HRV", "diagnosis", "treatment recommendation"]
+  },
+  "claims": {
+    "consumer_permitted_pre_release": [
+      "Connects to the Oralable hardware device using Bluetooth.",
+      "Displays locally collected sensor information and supports local CSV export.",
+      "May write supported heart-rate and oxygen-saturation samples to Apple Health after user authorization when source samples are available.",
+      "Provides wellness and informational features only; it does not diagnose, treat, or replace professional advice."
+    ],
+    "consumer_prohibited_pre_release": [
+      "Professional or dentist data sharing is available.",
+      "CloudKit production backup or synchronization is available.",
+      "Subscriptions are available for purchase.",
+      "The app measures sleep stages, provides medical monitoring, diagnoses bruxism, or validates treatment effectiveness.",
+      "HIPAA, GDPR, end-to-end encryption, or regulatory compliance certification claims."
+    ],
+    "professional_status": "No App Store listing, subscription, remote monitoring, practice-management, clinical, privacy-compliance, or treatment-outcome claim is approved while the professional app and production CloudKit path are deferred."
+  },
+  "change_control": {
+    "requires": [
+      "contract version update",
+      "shared Swift constants update",
+      "local StoreKit fixture update",
+      "cross-repository verifier pass",
+      "manual Apple Developer, App Store Connect, and CloudKit Console review before service activation"
+    ]
+  }
+}

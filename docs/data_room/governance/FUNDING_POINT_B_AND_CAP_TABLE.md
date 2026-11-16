@@ -52,9 +52,9 @@ From **Register of Members** (active certificates; membership not ended). Ordina
 
 **Implied last round valuation (Byteexplain share-issue workbook, Feb 2025 Guac):** ~**€2.66M** (historical; not a Ken-approved F&F price).
 
-**Governance flags (Ken / Caroline — still open):** Strand Two IP advice · **Conor Meaney share purchase (Amstrow Cosec live Jul 2026 — see [JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md](./JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md) INTERNAL §A)** · Byteexplain vs JAC entity alignment · balance-sheet / solvency restructure · personal vs corporate IP ownership.
+**Governance flags (Ken / Caroline — still open):** Strand Two IP advice · **Conor share transfer signed 5 Oct 2026; register entry still open** ([CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md)) · Byteexplain vs JAC entity alignment · balance-sheet / solvency restructure · personal vs corporate IP ownership.
 
-**Cap table note:** Register above is **pre-deal**. **22 Jul meeting (verbal):** Conor will take **€10k when available** for **all 2,500**; Nigel sends SPA; after deal John **10,000** (~**84%**), Conor **0**. If the SPA matches, that replaces the 19 Jul cash-at-transfer counters. Detail: [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md).
+**Cap table note:** Register above is **pre-registration**. **Share transfer signed** (John, 5 Oct 2026). No cash payable. After the register is entered, John **10,000** shares (~**84%**), Conor **0**. Detail: [CURRENT_GOVERNANCE_STATUS.md](./CURRENT_GOVERNANCE_STATUS.md).
 
 ---
 
@@ -77,13 +77,13 @@ Overall **1.5 / 5.0 Essential** (Investment Readiness UI also shows **1.4**). Hi
 | Statutory accounts in **git** data room | **GAP** — PDFs live in Drive `01_FIN/` only |
 | Voice session | **GAP** |
 | Delta Dental / 2022–23 decks | Archive only — **not** current Oralable raise deck |
-| Ken **Pre-Seed €1.25m** @ €5.5–7m memo (22 Jul evening) | **Proposal only** — [KEN_PRESEED_STRUCTURE_EVAL.md](./KEN_PRESEED_STRUCTURE_EVAL.md); assumes Ken 28% / John Chief Scientist — **not agreed** |
+| Ken **Pre-Seed €1.25m** @ €5.5–7m memo (22 Jul evening) | **Proposal only** — [KEN_PRESEED_STRUCTURE_EVAL.md](./KEN_PRESEED_STRUCTURE_EVAL.md); assumed Ken 28% CEO / John Chief Scientist — **closed**; Ken is **not** a CEO candidate |
 
 ---
 
 ## 5. Deck one-liner
 
-> **Point B (Ken):** €180k by Oct 2026 = **€50k F&F equity** + **€100k EI PSSF CLN** + **€30k HPSU grant**. Cap table (register): John ~**63%**, Conor ~**21%**, angels ~**16%** — **SPA path:** €10k when available for Conor’s 2,500 → John **~84%**. Ken CEO ask: **⅓ of John’s 10,000 (~28%)** — not agreed. Later Pre-Seed sketch (€1.25m @ €5.5–7m) is **Ken proposal only**. Terms / valuation / use-of-funds still open.
+> **Point B (Ken / BalancePoints advisor):** €180k by Oct 2026 = **€50k F&F equity** + **€100k EI PSSF CLN** + **€30k HPSU grant**. Cap table (register, until entry): John ~**63%**, Conor ~**21%**, angels ~**16%** — **transfer signed 5 Oct 2026**, no cash payable; Conor’s 2,500 → John **~84%** once entered. **Ken is not a CEO candidate**; the 22 Jul ~28% CEO ask is **closed**. Later Pre-Seed sketch (€1.25m @ €5.5–7m) is **Ken proposal only**. Terms / valuation / use-of-funds still open.
 
 ---
 

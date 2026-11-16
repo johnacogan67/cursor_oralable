@@ -1,10 +1,10 @@
 # Temporalis anatomy → Oralable PPG + ANR placement
 
-**As at:** 30 Aug 2026 · Pack **1.1.68**  
+**As at:** 7 Sep 2026 · Pack **1.1.68**  
 **Anatomy source:** Kenhub “Muscles of mastication” tutorial (local NotebookLM PDF: `…/notebook_lm/Sources/description from ken hub of muscels of mastication.pdf`)  
 **Related:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · [../TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md)
 
-**One-liner:** Seat Oralable PPG on the **anterior temporalis** elevating belly (vertical fibers). Seat ANR Red Dots **along** those fibers (long axis vertical). MAM measures **optical** load + vitals in that belly; ANR measures **electrical** motor-unit activity of the same belly. Not TMD diagnosis. Not AHI.
+**One-liner:** Seat Oralable PPG on the **anterior temporalis** elevating belly (vertical fibers). For **Beacon nights**, attach MAM with pads/tape — **no headband**, **no ANR**. For **lab Dual A**, seat ANR Red Dots **along** those fibers (long axis vertical). MAM measures **optical** load + vitals in that belly; ANR measures **electrical** motor-unit activity of the same belly. Not TMD diagnosis. Not AHI.
 
 ---
 
@@ -50,7 +50,7 @@ Masseter is the strongest elevator but sits over the ramus/cheek (Bruxoff-class 
 1. Subject sits still; fingers on the temple between the **eyebrow tail** and the **ear**.
 2. Hard clench 2–3 s → feel the firm bulge (anterior belly).
 3. Release → mark that peak.
-4. Seat the Gen1 clip so the **PPG / coil face is on skin** over that mark (optical in). Firm but comfortable coupling (protocol: ~5–15 mmHg strap-equivalent when headband used).
+4. Seat the Gen 2 MAM so the **PPG / coil face is on skin** over that mark (optical in). Firm but comfortable coupling (protocol: ~5–15 mmHg strap-equivalent when headband used). Printed ANR-class shell (Red Dot snaps, rectangular PPG hole): [ATTACHMENT.md](../../ATTACHMENT.md).
 
 **Do**
 
@@ -76,14 +76,15 @@ Masseter is the strongest elevator but sits over the ramus/cheek (Bruxoff-class 
 
 - ANR module long axis **VERTICAL** — parallel to **anterior** temporalis fibers.
 - Bridge the peak bulge so the Analog EMG sense path spans the elevating belly (same site class as GrindCare literature placement).
-- Stack: skin → Oralable optical window → Kapton lock (when used) → silicone if used → **ANR on Red Dots** → optional headband. ANR also presses the optical stack into the temple.
+- Stack: skin → Oralable optical window → Kapton lock (when used) → silicone if used → **ANR on Red Dots** → optional headband (**lab Dual A only** — Beacon nights: pads/tape, no headband, no ANR). ANR also presses the optical stack into the temple.
 
 **Do**
 
 - **Setup — seat Oralable alone first:** Oralable only on the peak → hard clench → see IR-DC trough → then Kapton + ANR (not a full Oralable-only Protocol A).
 - Add ANR without sliding the optical window; press the stack onto skin.
-- Run Mac Dual A preflight: EMG clench max ≥**70** raw (default — Dual A stack rarely hits 100) **and** IR drop ≥**8%**. SpO₂ AC WARN is non-blocking.
-- Keep Red Dot gel contact; if EMG or IR fails, re-seat from Oralable alone.
+- **Mac Dual** preflight: EMG clench max ≥**70** raw **and** IR drop ≥**8%**. SpO₂ AC WARN is non-blocking.
+- **iOS Dual / Protocol A Setup:** MAM seat QC is **`couple`** (need couple=2, or Allow couple=1) — same gate as Mac single Protocol A; not the Mac Dual IR 8% drop.
+- Keep Red Dot gel contact; if EMG or couple/IR fails, re-seat from Oralable alone.
 
 **Do not**
 

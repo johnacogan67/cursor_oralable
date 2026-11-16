@@ -3,12 +3,12 @@
 > **Phase scope:** These protocols are **Phase 1+ / research** (muscle IR-DC, Protocol A/B).  
 > **Current pilot (Phase 0):** temple HR/SpO₂ only — [PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md) · [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) · [data_room/clinical/ED_PEDRO_QUICK_START.md](./data_room/clinical/ED_PEDRO_QUICK_START.md). Do not require Protocol B for Phase 0 kit ship.
 
-**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · [FIGURES.md](./FIGURES.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · **construct map** [data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) · Firmware **1.0.84** (sense only on BLE; gate min 1.0.63) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related:** [docs/README.md](./README.md) · [IR_DC_ADC_FORMAT.md](./IR_DC_ADC_FORMAT.md) · [CLINICAL_VALIDATION.md](./CLINICAL_VALIDATION.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](./ORALABLE_SYSTEM_ARCHITECTURE.md) · [FIGURES.md](./FIGURES.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md) · **construct map** [data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md](./data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md) · Firmware **1.0.85** (sense only on BLE; gate min 1.0.63) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 **Hardware:** Gen1 · BOM REV8 · PCB REV10 · Kaga ES2832AA2  
 **Target site (Phase 1+):** Temporalis anterior (temple / cheek clip)
 
-**Sampling:** 50 Hz PPG + accelerometer (BLE logger or app). **FW 1.0.84** (since 1.0.80+): sensors run only while a central is connected. A BLE drop stops Oralable PPG/ACC (no FIFO catch-up). Keep Mac or iOS linked for the whole Protocol A / Dual A run. Clip status LED is off while linked; red/IR is PPG. Charge with no phone: flash green = charging, solid green = taper / hold (not always 4.2 V).
+**Sampling:** 50 Hz PPG + accelerometer (BLE logger or app). **FW 1.0.85** (since 1.0.80+): sensors run only while a central is connected. A BLE drop stops Oralable PPG/ACC (no FIFO catch-up). Keep Mac or iOS linked for the whole Protocol A / Dual A run. Clip status LED is off while linked; red/IR is PPG. Charge with no phone: flash green = still charging (below ~4.20 V); brief green pulse ~every 10 s = hold. STAT taper alone is not full.
 
 ![FIG-CO-003 Temple placement](./figures/FIG-CO-003-temple-placement.svg)
 
@@ -38,7 +38,7 @@ Uploading both to NotebookLM without this table causes conflicting answers about
 ## Shared: physical setup
 
 1. **Locate target:** Fingers on temple; clench to find peak bulge (**anterior temporalis** — vertical elevating fibers; same site class as GrindCare sEMG in literature; Oralable uses **optical** IR-DC, not electrodes). See [data_room/clinical/TEMPORALIS_ANATOMY_AND_PLACEMENT.md](./data_room/clinical/TEMPORALIS_ANATOMY_AND_PLACEMENT.md).
-2. **Mounting:** Sensor window over peak bulge (headband or cheek clip per hardware). Dual A: ANR Red Dots **long axis VERTICAL** (‖ anterior fibers) over / pressing the same belly.
+2. **Mounting:** Sensor window over peak bulge. **Beacon:** pads or tape (no headband). **Lab Dual A:** headband or cheek clip per hardware; ANR Red Dots **long axis VERTICAL** (‖ anterior fibers) over / pressing the same belly.
 3. **Tension:** Firm but comfortable (target 5–15 mmHg strap equivalent).
 
 **Optional clinical intake (Ed/Pedro / Paper B):** patient completes **BruxScreen-Q** (and dentist **BruxScreen-C** when available) — Lobbezoo et al. 2024. See [LITERATURE_AND_PRIOR_ART.md](./data_room/bookmarks/LITERATURE_AND_PRIOR_ART.md). Do not treat questionnaire alone as instrumented SB diagnosis.
@@ -84,11 +84,56 @@ Uploading both to NotebookLM without this table causes conflicting answers about
 - Output file: `TEMPORALIS_RAW_01.csv`.
 
 ```bash
-# Mac guided session (preferred): timed cues + worn-mode write + BLE log
+# Mac guided session (preferred): timed cues + mode-3 stream + couple seat QC + BLE log
 .venv/bin/python scripts/run_protocol_a_session.py
+# Start on couple=1 (poor seat) if needed:
+.venv/bin/python scripts/run_protocol_a_session.py --allow-couple-1
+# Legacy start on first PPG (skip Mac couple):
+.venv/bin/python scripts/run_protocol_a_session.py --no-coupling-gate
 # Legacy logger (no cues):
 python -m src.utils.ble_logger --out data/raw/TEMPORALIS_RAW_01.txt
 ```
+
+### Mac seat QC (`couple`) — not GATT `worn`
+
+Protocol A still **forces user mode 3** so PPG/ACC stream. GATT `worn` is often 1 even on the desk. Mac `couple` is the real seat QC ([`src/utils/coupling_gate.py`](../src/utils/coupling_gate.py)). **iOS Protocol A Setup** and **iOS Dual (MAM)** use the same gate via OralableCore `CouplingGate` — [MOBILE_APP_FLOWS.md](../../oralable_swift/docs/MOBILE_APP_FLOWS.md). **Mac Dual** still uses IR optical clench-drop (see Dual A section below).
+
+| `couple` | Meaning |
+|----------|---------|
+| **unknown** | No BLE, or no PPG yet / stalled — **cannot know** seat (never treat as desk) |
+| **0** | Desk / not on body (PPG+ACC live; flat IR; ACC stillness reinforces) |
+| **1** | On skin, poor seat / weak pulse or vitals |
+| **2** | On skin + IR pulse + plausible HR and/or SpO2 AC |
+
+```mermaid
+flowchart TD
+  ble{BLE_and_PPG_live}
+  ble -->|no| U[unknown]
+  ble -->|yes| dock{on_dock}
+  dock -->|yes| C[charger_not_couple]
+  dock -->|no| acc{ACC_seen}
+  acc -->|no| U
+  acc -->|yes| dc{IR_DC_ok}
+  dc -->|no| Z[couple_0_desk]
+  dc -->|yes| pi{IR_pulse_on}
+  pi -->|no| O[couple_1_poor]
+  pi -->|yes| vit{HR_or_SpO2_ok}
+  vit -->|no| O
+  vit -->|yes| T[couple_2_good]
+```
+
+### Optical LEDs (green / red / IR) — FW 1.0.72+
+
+Same MAXM86161 channels: **status is green-only** when **no BLE**; while linked, red/IR are PPG sensing (green status off).
+
+| BLE | On case | Charging | Green | Red | IR |
+|-----|---------|----------|-------|-----|-----|
+| No | Yes | Below ~4.20 V / 80% | Flash | Off | Off |
+| No | Yes | Hold (≥ ~4.20 V / 80%) | Rare pulse (~10 s) | Off | Off |
+| No | No | — | Off | Off | Off |
+| Yes + PPG stream | Off case | — | Off | On | On |
+
+Charge with **no phone** so you can read flash vs hold pulse; then link for Protocol A.
 
 Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_mam_pipeline.py --raw <log>` for Core ML. Aggregate **many subjects** before claiming a general model — see [CORE_ML_TRAINING_COHORT.md](./CORE_ML_TRAINING_COHORT.md).
 
@@ -110,15 +155,16 @@ Then: `scripts/process_temporalis_gold.py <log>` and/or `scripts/run_temporalis_
 | **Devices** | Oralable Gen1 (temple clip) + ANR M40 electrodes on **same temporalis region** |
 | **Setup** | **Seat Oralable alone first** (no ANR): peak bulge → hard clench → see IR-DC trough → then Kapton + ANR vertical without sliding the window. Not a full Oralable-only Protocol A. |
 | **Seat order** | Oralable alone → IR trough → stack ANR → Dual A script gates |
-| **Preflight** | EMG gate (default max ≥70) **and** IR optical gate (default drop ≥8% of rest median). SpO₂ AC WARN after IR (non-blocking). EMG alone is not enough. |
+| **Preflight (Mac Dual)** | EMG gate (default max ≥70) **and** IR optical gate (default drop ≥8% of rest median). SpO₂ AC WARN after IR (non-blocking). EMG alone is not enough. |
+| **Preflight (iOS Dual)** | EMG gate ≥70 → MAM **`couple`** seat QC (same as Protocol A Setup / Mac single — unknown / 0 / 1 / 2). Not the Mac Dual IR 8% drop. |
 | **Cues** | Same Protocol A table (5 taps at 01:00 on Oralable housing) |
-| **Capture** | Mac dual-BLE: `scripts/run_dual_protocol_a_session.py` |
+| **Capture** | Mac dual-BLE: `scripts/run_dual_protocol_a_session.py` · iOS: `showDualProtocolA` |
 | **Score** | `scripts/align_anr_oralable_concordance.py` → `plots/concordance/<session>/` (LP IR-DC overlay + `emg_ir_lag_zoom.png` + nest `spo2_qc`) |
 | **SpO₂** | Nest requires SpO₂ **series + QC line** (`ok`/`warn`/`fail`) — not finger equivalence. Paper A O2 uses QC; Dual A muscle packs may archive with `warn`. |
 | **Expect** | LP IR-DC troughs lag EMG by ~**1–5 s** (hemodynamic) |
-| **Out of scope** | PSG-AV diagnosis; App Store EMG card; Pedro Phase 0 kits; AHI/ODI |
+| **Out of scope** | PSG-AV diagnosis; App Store EMG card; **Beacon Phase 0 kits** (no ANR on the patient); AHI/ODI |
 
-**Why these defaults (practical):** Seat Oralable alone first so ANR does not unload the PPG window. EMG gate **70** (not 100) matches the eng pack that worked under the Dual A stack — contact proof, not hero amplitude. IR drop **8%** is the hard optical gate (EMG alone failed us once). SpO₂ mean is **not** a hard gate (temple means ~89% are common); AC WARN + post-hoc `spo2_qc` flag junk or bias without blocking muscle Dual A. Full setup + rationale: [ANR_M40_CONCORDANCE.md — Setup / Why these gates](./ANR_M40_CONCORDANCE.md#setup--seat-oralable-alone-first).
+**Why these defaults (practical):** Seat Oralable alone first so ANR does not unload the PPG window. EMG gate **70** (not 100) matches the eng pack that worked under the Dual A stack — contact proof, not hero amplitude. On **Mac Dual**, IR drop **8%** is the hard optical gate (EMG alone failed us once). On **phone Dual / single Protocol A**, MAM seat QC is **`couple`** (IR pulse + vitals), not clench-drop. SpO₂ mean is **not** a hard gate (temple means ~89% are common); AC WARN + post-hoc `spo2_qc` flag junk or bias without blocking muscle Dual A. Full setup + rationale: [ANR_M40_CONCORDANCE.md — Setup / Why these gates](./ANR_M40_CONCORDANCE.md#setup--seat-oralable-alone-first).
 
 **Setup (before the script):**
 1. Only Oralable on anterior temporalis peak.  

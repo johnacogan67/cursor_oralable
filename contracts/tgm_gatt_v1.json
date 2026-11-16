@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "contract_id": "oralable.tgm-gatt",
+  "contract_version": "1.0.0",
+  "status": "implementation baseline",
+  "authority": {
+    "owner": "oralable_nrf",
+    "source": "../oralable_nrf/app/src/tgm_service.h",
+    "declaration": "../oralable_nrf/app/src/tgm_service.c",
+    "rule": "The firmware GATT declaration owns UUID allocation, GATT properties, and wire layout. This contract records the supported surface so host consumers can be checked offline."
+  },
+  "service": {
+    "id": "tgm",
+    "firmware_macro": "BT_UUID_TGM_VAL",
+    "uuid": "3A0FF000-98C4-46B2-94AF-1AEE0FD4C48E",
+    "advertised_name": "Oralable",
+    "user_facing_name": "MAM"
+  },
+  "characteristics": [
+    {
+      "id": "ppg",
+      "firmware_macro": "BT_UUID_TGM_PPG_VAL",
+      "swift_constant": "sensorDataCharUUID",
+      "uuid": "3A0FF001-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["notify"],
+      "payload": "u32 little-endian frame counter followed by N samples of red, IR, green u32 little-endian values; 4 + 12*N bytes"
+    },
+    {
+      "id": "accelerometer",
+      "firmware_macro": "BT_UUID_TGM_ACC_VAL",
+      "swift_constant": "accelerometerCharUUID",
+      "uuid": "3A0FF002-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["notify"],
+      "payload": "u32 little-endian frame counter followed by N X/Y/Z Int16 little-endian samples; 4 + 6*N bytes"
+    },
+    {
+      "id": "temperature",
+      "firmware_macro": "BT_UUID_TGM_TEMP_VAL",
+      "swift_constant": "temperatureCharUUID",
+      "uuid": "3A0FF003-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["notify"],
+      "payload": "current firmware sends sizeof(tgm_service_temp_data_t): u32 frame counter plus Int16 centi-degrees, with implementation padding represented in host parsers"
+    },
+    {
+      "id": "battery_voltage",
+      "firmware_macro": "BT_UUID_TGM_BAT_VAL",
+      "swift_constant": "batteryCharUUID",
+      "uuid": "3A0FF004-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["read", "notify"],
+      "payload": "Int32 little-endian millivolts"
+    },
+    {
+      "id": "device_id",
+      "firmware_macro": "BT_UUID_TGM_UUID_VAL",
+      "swift_constant": "deviceIdCharUUID",
+      "uuid": "3A0FF005-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["read"],
+      "payload": "device identifier as supplied by firmware"
+    },
+    {
+      "id": "firmware_version",
+      "firmware_macro": "BT_UUID_TGM_FW_VAL",
+      "swift_constant": "firmwareVersionCharUUID",
+      "uuid": "3A0FF006-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["read"],
+      "payload": "firmware version string"
+    },
+    {
+      "id": "ppg_register_read",
+      "firmware_macro": "BT_UUID_TGM_READ_PPG_REG_VAL",
+      "swift_constant": "ppgRegReadCharUUID",
+      "uuid": "3A0FF007-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["write", "notify"],
+      "payload": "PPG register read request/result; not a battery characteristic"
+    },
+    {
+      "id": "ppg_register_write",
+      "firmware_macro": "BT_UUID_TGM_WRITE_PPG_REG_VAL",
+      "swift_constant": "ppgRegWriteCharUUID",
+      "uuid": "3A0FF008-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["write", "notify"],
+      "payload": "PPG register write request/result; not a battery characteristic"
+    },
+    {
+      "id": "device_status",
+      "firmware_macro": "BT_UUID_TGM_STATUS_VAL",
+      "swift_constant": "statusCharUUID",
+      "uuid": "3A0FF009-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["read", "notify"],
+      "payload": "five bytes: on_dock, worn, device_state, battery_pct, charge_active",
+      "minimum_firmware": "1.0.47"
+    },
+    {
+      "id": "firmware_log",
+      "firmware_macro": "BT_UUID_TGM_FW_LOG_VAL",
+      "swift_constant": "firmwareLogCharUUID",
+      "uuid": "3A0FF00A-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["notify"],
+      "payload": "best-effort UTF-8 diagnostic line"
+    },
+    {
+      "id": "firmware_config",
+      "firmware_macro": "BT_UUID_TGM_FW_CONFIG_VAL",
+      "swift_constant": "firmwareConfigCharUUID",
+      "uuid": "3A0FF00B-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["write"],
+      "payload": "firmware configuration command"
+    },
+    {
+      "id": "firmware_config_state",
+      "firmware_macro": "BT_UUID_TGM_FW_CONFIG_STATE_VAL",
+      "swift_constant": "firmwareConfigStateCharUUID",
+      "uuid": "3A0FF00C-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["read", "notify"],
+      "payload": "versioned firmware configuration and bench-state bytes"
+    },
+    {
+      "id": "battery_usage",
+      "firmware_macro": "BT_UUID_TGM_BATTERY_USAGE_VAL",
+      "swift_constant": "batteryUsageCharUUID",
+      "uuid": "3A0FF00D-98C4-46B2-94AF-1AEE0FD4C48E",
+      "properties": ["read", "notify"],
+      "payload": "eight little-endian bytes: voltage_mv u16, gauge u8, flags u8, mAh_used_x100 u16, minutes_left u16; 0xFFFF minutes means on case or budget unavailable",
+      "minimum_firmware": "1.0.86"
+    }
+  ],
+  "compatibility": {
+    "legacy_symbol": {
+      "symbol": "commandCharUUID",
+      "meaning": "Historical host-side name for temperature UUID 3A0FF003. Keep only as a deprecated alias while clients migrate to temperatureCharUUID. It is not a firmware command characteristic."
+    },
+    "unsupported_in_current_firmware": [
+      {
+        "uuid": "3A0FFEF2-98C4-46B2-94AF-1AEE0FD4C48E",
+        "reason": "Not declared by the current firmware TGM service. Do not subscribe to it in the supported logging or release path."
+      }
+    ]
+  },
+  "change_policy": [
+    "Allocate or alter a UUID only in a versioned contract change reviewed with the firmware owner.",
+    "Update the firmware declaration, Core constants, iOS client, Python tools, captured fixtures, and this contract in one compatibility change.",
+    "Do not reinterpret 3A0FF007 or 3A0FF008 as battery telemetry.",
+    "For a breaking payload change, add a new characteristic or a documented versioned payload; do not silently reuse an existing UUID."
+  ]
+}

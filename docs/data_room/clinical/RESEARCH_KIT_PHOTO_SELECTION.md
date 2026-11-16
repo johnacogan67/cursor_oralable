@@ -1,9 +1,11 @@
 # Research Kit photo selection — pitch · IEEE · Pedro
 
-**As at:** 8 Aug 2026  
-**Sources:** WhatsApp Dual A / kit session → archived under [`docs/figures/research_kit_photo_source/`](../figures/research_kit_photo_source/) (`wa01`…`wa15`)  
+**As at:** 19 Sep 2026  
+**Sources:** WhatsApp Dual A / kit session → archived under [`docs/figures/research_kit_photo_source/`](../figures/research_kit_photo_source/) (`wa01`…`wa15`) · Gen2 housing 19 Sep → [`docs/figures/attachment_photo_source/`](../figures/attachment_photo_source/)  
 **Curated crops:** [`docs/figures/FIG-CO-0*.png`](../figures/) · pack copies [`figures/`](./figures/)  
 **Privacy:** Full-face worn shots need consent before public or IEEE use; prefer **temple crops** (FIG-CO-031–033). Do not invent competitor photos.
+
+**Beacon box vs photo:** FIG-CO-016 still shows the Dual A engineering flat-lay (headband + ANR). Caption every public use: Beacon ship is **Oralable + case + pads** — not that full stack.
 
 ---
 
@@ -11,9 +13,10 @@
 
 | Source | Content | Pitch F&F | IEEE Paper A | Pedro ops / status | Edit notes |
 |--------|---------|-----------|--------------|--------------------|------------|
-| **wa10** → **FIG-CO-016** | Kit flat-lay: Ridge headband + dock + Oralable in well + ANR + Red Dots | **Primary kit hero** | Methods “apparatus components” | Yes — “what’s in the box” | Light crop; label callouts in Illustrator later |
+| **wa10** → **FIG-CO-016** | Kit flat-lay: Ridge headband + dock + Oralable in well + ANR + Red Dots | **Engineering Dual A hero** (caption: not Beacon box) | Methods “apparatus components” (lab Dual A) | Yes — with Oralable-only caption | Light crop; label callouts in Illustrator later |
 | **wa11** → **FIG-CO-013** | Dock crop: Oralable PCB in charger | Supporting (“charge first”) | Optional hardware | Yes — charge gate story | Already cropped to dock |
 | **wa12** → **FIG-CO-026** | ANR M40 + 3M Red Dots product shot | Competitor/kit slide | Related-work / Dual A hardware | Yes | Clean; best ANR ID shot |
+| **19 Sep housing** → **FIG-CO-067 / 072** | Gen2 printed bar vs ANR M40 on the same Red Dots | Skip as Beacon hero | Optional apparatus footnote | Attachment / print | **Lab/attachment.** Not the Beacon box. First print is a thin bar, not the M40 stadium |
 | **wa14** → **FIG-CO-030** | Oralable PPG module optical close-up | Miniaturization beat | **Strong methods** sensor node | Optional | PCB-only; research module not Gen1 clip |
 | **wa03** → **FIG-CO-031** | ANR **vertical** on temple (crop) | Dual A / orientation | Placement figure | **Yes — orientation rule** | Temple crop; further eye-out crop if publishing |
 | **wa05** → **FIG-CO-032** | Oralable under silicone on temporalis point | Stack story | Placement / coupling | **Yes — find the point** | Temple crop |
@@ -93,7 +96,7 @@ Old SVG stubs `FIG-CO-016-ed-pedro-kit-contents.svg`, `FIG-CO-013-magnetic-case.
 |------|-------|-------|
 | Kapton close-up over Oralable before/with ANR | John | FIG-CO-035 |
 | Clean labeled layer-cake graphic | John | FIG-CO-036 |
-| Gen1 consumer clip + magnetic case beauty shot | John | FIG-CO-037 / refresh 012–013 product |
+| Gen1 consumer clip + charge case beauty shot | John | FIG-CO-037 / refresh 012–013 product |
 | Bruxoff / AcuPebble / GrindCare | Pedro / fair-use | FIG-CO-027–029 |
 | Publication-safe temple crop (eyes out) redraw | John | Re-export 031–033 if IEEE venue requires |
 
@@ -115,7 +118,7 @@ From as-filed drawings PDF for US provisional **64/033,978** (do **not** send fu
 | FIG-CO-039 | Provisional Fig. 2 | Ear-anchor harness · temporalis / masseter pads |
 | FIG-CO-040 | Provisional Fig. 3 | IR-DC + SpO₂ window — engineering only; not Beacon *N* |
 
-Used in [PEDRO_PRE_MEETING_2026-08-07.pdf](../archive/PEDRO_PRE_MEETING_2026-08-07.pdf). Skip NotebookLM-style Figs 6–8 and multi-form-factor composites (11–12) for partner sends.
+Used in the 7 Aug Pedro pre-meeting pack (PDF not in this git). Notes: [PEDRO_WHATSAPP_PRE_MEETING.txt](../archive/PEDRO_WHATSAPP_PRE_MEETING.txt). Skip NotebookLM-style Figs 6–8 and multi-form-factor composites (11–12) for partner sends.
 
 ## Matisse-style line drawings (partner-safe)
 
@@ -159,6 +162,15 @@ Same portrait craft as FIG-CO-051; **photoreal cutouts** of kit devices on the t
 | FIG-CO-053 | Line face + **photo ANR M40** on Red Dot |
 | FIG-CO-054 | Line face + **photo Dual A** (Oralable + ANR stack) |
 | FIG-CO-055 | Line face (**FIG-CO-046** finger-press) + **photo Oralable** silicone on temporalis (wa15 / comp_05); PPG toward skin |
+| FIG-CO-070 | Line face + **photo Gen2 printed housing** on Red Dots (attachment sit). **Not** the Beacon box |
+| FIG-CO-071 | Line still-life + **photo** Gen1 vs Gen2 MAM boards |
+| FIG-CO-072 | Line still-life + **photo** Gen2 housing vs ANR M40 (same pad class). Lab/attachment, not Beacon ship |
+| FIG-CO-073 | Line face + **photo Gen2 housing** on temple + **photo Sunrise** on chin. Site contrast only. **Not** Dual A, **not** the Beacon box |
+| FIG-CO-074 | Same mix as 073; clean Sunrise pod (no chin speck). **Not** Dual A, **not** the Beacon box |
+| FIG-CO-075 | FIG-CO-070 line face + **photo Oralable MAM** on temple (unchanged stack) + **photo Sunrise** on chin. No added colour. **Not** Dual A, **not** the Beacon box |
+| FIG-CO-076 | Copy of FIG-CO-068 still-life + overhead **Sunrise** pod. Size peer only. **Not** Dual A, **not** the Beacon box |
+| FIG-CO-077 | Copy of FIG-CO-068 still-life + overhead **AcuPebble** disc (29 mm). Attach-class size peer. **Not** Dual A, **not** the Beacon box. Oralable ≠ AHI |
+| FIG-CO-078 | Copy of FIG-CO-068 + **AcuPebble** disc + **Sunrise** pod. Oralable housing and ANR from the photo. Size / attach peers only. **Not** Dual A, **not** the Beacon box. Oralable ≠ AHI |
 
 Use when you want product recognition without a full photo face.
 

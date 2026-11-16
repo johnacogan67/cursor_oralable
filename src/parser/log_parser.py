@@ -5,7 +5,8 @@ The same Bluetooth log file contains multiple characteristics; each parser filte
 - 3A0FF001: PPG (Red, IR, Green) at 50 Hz.
 - 3A0FF002: Accelerometer (actigraphy, sync taps per .cursorrules) at ~100 Hz.
 - 3A0FF003: Thermometer (temp_raw, temp_c).
-- 3A0FF007 / 3A0FF008: Battery (if present in log).
+- 3A0FF004: Battery voltage (millivolts).
+- 3A0FF00D: Battery usage model (firmware 1.0.86+).
 
 Use parse_oralable_log() for PPG only, or parse_all() to get every stream in one pass.
 
@@ -23,11 +24,11 @@ import pandas as pd
 PPG_CHAR_UUID = "3A0FF001-98C4-46B2-94AF-1AEE0FD4C48E"
 ACCEL_CHAR_UUID = "3A0FF002-98C4-46B2-94AF-1AEE0FD4C48E"
 THERMOMETER_CHAR_UUID = "3A0FF003-98C4-46B2-94AF-1AEE0FD4C48E"
-# Firmware uses 3A0FF004 for battery notify; 3A0FF007/008 are PPG register read/write
+# Firmware uses 3A0FF004 for battery voltage notify and 3A0FF00D for battery usage.
+# 3A0FF007/008 are PPG register read/write control paths, not battery telemetry.
 BATTERY_CHAR_UUIDS = (
     "3A0FF004-98C4-46B2-94AF-1AEE0FD4C48E",
-    "3A0FF007-98C4-46B2-94AF-1AEE0FD4C48E",
-    "3A0FF008-98C4-46B2-94AF-1AEE0FD4C48E",
+    "3A0FF00D-98C4-46B2-94AF-1AEE0FD4C48E",
 )
 # Samples per packet at 50Hz (firmware CONFIG_PPG_SAMPLES_PER_FRAME can be 20 or 50)
 SAMPLES_PER_PACKET = 50
@@ -38,8 +39,8 @@ PPG_WORDS_20_SAMPLES = 2 + 20 * 6  # 122
 # 50 Hz → 20 ms between samples
 SAMPLE_INTERVAL_S = 1.0 / 50.0
 # Accelerometer: .cursorrules say up to 100Hz, sync with 50Hz; packet often has 50 samples
-ACCEL_SAMPLES_PER_PACKET = 50
-ACCEL_SAMPLE_INTERVAL_S = 1.0 / 100.0  # 100 Hz typical
+ACCEL_SAMPLES_PER_PACKET = 25
+ACCEL_SAMPLE_INTERVAL_S = 1.0 / 50.0  # LIS2DTW12 CTRL1 0x43, 50 Hz
 
 # PPG channel order per firmware tgm_service.h:
 # Each sample = 12 bytes (3 × uint32 LE): [Red, slot1, slot2] at offsets 0, 4, 8
@@ -542,7 +543,7 @@ def parse_accelerometer_log(csv_path: str | Path) -> pd.DataFrame:
     Parse accelerometer (3A0FF002) from Oralable log. Used for actigraphy and sync taps (.cursorrules).
 
     Payload per oralable_nrf (tgm_service_acc_data_t): 4-byte frame_counter, then N × (x, y, z) signed 16-bit.
-    Returns DataFrame with timestamp_s, accel_x, accel_y, accel_z (sample spacing ~10 ms at 100 Hz).
+    Returns DataFrame with timestamp_s, accel_x, accel_y, accel_z (sample spacing 20 ms at 50 Hz).
     """
     csv_path = Path(csv_path)
     df_log = _read_log_rows(csv_path)

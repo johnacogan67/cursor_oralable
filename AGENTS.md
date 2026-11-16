@@ -36,6 +36,18 @@ Start: cursor_oralable/docs/PRODUCT_ROADMAP.md §1
 Lock facts from schematic/DTS/BOM, not chat memory.
 ```
 
+## `attachment`
+
+```
+Topic: attachment
+Read cursor_oralable/docs/WORKSPACE_TOPICS.md § attachment.
+Repos: cursor_oralable docs only; no PCB, firmware, or iOS unless I ask.
+Start: cursor_oralable/docs/ATTACHMENT.md
+ANR M40 pad-and-snap class. Print Gen1 and Gen2 Formlabs cavities. Gen4 = concept, USB-C on the pod.
+Beacon ops: charge bare MAM → seat in housing → one night → return → remove → recharge. User does not get the charge case.
+Do not rewrite Beacon kit-ship as Gen2. Do not treat Gen4 as a BOM generation.
+```
+
 ## `ios-patient`
 
 ```
@@ -96,6 +108,7 @@ Read cursor_oralable/docs/WORKSPACE_TOPICS.md § clinical.
 Repos: cursor_oralable only unless Dual A needs app/firmware.
 Start: cursor_oralable/docs/TEMPORALIS_COLLECTION_PROTOCOL.md + clinical/MEASUREMENT_CONSTRUCT_MAP.md
 Construct map (MAM vs ANR vs AcuPebble vs PSG): cursor_oralable/docs/data_room/clinical/MEASUREMENT_CONSTRUCT_MAP.md — iterate there; do not copy Table 1.
+Dentist approximate (aim vs current bar): cursor_oralable/docs/data_room/clinical/DENTIST_APPROXIMATE.md — update that file when a named result moves a shortcoming.
 ANR Dual A procedure: edit cursor_oralable/docs/ANR_M40_CONCORDANCE.md (full); data_room bookmarks/ANR stub only.
 Do not mix Protocol A (5 taps) and Protocol B (3-tap T=0).
 ```

@@ -1,6 +1,6 @@
 # Oralable brand assets (data room)
 
-**Look + voice (full):** [VISUAL_AND_VOICE_DIRECTION.md](./VISUAL_AND_VOICE_DIRECTION.md) — locked hybrid **FIG-CO-054**, Matisse contour, pitch/web/app, prose.
+**Look + voice (full):** [VISUAL_AND_VOICE_DIRECTION.md](./VISUAL_AND_VOICE_DIRECTION.md) — light pages, Orwell, Matisse contour, photo of the device (Beacon hybrid **FIG-CO-052** · lab Dual A **FIG-CO-054**).
 
 | File | Use |
 |------|-----|

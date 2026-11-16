@@ -17,13 +17,11 @@
 		"files.exclude": {
 			"**/build/**": true,
 			"**/build_*/**": true,
-			"**/plots/**": true,
 			"**/.cache/**": true
 		},
 		"search.exclude": {
 			"**/build/**": true,
 			"**/build_*/**": true,
-			"**/plots/**": true,
 			"**/.cache/**": true,
 			"**/docs/data_room/firmware/*.hex": true,
 			"**/docs/data_room/firmware/*.bin": true,

@@ -1,0 +1,25 @@
+---
+description: When a session changes what Oralable can say about apnea or bruxism, update the living dentist-approximate note in the same turn.
+alwaysApply: true
+---
+
+# Dentist approximate — keep the living note current
+
+Aim and shortcomings live in `cursor_oralable/docs/data_room/clinical/DENTIST_APPROXIMATE.md`. The aim is one temple wearable for a dentist’s evaluation of sleep apnea and bruxism. The current bar is an approximate with written shortcomings. Equivalence to AcuPebble, Sunrise, or a sleep study is not the claim.
+
+Update that file in the **same session** when any of these land:
+
+- A paired night or F1 against AcuPebble, Sunrise, ANR, EMG, audio, finger oxygen, or polysomnography
+- A change to what SASHB, the infrared drop, or the accelerometer grind means
+- A new sensor that speaks to apnea count, effort, tooth contact, or sleep time
+
+When you update it:
+
+1. Bump **As at**. Add one changelog row naming the pack, paper, or file.
+2. Set a shortcoming to **narrowed** or **closed** only when its “Moves when” test is met.
+3. Leave the aim paragraph as the aim. Do not write apnea-index equivalence, Azarbarzin equivalence, or a clearance into the file.
+4. Link the note. Do not copy its table into a pitch or Paper A.
+
+Skip the file for firmware, housing, billing, and pitch edits that do not move a row.
+
+Example: a new overnight event match of accelerometer bursts against temporalis EMG narrows row 6 and cites the pack id. It does not close row 1.

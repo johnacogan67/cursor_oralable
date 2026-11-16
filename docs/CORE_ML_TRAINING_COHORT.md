@@ -114,8 +114,9 @@ Protocol A is **quiet-heavy**. Mitigate class imbalance:
 1. Split by **user ID**, never by random windows.  
 2. Freeze a **test panel** of **8–10 users** never used for training.  
 3. Report leave-user-out accuracy / F1 per class (quiet, tonic, phasic, rescue).  
-4. On retrain: new `mlpackage` + app build bump + note in [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md).  
-5. File naming: include subject ID, date, placement, side — e.g. `TEMPORALIS_A_<subject>_<YYYYMMDD>_sN.txt`.
+4. Preserve the generated provenance JSON with the Keras source, algorithm-spec hash, cohort fingerprint, and user-holdout metrics; see [MODEL_PROVENANCE.md](./MODEL_PROVENANCE.md).
+5. On retrain: new `mlpackage` + app build bump + note in [VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md).
+6. File naming: include subject ID, date, placement, side — e.g. `TEMPORALIS_A_<subject>_<YYYYMMDD>_sN.txt`.
 
 ---
 

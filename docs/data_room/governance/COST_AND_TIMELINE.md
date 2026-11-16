@@ -1,6 +1,6 @@
 # Cost & timeline map — Stage A wearable → Stage B medical
 
-**Status:** Planning estimate · July 2026 · **not a budget or fundraising model**  
+**Status:** Planning estimate · **3 Oct 2026** · July 2026 ranges kept · **not a budget or fundraising model**  
 **Currency:** EUR (aligns with GTM IAP). Ranges are **order-of-magnitude** industry / SMED-wearable norms — replace with Peacock, EMS, CRO, and accountant quotes.
 
 **Related:** [IP_NORTH_STAR.md](../../IP_NORTH_STAR.md) · [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md) · [APPS_AND_REVENUE_EVAL.md](./APPS_AND_REVENUE_EVAL.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
@@ -21,17 +21,17 @@
 2026 Jul 24    ENG MILESTONE (shipped)
                Protocol A Mac · Core ML Tier 0 · night-report PDF + in-app hypnogram
                       │
-2026 Jul–Sep    PHASE 0 / Ed–Pedro (Stage A) — YOU ARE HERE
-               Gen1 stack ready · Research Kits gated (5 by 31 Aug) · temple vitals · Dual A Mac optional · patient app only
+2026 Jul–Oct    PHASE 0 / Beacon (Stage A) — YOU ARE HERE
+               Gen1 stack ready · Research Kits still gated · 30 Sep handoff missed · no new date · one-night clinic loaner · Dual A Mac lab-only · patient app only
                       │
 2026 Q4–2027 Q1  PHASE 1+ embodiment (Stage A)
-               TFI / SASHB / IR-DC live in patient UX · Protocol B · ≥6 h overnight eval
+               TFI / SASHB / IR-DC live in patient UX · Protocol B · ≥4 h Beacon *N* + ≥6 h figure nights
                Core ML Tier 1 cohort · soft Premium optional · professional app still gated
                       │
-2026 Q4–2027 H2  GEN2 bring-up (parallel)
+2026 Q4–2027 H2  GEN2 bring-up (parallel) — or skip if Gen4 combined pod is the next spin
                REV11 EVT · FW 2.0.x · vitals parity · longer nights
                       │
-2026–2027        IP — new US patent submission / prosecution (counsel)
+2026–2027        IP — convert 64/033,978 by ~9 Apr 2027; optional second provisional (placement + combined pod)
                       │
 2027 H1–H2       STAGE B pre-sub + clinical package
                Predicate · study report · QMS climb
@@ -43,10 +43,10 @@
 | Window | Focus | Exit criteria |
 |--------|-------|---------------|
 | **24 Jul 2026** | Eng overnight + Core ML Tier 0 | PDF/Mac pack + mlpackage retrain (done) |
-| **Now – Sep 2026** | Phase 0 Ed/Pedro Research Kit | Temple HR/SpO₂ gates; CSV evidence; **target 5 Research Kits to Pedro by 31 Aug 2026** after charge-to-temple (currently **gated**); Dual A Mac optional; no pro app |
-| **Q4 2026 – Q1 2027** | Phase 1+ Stage A | TFI/SASHB/IR-DC live in patient UX; Protocol B; overnight ≥6 h eval; patent-table exports |
-| **Q4 2026 – H2 2027** | Gen2 HW/FW | G2-P0…P6; temple parity; CHRSTS/SOC better than Gen1 |
-| **2026–2027** | US patent | Non-provisional submitted; prosecution as needed |
+| **Phase 0 (Sep window ended)** | Phase 0 Beacon Research Kit | Temple HR/SpO₂ gates; CSV/PDF evidence; **30 Sep 2026** handoff **missed**; five Oralable-only kits still **gated** on charge-to-temple; no new date; Dual A Mac lab-only; no pro app |
+| **Q4 2026 – Q1 2027** | Phase 1+ Stage A | TFI/SASHB/IR-DC live in patient UX; Protocol B; ≥4 h Beacon *N* + ≥6 h figure nights; patent-table exports |
+| **Q4 2026 – H2 2027** | Gen2 HW/FW | G2-P0…P6; temple parity; CHRSTS/SOC better than Gen1 — **or skip** if Gen4 pad-pod is the next enclosure |
+| **2026–2027** | US patent | Convert **64/033,978** by **~9 Apr 2027**; optional second provisional |
 | **H1 2027+** | Stage B prep | Pre-sub package; clinical concordance plan funded |
 | **H2 2027–2028** | Stage B filing | 510(k) target; CE MDR exploration parallel |
 
@@ -65,7 +65,7 @@ Assumptions: lean team (founder plus part-time contractors), Ireland/EU base, Ge
 | **Ed/Pedro Phase 0 ops** | 5k | 15k | 35k | Gen1 units exist; partner handoff still **gated** — travel, phones/TestFlight, time, Beacon liaison, replacements |
 | **Gen1 build / scrap / spares** | 10k | 25k | 60k | Sample floors: Kaga Gen1 [GEN1_COGS](../hardware/GEN1_COGS_KAGA_QUOTE.md); Bittele PCB00003 [BITTELE](../hardware/BITTELE_Q100918A1_PCB_QUOTE.md) (~$173/set); **volume finished-kit COGS still TBD** |
 | **Patient app (Phase 0→1+)** | 20k | 50k | 100k | Contractor iOS / OralableCore; overnight report; StoreKit live; **not** pro app yet |
-| **Firmware 1.0.84 soak / field** (was 1.0.70 line) | 5k | 15k | 30k | STAT + IR-pulse + pad/desk recover; TestFlight 4.3.3 build 5 |
+| **Firmware 1.0.85 soak / field** | 5k | 15k | 30k | STAT + IR-pulse + pad/desk recover + hold LED; TestFlight 4.3.3 build 5 |
 | **Phase 1+ science / validation** | 15k | 40k | 80k | Protocol B deferral → muscle gates; Python reports; small concordance |
 | **Cloud / Apple / tools** | 1k | 3k | 8k | Apple Developer, TestFlight, CloudKit (low until scale), CI |
 | **Website / GTM content** | 2k | 8k | 20k | oralable.com updates, screenshots, soft launch ads (optional) |
@@ -129,7 +129,7 @@ If you pay 1–2 FTE eng plus fractional regulatory:
 | **Through Stage B mid** | Stage A+Gen2 + 510(k) mid clinical | **~800k–1.0M** | ~2M+ |
 
 **Revenue offsets (optimistic GTM draft — not proven):**  
-Hardware margin on kits plus Premium €9.99/mo; dentist seats **after** Phase 1+. Year-1 draft targets (500 downloads / 20 dentists) **do not** pay for Stage B on their own.
+Hardware margin on Path A kits plus Premium €9.99/mo; dentist seats **after** Phase 1+. Path 0 RKaaS (€100/report draft) is **not** 2026 income: n≈5 = **€0**. Do not net it against Point B. Year-1 draft targets (500 downloads / 20 dentists) **do not** pay for Stage B on their own.
 
 ---
 
@@ -138,10 +138,10 @@ Hardware margin on kits plus Premium €9.99/mo; dentist seats **after** Phase 1
 | Spend now (unlocks Stage A + patent embodiment) | Defer |
 |--------------------------------------------------|--------|
 | Ed/Pedro Phase 0 (patient app) | Oralable for Dentists activation |
-| 1.0.70 field soak + tag | Full ISO 13485 audit |
+| 1.0.85 field soak + pad-attach | Full ISO 13485 audit |
 | Phase 1+ TFI/SASHB in patient app | Large n clinical pivotal |
 | US patent file (counsel) | CE NB engagement |
-| Gen2 EVT only if CHRSTS/battery block Stage A quality | Volume EMS PO before COGS known |
+| Gen2 EVT only if CHRSTS/battery still needed **and** Gen4 pod is not the next enclosure | Volume EMS PO before COGS known |
 | Minimal CloudKit when share needed | Path B IAP marketing |
 
 ---
@@ -150,7 +150,7 @@ Hardware margin on kits plus Premium €9.99/mo; dentist seats **after** Phase 1
 
 | Period | Likely cash (mid) | Main uses |
 |--------|-------------------|-----------|
-| **Jul–Sep 2026** | 20–40k | Ed/Pedro, spares, FW soak, app polish |
+| **Jul–Oct 2026** | 20–40k | Ed/Pedro, spares, FW soak, app polish. Sep window ended with kits still gated. |
 | **Q4 2026** | 40–80k | Phase 1+ app, IP filing push, Gen2 kickoff |
 | **H1 2027** | 80–150k | Gen2 EVT, Phase 1+ evidence, soft launch |
 | **H2 2027** | 100–250k | Stage B pre-sub start **or** Gen2 pilot parity |

@@ -1,6 +1,6 @@
 # Paper A — document alignment, source validation, future investigation
 
-**As at:** 30 Aug 2026 · Pack **1.1.68** · Dual A measured pack + research EDF+ + SASHB claim clarity (Paper A overnight still ≥6 h)  
+**As at:** 7 Sep 2026 · Pack **1.1.68** · Dual A measured pack + research EDF+ · Beacon feasibility evaluable **≥4 h**; hypnogram figure / bands still **≥6 h**  
 **Scope:** Deep-dive check of [PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md) against canonical docs, literature distill, code, and figure assets.  
 **Pair with:** [PAPER_A_REVIEW_COVER.md](./PAPER_A_REVIEW_COVER.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) · [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) · [COLLAB_NABAVI_MCGILL.md](./COLLAB_NABAVI_MCGILL.md) · [LITERATURE_AND_PRIOR_ART.md](../bookmarks/LITERATURE_AND_PRIOR_ART.md) · [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md)
 
@@ -16,7 +16,7 @@
 | McGill / RI-MUHC · not Dianyx JV | COLLAB · outreach · cover | **Aligned** | COI disclosure still placeholder |
 | Stage A wellness · no FDA/CE | COLLAB · IP north star · cover | **Aligned** | Keep in Abstract/Discussion |
 | Patent: pending only, no claim text | IP_PORTFOLIO · IP_EVAL | **Aligned** | Provisional **64/033,978** filed 9 Apr 2026 — OK to say “filed/pending”; do not paste claims |
-| FW **1.0.84** · app **4.3.3** (build **5**) · Gen1 BOM REV8 / PCB REV10 / ES2832AA2 | VERSION_ALIGNMENT · Ed/Pedro QS | **Aligned** | Matches Paper §III.B (stack current) |
+| Gen 2 REV11 · **ES4L15BA1** · **LP270829** · app **4.3.3** (build **5**) | VERSION_ALIGNMENT · Ed/Pedro QS | **30 Oct** | Paper §III.B names Gen 2. Bench image is not the kit. Sensors do not stream. Gen 1 is legacy. |
 | MAXM86161 + LIS2DTW12 | SYSTEM_ARCHITECTURE · HW Altium brief · GEN1_GEN2 | **Aligned** | Locked MPNs |
 | 50 Hz research grid, BP 0.5–8 Hz, IR-DC &lt;1 Hz | ALGORITHM_ARCHITECTURE · .cursorrules | **Aligned** | Exact SOS/order still placeholder |
 | TFI = IR-DC + green AC slope → 0–100 | `features.calculate_tfi` | **Aligned** | Paper wording OK; add methods detail later |
@@ -24,18 +24,14 @@
 | Dual A measured pack `20260812_085110` | VERSION_ALIGNMENT · concordance plots | **Aligned** | SpO₂ yes; SASHB ≈929 %·s; EDF with EMG; lag ≈4.9 s; F1=0 this pack |
 | Research EDF+ Dual A | `src/export/edf_writer.py` · OralableCore `EDFWriter` | **Aligned** | Mac + iOS Dual A Share; not PSG |
 | States quiet/tonic/phasic/rescue/recovery | `overnight_states.py` · OVERNIGHT | **Aligned** | Thresholds still unpublished |
-| ≥6 h evaluable night (Paper A / ideal) | OVERNIGHT · VERSION_ALIGNMENT | **Aligned** — ideal ≥6 h; iOS band unlock ≥1 h | **Misused exemplar** — see §2 |
-| Hypnogram primary UX | OVERNIGHT · PRODUCT_ROADMAP · in-app Swift | **Aligned** | In-app ships; PDF secondary |
-| Protocol A 5-tap / B 3-tap / overnight | TEMPORALIS_COLLECTION_PROTOCOL | **Aligned** | Paper table correct |
-| Tier 1 ≈ 20–30 × 3–5 Protocol A | CORE_ML_TRAINING_COHORT · pitch | **Aligned** | |
-| BruxScreen optional intake → Paper B | lit · protocol | **Aligned** | |
+| ≥4 h Beacon night / ≥6 h figure | FEASIBILITY · OVERNIGHT · VERSION_ALIGNMENT | **Aligned (7 Sep)** | Feasibility *N* ≥4 h; figure/bands ≥6 h; iOS unlock ≥1 h |
 | Ed/Pedro kits with partners | VERSION_ALIGNMENT · Ed/Pedro QS | **Watch** | Kits **gated / not yet shipped** — Paper A must not imply field *N* |
-| Phase 0 vitals vs Phase 1+ muscle | PRODUCT_ROADMAP · Research Kit protocol | **Resolved in rewrite** | Scope sentence + Dual A in Paper A methods; patient-facing TFI still Phase 1+ |
-| Research Kit / Dual A / landscape | ORALABLE_RESEARCH_KIT · FEASIBILITY | **Aligned (8 Aug)** | Bruxoff ref · AcuPebble nest · SpO₂∩EMG Dual A nest · GrindCare peer |
-| Dual A SpO₂∩EMG nest | ANR_M40 · ACUPEBBLE · Paper A C2 | **Aligned (8 Aug)** | `NEST.md`; not ODI/AHI |
-| Anterior temporalis seat | TEMPORALIS_ANATOMY · Paper A §III.A2 · FIG-CO-056/057 | **Aligned (8 Aug)** | Elevate vs retract; MAM optical vs ANR electrical |
-| 5 kits by 31 Aug 2026 | Research Kit · Pedro status | **Ops target** | Charge-to-temple still hard gate |
-| Pack stamp | VERSION = **1.1.68** | **Aligned (30 Aug)** | Dual A measured + EDF · FW **1.0.84** |
+| Research Kit / Dual A / landscape | ORALABLE_RESEARCH_KIT · FEASIBILITY | **Aligned (7 Sep)** | Beacon box Oralable-only; Dual A lab precursor; Bruxoff ref · AcuPebble nest · GrindCare peer |
+| 5 Oralable-only kits; 30 Sep 2026 handoff | Research Kit · VERSION_ALIGNMENT | **Missed (3 Oct)** | 31 Aug and 30 Sep both missed; charge-to-temple still the hard gate; no new date; ANR not a ship gate |
+| Hypnogram primary UX | OVERNIGHT · PRODUCT_ROADMAP · in-app Swift | **Aligned** | In-app ships; PDF secondary |
+| Dual A SpO₂∩EMG nest | ANR_M40 · ACUPEBBLE · Paper A C2 | **Aligned** | Lab methods; `NEST.md`; not ODI/AHI; not a patient arm |
+| Anterior temporalis seat | TEMPORALIS_ANATOMY · Paper A §III.A2 · FIG-CO-056/057 | **Aligned** | Elevate vs retract; MAM optical vs ANR electrical |
+| Pack stamp | VERSION = **1.1.74** | **Aligned (3 Oct)** | Dual A measured + EDF · kit FW **1.0.85** · local **1.0.86** is not the kit target |
 | Venue list | Pitch: EMBC / Sensors / JBHI; Paper: JBHI / EMBC | **Minor drift** | Add **Sensors** to Paper placeholder |
 | FIG-CO-003/006/007/011/012/019/025 present | `docs/figures/` | **Aligned** (assets exist) | Most SVGs still placeholders |
 
@@ -48,7 +44,7 @@
 | `TEMPORALIS_20260724` | ~**6.0 min** | FIG-CO-025 layout exemplar |
 | `TEMPORALIS_20260812_085110_dualA` | ~**6.0 min** | Dual A gold → night-report layout; SpO₂/SASHB present |
 
-**Implication:** Hypnogram PNGs show the **pipeline**, not evaluable ≥6 h nights. Paper A §VII.D lists both as non-inferential.
+**Implication:** Hypnogram PNGs show the **pipeline**, not evaluable ≥4 h Beacon nights (nor ≥6 h figure nights). Paper A §VII.D lists both as non-inferential.
 
 **Also (12 Aug):** Dual A concordance F1 vs Protocol A labels = **0** on `20260812_085110` despite lag ≈ 4.9 s and live SpO₂ — treat as QC / placement follow-up before filling Paper A agreement tables.
 
@@ -58,9 +54,9 @@
 
 | Layer | Truth today |
 |-------|-------------|
-| **Pilot ship (Ed/Pedro)** | Phase 0 Day-1 — temple **HR / SpO₂**; Research Kits gated (5 by 31 Aug); Dual A Mac optional |
+| **Pilot ship (Ed/Pedro)** | Phase 0 Day-1 — temple **HR / SpO₂**; Oralable-only kits gated (**30 Sep** missed; no new date); Dual A Mac **lab-only** |
 | **Engineering / Paper A methods** | Full OMG path (IR-DC, TFI, states, hypnogram) exists in Python + Swift |
-| **Product Phase 1+** | Muscle UX / clench-grind unlock on same Gen1 HW |
+| **Product Phase 1+** | Muscle UX / clench-grind unlock on the same Gen 2 hardware |
 
 **Recommended Paper A scope sentence (for co-authors):**  
 *“Paper A describes the measurement system and offline/online processing methods. Beacon pilot data may start with temple vitals and wear feasibility (Phase 0); IR-DC jaw-load endpoints follow as software and protocol mature on the same hardware.”*

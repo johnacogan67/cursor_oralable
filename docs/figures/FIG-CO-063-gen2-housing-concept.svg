@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" role="img" aria-label="Gen2 housing PPG hole offset to U2">
+  <title>FIG-CO-063 Gen2 housing - PPG offset to U2</title>
+  <desc>Concept diagram: Red Dots, ventral shell with rectangular PPG window offset to U2 at +10.8 mm, Gen2 clip MAM, dorsal lid. Not Fusion CAD.</desc>
+  <rect width="960" height="420" fill="#f4f4f2"/>
+  <text x="24" y="36" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" fill="#1a1a1a">Gen2 housing - PPG hole offset to U2 (not housing centre)</text>
+  <text x="24" y="58" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#555">Concept · ANR M40-class · clip island only · not Fusion CAD from STEP</text>
+
+  <g transform="translate(40,120)">
+    <text x="0" y="-16" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#333">A · Red Dot</text>
+    <rect x="0" y="0" width="70" height="70" rx="8" fill="#f0e6c8" stroke="#c4a35a" stroke-width="1.5"/>
+    <circle cx="35" cy="35" r="10" fill="#c0c0c0" stroke="#666"/>
+    <circle cx="35" cy="35" r="4" fill="#888"/>
+    <rect x="0" y="90" width="70" height="70" rx="8" fill="#f0e6c8" stroke="#c4a35a" stroke-width="1.5"/>
+    <circle cx="35" cy="125" r="10" fill="#c0c0c0" stroke="#666"/>
+    <circle cx="35" cy="125" r="4" fill="#888"/>
+    <text x="0" y="185" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#666">gel gap = optical path</text>
+  </g>
+
+  <g transform="translate(160,140)">
+    <text x="0" y="-20" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#333">B · ventral (skin face)</text>
+    <rect x="0" y="0" width="280" height="90" rx="45" fill="#fafafa" stroke="#222" stroke-width="2"/>
+    <circle cx="40" cy="45" r="14" fill="#d4af37" stroke="#8a7010" stroke-width="1.5"/>
+    <circle cx="40" cy="45" r="6" fill="#f5e6a3"/>
+    <text x="28" y="110" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#666">snap</text>
+    <circle cx="240" cy="45" r="14" fill="#d4af37" stroke="#8a7010" stroke-width="1.5"/>
+    <circle cx="240" cy="45" r="6" fill="#f5e6a3"/>
+    <text x="226" y="110" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#666">snap</text>
+    <!-- PPG rectangle OFFSET toward right (U2 @ +10.8). Capsule centre x=140; window ~175-217 -->
+    <rect x="175" y="28" width="42" height="34" rx="2" fill="#111" stroke="#cc0000" stroke-width="2.5"/>
+    <text x="155" y="-4" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#cc0000">rectangular PPG window</text>
+    <line x1="196" y1="10" x2="196" y2="28" stroke="#cc0000" stroke-width="1.5"/>
+    <text x="70" y="50" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#888">solid (no window)</text>
+    <text x="0" y="130" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#444">Hole tracks MAXM86161 - not capsule mid-line</text>
+  </g>
+
+  <g transform="translate(480,155)">
+    <text x="0" y="-20" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#333">C · Gen2 clip MAM</text>
+    <rect x="0" y="0" width="200" height="70" rx="4" fill="#2f6b3a" stroke="#1a3d22" stroke-width="1.5"/>
+    <rect x="8" y="14" width="48" height="42" rx="3" fill="#c8d0d8" stroke="#666"/>
+    <text x="12" y="40" font-family="Helvetica, Arial, sans-serif" font-size="10" fill="#333">BAT1</text>
+    <circle cx="85" cy="35" r="22" fill="none" stroke="#b87333" stroke-width="3"/>
+    <circle cx="85" cy="35" r="12" fill="none" stroke="#b87333" stroke-width="2"/>
+    <text x="68" y="90" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#666">RX coil</text>
+    <rect x="150" y="18" width="36" height="34" rx="2" fill="#111" stroke="#cc0000" stroke-width="2"/>
+    <text x="128" y="-4" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#cc0000">U2 @ +10.8 mm</text>
+    <line x1="168" y1="10" x2="168" y2="18" stroke="#cc0000" stroke-width="1.5"/>
+    <text x="0" y="115" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#444">Seat so black optical face fills the rectangular hole</text>
+  </g>
+
+  <g transform="translate(720,140)">
+    <text x="0" y="-20" font-family="Helvetica, Arial, sans-serif" font-size="13" font-weight="600" fill="#333">D · dorsal</text>
+    <rect x="0" y="0" width="200" height="90" rx="45" fill="#ececec" stroke="#222" stroke-width="2"/>
+    <text x="55" y="50" font-family="Helvetica, Arial, sans-serif" font-size="12" fill="#666">lid (slots on)</text>
+  </g>
+
+  <path d="M 376 185 C 430 100, 560 100, 648 175" fill="none" stroke="#cc0000" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <text x="430" y="95" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#cc0000">align window to U2</text>
+
+  <text x="24" y="390" font-family="Helvetica, Arial, sans-serif" font-size="11" fill="#666">FIG-CO-063 · Gen2 outer = M40 class · cavity ~32x12 mm XY clip island · charger half of STEP not shown · no magnets · coil charge Gen1/Gen2</text>
+</svg>

@@ -35,7 +35,7 @@ Founder and engineer behind **Oralable**: an **extraoral temporalis** (temple) o
 **Founder & Executive Chairman (Acting CEO)** · Jul 2018 – Present · Dublin / Blackrock  
 *(Earlier project brand: iBrux; product brand today: Oralable)*
 
-- Lead product, IP, and engineering for a Nordic BLE **temple / temporalis PPG + motion** wearable and iOS patient app (Gen1 kits; magnetic charging case; pilot path) — **extraoral**, outside the mouth.
+- Lead product, IP, and engineering for a Nordic BLE **temple / temporalis PPG + motion** wearable and iOS patient app (Gen1 kits; charge case, coil align now, magnetic dock later; pilot path) — **extraoral**, outside the mouth.
 - **Stage A first, Stage B later:** wellness wearable now; medical clearance only when evidence and regulation allow — not claimed in pilot or App Store copy today.
 - IP with counsel: European foundation **EP 4 333 691 B1** (WO2022234145); US utility **18/289,827** (prosecution continued); US provisional **64/033,978** (muscle activity monitoring, filed Apr 2026).
 - End-to-end stack: firmware (`oralable_nrf`), OralableCore, iOS apps, validation tooling — open 50 Hz pipeline for evidence and patent embodiments.
@@ -141,7 +141,7 @@ Clinicians, operators, investors: johna@jacdentalsolutions.com · oralable.com
 | FDA 510(k) / EU MDR / preparing submissions | Medical clearance later — not claimed today |
 | Kits already shipped / App Store traction | oralable.com |
 | Cash, cap table, acting-CEO drama | Founder |
-| Ken as CEO | Not contracted — do not name a CEO |
+| Ken as CEO | **Ken is not a CEO candidate** — do not name a CEO |
 | Patent claim text or provisional wording | EP 4 333 691 B1 granted; US work with counsel |
 
 ---
@@ -154,7 +154,7 @@ Clinicians, operators, investors: johna@jacdentalsolutions.com · oralable.com
 **Location:** Dublin, Ireland  
 
 ```
-Oralable is JAC Dental Solutions’ temple wearable: Nordic BLE optical + motion sensor, magnetic charging case, and iOS patient app.
+Oralable is JAC Dental Solutions’ temple wearable: Nordic BLE optical + motion sensor, charge case (coil align now; magnetic dock later), and iOS patient app.
 
 • Stage A: wellness overnight vitals (heart rate, SpO₂). Jaw-load awareness is next.
 • Stage B: medical clearance later — not claimed today.

@@ -1,8 +1,10 @@
 # Oralable Market Landscape & Product Strategy
 
+**As at:** 19 Sep 2026 · Pack **1.1.73** · Beacon = Oralable-only clinic loaner · Dual A = lab · Gen4 = concept not BOM
+
 Comprehensive positioning for Oralable MAM across hardware, mobile software, data architecture, competitive landscape, and the path from **wellness wearable** to **regulated medical device**.
 
-**Related docs:** [Appendix A](#appendix-a-nordic-wearables-comparison) · [Appendix B](#appendix-b-ppg-sensor-comparison) · [HARDWARE_ROADMAP_nRF54L15.md](../../../../oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md) · [OTA_DEVICE_MANAGER.md](../../../../oralable_nrf/docs/OTA_DEVICE_MANAGER.md) · Engineering hub: [ORALABLE_SYSTEM_ARCHITECTURE.md](../../ORALABLE_SYSTEM_ARCHITECTURE.md) (§3 validation matrix) · **Figures:** [FIGURES.md](../../../../oralable_nrf/docs/FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
+**Related docs:** [Appendix A](#appendix-a-nordic-wearables-comparison) · [Appendix B](#appendix-b-ppg-sensor-comparison) · [HARDWARE_ROADMAP_nRF54L15.md](../../../../oralable_nrf/docs/HARDWARE_ROADMAP_nRF54L15.md) · [OTA_DEVICE_MANAGER.md](../../../../oralable_nrf/docs/OTA_DEVICE_MANAGER.md) · Engineering hub: [ORALABLE_SYSTEM_ARCHITECTURE.md](../../ORALABLE_SYSTEM_ARCHITECTURE.md) (§3 validation matrix) · **Figures:** [FIGURES.md](../../../../oralable_nrf/docs/FIGURES.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0) · **Alerts:** [GOOGLE_ALERTS_WATCH_MAP.md](./GOOGLE_ALERTS_WATCH_MAP.md)
 
 **Cross-repo:** iOS (`oralable_swift`), shared library (`OralableCore`), Python validation (`cursor_oralable`)
 
@@ -52,11 +54,11 @@ flowchart TB
 
 ## 1. Executive summary
 
-**Oralable is a Nordic BLE clip + magnetic-case sensor (MAXM86161 + LIS2DTW12) aimed at overnight temple vitals (Phase 0) and sleep bruxism via hemodynamic IR-DC occlusion + jaw accelerometry (Phase 1+) — not a ring, not sEMG, not a general wellness platform.** On the broader modality ladder it is an **optical hemodynamic / OMG** device: orthogonal to MEP/ESG/EEG and intraoperative monitoring; adjacent to sEMG for validation (see [§4b](#4b-modality-ladder-where-oralable-sits)).
+**Oralable is a Nordic BLE clip + charge-case sensor (MAXM86161 + LIS2DTW12) aimed at overnight temple vitals (Phase 0) and sleep bruxism via hemodynamic IR-DC occlusion + jaw accelerometry (Phase 1+) — not a ring, not sEMG, not a general wellness platform.** On the broader modality ladder it is an **optical hemodynamic / OMG** device: orthogonal to MEP/ESG/EEG and intraoperative monitoring; adjacent to sEMG for validation (see [§4b](#4b-modality-ladder-where-oralable-sits)).
 
 | Layer | Today (Phase 0 · Gen1) | Trajectory |
 |-------|------------------------|------------|
-| **Hardware** | pcb00003 **BOM REV8** / **REV10**, Kaga **ES2832AA2** (nRF52832), FW **1.0.84**, Oralable magnetic case | **Gen2** BOM REV9 / REV11, Kaga **ES4L15BA1** (nRF54L15), FW 2.0.x, on-device ML headroom |
+| **Hardware** | pcb00003 **BOM REV8** / **REV10**, Kaga **ES2832AA2** (nRF52832), FW **1.0.85**, Oralable charge case (coil align now; magnetic dock later) | **Gen2** BOM REV9 / REV11, Kaga **ES4L15BA1** (nRF54L15), FW 2.0.x — **or skip** if **Gen4** combined EMG+PPG pad-pod is the next enclosure (concept, not a BOM generation) |
 | **Firmware** | TGM GATT, worn-gated streaming, MCUboot/mcumgr OTA | Richer services, in-app DFU, locked algorithm builds for clearance |
 | **iOS** | Vitals phase: temple HR/SpO₂, placement picker | Phase 1+ muscle UI; production CloudKit; clinical exports |
 | **Android** | Not built; marketing cites 2026 | Native Kotlin recommended; share BLE/parser spec via OralableCore port |
@@ -108,11 +110,11 @@ Oralable sits in a **niche orthogonal to rings**: same broad sensor classes (PPG
 | PPG | **ADI MAXM86161** @ I²C 0x62 | Only product in the competitive set with a **public, named** integrated PPG module |
 | ACC | **LIS2DTW12** @ 50 Hz | Jaw vibration / actigraphy, sync-tap anchoring |
 | Battery | CG-320B ~15 mAh LiPo | Small cell; multi-day life TBD; 8 h clinical night is design target |
-| Charging | **Oralable magnetic case** (LTC4124 / LTC6990) | **Not WPC Qi** |
+| Charging | **Oralable charge case** (LTC4124 RX coil aligned to LTC6990 TX now; magnetic dock later) | **Not WPC Qi** |
 | Placement (Phase 0) | **Temple** HR/SpO₂ | Muscle/cheek Protocol B = Phase 1+ |
 | BLE | Custom **TGM GATT** service (`3A0FF000`) | Raw 50 Hz PPG (R/G/IR) + ACC + temp + status |
 | OTA | **MCUboot + mcumgr SMP** | Nordic Device Manager on iPhone; open NCS stack |
-| FW version | Gen1 target **1.0.84** (iOS gate min **1.0.63** / recommend **1.0.84**; app **4.3.3** build **5**) · Gen2 **2.0.x** — [VERSION_ALIGNMENT.md](../VERSION_ALIGNMENT.md) |
+| FW version | Gen1 target **1.0.85** (iOS gate min **1.0.63** / recommend **1.0.85**; app **4.3.3** build **5**) · Gen2 **2.0.x** — [VERSION_ALIGNMENT.md](../VERSION_ALIGNMENT.md) |
 
 **BLE characteristics (TGM service):**
 
@@ -126,7 +128,7 @@ Oralable sits in a **niche orthogonal to rings**: same broad sensor classes (PPG
 | `...f006` | Firmware version | string |
 | `...f009` | Status | on_dock, worn, device_state, battery % (+ `charge_active` on FW ≥ 1.0.47) |
 
-**Streaming policy (1.0.84 / since 1.0.82):** PPG/ACC run while BLE is connected and notify (CCC) is on — even if `worn=0`. Disconnect stops the chips. Below ~5% / 3.61 V, sensors off with MCU and BLE up. Automatic `worn` is IR pulse, not die temperature. Mode 3 still forces worn. **Advertising:** restart from NCS connection `.recycled`. Firmware status char is primary for iOS.
+**Streaming policy (1.0.85 / since 1.0.82):** PPG/ACC run while BLE is connected and notify (CCC) is on — even if `worn=0`. Disconnect stops the chips. Below ~5% / 3.61 V, sensors off with MCU and BLE up. Automatic `worn` is IR pulse, not die temperature. Mode 3 still forces worn. **Hold LED (1.0.85):** flash below ~4.20 V / 80%; rare green pulse in hold. **Advertising:** restart from NCS connection `.recycled`. Firmware status char is primary for iOS.
 
 ### 3.2 Roadmap (data room: nRF54L15 generation)
 
@@ -183,7 +185,7 @@ Li et al., *Aust Dent J* 2024;69(Suppl 1):S53–S62 ([doi:10.1111/adj.13057](htt
 | GrindCare | **anterior temporalis sEMG** (+ biofeedback pulse) | Same muscle *site* as Oralable, different *physics* (electrical vs optical) |
 | Bruxoff | masseter sEMG + ECG | Better than EMG-only in some reports; still overestimates RMMA |
 | NOX T3, Sleep Profiler | Type II multi-channel PSG | Closer to lab PSG; not consumer temple wellness |
-| Sunrise | mandibular movement | Episodic strength; tonic clench / population gaps |
+| Sunrise | mandibular movement | Episodic strength; tonic clench / population gaps — [SUNRISE_MANDIBULAR_MOVEMENT.md](./SUNRISE_MANDIBULAR_MOVEMENT.md) |
 | Intra-splint force (ISFDD) | pressure in maxillary splint | **Intraoral** — orthogonal form factor to Oralable clip |
 
 **Authors’ bottom line:** ambulatory devices are promising as **screening** alternatives to PSG-AV, but need more gold-standard validation before wide clinical/domestic adoption. EMG-only devices tend to **overestimate** SB without AV exclusion of other orofacial activity.
@@ -260,7 +262,7 @@ Oralable REV10 (BLE)
 **Connect sequence** (Nordic Academy / Apple CoreBluetooth–aligned):
 
 1. Read device ID (`3A0FF005`)
-2. Read firmware version (`3A0FF006`) → **FirmwareGate** (minimum **1.0.63**; recommend **1.0.84**)
+2. Read firmware version (`3A0FF006`) → **FirmwareGate** (minimum **1.0.63**; recommend **1.0.85**)
 3. Manual placement write (`00B` 0x09) before streaming CCCs
 4. Staggered CCC enables — **await each confirm** (battery → status → PPG → ACC → temp)
 5. Ready when PPG + ACC + **status + battery** CCC confirms are set
@@ -365,12 +367,12 @@ This is closer to a **research instrument with a consumer shell** than a wellnes
 
 ### 7.0 Ranked by Oralable relevance
 
-Sort is **what matters to Oralable**, not brand size. Rank 1 = in-kit or Beacon workflow. Lower ranks = MCU / form-factor contrast only. **Not substitutes.** Detail for each name follows in §7.1–7.9, §4c, and Appendix A/B.
+Sort is **what matters to Oralable**, not brand size. Rank 1 = lab comparator or Beacon workflow. Lower ranks = MCU / form-factor contrast only. **Not substitutes.** Detail for each name follows in §7.1–7.9, §4c, and Appendix A/B.
 
 | Rank | Product | Class | Form / site | Why it matters | Why it is not Oralable | Oralable use |
 |------|---------|-------|-------------|----------------|------------------------|--------------|
-| 1 | **ANR M40** | Temporalis **sEMG** | EMG pod on anterior temporalis | **In the Research Kit.** Same belly, electrical comparator for Dual A | Electrical µV, not IR-DC; not a consumer SKU | Dual A concordance · Paper A methods |
-| 2 | **AcuPebble** | OSA **HSAT / AHI** | Neck (± finger SpO₂) | **Pedro’s AHI tool today.** Arm P nest | Airway acoustics / AHI; not jaw-load | Nest AHI — do not clone |
+| 1 | **ANR M40** | Temporalis **sEMG** | EMG pod on anterior temporalis | **Lab Dual A comparator** — same belly, electrical. **Not in the Beacon box.** | Electrical µV, not IR-DC; not a consumer SKU | Dual A concordance · Paper A **methods** (John-run) |
+| 2 | **AcuPebble** | OSA **HSAT / AHI** | Neck (± finger SpO₂) | **Pedro’s AHI tool today.** Arm P nest. Closest attach class to Ed’s pad/tape ask. | Airway acoustics / AHI; not jaw-load | Nest AHI — do not clone. Size: [FIG-CO-077](../../figures/FIG-CO-077-scale-stack-plus-acupebble.jpg) (068 + disc) · four-up [FIG-CO-078](../../figures/FIG-CO-078-scale-stack-four-extraoral.jpg). Not Dual A; not Beacon box |
 | 3 | **GrindCare** | Anterior temporalis **sEMG** | Temple electrode + biofeedback | Same **site class** as Oralable; Li 2025 peer | Electrical + impulse therapy, not optical OMG | Paper A landscape · site peer |
 | 4 | **Bruxoff** | Masseter sEMG + ECG | Cheek EMG ambulatory | Ambulatory **SB output class**; Cid-Verdejo vs PSG | Masseter EMG, not temple optical; not PSG gold | Paper A reference when available |
 | 5 | **Wellue O2Ring** | Finger **SpO₂** oximeter | Finger ring (transmissive R+IR) | Overnight **oxygen** peer; FDA oximeter; SASHB overlap | Finger SpO₂ only — no masseter / temporalis | Complement O₂ + jaw; not AHI |
@@ -380,7 +382,7 @@ Sort is **what matters to Oralable**, not brand size. Rank 1 = in-kit or Beacon 
 | 9 | **SomnoMed Rest Assure** | Smart **MAD** compliance | Intraoral appliance | Cleared **compliance** in own MAD (K233497); AHI efficacy not on first pass | Intraoral; not Oralable site | Positioning vs smart OAT — not a race |
 | 10 | **Dianyx t.e.s.a.** | Intraoral PPG | Inside the appliance | Founder history / Nabavi paper; possible later OEM layer | **Intraoral** — Paper A is extraoral temporalis | McGill first; Dianyx later if complementary |
 | 11 | **Aktiia / Hilo** | Cuffless **BP** | Wrist PPG bracelet | Optical PPG → **FDA/CE monitoring** path; same overnight + pro-export shape | BP, not bruxism or sleep | Regulatory / UX analog — not a competitor |
-| 12 | **Sunrise** | Mandibular motion | Chin sensor | Li 2025 ambulatory SB class (motion, not EMG) | Jaw kinematics, not IR-DC PPG | Literature peer only |
+| 12 | **Sunrise** | Mandibular motion | Chin sensor | Li 2025 ambulatory SB class (motion, not EMG) | Jaw kinematics, not IR-DC PPG | Literature peer only. Mechanism: [SUNRISE_MANDIBULAR_MOVEMENT.md](./SUNRISE_MANDIBULAR_MOVEMENT.md). Site contrast: [FIG-CO-073](../../figures/FIG-CO-073-matisse-photo-gen2-housing-sunrise-chin.png) · [FIG-CO-074](../../figures/FIG-CO-074-matisse-photo-gen2-housing-sunrise-chin-clean.png) · [FIG-CO-075](../../figures/FIG-CO-075-matisse-photo-070-plus-sunrise-chin.png) (070 MAM + Sunrise chin). Size: [FIG-CO-076](../../figures/FIG-CO-076-scale-stack-plus-sunrise.jpg) · four-up [FIG-CO-078](../../figures/FIG-CO-078-scale-stack-four-extraoral.jpg). Not Dual A; not Beacon box |
 | 13 | **JCRing** | Wellness **ring** (Nordic) | Finger · nRF52840 | Closest **Nordic health-ring** OEM; named in HW diligence | Finger wellness; undisclosed PPG | MCU / OEM contrast |
 | 14 | **IDO IDR01** | Wellness **ring** (Nordic) | Finger · **nRF54L15** | Gen2 **compute-tier** peer (same SoC class as ES4L15BA1) | Ring form, general health, PPG undisclosed | Roadmap MCU peer — not clinical |
 | 15 | **Oura** | Wellness **ring** | Finger · PSoC 6 | Form-factor and sleep-brand contrast; what buyers think “ring” means | Readiness scores; no jaw occlusion | “Not a ring” pitch — do not compete on readiness |
@@ -392,7 +394,7 @@ Sort is **what matters to Oralable**, not brand size. Rank 1 = in-kit or Beacon 
 
 **How to read the ranks**
 
-1. **1–4** — same problem or same Beacon workflow (sEMG site / AHI nest).  
+1. **1–4** — same problem or same Beacon / lab workflow (sEMG site / AHI nest). ANR is **lab**, not a patient kit item.  
 2. **5–7** — overnight oxygen or HSAT from the **finger**; complementary, not jaw.  
 3. **8–10** — **intraoral** smart OAT; different anatomy; do not race their FDA file.  
 4. **11–12** — analog science or Li 2025 class.  
@@ -714,7 +716,7 @@ Any Android implementation must reproduce:
 | Capability | Spec source |
 |------------|-------------|
 | TGM GATT connect sequence | `DeviceConnectionCoordinator`, `BLEConstants.TGM` |
-| Firmware gate min **1.0.63** / recommend **1.0.84** | `FirmwareGate.swift` |
+| Firmware gate min **1.0.63** / recommend **1.0.85** | `FirmwareGate.swift` |
 | PPG/ACC/temp/status parsing | `BLEDataParser.swift` |
 | 50 Hz alignment / bucketing | `DeviceManagerAdapter` |
 | Worn-gated recording | `AutomaticRecordingSession`, `TGMDeviceStatus` |
@@ -836,11 +838,27 @@ Firmware OTA stays **out of consumer app v1** — use **Nordic Device Manager fo
 
 ---
 
-## 11. Go-to-market: consumer vs dentist vs medical
+## 11. Go-to-market: clinic loaner vs consumer vs dentist vs medical
 
-Three commercial paths map to regulatory stages. The codebase already supports all three structurally; **marketing and claims** must match the chosen path.
+Four commercial paths map to regulatory stages. **Do not mix Path 0 (Beacon) with Path A (home charge).** The codebase can support all four; **marketing and claims** must match the chosen path.
 
-### 11.1 Path A: Wellness consumer (current default)
+### 11.0 Path 0: Clinic loaner (Beacon now)
+
+**Buyer:** Sleep clinic (Beacon) · Ed owns packaging and patient use
+
+**Product:**
+
+- Gen1 clip + charge case **charged in clinic** (coils aligned) + ECG pads / tape + patient iOS app
+- One night · ≥4 h (6 better) · **no ANR** · **no headband**
+- Patient returns the device; clinic recharges
+
+**Messaging:** Wellness measurement. Not AHI. Not a bruxism diagnosis.
+
+**Revenue (later SKU, not n≈5):** Research Kit as a Service — **JAC Dental Solutions Limited** keeps the clips; clinic loans one night; draft **€100** technical operator fee per processed overnight report (Clinical Temporalis PDF). Paper A n≈5 nights are **unpaid**. Not Point B cash. Not HSAT billing. Who pays (clinic vs patient) is open. Detail: [GTM_ONE_PAGE.md](../governance/GTM_ONE_PAGE.md).
+
+**Do not:** write this as App Store home-charge Path A. Do not put a fee in Beacon sendables. Meeting: [ED_PEDRO_MEETING_2026-09-07.md](../clinical/ED_PEDRO_MEETING_2026-09-07.md).
+
+### 11.1 Path A: Wellness consumer (later SKU)
 
 **Buyer:** Individual with bruxism awareness, jaw pain, or dentist recommendation
 
@@ -933,25 +951,24 @@ Three commercial paths map to regulatory stages. The codebase already supports a
 
 ### 11.4 GTM decision matrix
 
-| Factor | Path A Consumer | Path B Dentist | Path C Medical |
-|--------|-----------------|----------------|----------------|
-| Time to revenue | **Fastest** (Jan 2026 target) | Fast (professional app ready) | 18–36+ months |
-| Regulatory cost | Low | Low–medium (watch claims) | High (510(k), QMS, clinical) |
-| Clinical credibility | Medium | **Higher** (dentist logo) | **Highest** |
-| TAM | Large (bruxism-aware consumers) | Medium (dental practices) | Smaller, higher ASP |
-| Android required? | Yes for TAM | Less urgent | Labeling-dependent |
-| Data strategy | CloudKit opt-in | CloudKit + CSV | Audited, locked versions |
+| Factor | Path 0 Clinic | Path A Consumer | Path B Dentist | Path C Medical |
+|--------|---------------|-----------------|----------------|----------------|
+| Time to evidence | **Now** (kits gated) | Later home SKU | After Phase 1+ | 18–36+ months |
+| Regulatory cost | Low (wellness copy) | Low | Low–medium (watch claims) | High (510(k), QMS, clinical) |
+| Clinical credibility | Chairside useful | Medium | **Higher** (dentist logo) | **Highest** |
+| Charge model | **Clinic** | Home charge case | Home or clinic | Label-dependent |
+| Cash now | **€0** on n≈5 | Not live | Dark | None |
 
 ### 11.5 Recommended sequencing
 
 ```
-2026 Q1–Q2   Path A launch (iOS consumer) + Path B beta (dentist referrals)
-2026 Q3–Q4   Android MVP (Path A); Firebase or unified backend for cross-platform share
-2027         Clinical study completion; predicate analysis; 510(k) pre-sub meeting
-2027–2028    Path C filing; parallel wellness SKU for non-regulated markets
+2026 Sep        Path 0 Beacon n≈5 (clinic loaner; Oralable-only; kits gated → 30 Sep; **unpaid**)
+2026 Q4         First ≥4 h nights; Point B cash; RKaaS only if the clinic asks
+2027            Path 0 clinic SKU (lease + per-report fee) vs Path A consumer SKU after Path 0 evidence; Path B still gated
+2027–2028       Path C filing; parallel wellness SKU for non-regulated markets
 ```
 
-**Do not** lead App Store launch with Path C claims. **Do** use Path B dentist channel to generate real-world evidence for Path C.
+**Do not** lead App Store launch with Path C claims. **Do not** treat Beacon as Path A. **Do not** invoice Paper A nights. **Do** use Path 0 nights as operating evidence.
 
 ### 11.6 Competitive GTM positioning
 
@@ -1003,7 +1020,7 @@ Three commercial paths map to regulatory stages. The codebase already supports a
 
 **Where it is going:** **nRF54L15** without changing PPG silicon; **Android native** in 2026; **CloudKit/production sharing** for dentist channel; **510(k)** for nocturnal bruxism **monitoring** (not general wellness) when clinical package is ready; unified **overnight report** UX (TFI + SASHB + events) aligned with Hilo/Wellue timeline grammar.
 
-**How to sell it now:** **Path A + B** — wellness consumer launch with dentist referral and professional viewer; accumulate evidence; **Path C** when `RegulatoryPackageBuilder` outputs reflect completed studies and locked algorithms.
+**How to sell it now:** **Path 0** — Beacon clinic loaner (patient app only). n≈5 **unpaid**. Later RKaaS (lease + per-report fee) only after nights run. Path A consumer + Path B dentist later. Path C when `RegulatoryPackageBuilder` outputs reflect completed studies and locked algorithms.
 
 **What not to do:** Compete on readiness scores with Oura; claim FDA clearance on website; ship Android with Flutter BLE; market to dentists with diagnostic language before clearance; position as substitute for Wellue SpO₂ or Hilo BP — position as **jaw-specific complement**.
 

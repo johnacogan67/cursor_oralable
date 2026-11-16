@@ -14,7 +14,13 @@ __pycache__/
 .venv_ci/
 venv/
 *.egg-info/
-.eggs/
+*.eggs/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+build/
+dist/
 
 # Working drafts (OCR, WhatsApp photo drops, scratch)
 .tmp_*/

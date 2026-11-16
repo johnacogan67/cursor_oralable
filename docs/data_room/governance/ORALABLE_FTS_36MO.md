@@ -1,22 +1,22 @@
 # Oralable — Functional & Technical Specification (36-month horizon)
 
 **Document type:** Investor / diligence FTS (draft)  
-**Version:** 1.1.0 · **Date:** July 2026  
+**Version:** 1.1.2 · **Date:** 3 Oct 2026  
 **Manufacturer:** JAC Dental Ltd · **Product:** Oralable Oral Activity Monitor (MAM)
 
 **Related:** [PRODUCT_ROADMAP.md](../../PRODUCT_ROADMAP.md) · [data_room/README.md](./README.md) · [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md) · [ORALABLE_SYSTEM_ARCHITECTURE.md](../../ORALABLE_SYSTEM_ARCHITECTURE.md) · [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
 ---
 
-**Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Beacon = patient app only · Path 0 clinic loaner · n≈5 **unpaid** · RKaaS later ([GTM_ONE_PAGE.md](./GTM_ONE_PAGE.md)).  
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) — Phase 0 continues past Sep 2026 (**30 Sep** handoff missed); Phase 1+ Q4’26–Q1’27 after Phase 0 gates; Gen2 parallel or skip if Gen4; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 ## 1. Purpose and scope
 
 This spec describes the **Oralable MAM platform** for investors and technical diligence:
 
-- **Hardware** — PCB00003 clip + Oralable magnetic case; **Gen1** (BOM REV8 / REV10 / ES2832AA2) **ship-ready / Research Kits gated** (5 → Pedro by 31 Aug 2026); **Gen2** (BOM REV9 / REV11 / ES4L15BA1) upcoming
-- **Firmware** — nRF Connect SDK, TGM GATT, BLE-gated streaming; Gen1 target **1.0.84**
+- **Hardware** — PCB00003 clip + Oralable charge case (coil align now; magnetic dock later); **Gen1** (BOM REV8 / REV10 / ES2832AA2) **ship-ready / Research Kits gated** (5 Oralable-only; **30 Sep 2026** handoff **missed**; no new date); **Gen2** (BOM REV9 / REV11 / ES4L15BA1) upcoming; **Gen4** combined EMG+PPG pod is a **concept**, not a BOM generation
+- **Firmware** — nRF Connect SDK, TGM GATT, BLE-gated streaming; Gen1 kit target **1.0.85**. Local tree **1.0.86** is not the kit target.
 - **Mobile** — iOS consumer + professional apps; Android roadmap — working diagrams [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 - **Algorithms** — Phase 0 temple vitals (HR/SpO₂); Phase 1+ IR-DC occlusion, TFI/SASHB, jaw actigraphy
 - **Data** — local recording, export, optional CloudKit share to dentists
@@ -38,9 +38,9 @@ flowchart LR
 
 | Tier | Timeframe | Intended use (draft) |
 |------|-----------|----------------------|
-| **Phase 0 Vitals (stack ready / Research Kits gated)** | Now – Sep 2026 | Temple HR & SpO₂ on Gen1; Research Kit Dual A optional for Paper A; honest device state. **Not** a diagnosis. |
-| **Phase 1+ Muscle (Gen1 software)** | Q4 2026 – Q1 2027 | Personal awareness of jaw load / bruxism phenotypes (IR-DC, TFI); ≥6 h overnight eval; optional share with dental care provider. |
-| **Clinical investigation** | 6–18 mo | Structured Protocol B under Ed/Pedro after Phase 0 gates; EMG cross-validation (ANR M40). |
+| **Phase 0 Vitals (stack ready / Research Kits gated)** | Sep 2026 window ended; still current | Temple HR & SpO₂ on Gen1; Oralable-only one-night clinic loaner (**≥4 h**); **30 Sep** handoff missed; Dual A lab only; honest device state. **Not** a diagnosis. |
+| **Phase 1+ Muscle (Gen1 software)** | Q4 2026 – Q1 2027 | Personal awareness of jaw load / bruxism phenotypes (IR-DC, TFI); ≥4 h Beacon *N* + ≥6 h figure nights; optional share with dental care provider. |
+| **Clinical investigation** | 6–18 mo | Structured Protocol B under Ed/Pedro after Phase 0 gates; EMG Dual A stays lab until a later protocol. |
 | **Cleared device (target)** | 18–36 mo | Monitor and record nocturnal jaw muscle activity consistent with sleep bruxism (510(k) / CE Class IIa path). |
 
 Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
@@ -83,11 +83,11 @@ Full regulatory language: [REGULATORY_TIMELINE.md](./REGULATORY_TIMELINE.md).
 | Battery (Gen2) | LP260820 ~30 mAh |
 | PPG | ADI MAXM86161 @ I²C `0x62`, channels R/G/IR |
 | Accelerometer | ST LIS2DTW12 @ `0x19` |
-| Charging | **Oralable magnetic case** (LTC4124 RX + LTC6990 TX) — **not WPC Qi** |
+| Charging | **Oralable charge case** (LTC4124 RX coil aligned to LTC6990 TX now; magnetic dock later) — **not WPC Qi** |
 | BLE | TGM custom GATT `3A0FF000` + SMP OTA |
 | Mounting (Phase 0) | **Temple / temporalis** (HR & SpO₂) |
 | Mounting (Phase 1+) | Cheek / masseter or temporalis for IR-DC / bruxism phenotypes |
-| Firmware (Gen1 target) | **1.0.84** (iOS `FirmwareGate` min **1.0.63** / recommend **1.0.84**) · Gen2 **2.0.x** |
+| Firmware (Gen1 target) | **1.0.85** (iOS `FirmwareGate` min **1.0.63** / recommend **1.0.85**) · Gen2 **2.0.x** |
 
 ### 4.2 36-month hardware roadmap
 
@@ -207,7 +207,7 @@ sequenceDiagram
 
     Note over U,P: Phase 0 = temple vitals (patient app). Cheek/muscle + dentist share = Phase 1+ / later.
     U->>A: Sign in, Phase 0 placement (temple)
-    U->>D: Wear clip on temple overnight (≥6 h evaluable)
+    U->>D: Wear clip on temple overnight (≥4 h Beacon; ≥6 h figure)
     D->>A: BLE auto-connect, auto-record
     A->>A: Vitals / (Phase 1+) TFI/SASHB rollups, night PDF
     opt Phase 1+ / post–Ed-Pedro
@@ -265,7 +265,7 @@ Aligns with [COST_AND_TIMELINE.md](./COST_AND_TIMELINE.md) · [PRODUCT_ROADMAP.m
 
 | Quarter | Deliverable |
 |---------|-------------|
-| **Q3 2026** | **Stage A Phase 0:** Ed/Pedro temple vitals (patient app only); Gen1 FW **1.0.84**; data room |
+| **Q3 2026** | **Stage A Phase 0:** Ed/Pedro temple vitals (patient app only); Gen1 FW **1.0.85**; data room |
 | **Q4 2026** | **Stage A Phase 1+ start:** TFI/SASHB/IR-DC in patient app; US patent filing push; Gen2 kickoff |
 | **H1 2027** | Phase 1+ embodiment soft-launch; Gen2 EVT / vitals parity; optional consumer Premium |
 | **H2 2027** | Gen2 pilot parity; **Stage B** pre-sub / clinical package start (if funded) |

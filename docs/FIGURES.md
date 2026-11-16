@@ -4,7 +4,7 @@
 
 **Sibling indexes:** [oralable_nrf/docs/FIGURES.md](../../oralable_nrf/docs/FIGURES.md) · [oralable_swift/docs/FIGURES.md](../../oralable_swift/docs/FIGURES.md) · [OralableCore/docs/FIGURES.md](../../OralableCore/docs/FIGURES.md)
 
-**Patient app working diagrams (Mermaid):** [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0) — session lifecycle, tabs, placement state, auto-record, BLE→UI (`FIG-IOS-006`…`008`). Also mirrored in [ORALABLE_SYSTEM_MAP_DIAGRAMS.md §8](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md). Cross-linked from product, pilot, FTS, pitches, nrf landscape/DEVELOPMENT, and OralableCore docs (31 Jul 2026).
+**Patient app working diagrams:** Mermaid in [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0). Draft wireframes `FIG-IOS-001`…`009` live in [oralable_swift/docs/figures/](../../oralable_swift/docs/figures/) — index [oralable_swift/docs/FIGURES.md](../../oralable_swift/docs/FIGURES.md). Also mirrored in [ORALABLE_SYSTEM_MAP_DIAGRAMS.md §8](./ORALABLE_SYSTEM_MAP_DIAGRAMS.md).
 
 **Brand (not numbered FIG):** [data_room/brand/](./data_room/brand/) — logo lockups only.
 
@@ -51,7 +51,7 @@ Copy [`figures/_placeholder.svg`](./figures/_placeholder.svg) → `FIG-CO-NNN-sl
 | FIG-CO-010 | Oralable_7 validation dashboard | [figures/FIG-CO-010-oralable7-validation-dashboard.svg](./figures/FIG-CO-010-oralable7-validation-dashboard.svg) | placeholder | CLINICAL_VALIDATION | Promote `.../oralable7_validation_dashboard.png` |
 | FIG-CO-011 | Extraoral vs intraoral | [figures/FIG-CO-011-extraoral-vs-intraoral.svg](./figures/FIG-CO-011-extraoral-vs-intraoral.svg) | placeholder | LITERATURE_AND_PRIOR_ART, COLLAB_NABAVI_MCGILL, data_room/figures | Oralable temple vs Dianyx intraoral |
 | FIG-CO-012 | Gen1 device photo | [figures/FIG-CO-012-gen1-device-photo.svg](./figures/FIG-CO-012-gen1-device-photo.svg) | placeholder | HW_ENGINEER_ALTIUM_BRIEF, pitches | BOM REV8 / PCB REV10 |
-| FIG-CO-013 | Magnetic charge case / research dock | [figures/FIG-CO-013-research-charge-dock.png](./figures/FIG-CO-013-research-charge-dock.png) · SVG stub [FIG-CO-013-magnetic-case.svg](./figures/FIG-CO-013-magnetic-case.svg) | draft photo | ORALABLE_RESEARCH_KIT, PEDRO, pitches | Oralable in research dock (wa11 crop); product MagSafe-style case still TBD |
+| FIG-CO-013 | Charge case / research dock | [figures/FIG-CO-013-research-charge-dock.png](./figures/FIG-CO-013-research-charge-dock.png) · SVG stub [FIG-CO-013-magnetic-case.svg](./figures/FIG-CO-013-magnetic-case.svg) | draft photo | ORALABLE_RESEARCH_KIT, PEDRO, pitches | Oralable in research dock (wa11 crop). This build is coil alignment. A magnetic dock is a possible later case. SVG filename is historical. |
 | FIG-CO-014 | PCB REV10 photo | [figures/FIG-CO-014-pcb-rev10-photo.svg](./figures/FIG-CO-014-pcb-rev10-photo.svg) | placeholder | PCB00003_GEN2_REV11_HARDWARE, HW brief | |
 | FIG-CO-015 | Altium board overview | [figures/FIG-CO-015-altium-board-overview.svg](./figures/FIG-CO-015-altium-board-overview.svg) | placeholder | HW_ENGINEER_ALTIUM_BRIEF | From Wout / WeeGee |
 | FIG-CO-016 | Oralable Research Kit contents | [figures/FIG-CO-016-research-kit-flatlay.png](./figures/FIG-CO-016-research-kit-flatlay.png) · SVG stub [FIG-CO-016-ed-pedro-kit-contents.svg](./figures/FIG-CO-016-ed-pedro-kit-contents.svg) | draft photo | ORALABLE_RESEARCH_KIT, PITCH_PEDRO_ED_FF, PAPER_A | wa10 flat-lay; see [RESEARCH_KIT_PHOTO_SELECTION.md](./data_room/clinical/RESEARCH_KIT_PHOTO_SELECTION.md) |
@@ -80,6 +80,31 @@ Copy [`figures/_placeholder.svg`](./figures/_placeholder.svg) → `FIG-CO-NNN-sl
 | FIG-CO-055 | Hybrid Oralable finger-press | [figures/FIG-CO-055-matisse-photo-oralable-finger-press.png](./figures/FIG-CO-055-matisse-photo-oralable-finger-press.png) | draft hybrid | PAPER_A placement, PEDRO, pitches | Matisse contour from FIG-CO-046 + photo Oralable silicone (wa15 / comp_05); PPG toward skin on temporalis · 054 recipe |
 | FIG-CO-056 | Temporalis — anterior elevate | [figures/FIG-CO-056-temporalis-anterior-elevate.png](./figures/FIG-CO-056-temporalis-anterior-elevate.png) | draft (Oralable schematic) | TEMPORALIS_ANATOMY_AND_PLACEMENT, Paper A Fig. 2(a), Dual A seat | Vertical anterior fibers elevate mandible — **primary PPG/ANR site** · Kenhub cite for facts; stills in `research_kit_photo_source/kenhub_*` |
 | FIG-CO-057 | Temporalis — posterior retract | [figures/FIG-CO-057-temporalis-posterior-retract.png](./figures/FIG-CO-057-temporalis-posterior-retract.png) | draft (Oralable schematic) | TEMPORALIS_ANATOMY_AND_PLACEMENT, Paper A Fig. 2(b) | Horizontal posterior fibers retract — **not** primary Dual A site |
+| FIG-CO-058 | ANR M40 label + Red Dots + Gen1 MAM | [figures/FIG-CO-058-anr-m40-label-pads-mam.jpg](./figures/FIG-CO-058-anr-m40-label-pads-mam.jpg) | draft photo | ATTACHMENT | Outer envelope = M40 capsule |
+| FIG-CO-059 | PPG hole mark on ventral shell | [figures/FIG-CO-059-ppg-window-mark.jpg](./figures/FIG-CO-059-ppg-window-mark.jpg) | draft photo | ATTACHMENT | Black pen rectangle; offset to MAXM86161 |
+| FIG-CO-060 | Red Dot pad gap | [figures/FIG-CO-060-red-dot-pad-gap.jpg](./figures/FIG-CO-060-red-dot-pad-gap.jpg) | draft photo | ATTACHMENT | Gel-free strip for PPG hole |
+| FIG-CO-061 | Exploded pads / ventral shell / MAM | [figures/FIG-CO-061-anr-exploded-pads-shell-mam.jpg](./figures/FIG-CO-061-anr-exploded-pads-shell-mam.jpg) | draft photo | ATTACHMENT | Snap inserts; two-part housing |
+| FIG-CO-062 | MAM between snap studs | [figures/FIG-CO-062-mam-between-snaps.jpg](./figures/FIG-CO-062-mam-between-snaps.jpg) | draft photo | ATTACHMENT | Gen1 board fits M40 well |
+| FIG-CO-063 | Gen2 housing — PPG offset to U2 | [figures/FIG-CO-063-gen2-housing-concept.svg](./figures/FIG-CO-063-gen2-housing-concept.svg) · [PNG](./figures/FIG-CO-063-gen2-housing-concept.png) | draft concept | ATTACHMENT | Rectangular PPG window **offset to U2 (~+10.8 mm)**, not capsule centre · real first print is FIG-CO-067 / 070 |
+| FIG-CO-064 | Gen2 housing — conformal cavity 3D | [figures/FIG-CO-064-gen2-conformal-cavity-3d.png](./figures/FIG-CO-064-gen2-conformal-cavity-3d.png) | draft concept | ATTACHMENT | Boolean-cut cavity follows BAT1 / coil / U2 — not a flat rectangle; not Fusion CAD from STEP |
+| FIG-CO-065 | Gen2 MAM PCB (bare) | [figures/FIG-CO-065-gen2-mam-pcb.jpg](./figures/FIG-CO-065-gen2-mam-pcb.jpg) | draft photo | ATTACHMENT | No pouch on this board · 19 Sep 2026 |
+| FIG-CO-066 | Gen1 vs Gen2 MAM boards | [figures/FIG-CO-066-gen1-vs-gen2-mam.jpg](./figures/FIG-CO-066-gen1-vs-gen2-mam.jpg) | draft photo | ATTACHMENT | Gen1 + CG-320B · bare Gen2 |
+| FIG-CO-067 | Gen2 housing vs ANR M40 | [figures/FIG-CO-067-gen2-housing-vs-anr-m40.jpg](./figures/FIG-CO-067-gen2-housing-vs-anr-m40.jpg) | draft photo | ATTACHMENT | Same Red Dot class · first print is a thin bar, not M40 stadium |
+| FIG-CO-068 | Scale stack (boards + housing + ANR) | [figures/FIG-CO-068-gen2-housing-scale-stack.jpg](./figures/FIG-CO-068-gen2-housing-scale-stack.jpg) | draft photo | ATTACHMENT | Gen1 MAM · Gen2 MAM · printed housing · ANR M40 |
+| FIG-CO-069 | Red Dot snap face + housing strip | [figures/FIG-CO-069-red-dot-snap-housing.jpg](./figures/FIG-CO-069-red-dot-snap-housing.jpg) | draft photo | ATTACHMENT | Same pads as ANR / FIG-CO-060 |
+| FIG-CO-070 | Hybrid Gen2 housing wear | [figures/FIG-CO-070-matisse-photo-gen2-housing-wear.png](./figures/FIG-CO-070-matisse-photo-gen2-housing-wear.png) | draft hybrid | ATTACHMENT, pitches | Matisse contour + **photo** printed housing on Red Dots · 052 recipe · not Beacon ship |
+| FIG-CO-071 | Hybrid Gen1 vs Gen2 MAM | [figures/FIG-CO-071-matisse-photo-gen1-gen2-mam.png](./figures/FIG-CO-071-matisse-photo-gen1-gen2-mam.png) | draft hybrid | ATTACHMENT | Line still-life + photo boards |
+| FIG-CO-072 | Hybrid housing vs ANR | [figures/FIG-CO-072-matisse-photo-housing-vs-anr.png](./figures/FIG-CO-072-matisse-photo-housing-vs-anr.png) | draft hybrid | ATTACHMENT | Line still-life + photo class match · lab/attachment, not Beacon box |
+| FIG-CO-073 | Hybrid Gen2 housing + Sunrise chin | [figures/FIG-CO-073-matisse-photo-gen2-housing-sunrise-chin.png](./figures/FIG-CO-073-matisse-photo-gen2-housing-sunrise-chin.png) | draft hybrid | ORALABLE_MARKET_LANDSCAPE, RESEARCH_KIT, pitches | Copy of 070 + **photo** Sunrise on chin · temple vs chin site contrast · not Dual A, not Beacon box |
+| FIG-CO-074 | Hybrid Gen2 housing + Sunrise chin (clean pod) | [figures/FIG-CO-074-matisse-photo-gen2-housing-sunrise-chin-clean.png](./figures/FIG-CO-074-matisse-photo-gen2-housing-sunrise-chin-clean.png) | draft hybrid | ORALABLE_MARKET_LANDSCAPE, RESEARCH_KIT, pitches | Same sit as 073; Sunrise pod without the chin speck · not Dual A, not Beacon box |
+| FIG-CO-075 | Hybrid 070 + Sunrise chin | [figures/FIG-CO-075-matisse-photo-070-plus-sunrise-chin.png](./figures/FIG-CO-075-matisse-photo-070-plus-sunrise-chin.png) | draft hybrid | ORALABLE_MARKET_LANDSCAPE, RESEARCH_KIT, pitches | FIG-CO-070 MAM stack kept · photo Sunrise on chin · Matisse line, no added colour · not Dual A, not Beacon box |
+| FIG-CO-076 | Scale stack + Sunrise | [figures/FIG-CO-076-scale-stack-plus-sunrise.jpg](./figures/FIG-CO-076-scale-stack-plus-sunrise.jpg) | draft photo | ATTACHMENT, ORALABLE_MARKET_LANDSCAPE | Copy of FIG-CO-068 + overhead Sunrise pod · size peer only · not Dual A, not Beacon box |
+| FIG-CO-077 | Scale stack + AcuPebble | [figures/FIG-CO-077-scale-stack-plus-acupebble.jpg](./figures/FIG-CO-077-scale-stack-plus-acupebble.jpg) | draft photo | ATTACHMENT, ORALABLE_MARKET_LANDSCAPE, ACUPEBBLE | Copy of FIG-CO-068 + overhead AcuPebble disc (29 mm) · attach-class size peer · not Dual A, not Beacon box · Oralable ≠ AHI |
+| FIG-CO-078 | Scale stack four extraoral | [figures/FIG-CO-078-scale-stack-four-extraoral.jpg](./figures/FIG-CO-078-scale-stack-four-extraoral.jpg) | draft photo | ATTACHMENT, ORALABLE_MARKET_LANDSCAPE | Copy of FIG-CO-068 + AcuPebble disc + Sunrise pod · Oralable housing · ANR M40 · size/attach peers only · not Dual A, not Beacon box · Oralable ≠ AHI |
+| FIG-CO-079 | Gen2 v4 housing, both shells | [figures/FIG-CO-079-gen2-v4-housing-shells.png](./figures/FIG-CO-079-gen2-v4-housing-shells.png) | draft render | ATTACHMENT | Mesh render of `mam_gen2_version4_latest_for_cursor.stl` · lid 48×11×4.5 mm · tray 48×11×6.0 mm · thin bar, not the M40 concept (063) and not the first-print photo (067) |
+| FIG-CO-080 | Gen2 v4 bottom, two views | [figures/FIG-CO-080-gen2-v4-bottom-two-views.png](./figures/FIG-CO-080-gen2-v4-bottom-two-views.png) | draft render | ATTACHMENT | Looking down and from underneath · two Ø4.00 mm holes, 3.0 mm from each end, 42.0 mm apart |
+| FIG-CO-081 | Gen2 v4 top, two views | [figures/FIG-CO-081-gen2-v4-top-two-views.png](./figures/FIG-CO-081-gen2-v4-top-two-views.png) | draft render | ATTACHMENT | Looking down and from underneath · one 6×6 mm square, 7 mm in from one end · no Ø4 holes on this shell |
+| FIG-CO-082 | Hybrid 9 Oct housing wear | [figures/FIG-CO-082-matisse-photo-gen2-housing-9oct.png](./figures/FIG-CO-082-matisse-photo-gen2-housing-9oct.png) | draft hybrid | ATTACHMENT | Same line face as FIG-CO-070 · **photo** 9 Oct closed housing on Red Dots · dorsal face · not Beacon ship |
 
 ### Photo ask list (Research Kit / Paper A / F&F pitch)
 
@@ -114,4 +139,20 @@ Copy [`figures/_placeholder.svg`](./figures/_placeholder.svg) → `FIG-CO-NNN-sl
 
 When finals exist, replace the SVG stub with the PNG (same basename preferred) and set status `final`.
 
-*Last updated: 8 Aug 2026 · FIG-CO-056/057 Oralable temporalis schematics (Kenhub stills archived in photo_source) · FIG-CO-055 Oralable finger-press hybrid · visual direction locked on FIG-CO-054*
+## Inventory — oralable_swift (`FIG-IOS-*`)
+
+Canonical files: [oralable_swift/docs/FIGURES.md](../../oralable_swift/docs/FIGURES.md). Status: draft wireframes (not screenshots).
+
+| ID | Title | Path |
+|----|-------|------|
+| FIG-IOS-001 | Phase 0 Vitals home | [oralable_swift/docs/figures/FIG-IOS-001-vitals-home-mock.svg](../../oralable_swift/docs/figures/FIG-IOS-001-vitals-home-mock.svg) |
+| FIG-IOS-002 | Placement picker | [oralable_swift/docs/figures/FIG-IOS-002-placement-picker.svg](../../oralable_swift/docs/figures/FIG-IOS-002-placement-picker.svg) |
+| FIG-IOS-003 | Night report / hypnogram | [oralable_swift/docs/figures/FIG-IOS-003-night-report-ios.svg](../../oralable_swift/docs/figures/FIG-IOS-003-night-report-ios.svg) |
+| FIG-IOS-004 | BLE connect | [oralable_swift/docs/figures/FIG-IOS-004-ble-connect-flow.svg](../../oralable_swift/docs/figures/FIG-IOS-004-ble-connect-flow.svg) |
+| FIG-IOS-005 | Dentist app deferred | [oralable_swift/docs/figures/FIG-IOS-005-dentist-app-dark.svg](../../oralable_swift/docs/figures/FIG-IOS-005-dentist-app-dark.svg) |
+| FIG-IOS-006 | Session lifecycle | [oralable_swift/docs/figures/FIG-IOS-006-phase0-session-lifecycle.svg](../../oralable_swift/docs/figures/FIG-IOS-006-phase0-session-lifecycle.svg) |
+| FIG-IOS-007 | BLE to UI stack | [oralable_swift/docs/figures/FIG-IOS-007-ble-to-ui-stack.svg](../../oralable_swift/docs/figures/FIG-IOS-007-ble-to-ui-stack.svg) |
+| FIG-IOS-008 | Auto-record states | [oralable_swift/docs/figures/FIG-IOS-008-auto-recording-states.svg](../../oralable_swift/docs/figures/FIG-IOS-008-auto-recording-states.svg) |
+| FIG-IOS-009 | Tab + launch + History | [oralable_swift/docs/figures/FIG-IOS-009-tab-screen-map.svg](../../oralable_swift/docs/figures/FIG-IOS-009-tab-screen-map.svg) |
+
+*Last updated: 22 Sep 2026 · FIG-CO-078 four extraoral (Oralable · ANR · AcuPebble · Sunrise) · FIG-CO-076/077 singles · visual direction locked on FIG-CO-054*

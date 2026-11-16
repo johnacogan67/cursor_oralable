@@ -30,7 +30,7 @@ flowchart LR
 flowchart TB
   subgraph HW[Hardware Gen1]
     CLIP[Clip PPG+ACC]
-    CASE[Magnetic case]
+    CASE[Charge case]
   end
   subgraph FW[Firmware]
     NRF[nRF52832 TGM GATT]
@@ -142,7 +142,7 @@ Source: [GEMINI_TEMPLE_PPG_AVENUES.md](./data_room/bookmarks/GEMINI_TEMPLE_PPG_A
 
 ## 8. Patient app working model (Phase 0)
 
-Canonical detail + more diagrams: [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0) · placeholders [FIGURES.md](./FIGURES.md) (`FIG-IOS-006`…`008`).
+Canonical detail + more diagrams: [oralable_swift/docs/MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0) · draft wireframes [oralable_swift/docs/FIGURES.md](../../oralable_swift/docs/FIGURES.md) (`FIG-IOS-001`…`009`).
 
 ```mermaid
 flowchart LR

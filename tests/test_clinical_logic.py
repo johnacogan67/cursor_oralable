@@ -96,28 +96,28 @@ class TestSpO2:
 
 
 class TestAirwayRescue:
-    """Airway Rescue: IR DC drop >= 15% within 500 ms."""
+    """Airway Rescue: IR DC drop >= 10% within 500 ms (ClinicalBiometricSuite)."""
 
-    def test_rescue_detects_15_percent_drop(self):
-        """Rescue event when IR DC drops by 15% in 500 ms window."""
+    def test_rescue_detects_10_percent_drop(self):
+        """Rescue when IR DC drops by ≥10% in 500 ms (AIRWAY_RESCUE_THRESHOLD)."""
         n = 100
         w = AIRWAY_RESCUE_WINDOW_SAMPLES
         t = pd.date_range("2026-02-01", periods=n, freq="20ms")
         ir_dc = np.ones(n) * 1000.0
-        # At sample w, drop from 1000 to 800 (20% drop)
-        ir_dc[w:] = 800.0
+        # At sample w, drop from 1000 to 900 (10% drop) — meets −0.10 threshold
+        ir_dc[w:] = 900.0
         df = pd.DataFrame({"red": np.ones(n), "ir": ir_dc, "green": np.ones(n), "ir_dc": ir_dc}, index=t)
         suite = ClinicalBiometricSuite()
         result = suite.process(df)
         assert result["is_airway_rescue"].iloc[w] == 1
 
     def test_no_rescue_when_drop_small(self):
-        """No rescue when drop is less than 15%."""
+        """No rescue when drop is less than 10%."""
         n = 100
         w = AIRWAY_RESCUE_WINDOW_SAMPLES
         t = pd.date_range("2026-02-01", periods=n, freq="20ms")
         ir_dc = np.ones(n) * 1000.0
-        ir_dc[w:] = 900.0  # 10% drop
+        ir_dc[w:] = 910.0  # 9% drop
         df = pd.DataFrame({"red": np.ones(n), "ir": ir_dc, "green": np.ones(n), "ir_dc": ir_dc}, index=t)
         suite = ClinicalBiometricSuite()
         result = suite.process(df)

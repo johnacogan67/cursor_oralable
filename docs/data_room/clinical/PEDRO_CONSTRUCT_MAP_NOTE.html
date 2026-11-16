@@ -1,194 +1,744 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
-<meta charset="utf-8" />
-<title>What AcuPebble, MAM, Dual A, and PSG actually measure</title>
-<style>
-  @page { size: A4 landscape; margin: 10mm 10mm; }
-  * { box-sizing: border-box; }
-  body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 9pt;
-    line-height: 1.32;
-    color: #111;
-    margin: 0;
-    padding: 0;
-  }
-  h1 {
-    font-size: 13.5pt;
-    font-weight: 700;
-    margin: 0 0 4pt;
-    letter-spacing: -0.02em;
-  }
-  h2 {
-    font-size: 10.5pt;
-    font-weight: 700;
-    margin: 10pt 0 4pt;
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 2pt;
-  }
-  p { margin: 0 0 5pt; }
-  .meta { color: #333; font-size: 8pt; margin-bottom: 4pt; }
-  .one-liner {
-    background: #f4f4f4;
-    border-left: 3px solid #222;
-    padding: 5pt 8pt;
-    margin: 6pt 0 8pt;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 3pt 0 7pt;
-    font-size: 7.2pt;
-  }
-  th, td {
-    border: 1px solid #bbb;
-    padding: 2.5pt 3.5pt;
-    vertical-align: top;
-    text-align: left;
-  }
-  th { background: #eee; font-weight: 600; }
-  table.wide { font-size: 6.6pt; }
-  table.wide th, table.wide td { padding: 2pt 2.5pt; }
-  table.gloss { font-size: 8pt; }
-  table.gloss th, table.gloss td { padding: 4pt 5pt; }
-  .note { font-size: 8pt; color: #333; margin: 0 0 6pt; }
-  .page-break { page-break-after: always; }
-  .foot {
-    font-size: 8pt;
-    color: #444;
-    margin-top: 8pt;
-    border-top: 1px solid #ddd;
-    padding-top: 5pt;
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PEDRO_CONSTRUCT_MAP_NOTE</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+    @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+    :root {
+      --ink: #1a1a1a;
+      --muted: #4b5563;
+      --rule: #d1d5db;
+      --draft: #b45309;
+    }
+    html { font-size: 10.5pt; }
+    body {
+      font-family: "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+      color: var(--ink);
+      line-height: 1.45;
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 1.55rem;
+      line-height: 1.25;
+      margin: 0 0 0.75rem;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 0.4rem;
+    }
+    h2 {
+      font-size: 1.15rem;
+      margin-top: 1.6rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 0.2rem;
+    }
+    h3 { font-size: 1.02rem; margin-top: 1.2rem; }
+    h4 { font-size: 0.98rem; margin-top: 1rem; }
+    p, li { orphans: 3; widows: 3; }
+    a { color: #1e3a5f; text-decoration: none; }
+    strong { font-weight: 700; }
+    blockquote {
+      margin: 0.8rem 0;
+      padding: 0.4rem 0.8rem;
+      border-left: 3px solid var(--draft);
+      background: #fffbeb;
+      color: #78350f;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 0.8rem 0 1rem;
+      font-size: 0.92em;
+    }
+    th, td {
+      border: 1px solid var(--rule);
+      padding: 0.35rem 0.45rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    th { background: #f3f4f6; }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0.6rem auto 0.3rem;
+      page-break-inside: avoid;
+    }
+    pre, code {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.85em;
+    }
+    pre {
+      background: #f9fafb;
+      border: 1px solid var(--rule);
+      padding: 0.6rem 0.75rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      page-break-inside: avoid;
+    }
+    hr { border: 0; border-top: 1px solid var(--rule); margin: 1.4rem 0; }
+    .draft-banner {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--draft);
+      border: 1px solid #fbbf24;
+      background: #fffbeb;
+      padding: 0.35rem 0.6rem;
+      margin: 0 0 1rem;
+    }
+    @media print {
+      body { max-width: none; }
+      a[href]::after { content: ""; }
+      .draft-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
 </head>
 <body>
-
-<div class="page-break">
-<h1>What AcuPebble, MAM, Dual A, and PSG actually measure</h1>
-<p class="meta">
-  <strong>To:</strong> Dr Pedro Mayoral Sanz · cc Dr Edward Owens<br />
-  <strong>From:</strong> John A. Cogan (JAC / Oralable)<br />
-  <strong>As at:</strong> 30 Aug 2026 · Pack <strong>1.1.68</strong> · Working note for methods / Paper A vs Paper B. Not a product claim. Not a diagnosis.
-</p>
-
-<div class="one-liner">
-  <strong>Ox lock:</strong> AcuPebble <strong>always</strong> uses finger ox (AHI + ODI). MAM, ANR, and Dual A <strong>do not</strong>. Dual A SpO<sub>2</sub> is temple PPG. Oralable does not replace AcuPebble AHI.
-</div>
-
-<h2>Words we use</h2>
-<table class="gloss">
-  <thead>
-    <tr><th>Word</th><th>Meaning</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>Instrument</strong></td><td>The device and what it senses. AcuPebble: neck sound + <strong>finger</strong> oxygen (AHI / ODI). Oralable (MAM): temple light and motion; oxygen is <strong>temple</strong>, not finger. ANR: electrical muscle activity on the same temporalis. PSG-AV: the lab study.</td></tr>
-    <tr><td><strong>Methods</strong></td><td>How we write the measurement: site, sample rate, what we scored, what we do not claim. Not your MAD titration method.</td></tr>
-    <tr><td><strong>Dual A</strong></td><td>Oralable and ANR on the same anterior temporalis at the same time. Seat Oralable first. Confirm an infrared trough on a hard clench. Then add ANR, electrodes vertical. What we score today: an EMG burst, then an infrared trough about 1–5 seconds later. Not AHI. Not a night. One engineering pack is about six minutes.</td></tr>
-    <tr><td><strong>Muscle versus infrared</strong></td><td>Dual A’s main pair. <strong>Muscle</strong> = ANR EMG (the clock). <strong>Infrared</strong> = Oralable IR-DC trough (blood squeezed from the tissue; it lags). Same event, two physics. Not the same units.</td></tr>
-    <tr><td><strong>Paper A</strong></td><td>The Oralable kit / feasibility paper (IEEE draft): wear, temple vitals, Dual A as a descriptive precursor. About five people at Beacon. Not a registered trial. Not an AHI claim. It does not test the FEP theory.</td></tr>
-    <tr><td><strong>FEP paper</strong></td><td>Owens and Mayoral, <em>Frontiers in Behavioral Neuroscience</em>, 2026. Theory: sleep bruxism as predictive regulation. No Oralable cohort. Hypothesis 3.5.4 needs apnea/hypopnea <strong>times</strong> plus a muscle clock. That coupling is not built. Cite for Paper B / Arm P, not as Paper A methods.</td></tr>
-  </tbody>
+<h1 id="what-acupebble-mam-dual-a-and-psg-actually-measure">What
+AcuPebble, MAM, Dual A, and PSG actually measure</h1>
+<p><strong>PDF:</strong> <a
+href="./PEDRO_CONSTRUCT_MAP_NOTE.pdf">PEDRO_CONSTRUCT_MAP_NOTE.pdf</a> ·
+<a href="./PEDRO_CONSTRUCT_MAP_NOTE.html">HTML</a><br />
+<strong>To:</strong> Dr Pedro Mayoral Sanz · cc Dr Edward Owens<br />
+<strong>From:</strong> John A. Cogan (JAC / Oralable)<br />
+<strong>As at:</strong> 7 Sep 2026 · Pack <strong>1.1.68</strong><br />
+<strong>Status:</strong> Working note for methods / Paper A vs Paper B.
+Not a product claim. Not a diagnosis. <strong>PDF regenerated 7 Sep
+2026.</strong></p>
+<p>Internal lock (iterate there, do not copy Table 1 into other docs):
+<a
+href="./MEASUREMENT_CONSTRUCT_MAP.md">MEASUREMENT_CONSTRUCT_MAP.md</a>.</p>
+<hr />
+<h2 id="email-copy-paste">Email (copy-paste)</h2>
+<p>Attach <a
+href="./PEDRO_CONSTRUCT_MAP_NOTE.pdf">PEDRO_CONSTRUCT_MAP_NOTE.pdf</a>.
+Cc Ed if this is a methods lock.</p>
+<p>Subject: What AcuPebble, Oralable, Dual A, and PSG measure</p>
+<p>Pedro,</p>
+<p>I have written a short note so that we keep each instrument in its
+own box when we write methods. The first page defines the words we use:
+instrument, methods, Dual A, muscle versus infrared, Paper A, and the
+FEP paper. The tables follow.</p>
+<p>AcuPebble remains your home AHI and ODI, from neck sound and finger
+oxygen. Oralable sits on the temple. It does not use a finger probe.
+Dual A (muscle activity from ANR plus the Oralable infrared trough)
+stays in <strong>John’s lab</strong> — Beacon patients do
+<strong>not</strong> wear ANR with the MAM. AHI, Azarbarzin hypoxic
+burden, and our SASHB are not the same number.</p>
+<p>Table 2 shows what each stack gives you now. Table 1 is the lock on
+what matches what.</p>
+<p>Please tell me which path you want first at Beacon: AcuPebble with
+Oralable for the same night (oxygen / MAD); or later, if you ever want
+it, Dual A in the lab. The FEP path (AcuPebble event times lined up with
+muscle bouts) is not built, and it is not Paper A.</p>
+<p>John</p>
+<hr />
+<h2 id="words-we-use">Words we use</h2>
+<table>
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr>
+<th>Word</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Instrument</strong></td>
+<td>The device and what it senses. AcuPebble: neck sound +
+<strong>finger</strong> oxygen (AHI / ODI). Oralable (MAM): temple light
+and motion; oxygen is <strong>temple</strong>, not finger. ANR:
+electrical muscle activity on the same temporalis. PSG-AV: the lab
+study.</td>
+</tr>
+<tr>
+<td><strong>Methods</strong></td>
+<td>How we write the measurement: site, sample rate, what we scored,
+what we do not claim. Not your MAD titration method.</td>
+</tr>
+<tr>
+<td><strong>Dual A</strong></td>
+<td>Oralable and ANR on the same anterior temporalis at the same time
+(<strong>lab / Mac</strong>). Seat Oralable first. Confirm an infrared
+trough on a hard clench. Then add ANR, electrodes vertical. What we
+score today: an EMG burst, then an infrared trough about 1–5 seconds
+later. Not AHI. Not a Beacon patient night. One engineering pack is
+about six minutes.</td>
+</tr>
+<tr>
+<td><strong>Muscle versus infrared</strong></td>
+<td>Dual A’s main pair. <strong>Muscle</strong> = ANR EMG (the clock).
+<strong>Infrared</strong> = Oralable IR-DC trough (blood squeezed from
+the tissue; it lags). Same event, two physics. Not the same units.</td>
+</tr>
+<tr>
+<td><strong>Paper A</strong></td>
+<td>The Oralable kit / feasibility paper (IEEE draft): wear, temple
+vitals, Dual A as a <strong>lab</strong> descriptive precursor. About
+five people at Beacon, <strong>one night</strong>, clinic charge,
+<strong>≥4 h</strong>, no ANR on the patient. Not a registered trial.
+Not an AHI claim. It does not test the FEP theory.</td>
+</tr>
+<tr>
+<td><strong>FEP paper</strong></td>
+<td>Owens and Mayoral, <em>Frontiers in Behavioral Neuroscience</em>,
+2026. Theory: sleep bruxism as predictive regulation. No Oralable
+cohort. Hypothesis 3.5.4 needs apnea/hypopnea <strong>times</strong>
+plus a muscle clock. That coupling is not built. Cite for Paper B / Arm
+P, not as Paper A methods.</td>
+</tr>
+</tbody>
 </table>
-<p>Instruments measure. Dual A pairs muscle with infrared. Methods is how we write that. Paper A is the kit paper. The FEP paper is the theory paper.</p>
-</div>
-
-<h2>Why this note</h2>
-<p>You already run <strong>AcuPebble</strong> for home OSA. Oralable (<strong>MAM</strong>) sits on the <strong>temple</strong>. ANR is <strong>EMG</strong> on the same temporalis belly. Dual A is MAM + ANR on that site. These are different physics. Mixing them in methods copy makes AHI look like temple SpO<sub>2</sub>, or EMG look like an IR trough.</p>
-
+<p>Instruments measure. Dual A pairs muscle with infrared. Methods is
+how we write that. Paper A is the kit paper. The FEP paper is the theory
+paper.</p>
+<hr />
+<h2 id="why-this-note">Why this note</h2>
+<p>You already run <strong>AcuPebble</strong> for home OSA (AHI + ODI,
+<strong>finger ox</strong>). Oralable (<strong>MAM</strong>) sits on the
+<strong>temple</strong>. ANR is <strong>EMG</strong> on the same
+temporalis belly. Dual A is MAM + ANR on that site.</p>
+<p>These are different physics. Mixing them in methods copy makes AHI
+look like temple SpO₂, or EMG look like an IR trough. The two tables
+below are the lock we are using so Paper A, Dual A (lab), and your FEP
+paper stay in the right boxes.</p>
 <p><strong>Three oxygen numbers (do not merge):</strong></p>
 <table>
-  <thead>
-    <tr><th>Name</th><th>What it counts</th><th>Needs scored apneas/hypopneas?</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>AHI</strong></td><td>Event <strong>count</strong> per hour of sleep</td><td>Yes</td></tr>
-    <tr><td><strong>HB</strong> (Azarbarzin hypoxic burden)</td><td>SpO<sub>2</sub> <strong>area tied to those events</strong></td><td><strong>Yes</strong></td></tr>
-    <tr><td><strong>SASHB</strong></td><td>Oralable area when temple SpO<sub>2</sub> &lt; 90%</td><td><strong>No</strong> — temple PPG only, <strong>not</strong> finger ox</td></tr>
-  </tbody>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 29%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr>
+<th>Name</th>
+<th>What it counts</th>
+<th>Needs scored apneas/hypopneas?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AHI</strong></td>
+<td>Event <strong>count</strong> per hour of sleep</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>HB</strong> (Azarbarzin hypoxic burden)</td>
+<td>SpO₂ <strong>area tied to those events</strong></td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr>
+<td><strong>SASHB</strong></td>
+<td>Oralable area when temple SpO₂ &lt; 90%</td>
+<td><strong>No</strong> — temple PPG only, <strong>not</strong> finger
+ox</td>
+</tr>
+</tbody>
 </table>
-<p class="note">Your AcuPebble headline is <strong>AHI / ODI</strong>. That is not Azarbarzin HB unless your export has event-tied SpO<sub>2</sub> area. We do not claim that.</p>
-
-<h2>Relevance to you</h2>
+<p>Your AcuPebble headline is <strong>AHI / ODI</strong>. That is not
+Azarbarzin HB unless your export has event-tied SpO₂ area. We do not
+claim that.</p>
+<p><strong>Ox lock:</strong> AcuPebble <strong>always</strong> uses
+finger ox. MAM, ANR, and Dual A <strong>do not</strong>. Dual A SpO₂ is
+still temple PPG.</p>
+<hr />
+<h2 id="relevance-to-you">Relevance to you</h2>
 <table>
-  <thead>
-    <tr><th>Your work</th><th>What the tables say</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>AcuPebble (today)</strong></td><td>Home AHI + ODI from neck + <strong>finger</strong> SpO<sub>2</sub>. Keep this as the apnea reference. Oralable does not replace it.</td></tr>
-    <tr><td><strong>Arm P / MAD nights</strong></td><td>MAM can sit beside AcuPebble for temple vitals and later jaw-load. Temple SpO<sub>2</sub> ≠ finger ox. SASHB ≠ AHI ≠ HB.</td></tr>
-    <tr><td><strong>Dual A (research)</strong></td><td>Same-site <strong>muscle (EMG)</strong> then <strong>infrared (IR-DC)</strong> trough (~1–5 s lag). One engineering pack: IR↔EMG F1 ≈ 0.61 vs EMG; F1 vs Protocol A labels = 0; ~6 min, not a night.</td></tr>
-    <tr><td><strong>FEP / hypothesis 3.5.4</strong></td><td>Needs <strong>event timestamps</strong> plus a bout clock. Nightly AHI is not enough. Closest home path: AcuPebble events + Dual A. <strong>Not built.</strong> Cite FEP for Paper B / Arm P, not Paper A methods.</td></tr>
-    <tr><td><strong>PSG-AV</strong></td><td>Gold AHI, RMMA, and HB if scored. Lab, not the home stack we ship.</td></tr>
-  </tbody>
+<colgroup>
+<col style="width: 34%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr>
+<th>Your work</th>
+<th>What the tables say</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AcuPebble (today)</strong></td>
+<td>Home AHI + ODI from neck + <strong>finger</strong> SpO₂. Keep this
+as the apnea reference. Oralable does not replace it.</td>
+</tr>
+<tr>
+<td><strong>Arm P / MAD nights</strong></td>
+<td>MAM can sit beside AcuPebble for temple vitals and later jaw-load.
+Temple SpO₂ ≠ finger ox. SASHB ≠ AHI ≠ HB.</td>
+</tr>
+<tr>
+<td><strong>Dual A (research)</strong></td>
+<td>Same-site <strong>muscle (EMG)</strong> then <strong>infrared
+(IR-DC)</strong> trough (~1–5 s lag). <strong>John lab only</strong> —
+not a Beacon patient arm. One engineering pack: IR↔︎EMG F1 ≈ 0.61 vs EMG;
+F1 vs Protocol A labels = 0; ~6 min, not a night.</td>
+</tr>
+<tr>
+<td><strong>FEP / hypothesis 3.5.4</strong></td>
+<td>Needs <strong>event timestamps</strong> plus a bout clock. Nightly
+AHI is not enough. Closest home path: AcuPebble events + Dual A.
+<strong>Not built.</strong> Cite FEP for Paper B / Arm P, not Paper A
+methods.</td>
+</tr>
+<tr>
+<td><strong>PSG-AV</strong></td>
+<td>Gold AHI, RMMA, and HB if scored. Lab, not the home stack we
+ship.</td>
+</tr>
+</tbody>
 </table>
-<p class="note">Paper A is feasibility / Dual A precursor. It does <strong>not</strong> test FEP endotypes.</p>
-
-<h2>Table 2 — what each stack gives you now</h2>
+<p>Paper A is feasibility with Dual A as a <strong>lab</strong>
+precursor. It does <strong>not</strong> test FEP endotypes.</p>
+<hr />
+<h2 id="table-2-what-each-stack-gives-you-now">Table 2 — what each stack
+gives you now</h2>
 <table>
-  <thead>
-    <tr><th>Stack</th><th>You get now</th><th>You still lack</th></tr>
-  </thead>
-  <tbody>
-    <tr><td><strong>MAM</strong> (Oralable temple)</td><td>IR trough, % drop, SASHB, tonic/phasic/rescue/recovery <strong>labels</strong>, Core ML, <strong>temple</strong> SpO<sub>2</sub></td><td>Finger ox; AHI; HB; electrical onset; FEP latency</td></tr>
-    <tr><td><strong>ANR</strong></td><td>EMG onset + amplitude bouts</td><td>Finger ox; AHI; HB; IR; Core ML; rescue-as-airway</td></tr>
-    <tr><td><strong>Dual A</strong></td><td><strong>Muscle (EMG)</strong> versus <strong>infrared (IR-DC)</strong> trough + <strong>temple</strong> SASHB shown beside EMG</td><td>Finger ox; AHI; HB; Core ML vs EMG; overnight tonic/phasic F1; FEP latency</td></tr>
-    <tr><td><strong>AcuPebble</strong></td><td>AHI + ODI / <strong>finger</strong> SpO<sub>2</sub> (<strong>always</strong>)</td><td>HB unless export is event-tied; all jaw rows</td></tr>
-    <tr><td><strong>AcuPebble + Dual A</strong></td><td>AHI <strong>plus</strong> EMG→IR. Finger SpO<sub>2</sub> is <strong>AcuPebble only</strong>; Dual A still temple + EMG</td><td>Coupling only if event timestamps align — <strong>not built</strong>. Dual A SpO<sub>2</sub> is not the finger channel</td></tr>
-    <tr><td><strong>PSG-AV</strong></td><td>AHI <strong>and</strong> HB (if scored) <strong>and</strong> RMMA</td><td>Oralable IR-DC / Core ML / SASHB unless MAM is worn</td></tr>
-  </tbody>
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 36%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr>
+<th>Stack</th>
+<th>You get now</th>
+<th>You still lack</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MAM</strong> (Oralable temple)</td>
+<td>IR trough, % drop, SASHB, tonic/phasic/rescue/recovery
+<strong>labels</strong>, Core ML, <strong>temple</strong> SpO₂</td>
+<td>Finger ox; AHI; HB; electrical onset; FEP latency</td>
+</tr>
+<tr>
+<td><strong>ANR</strong></td>
+<td>EMG onset + amplitude bouts</td>
+<td>Finger ox; AHI; HB; IR; Core ML; rescue-as-airway</td>
+</tr>
+<tr>
+<td><strong>Dual A</strong></td>
+<td><strong>Muscle (EMG)</strong> versus <strong>infrared
+(IR-DC)</strong> trough + <strong>temple</strong> SASHB shown beside
+EMG</td>
+<td>Finger ox; AHI; HB; Core ML vs EMG; overnight tonic/phasic F1; FEP
+latency</td>
+</tr>
+<tr>
+<td><strong>AcuPebble</strong></td>
+<td>AHI + ODI / <strong>finger</strong> SpO₂
+(<strong>always</strong>)</td>
+<td>HB unless export is event-tied; all jaw rows</td>
+</tr>
+<tr>
+<td><strong>AcuPebble + Dual A</strong></td>
+<td>AHI <strong>plus</strong> EMG→IR. Finger SpO₂ is <strong>AcuPebble
+only</strong>; Dual A still temple + EMG</td>
+<td>Coupling only if event timestamps align — <strong>not
+built</strong>. Dual A SpO₂ is not the finger channel</td>
+</tr>
+<tr>
+<td><strong>PSG-AV</strong></td>
+<td>AHI <strong>and</strong> HB (if scored) <strong>and</strong>
+RMMA</td>
+<td>Oralable IR-DC / Core ML / SASHB unless MAM is worn</td>
+</tr>
+</tbody>
 </table>
-
-<h2>Table 1 — constructs (what matches what)</h2>
-<p class="note"><strong>Now</strong> = what exists today. <strong>MAM if verified</strong> = the name we may use only after Dual A (or PSG) F1, or an event clock. <strong>Still not</strong> = even after a pass.</p>
-<table class="wide">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Construct</th>
-      <th>Now</th>
-      <th>PSG-AV</th>
-      <th>AcuPebble</th>
-      <th>ANR</th>
-      <th>Dual A now</th>
-      <th>MAM if verified</th>
-      <th>Still not</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>1</td><td><strong>AHI</strong></td><td>Impossible from MAM/ANR</td><td><strong>Gold</strong></td><td>Home AHI</td><td>No</td><td>No</td><td><strong>None</strong></td><td>Temple PPG/ACC/IR cannot become AHI</td></tr>
-    <tr><td>2</td><td><strong>HB</strong> (Azarbarzin)</td><td>Impossible (no finger ox, no scored events)</td><td><strong>Yes</strong> if event-tied finger/PSG area</td><td>AHI/ODI ≠ HB unless export is event-tied — <strong>not claimed</strong></td><td>No</td><td>No</td><td><strong>None</strong> as HB</td><td>SASHB; Dual A pairing; AHI; ODI</td></tr>
-    <tr><td>3</td><td><strong>SASHB</strong></td><td>Temple PPG SpO<sub>2</sub>&lt;90 area — <strong>not finger ox</strong></td><td>Not this formula</td><td>Not AcuPebble’s formula</td><td>No (no SpO<sub>2</sub>)</td><td>Temple SASHB shown beside EMG. Not AHI, not HB, not finger ox</td><td>Stay “temple SpO<sub>2</sub>&lt;90 area”</td><td>AHI; HB; ODI; finger SpO<sub>2</sub></td></tr>
-    <tr><td>4</td><td><strong>LP IR-DC trough</strong></td><td>Scored Dual A</td><td>No optical OMG</td><td>No</td><td>No</td><td><strong>Primary pair:</strong> EMG first, IR later</td><td>Occlusion onset / trough (~1–5 s lag)</td><td>EMG onset; µV</td></tr>
-    <tr><td>5</td><td><strong>EMG burst onset</strong></td><td>ANR / PSG</td><td><strong>Yes</strong> — RMMA clock</td><td>No</td><td><strong>Yes</strong></td><td>Clock for row 4</td><td>MAM cannot get electrical onset</td><td>Millisecond lockstep</td></tr>
-    <tr><td>6</td><td><strong>IR-DC % drop</strong></td><td>Gate ≥8% of rest</td><td>No</td><td>No</td><td>No</td><td>EMG ≥70 <strong>and</strong> IR ≥8%</td><td>Occlusion depth (% of rest)</td><td>EMG amplitude; %MVC</td></tr>
-    <tr><td>7</td><td><strong>EMG amplitude</strong></td><td>ANR 0–1023</td><td>µV / often ≥10% MVC</td><td>No</td><td><strong>Yes</strong></td><td>Contact proof, not MVC</td><td>—</td><td>Depth ≠ µV</td></tr>
-    <tr><td>8</td><td><strong>Overnight tonic</strong></td><td>MAM <strong>label</strong></td><td>Tonic RMMA (different def)</td><td>No</td><td>Sustained EMG, not scored vs IR</td><td>Not F1’d</td><td>Tonic occlusion minutes</td><td>Tonic RMMA until F1</td></tr>
-    <tr><td>9</td><td><strong>Overnight phasic</strong></td><td>MAM <strong>label</strong></td><td>Phasic RMMA</td><td>No</td><td>Phasic EMG</td><td><strong>Not F1’d</strong> — ACC ≠ EMG</td><td>High-motion bouts; this row may fail</td><td>Phasic RMMA; grinding EMG</td></tr>
-    <tr><td>10</td><td><strong>Core ML MAM</strong></td><td>Product classes; 10% IR-DC <strong>gates</strong> only</td><td>No</td><td>No</td><td>No</td><td>Never run vs ANR</td><td>1 s optical–motion class if F1 vs EMG holds</td><td>EMG class; apnea class</td></tr>
-    <tr><td>11</td><td><strong>Rescue</strong></td><td>MAM state. EMG ∩ <strong>temple</strong> desat. <strong>No finger ox</strong></td><td>Events + RMMA (finger ox)</td><td>AHI events + <strong>finger</strong> desat if exported</td><td>No</td><td>Pairing ≠ rescue = EMG</td><td>Load + temple-desat bout if timestamps match AcuPebble/PSG event ends</td><td>AHI; finger-ox desat; FEP airway RMMA until scored</td></tr>
-    <tr><td>12</td><td><strong>Recovery</strong></td><td>IR-DC + ACC settle</td><td>Could define EMG + autonomic return</td><td>No</td><td>Unused for this</td><td>Not FEP latency</td><td>Optical–motion return time</td><td><strong>Homeostatic latency</strong> (your paper: EMG + HR/HRV)</td></tr>
-    <tr><td>13</td><td><strong>TFI</strong></td><td>Optical load index</td><td>No</td><td>No</td><td>No</td><td>No</td><td>Night occlusion burden if vs EMG episode index</td><td>MVC%; AASM SB index</td></tr>
-  </tbody>
-</table>
-<p class="note"><strong>Engineering Dual A pack (locked, not a night):</strong> session <code>20260812_085110</code>, ~6 min. Median EMG→IR lag ≈ <strong>4.9 s</strong>. IR↔EMG F1 ≈ <strong>0.61</strong>. F1 vs Protocol A labels = <strong>0</strong>.</p>
-
-<h2>Do / do not (for methods)</h2>
+<hr />
+<h2 id="table-1-constructs-what-matches-what">Table 1 — constructs (what
+matches what)</h2>
+<p><strong>Now</strong> = what exists today. <strong>MAM if
+verified</strong> = the name we may use only after Dual A (or PSG) F1,
+or an event clock. <strong>Still not</strong> = even after a pass.</p>
 <table>
-  <thead>
-    <tr><th>Do</th><th>Do not</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Keep AcuPebble for AHI / ODI (finger ox)</td><td>Call Oralable or Dual A an HSAT or finger-ox channel</td></tr>
-    <tr><td>Call Dual A primary pair EMG → IR trough (muscle versus infrared)</td><td>Call the IR trough EMG; call ACC phasic RMMA</td></tr>
-    <tr><td>Call tonic / phasic / rescue / Core ML <strong>labels</strong> until F1</td><td>Treat Core ML as scored vs ANR</td></tr>
-    <tr><td>Call recovery optical–motion settle</td><td>Call it homeostatic latency</td></tr>
-    <tr><td>Call AcuPebble AHI/ODI</td><td>Call AHI or ODI Azarbarzin HB unless the export has event-tied SpO<sub>2</sub> area</td></tr>
-  </tbody>
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 12%" />
+<col style="width: 5%" />
+<col style="width: 9%" />
+<col style="width: 12%" />
+<col style="width: 5%" />
+<col style="width: 13%" />
+<col style="width: 24%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th>#</th>
+<th>Construct</th>
+<th>Now</th>
+<th>PSG-AV</th>
+<th>AcuPebble</th>
+<th>ANR</th>
+<th>Dual A now</th>
+<th><strong>MAM if verified</strong></th>
+<th>Still not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>AHI</strong></td>
+<td>Impossible from MAM/ANR</td>
+<td><strong>Gold</strong></td>
+<td>Home AHI</td>
+<td>No</td>
+<td>No</td>
+<td><strong>None</strong></td>
+<td>Temple PPG/ACC/IR cannot become AHI</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>HB</strong> (Azarbarzin)</td>
+<td>Impossible (no finger ox, no scored events)</td>
+<td><strong>Yes</strong> if event-tied finger/PSG area</td>
+<td>AHI/ODI ≠ HB unless export is event-tied — <strong>not
+claimed</strong></td>
+<td>No</td>
+<td>No</td>
+<td><strong>None</strong> as HB</td>
+<td>SASHB; Dual A pairing; AHI; ODI</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>SASHB</strong></td>
+<td>Temple PPG SpO₂&lt;90 area — <strong>not finger ox</strong></td>
+<td>Not this formula</td>
+<td>Not AcuPebble’s formula</td>
+<td>No (no SpO₂)</td>
+<td>Temple SASHB shown beside EMG. Not AHI, not HB, not finger ox</td>
+<td>Stay “temple SpO₂&lt;90 area”</td>
+<td>AHI; HB; ODI; finger SpO₂</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>LP IR-DC trough</strong></td>
+<td>Scored Dual A</td>
+<td>No optical OMG</td>
+<td>No</td>
+<td>No</td>
+<td><strong>Primary pair:</strong> EMG first, IR later</td>
+<td>Occlusion onset / trough (~1–5 s lag)</td>
+<td>EMG onset; µV</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>EMG burst onset</strong></td>
+<td>ANR / PSG</td>
+<td><strong>Yes</strong> — RMMA clock</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+<td>Clock for row 4</td>
+<td>MAM cannot get electrical onset</td>
+<td>Millisecond lockstep</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>IR-DC % drop</strong></td>
+<td>Gate ≥8% of rest</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>EMG ≥70 <strong>and</strong> IR ≥8%</td>
+<td>Occlusion depth (% of rest)</td>
+<td>EMG amplitude; %MVC</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>EMG amplitude</strong></td>
+<td>ANR 0–1023</td>
+<td>µV / often ≥10% MVC</td>
+<td>No</td>
+<td><strong>Yes</strong></td>
+<td>Contact proof, not MVC</td>
+<td>—</td>
+<td>Depth ≠ µV</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>Overnight tonic</strong></td>
+<td>MAM <strong>label</strong></td>
+<td>Tonic RMMA (different def)</td>
+<td>No</td>
+<td>Sustained EMG, not scored vs IR</td>
+<td>Not F1’d</td>
+<td>Tonic occlusion minutes</td>
+<td>Tonic RMMA until F1</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>Overnight phasic</strong></td>
+<td>MAM <strong>label</strong></td>
+<td>Phasic RMMA</td>
+<td>No</td>
+<td>Phasic EMG</td>
+<td><strong>Not F1’d</strong> — ACC ≠ EMG</td>
+<td>High-motion bouts; this row may fail</td>
+<td>Phasic RMMA; grinding EMG</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Core ML MAM</strong></td>
+<td>Product classes; 10% IR-DC <strong>gates</strong> only</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Never run vs ANR</td>
+<td>1 s optical–motion class if F1 vs EMG holds</td>
+<td>EMG class; apnea class</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Rescue</strong></td>
+<td>MAM state. EMG ∩ <strong>temple</strong> desat. <strong>No finger
+ox</strong></td>
+<td>Events + RMMA (finger ox)</td>
+<td>AHI events + <strong>finger</strong> desat if exported</td>
+<td>No</td>
+<td>Pairing ≠ rescue = EMG</td>
+<td>Load + temple-desat bout if timestamps match AcuPebble/PSG event
+ends</td>
+<td>AHI; finger-ox desat; FEP airway RMMA until scored</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>Recovery</strong></td>
+<td>IR-DC + ACC settle</td>
+<td>Could define EMG + autonomic return</td>
+<td>No</td>
+<td>Unused for this</td>
+<td>Not FEP latency</td>
+<td>Optical–motion return time</td>
+<td><strong>Homeostatic latency</strong> (your paper: EMG + HR/HRV)</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>TFI</strong></td>
+<td>Optical load index</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>Night occlusion burden if vs EMG episode index</td>
+<td>MVC%; AASM SB index</td>
+</tr>
+</tbody>
 </table>
-
-<p class="foot">Device-inferred wellness / research signals — not a medical diagnosis. Paper A does not test FEP. Canonical lock: MEASUREMENT_CONSTRUCT_MAP (data room). Do not paste Table 1 into Paper A methods — point here.</p>
-
+<p><strong>Engineering Dual A pack (locked, not a night):</strong>
+session <code>20260812_085110</code>, ~6 min. Median EMG→IR lag ≈
+<strong>4.9 s</strong>. IR↔︎EMG F1 ≈ <strong>0.61</strong>. F1 vs
+Protocol A labels = <strong>0</strong>.</p>
+<hr />
+<h2 id="do-do-not-for-methods">Do / do not (for methods)</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr>
+<th>Do</th>
+<th>Do not</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Keep AcuPebble for AHI / ODI (finger ox)</td>
+<td>Call Oralable or Dual A an HSAT or finger-ox channel</td>
+</tr>
+<tr>
+<td>Call Dual A primary pair EMG → IR trough (muscle versus
+infrared)</td>
+<td>Call the IR trough EMG; call ACC phasic RMMA</td>
+</tr>
+<tr>
+<td>Call tonic / phasic / rescue / Core ML <strong>labels</strong> until
+F1</td>
+<td>Treat Core ML as scored vs ANR</td>
+</tr>
+<tr>
+<td>Call recovery optical–motion settle</td>
+<td>Call it homeostatic latency</td>
+</tr>
+<tr>
+<td>Call AcuPebble AHI/ODI</td>
+<td>Call AHI or ODI Azarbarzin HB unless the export has event-tied SpO₂
+area</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><em>Device-inferred wellness / research signals — not a medical
+diagnosis. Paper A does not test FEP.</em></p>
 </body>
 </html>

@@ -9,7 +9,6 @@ __pycache__/
 
 # Large data/artifacts
 data/
-plots/
 notebooks/
 ota/
 
@@ -17,6 +16,8 @@ ota/
 *.csv
 *.h5
 *.png
+!plots/
+!plots/**
 *.html
 *.log
 

@@ -7,7 +7,7 @@ Related: [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) · 
 
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
-**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 now–Sep 2026; Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
+**Cost & timeline (planning):** [COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md) — Phase 0 continues past Sep 2026 (30 Sep handoff missed); Phase 1+ Q4’26–Q1’27; Gen2 parallel; Stage B H2’27–2028. Mid Stage A ~€200–250k; Stage A+Gen2 ~€350–450k; through Stage B ~€0.8–1.0M (ranges — not a budget).
 
 ---
 
@@ -144,7 +144,7 @@ oralable_nrf/
 | **G2-P0** | NCS + `pcb00003_gen2` blink + SWD + RTT | J-Link flash REV11 |
 | **G2-P1** | I²C bring-up: WHO_AM_I ACC + PPG ID | Sensor read in RTT |
 | **G2-P2** | BLE advertise + GATT `006` version string | nRF Connect discovery |
-| **G2-P3** | Stream PPG/ACC @ 50 Hz worn | Match Gen1 notify rate ±10% |
+| **G2-P3** | Stream PPG/ACC @ 50 Hz worn | Packet format, 50 Hz, and drop accounting on the Gen 2 capture |
 | **G2-P4** | Battery + charge + LED matrix | §3.3 scenario table in architecture doc |
 | **G2-P5** | MCUboot OTA + iOS Device Manager | Signed swap on bench |
 | **G2-P6** | Pilot parity (vitals temple) | Ed/Pedro-equivalent gates on Gen2 |
@@ -219,7 +219,7 @@ Living board: **[GEN1_GEN2_TRACKING.md](./GEN1_GEN2_TRACKING.md)** · FW repo: *
 | Antenna on cheek | A/B RSSI vs Gen1 at temple/cheek; module keep-out in encapsulation |
 | NCS upgrade breaks nRF52 build | Pin NCS version in CI; two Docker/west manifests if needed |
 
-**Open:** REV11 schematic nets are documented in [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md); **GPIO↔net assignment requires Altium netlist or first-board bench verify** before `pcb00003_gen2.dts` is locked.
+**Open:** The GPIO map is the DTS in [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md) §5. G2-P0 stays pending until a reviewer accepts the 9 Nov bench note.
 
 ---
 

@@ -1,11 +1,11 @@
 # Dianyx FDA path · SomnoMed / ProSomnus smart-OAT landscape
 
-**As at:** 31 Jul 2026 · Pack **1.1.61** (content unchanged; pack stamp aligned)  
+**As at:** 12 Sep 2026 · Pack **1.1.69** (rechecked: still **no public K-number**)  
 **Tone:** public open-source bookmarks for Phase 2 complementarity judgment — **not** Oralable clearance evidence · Stage A wellness for Oralable  
 **Canonical collab staging:** [COLLAB_NABAVI_MCGILL.md](../clinical/COLLAB_NABAVI_MCGILL.md) (McGill first · complementary Dianyx later)  
 **Related:** [MAYORAL_METHOD_ORALABLE_VALIDATION.md](../clinical/MAYORAL_METHOD_ORALABLE_VALIDATION.md) · [LITERATURE_AND_PRIOR_ART.md](./LITERATURE_AND_PRIOR_ART.md)
 
-**One-liner:** Dianyx t.e.s.a. is still **pre-clearance** (public). SomnoMed and ProSomnus already cleared parts of the **smart OAT** stack. Oralable stays **extraoral temporalis** — different anatomy, not a MAD manufacturer race.
+**One-liner:** Dianyx t.e.s.a. is still **pre-clearance** (public). Rechecked **12 Sep 2026** — still **no K-number**. SomnoMed and ProSomnus already cleared parts of the **smart OAT** stack. Oralable stays **extraoral temporalis** — different anatomy, not a MAD manufacturer race.
 
 ---
 
@@ -34,7 +34,7 @@
 
 ---
 
-## 2. Snapshot judgment (31 Jul 2026)
+## 2. Snapshot judgment (12 Sep 2026)
 
 | Player | Public FDA smart status | Competes with Dianyx as… |
 |--------|-------------------------|--------------------------|

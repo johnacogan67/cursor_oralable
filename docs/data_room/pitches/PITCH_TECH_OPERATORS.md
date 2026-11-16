@@ -39,7 +39,7 @@ This is a **condition-specific** problem at an unusual site — not “another s
 
 ## Slide 3 — Solution
 
-**Oralable** = Nordic BLE **temple clip** + **magnetic charging case** + **iOS patient app**
+**Oralable** = Nordic BLE **temple clip** + **charge case (coil align now; magnetic dock later)** + **iOS patient app**
 
 | Now (Phase 0) | Next (Phase 1+) | Later (Stage B) |
 |---------------|-----------------|-----------------|
@@ -64,12 +64,12 @@ This is a **condition-specific** problem at an unusual site — not “another s
 | Item | Spec |
 |------|------|
 | Clip | Gen1 · BOM REV8 · PCB REV10 · Kaga ES2832AA2 (nRF52832) |
-| Charge | **Oralable magnetic case** — not phone Qi / MagSafe |
-| Firmware | **1.0.84** (IR-pulse worn · STAT blink · pad/desk recover) |
+| Charge | **Oralable charge case** (coil align now; magnetic dock later) — not phone Qi / MagSafe |
+| Firmware | **1.0.85** (IR-pulse worn · STAT blink · pad/desk recover · hold LED) |
 | App | Oralable patient **4.3.3** (TestFlight) — dentist app **off** for pilot |
 | Placement | **Temple** |
 | Claims | **Wellness only** — not a medical device today |
-| Handoff | **Research Kits gated** — target **5 to Pedro by 31 Aug 2026** when charge reaches temple-ready SOC + short worn vitals hold |
+| Handoff | **Research Kits gated** — **30 Sep 2026** handoff **missed**. Five Oralable-only kits when charge reaches temple-ready SOC + short worn vitals hold. No new date. |
 
 ---
 
@@ -77,8 +77,8 @@ This is a **condition-specific** problem at an unusual site — not “another s
 
 | Evidence | Status |
 |----------|--------|
-| Gen1 kits + FW 1.0.84 + app 4.3.3 (build 5) | **Stack ready** — flash / TestFlight path live |
-| Ed/Pedro Research Kits | **Pending ship** (charge-to-temple) — 5 kits target **31 Aug 2026** |
+| Gen1 kits + FW 1.0.85 + app 4.3.3 (build 5) | **Stack ready** — flash / TestFlight path live |
+| Ed/Pedro Research Kits | **Pending ship** (charge-to-temple) — 5 Oralable-only kits. **30 Sep 2026** **missed**. No new date. |
 | App Store live MAU / MRR | **Near zero** — soft launch gated |
 | Funding to date | **Founder-loan funded** · cash thin |
 | Board | Founder + **Independent Director** (Amstrow) in place |

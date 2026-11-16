@@ -2,21 +2,21 @@
 
 **Documentation:** [docs/README.md](docs/README.md) · Product strategy in `oralable_nrf/docs/ORALABLE_MARKET_LANDSCAPE.md`
 
-## Setup (pandas)
+## Reproducible Python setup
 
-A virtual environment with pandas is in `.venv`. To use it:
+The reference code is an installable package (`oralable-research`) with a tested Python 3.13 lock snapshot. The complete clean-checkout workflow is in [docs/PYTHON_DEVELOPMENT.md](docs/PYTHON_DEVELOPMENT.md).
+
+From a fresh clone:
 
 ```bash
-source .venv/bin/activate   # or on Windows: .venv\Scripts\activate
-# Or run directly:
-.venv/bin/python src/parser/log_parser.py "data/raw/text.txt"
+./scripts/bootstrap_python.sh
 ```
 
-To create the venv and install dependencies (if needed):
+Then use the package and run the offline validation suite:
 
 ```bash
-python3 -m venv .venv
-.venv/bin/pip install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt
+.venv/bin/python src/parser/log_parser.py "data/raw/text.txt"
+make verify
 ```
 
 ## Data Flow
@@ -26,7 +26,7 @@ python3 -m venv .venv
 
 ## Researcher Instructions (Temporalis gold chain)
 
-Use a Python 3 environment with dependencies from `requirements.txt` (see **Setup** above).
+Use the locked Python 3.13 environment (see **Reproducible Python setup** above).
 
 1. **Record** a session following `docs/TEMPORALIS_COLLECTION_PROTOCOL.md` and save the BLE log (e.g. `TEMPORALIS_RAW_01.csv` or under `data/raw/`).
 

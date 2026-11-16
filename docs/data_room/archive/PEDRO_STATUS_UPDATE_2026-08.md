@@ -1,11 +1,13 @@
 # Status update for Pedro Mayoral — August 2026
 
+> **SUPERSEDED 7 Sep 2026.** Archived. Do **not** send this file. Use [PEDRO_STATUS_UPDATE_2026-09.md](../clinical/PEDRO_STATUS_UPDATE_2026-09.md).
+
 **To:** Dr Pedro Mayoral Sanz (Beacon) · cc Dr Edward Owens  
 **From:** John A. Cogan (JAC / Oralable)  
 **As at:** 30 Aug 2026 · Pack **1.1.68** · stack FW **1.0.84** · app **4.3.3** (build **5**)  
 **Tone:** Sendable email / WhatsApp — grounded in what we measured  
 
-**Related:** [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) · [PAPER_A_DATA_HANDOFF_SOP.md](./PAPER_A_DATA_HANDOFF_SOP.md) · [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · construct sendable [PEDRO_CONSTRUCT_MAP_NOTE.md](./PEDRO_CONSTRUCT_MAP_NOTE.md) / [PDF](./PEDRO_CONSTRUCT_MAP_NOTE.pdf)
+**Related:** [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) · [RESEARCH_KIT_PHOTO_SELECTION.md](../clinical/RESEARCH_KIT_PHOTO_SELECTION.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](../clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) · [PAPER_A_DATA_HANDOFF_SOP.md](../clinical/PAPER_A_DATA_HANDOFF_SOP.md) · [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) · [ED_PEDRO_QUICK_START.md](../clinical/ED_PEDRO_QUICK_START.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · construct sendable [PEDRO_CONSTRUCT_MAP_NOTE.md](../clinical/PEDRO_CONSTRUCT_MAP_NOTE.md) / [PDF](../clinical/PEDRO_CONSTRUCT_MAP_NOTE.pdf)
 
 ---
 
@@ -30,7 +32,7 @@ We package the Beacon / IEEE path as an **Oralable Research Kit**:
 
 | In the kit | Role |
 |------------|------|
-| Oralable MAM (temple clip + magnetic case) | Optical PPG/ACC · vitals now · jaw-load path on same HW |
+| Oralable MAM (temple clip + charge case; coil align now; magnetic dock later) | Optical PPG/ACC · vitals now · jaw-load path on same HW |
 | ANR M40 | Temporalis sEMG comparator (Dual Protocol A) |
 | iOS Oralable app (TestFlight) | 1–6 h+ BLE collection for feasibility arms |
 | Cue card + quick start | Protocol A Dual + first worn vitals session |
@@ -49,7 +51,7 @@ Target: **5 Research Kits to you by 31 August 2026**, each past the charge-to-te
 4. Confirm whether you can access a **Bruxoff** as ambulatory EMG reference for descriptive comparison.  
 5. If you can share non-confidential **AcuPebble** photos (or SKU: SA100 vs Ox100) for paper/pitch placeholders — useful; we use placeholders until then.  
 6. Optional: interest in the short F&F investor leave-behind for you and Ed ([PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md)).  
-7. After first sessions: follow the one-page data handoff ([PAPER_A_DATA_HANDOFF_SOP.md](./PAPER_A_DATA_HANDOFF_SOP.md)) — Arm P / overnight → Clinical Temporalis **PDF**; Dual A → four files incl. `session.edf`, or Mac concordance folder.
+7. After first sessions: follow the one-page data handoff ([PAPER_A_DATA_HANDOFF_SOP.md](../clinical/PAPER_A_DATA_HANDOFF_SOP.md)) — Arm P / overnight → Clinical Temporalis **PDF**; Dual A → four files incl. `session.edf`, or Mac concordance folder.
 
 Happy to take a short call once you have skimmed this.
 

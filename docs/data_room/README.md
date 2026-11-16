@@ -1,12 +1,12 @@
 # Oralable investor data room index
 
-**Pack:** **1.1.68** · **As at:** 30 Aug 2026 · Gen1 FW **1.0.84** · App **4.3.3** (build **5**) · kits **gated**  
-**Versions:** [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) · `VERSION`  
+**Pack:** **1.1.74** · **As at:** 2 Nov 2026 · Gen 2 bench: PPG and ACC streamed until the cell floor; gates **pending**; candidate `2.0.0-gen2-nrfconnect` built, not on a board · Gen 1 FW **1.0.85** is frozen · App **4.3.3** (build **5**) · kits **gated** (Oralable-only · **30 Sep handoff missed** · no new date) · [Gen 2 bench, 2 Nov](./hardware/GEN2_BENCH_LEARNINGS_2026-11-02.md)  
+**Versions:** [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) · `VERSION` — Beacon use = one night · ≥4 h · no ANR · no headband ([ED_PEDRO_MEETING_2026-09-07.md](./clinical/ED_PEDRO_MEETING_2026-09-07.md)) · living pass: GTM Path 0 · ANR not in-kit · UP receipt **GAP** · August Pedro status **archived**  
 **Agent topic:** `data-room` · [WORKSPACE_TOPICS.md](../WORKSPACE_TOPICS.md) · [AGENTS.md](../../AGENTS.md)
 
 **Point A baseline:** Ken / Balance Points (9 June 2026) — overall **1.5 / 5.0** (Essential).
 
-Folder layout (30 Aug 2026): `pitches/` · `clinical/` · `governance/` · `hardware/` · `firmware/` · `bookmarks/` · `brand/` · `figures/` · `archive/` · `_build/` (HTML print artifacts).
+Folder layout (19 Sep 2026): `pitches/` · `clinical/` · `governance/` · `hardware/` · `attachment/` · `firmware/` · `bookmarks/` · `brand/` · `figures/` · `archive/` · `_build/` (HTML print artifacts).
 
 Corporate / statutory packs stay **outside** this git index.
 
@@ -26,9 +26,9 @@ Corporate / statutory packs stay **outside** this git index.
 
 | Ken area | Weight | Status | Primary documents |
 |----------|--------|--------|-------------------|
-| **Technology & Product** | 10% | PARTIAL | [governance/ORALABLE_FTS_36MO.md](./governance/ORALABLE_FTS_36MO.md) · [../ORALABLE_SYSTEM_ARCHITECTURE.md](../ORALABLE_SYSTEM_ARCHITECTURE.md) · `oralable_nrf/docs/DEVELOPMENT.md` · `oralable_swift/docs/MOBILE_APP_FLOWS.md` |
+| **Technology & Product** | 10% | PARTIAL | [governance/ORALABLE_FTS_36MO.md](./governance/ORALABLE_FTS_36MO.md) · [../ORALABLE_SYSTEM_ARCHITECTURE.md](../ORALABLE_SYSTEM_ARCHITECTURE.md) · [../ATTACHMENT.md](../ATTACHMENT.md) · `oralable_nrf/docs/DEVELOPMENT.md` · `oralable_swift/docs/MOBILE_APP_FLOWS.md` |
 | **Market & Positioning** | 5% | PARTIAL | [governance/MARKET_SIZING.md](./governance/MARKET_SIZING.md) · [ORALABLE_MARKET_LANDSCAPE.md](./bookmarks/ORALABLE_MARKET_LANDSCAPE.md) · **GAP:** IE/UK cut |
-| **GTM & Sales** | 10% | PARTIAL | [governance/GTM_ONE_PAGE.md](./governance/GTM_ONE_PAGE.md) · [pitches/PITCH_DECK_KEN.md](./pitches/PITCH_DECK_KEN.md) · **GAP:** full CAC |
+| **GTM & Sales** | 10% | PARTIAL | [governance/GTM_ONE_PAGE.md](./governance/GTM_ONE_PAGE.md) (Path **0** clinic loaner now · n≈5 **unpaid** · RKaaS later · Path A consumer later) · [pitches/PITCH_DECK_KEN.md](./pitches/PITCH_DECK_KEN.md) · **GAP:** full CAC |
 | **User Traction & Revenue** | 10% | GAP | Pilot will supply first usage evidence |
 | **Financials** | 10% | PARTIAL | [governance/FINANCIALS_CASH_SNAPSHOT.md](./governance/FINANCIALS_CASH_SNAPSHOT.md) · [governance/FUNDING_POINT_B_AND_CAP_TABLE.md](./governance/FUNDING_POINT_B_AND_CAP_TABLE.md) · [governance/COST_AND_TIMELINE.md](./governance/COST_AND_TIMELINE.md) |
 | **Team & Governance** | 10% | PARTIAL | [governance/CURRENT_GOVERNANCE_STATUS.md](./governance/CURRENT_GOVERNANCE_STATUS.md) · [governance/KEN_PRESEED_STRUCTURE_EVAL.md](./governance/KEN_PRESEED_STRUCTURE_EVAL.md) · [governance/JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md](./governance/JAC_CORPORATE_STRUCTURE_AND_GOVERNANCE.md) |
@@ -48,8 +48,9 @@ Corporate / statutory packs stay **outside** this git index.
 
 | Doc | Purpose |
 |-----|---------|
-| [clinical/ORALABLE_RESEARCH_KIT.md](./clinical/ORALABLE_RESEARCH_KIT.md) | Kit BOM · 5 kits gated |
-| [clinical/PEDRO_STATUS_UPDATE_2026-08.md](./clinical/PEDRO_STATUS_UPDATE_2026-08.md) | Sendable status |
+| [clinical/ORALABLE_RESEARCH_KIT.md](./clinical/ORALABLE_RESEARCH_KIT.md) | Kit BOM · Oralable-only · 5 kits gated |
+| [clinical/ED_PEDRO_MEETING_2026-09-07.md](./clinical/ED_PEDRO_MEETING_2026-09-07.md) | Meeting evaluation (7 Sep) — Paper A, patent, Gen4 |
+| [clinical/PEDRO_STATUS_UPDATE_2026-09.md](./clinical/PEDRO_STATUS_UPDATE_2026-09.md) | Sendable status (use rules) |
 | [clinical/ED_PEDRO_QUICK_START.md](./clinical/ED_PEDRO_QUICK_START.md) | Phase 0 first worn session |
 | [pitches/PITCH_PEDRO_ED_FF.pdf](./pitches/PITCH_PEDRO_ED_FF.pdf) | F&F leave-behind |
 | [clinical/PEDRO_CONSTRUCT_MAP_NOTE.pdf](./clinical/PEDRO_CONSTRUCT_MAP_NOTE.pdf) | Construct note |
@@ -62,6 +63,7 @@ Corporate / statutory packs stay **outside** this git index.
 | [clinical/PAPER_A_FEASIBILITY_PROTOCOL.md](./clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) | n≈5 feasibility |
 | [clinical/PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf](./clinical/PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf) | Draft PDF |
 | [clinical/MEASUREMENT_CONSTRUCT_MAP.md](./clinical/MEASUREMENT_CONSTRUCT_MAP.md) | Living construct table |
+| [clinical/DENTIST_APPROXIMATE.md](./clinical/DENTIST_APPROXIMATE.md) | Living aim and shortcomings for a dentist approximate |
 | [../ANR_M40_CONCORDANCE.md](../ANR_M40_CONCORDANCE.md) | **Edit ANR here** (full) · bookmark [bookmarks/ANR_M40_CONCORDANCE.md](./bookmarks/ANR_M40_CONCORDANCE.md) |
 
 ### Nabavi / McGill
@@ -72,31 +74,32 @@ Corporate / statutory packs stay **outside** this git index.
 | [pitches/PITCH_KOOROSH.pdf](./pitches/PITCH_KOOROSH.pdf) | Leave-behind |
 | [pitches/KOOROSH_OUTREACH.md](./pitches/KOOROSH_OUTREACH.md) | Email |
 
-### Ken / CEO / Tech Ops
+### Ken (investor) · CEO search · Tech Ops
 
 | Doc | Purpose |
 |-----|---------|
-| [pitches/PITCH_DECK_KEN.pdf](./pitches/PITCH_DECK_KEN.pdf) | Ken deck |
-| [pitches/PITCH_CEO_CANDIDATE.pdf](./pitches/PITCH_CEO_CANDIDATE.pdf) · [CEO_JOB_DESCRIPTION.md](./pitches/CEO_JOB_DESCRIPTION.md) | CEO search |
+| [pitches/PITCH_DECK_KEN.pdf](./pitches/PITCH_DECK_KEN.pdf) | Ken / BalancePoints **investor** deck — **not** a CEO candidate pack |
+| [pitches/PITCH_CEO_CANDIDATE.pdf](./pitches/PITCH_CEO_CANDIDATE.pdf) · [CEO_JOB_DESCRIPTION.md](./pitches/CEO_JOB_DESCRIPTION.md) | CEO search (**not Ken**) |
 | [pitches/PITCH_TECH_OPERATORS.pdf](./pitches/PITCH_TECH_OPERATORS.pdf) | Tech Operators |
 
 ### Firmware
 
 | Doc | Purpose |
 |-----|---------|
-| [firmware/FIRMWARE_1.0.84_FLASH.md](./firmware/FIRMWARE_1.0.84_FLASH.md) | **Current** flash / OTA |
-| [firmware/FIRMWARE_ROLLBACK.md](./firmware/FIRMWARE_ROLLBACK.md) | N−1 (**1.0.82**) + older policy |
-| [firmware/](./firmware/) | Binaries: **1.0.84** + **1.0.82** only |
+| [firmware/README.md](./firmware/README.md) | **Legacy Gen 1** images. Do not flash on Gen 2. |
+| [hardware/GEN2_BENCH_LEARNINGS_2026-11-02.md](./hardware/GEN2_BENCH_LEARNINGS_2026-11-02.md) | **Current** Gen 2 bench and the path to the gate |
+| [hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md](./hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md) | 30 Oct record (Wout / Kaga) |
 
-### Bookmarks / hardware / brand
+### Bookmarks / hardware / attachment / brand
 
 | Folder | Contents |
 |--------|----------|
-| [bookmarks/](./bookmarks/) | Landscape · parity · lit · AcuPebble · Happy Ring · Gemini avenues |
-| [hardware/](./hardware/) | Kaga / Bittele / Altium brief |
+| [bookmarks/](./bookmarks/) | Landscape · parity · lit · AcuPebble · Happy Ring · [Sunrise](./bookmarks/SUNRISE_MANDIBULAR_MOVEMENT.md) · Gemini avenues · [Google Alerts watch map](./bookmarks/GOOGLE_ALERTS_WATCH_MAP.md) · [nRF54L15 DK](./bookmarks/NRF54L15_DK.md) · [ES4L15BA1 datasheet](./bookmarks/ES4L15BA1_DATASHEET.md) · [ECB euro display rate](./bookmarks/ECB_EUR_USD_RATE.md) |
+| [hardware/](./hardware/) | Kaga / Bittele / Altium brief · [Gen 2 bench, 2 Nov 2026](./hardware/GEN2_BENCH_LEARNINGS_2026-11-02.md) |
+| [attachment/](./attachment/) | MAM housing + skin attach · [README](./attachment/README.md) · canonical [../ATTACHMENT.md](../ATTACHMENT.md) |
 | [brand/](./brand/) | Logo + [VISUAL_AND_VOICE_DIRECTION.md](./brand/VISUAL_AND_VOICE_DIRECTION.md) |
 | [figures/](./figures/) | Pitch pack figures (symlinks → `docs/figures/` where possible) |
-| [archive/](./archive/) | Dated scraps · old flash guides · [upload_2026-06](../archive/upload_2026-06/) |
+| [archive/](./archive/) | Superseded sendables · old flash guides · [upload_2026-06](../archive/upload_2026-06/) · [README](./archive/README.md) |
 | [_build/](./_build/) | HTML / print decks (not diligence) |
 
 ---
@@ -113,7 +116,8 @@ Old bookmarks used a flat `data_room/*.md`. Use these paths:
 | `CURRENT_GOVERNANCE_*` · `JAC_*` · `FUNDING_*` · `FINANCIALS_*` · `GTM_*` · `IP_*` · `REGULATORY_*` · `COST_*` · `MARKET_SIZING` · `ORALABLE_FTS_*` · `KEN_*` · `APPS_*` · `DATA_ROOM_VALIDATION_*` | [`governance/`](./governance/) |
 | `FIRMWARE_*` · binaries | [`firmware/`](./firmware/) |
 | `GEN*_COGS_*` · `BITTELE_*` · `HW_ENGINEER_*` · `KAGA_*` | [`hardware/`](./hardware/) |
-| `DIANYX_*` · `HAPPY_RING` · `BRUXOFF_*` · `SENSOR_*` · `MAC_PHONE_*` · `LITERATURE_*` · `ACUPEBBLE_*` · `GEMINI_*` · `ORALABLE_MARKET_LANDSCAPE` | [`bookmarks/`](./bookmarks/) |
+| Housing / skin attach | [`attachment/`](./attachment/) · canonical [`../ATTACHMENT.md`](../ATTACHMENT.md) |
+| `DIANYX_*` · `HAPPY_RING` · `BRUXOFF_*` · `SENSOR_*` · `MAC_PHONE_*` · `LITERATURE_*` · `ACUPEBBLE_*` · `SUNRISE_*` · `GEMINI_*` · `ORALABLE_MARKET_LANDSCAPE` · `GOOGLE_ALERTS_*` · `NRF54L15_DK` · `ES4L15BA1_DATASHEET` · `ECB_EUR_USD_RATE` | [`bookmarks/`](./bookmarks/) |
 | `VISUAL_AND_VOICE_*` · logos | [`brand/`](./brand/) |
 | Dated scraps · old flash guides | [`archive/`](./archive/) |
 | HTML / `*_print.html` | [`_build/`](./_build/) (not diligence) |
@@ -135,8 +139,8 @@ Old bookmarks used a flat `data_room/*.md`. Use these paths:
 
 | Asset | Location |
 |-------|----------|
-| Data room pack | `VERSION` (**1.1.68**) |
-| Docs hub | `docs/VERSION` (**1.3.17**) |
+| Data room pack | `VERSION` (**1.1.74**) |
+| Docs hub | `docs/VERSION` (**1.3.21**) |
 | Stack truth | [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) |
 | nRF docs pack | `oralable_nrf/docs/VERSION` |
 | Deprecated June PDF pack | [../archive/upload_2026-06/](../archive/upload_2026-06/) |

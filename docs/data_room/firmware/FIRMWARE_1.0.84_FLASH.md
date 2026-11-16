@@ -2,7 +2,7 @@
 
 **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-**Build date:** 29–30 Aug 2026 · **Role:** **Current Gen1 target** · Stage A Phase 0 / Research Kit · patient app only  
+**Build date:** 29–30 Aug 2026 · **Role:** **Legacy Gen 1** rollback. Do not flash this on Gen 2.  
 **GATT string:** `1.0.84` (boot banner `v1.0.84-5f144f9d93ac`)
 
 Includes 1.0.82 IR-pulse `worn`, sense-on-BLE, 5% floor, green-only STAT LEDs, plus **pad/zombie recover** and **desk/bench abandon**.
@@ -83,9 +83,9 @@ Everything from 1.0.82 still applies: IR-pulse worn, sense-on-BLE, 5% sensor flo
 
 | Area | Expect |
 |------|--------|
-| **FirmwareGate** | Hard min **1.0.63**; recommend **1.0.84** |
-| **Automatic** | Preferred (STAT blink). Soft hint if device is below 1.0.84 |
-| **Device LED** | Flash green charging; solid green taper / hold. LED off while linked |
+| **FirmwareGate** | Hard min **1.0.63**; current recommend **1.0.85** (this hex is N−1) |
+| **Automatic** | Preferred (STAT blink). Soft hint if device is below 1.0.85 |
+| **Device LED** | Flash green charging; **solid green** taper / hold on this hex. 1.0.85 uses a rare pulse in hold. LED off while linked |
 | **TestFlight** | App **4.3.3** build **5+** |
 
 ---

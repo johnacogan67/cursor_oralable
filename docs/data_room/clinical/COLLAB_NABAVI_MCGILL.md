@@ -2,10 +2,10 @@
 
 **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-**As at:** 30 Aug 2026 · Pack **1.1.68** (collab truth unchanged; Dual A eng pack + Paper A stamps aligned; stack FW **1.0.84**)  
+**As at:** 12 Sep 2026 · Pack **1.1.70** (collab truth unchanged; Dual A = lab precursor; Beacon kit Oralable-only; living stack FW **1.0.85**)  
 **Use this file** when pitch, outreach, Ed/Pedro agenda, or the HW brief disagree with each other.
 
-**Sendables:** [PITCH_KOOROSH.pdf](../pitches/PITCH_KOOROSH.pdf) · [KOOROSH_OUTREACH.md](../pitches/KOOROSH_OUTREACH.md) · Pedro path [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) · **Figures:** [../FIGURES.md](../../FIGURES.md) · photo guide [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md)
+**Sendables:** [PITCH_KOOROSH.pdf](../pitches/PITCH_KOOROSH.pdf) · [KOOROSH_OUTREACH.md](../pitches/KOOROSH_OUTREACH.md) · Pedro path [PEDRO_STATUS_UPDATE_2026-09.md](./PEDRO_STATUS_UPDATE_2026-09.md) · [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) · **Figures:** [../FIGURES.md](../../FIGURES.md) · photo guide [RESEARCH_KIT_PHOTO_SELECTION.md](./RESEARCH_KIT_PHOTO_SELECTION.md)
 
 ![FIG-CO-011 Extraoral vs intraoral](../figures/FIG-CO-011-extraoral-vs-intraoral.svg)
 
@@ -79,7 +79,7 @@
 
 ## Dual ask (Phase 1)
 
-1. **IEEE (McGill)** — Paper A **Research Kit** methods + **feasibility n≈5** ([PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md); Dual A ANR precursor + Pedro 1–2 h oxygen arm) → B phenotype → C deeper PSG-AV / Bruxoff concordance · kit [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · affiliations **JAC + McGill / RI-MUHC + Beacon**
+1. **IEEE (McGill)** — Paper A **Research Kit** methods + **feasibility n≈5** ([PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md); Dual A ANR **lab** precursor; Pedro oxygen/MAD nest, often inside a ≥4 h night) → B phenotype → C deeper PSG-AV / Bruxoff concordance · kit [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · affiliations **JAC + McGill / RI-MUHC + Beacon**
 2. **Optional Altium** — personal JAC work-for-hire · Gen1 REV10 maintain + Gen2 REV11 · take over from Wout · rate TBD · **JAC HW**, not Dianyx hardware
 
 **Phase 2 (later, if complementary):** See whether Dianyx t.e.s.a. (intraoral OAT sensing) and Oralable (extraoral temporalis vitals / bruxing load) can **share a clinical narrative** (e.g. Mayoral MAD titration) without merging products or IP. Get counsel and both companies on board before any commitment.
@@ -92,7 +92,7 @@
 
 ## Ed / Pedro reactivation
 
-[ED_PEDRO_AGENDA_2026-06-07.md](../archive/ED_PEDRO_AGENDA_2026-06-07.md) — **slipped** (Jun LoI pack). **August 2026 path:** send [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) and stand up [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) (5 kits target **31 Aug 2026**). Paper A feasibility now centers on Research Kit + n≈5. F&F leave-behind: [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md). Refresh Stage A truth before any LoI talk. The June agenda already named McGill/Nabavi for signal processing.
+[ED_PEDRO_AGENDA_2026-06-07.md](../archive/ED_PEDRO_AGENDA_2026-06-07.md) — **slipped** (Jun LoI pack). **September 2026 path:** send [PEDRO_STATUS_UPDATE_2026-09.md](./PEDRO_STATUS_UPDATE_2026-09.md) (August note is superseded). Kits are **Oralable-only** (no ANR, no headband). The **30 Sep 2026** handoff **missed**; kits stay gated; no new date — [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md). Paper A = Beacon n≈5 one-night clinic loaner. Dual A stays lab/TestFlight. F&F leave-behind: [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md). The June agenda already named McGill/Nabavi for signal processing.
 
 ---
 
@@ -104,11 +104,12 @@
 | [KOOROSH_OUTREACH.md](../pitches/KOOROSH_OUTREACH.md) | Email · agenda · share/withhold |
 | [PAPER_A_REVIEW_COVER.md](./PAPER_A_REVIEW_COVER.md) | Paper A one-page review cover (Koorosh / Ed / Pedro) |
 | [PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md) | IEEE Paper A methods draft + figure/result placeholders |
-| [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) | n≈5 Beacon feasibility · Pedro 1–2 h oxygen arm nested |
+| [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) | n≈5 Beacon · one night · ≥4 h · Dual A lab only |
 | [PAPER_A_VALIDATION_AND_FUTURE_WORK.md](./PAPER_A_VALIDATION_AND_FUTURE_WORK.md) | Alignment audit · source checks · future investigation |
 | [ED_PEDRO_AGENDA_2026-06-07.md](../archive/ED_PEDRO_AGENDA_2026-06-07.md) | Slipped clinical integration pack |
-| [PEDRO_STATUS_UPDATE_2026-08.md](./PEDRO_STATUS_UPDATE_2026-08.md) | Aug 2026 Pedro sendable status |
-| [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) | Research Kit BOM · Dual A · ship to Pedro |
+| [PEDRO_STATUS_UPDATE_2026-09.md](./PEDRO_STATUS_UPDATE_2026-09.md) | Current Pedro/Ed sendable (use rules) |
+| [PEDRO_STATUS_UPDATE_2026-08.md](../archive/PEDRO_STATUS_UPDATE_2026-08.md) | Aug 2026 sendable (archived) |
+| [ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) | Research Kit BOM · Oralable-only · Dual A lab · target Beacon 30 Sep |
 | [PITCH_PEDRO_ED_FF.md](../pitches/PITCH_PEDRO_ED_FF.md) | Pedro/Ed F&F investor pitch |
 | [HW_ENGINEER_ALTIUM_BRIEF.md](../hardware/HW_ENGINEER_ALTIUM_BRIEF.md) | Altium checklist for handoff |
 | [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) | Phase 0 partner handout |

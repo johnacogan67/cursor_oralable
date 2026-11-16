@@ -1,9 +1,9 @@
 # Mayoral Method × Oralable — validation map
 
-**As at:** 30 Aug 2026 · Pack **1.1.68** (method content unchanged; stack FW **1.0.84** / app **4.3.3** build **5**)  
+**As at:** 7 Sep 2026 · Pack **1.1.68** (method content unchanged; living hardware is **Gen 2** REV11 · Gen 1 is legacy · app **4.3.3** build **5**)  
 **Audience:** Pedro Mayoral Sanz · Ed Owens · John · (later) Paper B  
 **Tone:** Stage A wellness measurement — not AHI diagnosis / not FDA claims  
-**Related:** [ED_PEDRO_AGENDA_2026-06-07.md](../archive/ED_PEDRO_AGENDA_2026-06-07.md) (names “Mayoral Method titration ground-truth”) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) (Owens & Mayoral 2026 SB × FEP — published) · [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) (feasibility n≈5 · Arm P 1–2 h) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md) · [PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md)
+**Related:** [ED_PEDRO_AGENDA_2026-06-07.md](../archive/ED_PEDRO_AGENDA_2026-06-07.md) (names “Mayoral Method titration ground-truth”) · [ED_PEDRO_QUICK_START.md](./ED_PEDRO_QUICK_START.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) (Owens & Mayoral 2026 SB × FEP — published) · [MEASUREMENT_CONSTRUCT_MAP.md](./MEASUREMENT_CONSTRUCT_MAP.md) · [PAPER_A_FEASIBILITY_PROTOCOL.md](./PAPER_A_FEASIBILITY_PROTOCOL.md) (feasibility n≈5 · one-night ≥4 h · Dual A lab only) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md) · [PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md](./PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.md)
 
 ---
 
@@ -54,7 +54,7 @@ flowchart LR
 
 ### Stage 0 — Feasibility (current Phase 0)
 
-**Goal:** Wear temple Oralable ≥6 h with MAD in place; honest device state; CSV + hypnogram PDF.  
+**Goal:** Wear temple Oralable **≥4 h** for Beacon feasibility (6 h better); **≥6 h** when using the night for MAD titration series / band recalibration. Honest device state; CSV + hypnogram PDF.  
 **Endpoints:** wear hours, coupling QC, SpO₂ quality-gate, usability with appliance.  
 **Does not claim:** MAD efficacy.
 
@@ -100,15 +100,15 @@ Compare **low-VDO vs high-VDO** MAD builds at matched *effective* protrusion (Pe
 
 ### Stage 4 — Concordance (later)
 
-Subset with HSAT / PSG-AV AHI vs Oralable SASHB. The **Research Kit** can add optional ANR Dual A as a **descriptive Paper A precursor** ([ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md)); Arm P oxygen/MAD windows do not require Dual A. Pedro’s HSAT peer today is **AcuPebble** — see [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) (Oralable does not replace AcuPebble AHI). Deeper PSG-AV / Bruxoff diagnostic concordance stays later.
+Subset with HSAT / PSG-AV AHI vs Oralable SASHB. Dual A (ANR) is a **lab Paper A precursor**, not in the Beacon box ([ORALABLE_RESEARCH_KIT.md](./ORALABLE_RESEARCH_KIT.md) · [ANR_M40_CONCORDANCE.md](./ANR_M40_CONCORDANCE.md)). Arm P oxygen/MAD windows do not require Dual A. Pedro’s HSAT peer today is **AcuPebble** — see [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) (Oralable does not replace AcuPebble AHI). Deeper PSG-AV / Bruxoff diagnostic concordance stays later.
 
 ---
 
 ## 4. Protocol sketch (ops)
 
 1. Ethics / consent: Beacon wellness or clinical investigation as Pedro/Ed decide.  
-2. Kits: Gen1 · FW **1.0.84** · app **4.3.3** (build **5**) — temple placement **with MAD** (fit check — clip must not fight appliance straps).  
-3. Evaluable night: **≥6 h** worn ([OVERNIGHT_NIGHT_REPORT](../../OVERNIGHT_NIGHT_REPORT.md)).  
+2. Kits: Gen 2 · FW **2.0.x** when it streams · app **4.3.3** (build **5**) — temple placement **with MAD** (fit check — the MAM must not fight appliance straps).  
+3. Evaluable night: Beacon **≥4 h**; MAD series / band recalibration **≥6 h** ([OVERNIGHT_NIGHT_REPORT](../../OVERNIGHT_NIGHT_REPORT.md)).  
 4. Export: Share → Clinical Temporalis PDF (hypnogram-first) + CSV; Mac night pack if needed.  
 5. Case report form: MAD settings table + Oralable KPI strip per night.  
 6. Minimum series before expanding: **Pedro ± Ed self-nights** (titration A/B) then 5–10 OAT patients.
