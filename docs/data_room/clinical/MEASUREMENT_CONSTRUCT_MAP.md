@@ -118,3 +118,4 @@ Hypothesis 3.5.4 (MAD/CPAP cuts RMMA **timed to apnea/hypopnea end**) needs **ev
 | 12 Sep 2026 | Dual A = **lab methods** (not Beacon patient). Pack **1.1.69**. Table 1 numbers unchanged. |
 | 24 Sep 2026 | Pointer only: [DENTIST_APPROXIMATE.md](./DENTIST_APPROXIMATE.md). Table 1 unchanged. |
 | 22 Nov 2026 | Pointer only: [RECOGNITION_CONFIDENCE.md](./RECOGNITION_CONFIDENCE.md). Table 1 unchanged. |
+| 22 Nov 2026 | Same note: user configuration is a step that shrinks to none. Table 1 unchanged. |
