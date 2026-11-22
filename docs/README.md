@@ -52,7 +52,7 @@ Python algorithm development, clinical protocols, and gold-standard validation (
 
 | Document | Description |
 |----------|-------------|
-| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.75** · Research Kit Oralable-only · Dual A lab · reviewed Gen 2 image **2.0.6** · source signs **2.0.8** · app **4.3.3** (build **5**) · kits **gated** · **30 Sep** handoff missed |
+| [data_room/README.md](./data_room/README.md) | Index (Ken 11 areas) · **v1.1.75** · Research Kit Oralable-only · Dual A lab · board **2.0.8-gen2** · gates reviewed on **2.0.6** · app **4.3.3** (build **5**) · kits **gated** · **30 Sep** handoff missed |
 | [data_room/clinical/COLLAB_NABAVI_MCGILL.md](./data_room/clinical/COLLAB_NABAVI_MCGILL.md) | Nabavi collab truth — McGill / RI-MUHC · not Dianyx · Ed/Pedro · Wout Altium |
 | [data_room/bookmarks/LITERATURE_AND_PRIOR_ART.md](./data_room/bookmarks/LITERATURE_AND_PRIOR_ART.md) | TEC literature distill (Li ambulatory SB · BruxScreen · chewing PPG · encaps) |
 | [data_room/pitches/PITCH_KOOROSH.pdf](./data_room/pitches/PITCH_KOOROSH.pdf) | Nabavi leave-behind (McGill IEEE + optional Altium) |

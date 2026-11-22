@@ -5,7 +5,7 @@
 **Owner:** John Cogan · **Updated:** 2026-11-22
 **Policy:** Single repo, multi-board — **do not fork**. Gen2 board, config, and firmware are a port of Gen1, but Gen2 is an evidence-gated non-release program. See [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md) · [GEN2_PROGRAM_GATE.md](../../oralable_nrf/docs/GEN2_PROGRAM_GATE.md) · **[PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)** · **[VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)** · **[COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md)** · [FIGURES.md](./FIGURES.md)
 
-**Current control state (22 Nov 2026):** The reviewed Gen 2 image is **2.0.6-gen2-nrfconnect**. G2-P2, G2-P3, G2-P4, and G2-P6 are reviewed. Source on `main` signs **2.0.8+0** and broadcasts **MAM**. That sign version is not confirmed on a board. `app/VERSION` **1.0.87** is not the Gen 2 string. Kits stay gated. The iOS app is not production-compatible. A bench log is not a ship. The `pcb00003` tree remains the Gen 1 archive.
+**Current control state (22 Nov 2026):** John reports the board is on **2.0.8-gen2**. The firmware string is **2.0.8-gen2-nrfconnect**. G2-P2, G2-P3, G2-P4, and G2-P6 were reviewed on **2.0.6**, not on 2.0.8. Source on `main` signs **2.0.8+0** and broadcasts **MAM**. `app/VERSION` **1.0.87** is not the Gen 2 string. Kits stay gated. The iOS app is not production-compatible. The `pcb00003` tree remains the Gen 1 archive.
 
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
@@ -17,7 +17,7 @@
 
 | Track | Repo | Branch / tag | Board | FW string | Status |
 |-------|------|--------------|-------|-----------|--------|
-| **Gen2 bring-up** | `oralable_nrf` | `main` | `pcb00003_gen2` | Reviewed **2.0.6-gen2-nrfconnect**. Source signs **2.0.8+0**, name **MAM** | **Release flag on for 2.0.6.** G2-P2, G2-P3, G2-P4, and G2-P6 are reviewed. 2.0.8 is not confirmed on a board. Kits stay gated. The iOS app is not production compatible. |
+| **Gen2 bring-up** | `oralable_nrf` | `main` | `pcb00003_gen2` | Board **2.0.8-gen2**. Source signs **2.0.8+0**, name **MAM** | John, 22 Nov 2026. Gates were reviewed on **2.0.6**, not on 2.0.8. Kits stay gated. The iOS app is not production compatible. |
 | **Gen1 archive** | `oralable_nrf` | `pcb00003` tree | `pcb00003` | **1.0.85** frozen | **Frozen.** Source for the port. No new 1.0.x. |
 | **Gen1 prior** | `oralable_nrf` | tags `v1.0.66` | `pcb00003` | `1.0.66` | Rollback only |
 | **Docs / research** | `cursor_oralable` | `main` | — | docs hub **1.3.21** / data_room **1.1.75** | Tracking live |
