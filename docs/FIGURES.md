@@ -25,6 +25,8 @@
 
 Style exploration folders under `docs/figures/` (e.g. matisse / hokusai / durer / photo_source working crops) are **not** investor diligence. Keep one canonical file per FIG-CO-ID in the table; cull unused variants in a later dedicated pass after picking winners. See also [VISUAL_AND_VOICE_DIRECTION.md](./data_room/brand/VISUAL_AND_VOICE_DIRECTION.md).
 
+Phone screens and the Clinical Temporalis PDF for later graphic-novel panels live in [figures/story_photo_source/](./figures/story_photo_source/). Simulator only. A simulated night. Not FIG-CO rows.
+
 ## Template
 
 Copy [`figures/_placeholder.svg`](./figures/_placeholder.svg) → `FIG-CO-NNN-slug.svg`, update the three text lines inside the SVG, then embed:

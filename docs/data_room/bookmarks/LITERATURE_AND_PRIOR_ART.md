@@ -168,6 +168,7 @@ Not bruxism IP. It shows a long founder track record in **clinical–engineering
 | [BRUXOFF_PSG_GOLD_STANDARD.md](./BRUXOFF_PSG_GOLD_STANDARD.md) | Cid-Verdejo 2023 Bruxoff vs PSG; Oralable ladder vs gold standard |
 | [ANR_M40_CONCORDANCE.md](../bookmarks/ANR_M40_CONCORDANCE.md) | ANR M40 temporalis sEMG Research Kit / Paper A Dual A precursor; BLE ref ≠ nRF Connect |
 | [HAPPY_RING.md](./HAPPY_RING.md) | Happy Ring Oura-like finger HSAT (K240236 / K242224 hAHI) |
+| [OMNIRING_SMARTRING_PLATFORM.md](./OMNIRING_SMARTRING_PLATFORM.md) | OmniRing (IoTDI 2023) and later Penn State rings; FuSenseRing PPG-alone limit |
 | [ORALABLE_RESEARCH_KIT.md](../clinical/ORALABLE_RESEARCH_KIT.md) | Canonical kit BOM · Dual A wear stack · competitor landscape |
 | [MARKET_SIZING.md](../governance/MARKET_SIZING.md) | Prevalence cites (literature) |
 

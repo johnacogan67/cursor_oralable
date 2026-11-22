@@ -95,7 +95,7 @@ Corporate / statutory packs stay **outside** this git index.
 
 | Folder | Contents |
 |--------|----------|
-| [bookmarks/](./bookmarks/) | Landscape · parity · lit · AcuPebble · Happy Ring · [Sunrise](./bookmarks/SUNRISE_MANDIBULAR_MOVEMENT.md) · Gemini avenues · [Google Alerts watch map](./bookmarks/GOOGLE_ALERTS_WATCH_MAP.md) · [nRF54L15 DK](./bookmarks/NRF54L15_DK.md) · [ES4L15BA1 datasheet](./bookmarks/ES4L15BA1_DATASHEET.md) · [ECB euro display rate](./bookmarks/ECB_EUR_USD_RATE.md) |
+| [bookmarks/](./bookmarks/) | Landscape · parity · lit · AcuPebble · Happy Ring · [OmniRing](./bookmarks/OMNIRING_SMARTRING_PLATFORM.md) · [Sunrise](./bookmarks/SUNRISE_MANDIBULAR_MOVEMENT.md) · Gemini avenues · [Google Alerts watch map](./bookmarks/GOOGLE_ALERTS_WATCH_MAP.md) · [nRF54L15 DK](./bookmarks/NRF54L15_DK.md) · [nRF Connect on the Mac](./bookmarks/NRF_CONNECT_MAC.md) · [ES4L15BA1 datasheet](./bookmarks/ES4L15BA1_DATASHEET.md) · [ECB euro display rate](./bookmarks/ECB_EUR_USD_RATE.md) |
 | [hardware/](./hardware/) | Kaga / Bittele / Altium brief · [Gen 2 bench, 2 Nov 2026](./hardware/GEN2_BENCH_LEARNINGS_2026-11-02.md) |
 | [attachment/](./attachment/) | MAM housing + skin attach · [README](./attachment/README.md) · canonical [../ATTACHMENT.md](../ATTACHMENT.md) |
 | [brand/](./brand/) | Logo + [VISUAL_AND_VOICE_DIRECTION.md](./brand/VISUAL_AND_VOICE_DIRECTION.md) |
@@ -118,7 +118,7 @@ Old bookmarks used a flat `data_room/*.md`. Use these paths:
 | `FIRMWARE_*` · binaries | [`firmware/`](./firmware/) |
 | `GEN*_COGS_*` · `BITTELE_*` · `HW_ENGINEER_*` · `KAGA_*` | [`hardware/`](./hardware/) |
 | Housing / skin attach | [`attachment/`](./attachment/) · canonical [`../ATTACHMENT.md`](../ATTACHMENT.md) |
-| `DIANYX_*` · `HAPPY_RING` · `BRUXOFF_*` · `SENSOR_*` · `MAC_PHONE_*` · `LITERATURE_*` · `ACUPEBBLE_*` · `SUNRISE_*` · `GEMINI_*` · `ORALABLE_MARKET_LANDSCAPE` · `GOOGLE_ALERTS_*` · `NRF54L15_DK` · `ES4L15BA1_DATASHEET` · `ECB_EUR_USD_RATE` | [`bookmarks/`](./bookmarks/) |
+| `DIANYX_*` · `HAPPY_RING` · `OMNIRING_*` · `BRUXOFF_*` · `SENSOR_*` · `MAC_PHONE_*` · `LITERATURE_*` · `ACUPEBBLE_*` · `SUNRISE_*` · `GEMINI_*` · `ORALABLE_MARKET_LANDSCAPE` · `GOOGLE_ALERTS_*` · `NRF54L15_DK` · `NRF_CONNECT_MAC` · `ES4L15BA1_DATASHEET` · `ECB_EUR_USD_RATE` | [`bookmarks/`](./bookmarks/) |
 | `VISUAL_AND_VOICE_*` · logos | [`brand/`](./brand/) |
 | Dated scraps · old flash guides | [`archive/`](./archive/) |
 | HTML / `*_print.html` | [`_build/`](./_build/) (not diligence) |

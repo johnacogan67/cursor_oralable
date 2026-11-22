@@ -11,6 +11,9 @@
 		},
 		{
 			"path": "../OralableCore"
+		},
+		{
+			"path": "../oralable_android"
 		}
 	],
 	"settings": {
