@@ -1,6 +1,6 @@
 # Oralable investor data room index
 
-**Pack:** **1.1.74** · **As at:** 2 Nov 2026 · Gen 2 bench: PPG and ACC streamed until the cell floor; gates **pending**; candidate `2.0.0-gen2-nrfconnect` built, not on a board · Gen 1 FW **1.0.85** is frozen · App **4.3.3** (build **5**) · kits **gated** (Oralable-only · **30 Sep handoff missed** · no new date) · [Gen 2 bench, 2 Nov](./hardware/GEN2_BENCH_LEARNINGS_2026-11-02.md)  
+**Pack:** **1.1.75** · **As at:** 22 Nov 2026 · Reviewed Gen 2 image **2.0.6-gen2-nrfconnect** (G2-P2, G2-P3, G2-P4, G2-P6 reviewed 15–16 Nov) · source signs **2.0.8+0** and broadcasts **MAM** · that image is not confirmed on a board · `app/VERSION` **1.0.87** is not the Gen 2 string · Gen 1 FW **1.0.85** is frozen · App **4.3.3** (build **5**) · kits **gated** (Oralable-only · **30 Sep handoff missed** · no new date) · [version alignment](./VERSION_ALIGNMENT.md)  
 **Versions:** [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) · `VERSION` — Beacon use = one night · ≥4 h · no ANR · no headband ([ED_PEDRO_MEETING_2026-09-07.md](./clinical/ED_PEDRO_MEETING_2026-09-07.md)) · living pass: GTM Path 0 · ANR not in-kit · UP receipt **GAP** · August Pedro status **archived**  
 **Agent topic:** `data-room` · [WORKSPACE_TOPICS.md](../WORKSPACE_TOPICS.md) · [AGENTS.md](../../AGENTS.md)
 
@@ -140,7 +140,7 @@ Old bookmarks used a flat `data_room/*.md`. Use these paths:
 
 | Asset | Location |
 |-------|----------|
-| Data room pack | `VERSION` (**1.1.74**) |
+| Data room pack | `VERSION` (**1.1.75**) |
 | Docs hub | `docs/VERSION` (**1.3.21**) |
 | Stack truth | [VERSION_ALIGNMENT.md](./VERSION_ALIGNMENT.md) |
 | nRF docs pack | `oralable_nrf/docs/VERSION` |

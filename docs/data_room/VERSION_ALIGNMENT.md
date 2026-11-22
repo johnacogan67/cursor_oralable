@@ -1,6 +1,6 @@
 # Version alignment (canonical)
 
-**As at:** 14 Oct 2026 · Data room pack **1.1.74** · Docs hub **1.3.21** · Protocol A seat QC = **`couple`** (Mac single + iOS Setup / Dual)  
+**As at:** 22 Nov 2026 · Data room pack **1.1.75** · Docs hub **1.3.21** · Protocol A seat QC = **`couple`** (Mac single + iOS Setup / Dual)  
 **Nabavi collab:** [COLLAB_NABAVI_MCGILL.md](./clinical/COLLAB_NABAVI_MCGILL.md) (Phase 1 McGill / Koroosh · Phase 2 complementary Dianyx later)  
 **Research Kit:** [ORALABLE_RESEARCH_KIT.md](./clinical/ORALABLE_RESEARCH_KIT.md) — 5 **Oralable-only** kits · **30 Sep 2026** handoff **missed** · still **gated** · no new date · meeting [clinical/ED_PEDRO_MEETING_2026-09-07.md](./clinical/ED_PEDRO_MEETING_2026-09-07.md) · sendable [clinical/PEDRO_STATUS_UPDATE_2026-09.md](./clinical/PEDRO_STATUS_UPDATE_2026-09.md)  
 **Paper A field:** [PAPER_A_FEASIBILITY_PROTOCOL.md](./clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) — n≈5 clinic loaner · ≥4 h nights · Dual A **not** a patient arm  
@@ -11,7 +11,7 @@
 
 Use this table when you update flash guides, pilot handouts, architecture, the website, or TestFlight notes. Use these strings. Do not use older “1.0.70 ship” language except as rollback. Do not call **1.0.85** the current kit. That string is the frozen Gen 1 archive.
 
-**Current stack (use these strings):** Gen 2 · BOM **REV9** · PCB **REV11** · Kaga **ES4L15BA1** (nRF54L15) · cell **LP270829 35 mAh** · sensors **MAXM86161** + **LIS2DTW12** · firmware **target 2.0.x** (not a kit version). A bench merged image was written to one blank board on **29 Oct 2026**. PPG and ACC do not stream. Status: [GEN2_WOUT_KAGA_STATUS_2026-10-30.md](./hardware/GEN2_WOUT_KAGA_STATUS_2026-10-30.md). App **4.3.3** (build **5**) · kits **gated**. First charger and MAM are in hand **14 Oct 2026**. Status is **bring-up**, not ship-ready. Gen 1 (REV10 / ES2832AA2 / FW **1.0.85**) is **legacy**. Do not flash it on Gen 2. No new 1.0.x work. The `pcb00003` tree stays buildable as a bench archive. The 20-unit PC53020 lot is a separate Kaga tracking thread. These two boards on the bench are not that lot marked received. iOS FirmwareGate stays min **1.0.63** / recommend **1.0.85**. One bench board listed Oralable; the image is not the **2.0.x** kit string and does not stream, so the gate is unchanged. Local `oralable_nrf` `app/VERSION` PATCHLEVEL **86** is not a kit target. The archived 14 Sep **1.0.85** merged hex does **not** boot.
+**Current stack (use these strings):** Gen 2 · BOM **REV9** · PCB **REV11** · Kaga **ES4L15BA1** (nRF54L15) · cell **LP270829 35 mAh** · sensors **MAXM86161** + **LIS2DTW12**. The reviewed image is **2.0.6-gen2-nrfconnect**. G2-P2, G2-P3, G2-P4, and G2-P6 were reviewed on 15–16 Nov 2026. Source is signed **2.0.8+0** and `prj.conf` broadcasts **MAM**. That sign version is not a claim that a board is running 2.0.8. No read of characteristic 006 in this room shows 2.0.7 or 2.0.8 on a module. Images through 2.0.7 were built to advertise **Oralable**. The phone accepts both names. `app/VERSION` is **1.0.87** and is not the Gen 2 string. App **4.3.3** (build **5**), shown as MAM Diagnostics. Kits **gated**. Gen 1 (REV10 / ES2832AA2 / FW **1.0.85**) is legacy. Do not flash it on Gen 2. The `pcb00003` tree stays buildable as a bench archive. The 20-unit PC53020 lot is a separate Kaga tracking thread. iOS FirmwareGate stays min **1.0.63** / recommend **1.0.85**. The iOS app is not production-compatible with Gen 2. Earlier bench notes, including 30 Oct and 2 Nov, stay as the record of those days.
 
 **Canonical development timeline:** [PRODUCT_ROADMAP.md §3](../PRODUCT_ROADMAP.md#3-timeline-calendar--canonical) · planning mirror [COST_AND_TIMELINE.md](./governance/COST_AND_TIMELINE.md) §1. · **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)  
 **Technology avenues (Gemini distill):** [GEMINI_TEMPLE_PPG_AVENUES.md](./bookmarks/GEMINI_TEMPLE_PPG_AVENUES.md) · roadmap §2b · landscape §4b.
@@ -90,6 +90,7 @@ Use this table when you update flash guides, pilot handouts, architecture, the w
 | **Living pack (3 Oct)** | Pack **1.1.74** · docs hub **1.3.21**. **30 Sep 2026** kit handoff **missed**. Kits still **gated**. No new date. Kit FW stays **1.0.85**. Local `app/VERSION` PATCHLEVEL **86** is **not** the kit target. |
 | **Bench (5 Oct)** | One MAM left MCUboot. Phone showed **Oralable**. Green on the case. Archived 1.0.85 merged hex does **not** boot (119 bytes over the swap-move sector). Running image is the local size-opt build (**1.0.86**). GATT not read. Kits still **gated**. Pack stays **1.1.74**. |
 | **Cutover (14 Oct)** | Gen 2 charger + MAM + **LP270829** cell in hand. Partners, Paper A, and the patient site name Gen 2. Firmware still a scaffold. Kits still **gated**. Gen 1 frozen. Pack stays **1.1.74**. |
+| **Living pack (22 Nov)** | Pack **1.1.75**. Docs hub stays **1.3.21**. Reviewed image **2.0.6-gen2-nrfconnect**. Source signs **2.0.8+0** and broadcasts **MAM**. Board image after 2.0.6 is unconfirmed. `app/VERSION` **1.0.87** is not the Gen 2 string. App **4.3.3** (build **5**). Kits still **gated**. |
 
 ## Milestone — 14 Oct 2026 (Gen 2 is the partner hardware)
 
@@ -159,7 +160,20 @@ After guarding `nrf_nfct_pad_config_*` in `oralable_nrf/app/src/main.c` under `#
 | **Flash rule** | Program the fitted hex. Do **not** chip-erase. UICR.APPROTECT stayed **0x5A**. A chip erase on this build code locks the CPU. |
 | **Kits** | Still **gated**. One bench board. Not a kit ship. |
 
+## Milestone — 22 Nov 2026 (reviewed 2.0.6; source signs 2.0.8)
+
+| Item | Status |
+|------|--------|
+| **Reviewed image** | **2.0.6-gen2-nrfconnect**. G2-P2, G2-P3, G2-P4, and G2-P6 reviewed 15–16 Nov 2026. |
+| **Source** | Sign version **2.0.8+0**. Broadcast name **MAM**. Not confirmed on a board. A 2.0.7 file was built. No 006 read here shows 2.0.7 or 2.0.8 on a module. |
+| **`app/VERSION`** | **1.0.87**. Gen 1 file. Not the Gen 2 GATT string. |
+| **App** | **4.3.3** (build **5**). Home screen MAM Diagnostics. Not production-compatible with Gen 2. |
+| **Kits** | **Gated**. The 30 Sep 2026 handoff missed. No new date. |
+| **Pack** | **1.1.75**. Docs hub stays **1.3.21**. |
+
 ## Pilot ship status (ready ≠ delivered)
+
+The firmware lines in this table are the **14 Oct 2026** record. The 22 Nov milestone above is the current firmware status.
 
 | Item | As at 14 Oct 2026 |
 |------|------------------|
@@ -174,11 +188,12 @@ After guarding `nrf_nfct_pad_config_*` in `oralable_nrf/app/src/main.c` under `#
 | Layer | Current | Notes |
 |-------|---------|--------|
 | **Kit hardware** | Gen 2 REV11 · **ES4L15BA1** · **LP270829 35 mAh** | In hand 14 Oct 2026. Bring-up, not ship-ready. |
-| **Gen2 firmware (target)** | **2.0.x** | Not a kit version. One blank board programmed 29 Oct. One other board advertised; PPG and ACC did not stream. |
-| **Gen1 firmware (frozen)** | **1.0.85** | Bench archive. No new 1.0.x. Local `app/VERSION` PATCHLEVEL **86** is not a kit target. |
-| **iOS FirmwareGate hard min** | **1.0.63** | Stays until a Gen 2 unit advertises. Changing it now would reject the only firmware that runs. |
-| **iOS FirmwareGate recommend** | **1.0.85** | Soft hint for a Gen 1 bench board. Gen 2 **2.0.x** uses the same GATT once those units exist. |
-| **Oralable patient app** | **4.3.3** | Protocol A Setup (**couple**) · Dual A EMG→couple · vitals phase + STAT LED mirror |
+| **Gen2 firmware (reviewed)** | **2.0.6-gen2-nrfconnect** | G2-P2, G2-P3, G2-P4, G2-P6 reviewed 15–16 Nov. Not a kit release. |
+| **Gen2 firmware (source)** | **2.0.8+0**, name **MAM** | Not confirmed on a board. Images through 2.0.7 advertised **Oralable**. |
+| **Gen1 firmware (frozen)** | **1.0.85** | Bench archive. No new 1.0.x. `app/VERSION` **1.0.87** is not the Gen 2 string. |
+| **iOS FirmwareGate hard min** | **1.0.63** | Gen 1 floor. The reviewed Gen 2 image is 2.0.6. The app is not production-compatible with Gen 2. |
+| **iOS FirmwareGate recommend** | **1.0.85** | Soft hint for a Gen 1 bench board. |
+| **Oralable patient app** | **4.3.3** | Home screen MAM Diagnostics. Protocol A Setup (**couple**) · Dual A EMG→couple |
 | **Oralable app build** | **5** | `CURRENT_PROJECT_VERSION` (bump on each TestFlight) |
 | **Prior ship / rollback** | **1.0.84** (N−1 in `data_room/firmware/`) · **1.0.82** also kept · **1.0.70** (deep recovery in `oralable_nrf/artifacts/` only) | See [FIRMWARE_ROLLBACK.md](./firmware/FIRMWARE_ROLLBACK.md) |
 

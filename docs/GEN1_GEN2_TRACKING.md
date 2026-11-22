@@ -2,10 +2,10 @@
 
 **App working diagrams:** [MOBILE_APP_FLOWS.md §2](../../oralable_swift/docs/MOBILE_APP_FLOWS.md#2-how-the-patient-app-works--phase-0)
 
-**Owner:** John Cogan · **Updated:** 2026-11-01
+**Owner:** John Cogan · **Updated:** 2026-11-22
 **Policy:** Single repo, multi-board — **do not fork**. Gen2 board, config, and firmware are a port of Gen1, but Gen2 is an evidence-gated non-release program. See [GEN1_GEN2_MIGRATION.md](./GEN1_GEN2_MIGRATION.md) · [PCB00003_GEN2_REV11_HARDWARE.md](./PCB00003_GEN2_REV11_HARDWARE.md) · [GEN2_PROGRAM_GATE.md](../../oralable_nrf/docs/GEN2_PROGRAM_GATE.md) · **[PRODUCT_ROADMAP.md](./PRODUCT_ROADMAP.md)** · **[VERSION_ALIGNMENT.md](./data_room/VERSION_ALIGNMENT.md)** · **[COST_AND_TIMELINE.md](./data_room/governance/COST_AND_TIMELINE.md)** · [FIGURES.md](./FIGURES.md)
 
-**Current control state (1 Nov 2026):** Gen2 remains a future/bring-up track. No source build, bench advertisement, historical note, or future roadmap dates establish shipping, iOS support, sensor parity, update readiness, or a pilot-device claim. The `pcb00003` tree remains independently buildable as the Gen1 reference while Gen2 evidence is collected under its gate program.
+**Current control state (22 Nov 2026):** The reviewed Gen 2 image is **2.0.6-gen2-nrfconnect**. G2-P2, G2-P3, G2-P4, and G2-P6 are reviewed. Source on `main` signs **2.0.8+0** and broadcasts **MAM**. That sign version is not confirmed on a board. `app/VERSION` **1.0.87** is not the Gen 2 string. Kits stay gated. The iOS app is not production-compatible. A bench log is not a ship. The `pcb00003` tree remains the Gen 1 archive.
 
 
 **Strategy stack:** Stage A wellness wearable → Stage B medical (later) · new US patent embodiment · Ed/Pedro = patient app only.  
@@ -17,17 +17,17 @@
 
 | Track | Repo | Branch / tag | Board | FW string | Status |
 |-------|------|--------------|-------|-----------|--------|
-| **Gen2 bring-up** | `oralable_nrf` | `feature/gen2-nrf54l15` | `pcb00003_gen2` | `2.0.6-gen2-nrfconnect` (candidate) | **Release flag on for 2.0.6.** G2-P2, G2-P3, G2-P4, and G2-P6 are reviewed. Kits stay gated. The iOS app is not production compatible. |
+| **Gen2 bring-up** | `oralable_nrf` | `main` | `pcb00003_gen2` | Reviewed **2.0.6-gen2-nrfconnect**. Source signs **2.0.8+0**, name **MAM** | **Release flag on for 2.0.6.** G2-P2, G2-P3, G2-P4, and G2-P6 are reviewed. 2.0.8 is not confirmed on a board. Kits stay gated. The iOS app is not production compatible. |
 | **Gen1 archive** | `oralable_nrf` | `pcb00003` tree | `pcb00003` | **1.0.85** frozen | **Frozen.** Source for the port. No new 1.0.x. |
 | **Gen1 prior** | `oralable_nrf` | tags `v1.0.66` | `pcb00003` | `1.0.66` | Rollback only |
-| **Docs / research** | `cursor_oralable` | `main` | — | docs hub **1.3.21** / data_room **1.1.74** | Tracking live |
+| **Docs / research** | `cursor_oralable` | `main` | — | docs hub **1.3.21** / data_room **1.1.75** | Tracking live |
 | **iOS / Core** | `oralable_swift` · `OralableCore` | current | — | App **4.3.3** · Gen1 gate min **1.0.63** / recommend **1.0.85** | No Gen2 fork and no production-compatibility claim. G2-P6 phone log reviewed 16 Nov 2026 on the MAM Diagnostics build, app 4.3.3 (build 5). |
 
 ### Rules (non-negotiable)
 
-1. **Port, do not rewrite.** Gen 2 uses the Gen 1 application (`app/`), the Gen 1 `prj.conf` (BLE name, intervals, GATT), and the Gen 1 sensor and charge behavior. The new file is `boards/byteexplain/pcb00003_gen2/`: same nets (SDA, SCL, INT_ACC, INT_OPT, SENS_EN, CHRSTS, BATEN, BATVOL), new nRF54 pins. Do not invent a second protocol.
+1. **Port, do not rewrite.** Gen 2 uses the Gen 1 application (`app/`), the Gen 1 GATT, and the Gen 1 sensor and charge behavior. As at 22 Nov 2026 the source broadcast name is **MAM**. Images through 2.0.7 were built to say **Oralable**. The phone accepts both. The new file is `boards/byteexplain/pcb00003_gen2/`: same nets (SDA, SCL, INT_ACC, INT_OPT, SENS_EN, CHRSTS, BATEN, BATVOL), new nRF54 pins. Do not invent a second protocol.
 2. Keep `west build -b pcb00003` building. That tree is the archive the port copies from. No new Gen 1 features.
-3. Gen2 work lands on **`feature/gen2-nrf54l15`** while G2-P0 through G2-P6 evidence is reviewed. A merge or candidate build is not release authorization; promotion requires every gate, Gen1 protection, and product-owner approval.
+3. Gen 2 source is on **`main`**. A candidate build is not a release. G2-P2, G2-P3, G2-P4, and G2-P6 are reviewed on 2.0.6. Kits stay gated. The iOS app is not production-compatible.
 4. Artifacts must encode board + version:
    - Gen1: `artifacts/oralable_1.0.70_pcb00003_merged.hex`
    - Gen2: a local candidate may encode board + version, but it must remain outside release artifacts until the program gate is formally closed.
