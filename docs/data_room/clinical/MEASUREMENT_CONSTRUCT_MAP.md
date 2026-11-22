@@ -1,12 +1,14 @@
 # Measurement construct map — MAM · ANR · Dual A · AcuPebble · PSG
 
-**As at:** 12 Sep 2026 · Pack **1.1.69**  
+**As at:** 22 Nov 2026 · Pack **1.1.69** (table unchanged)  
 **Status:** Living table — iterate here; other docs **point**, they do not copy the matrix  
 **Agent slug:** `clinical` · start this file when the question is “what does X measure vs Y”
 
 **One-liner:** Four instrument families, different physics. Dual A already scores **EMG burst → LP IR-DC trough** in the **lab** (not a Beacon patient arm). Other MAM names stay **labels** until F1 (or an event clock) says otherwise. **AHI**, **HB**, and **SASHB** are three different oxygen numbers. **AcuPebble always uses finger ox** (AHI + finger SpO₂ / ODI). PSG-AV = AHI **and** RMMA. **MAM and ANR do not use finger ox.** MAM SpO₂ / SASHB is **temple PPG**. ANR is EMG only. MAM never becomes AHI or Azarbarzin HB.
 
 **Pedro sendable:** [PEDRO_CONSTRUCT_MAP_NOTE.md](./PEDRO_CONSTRUCT_MAP_NOTE.md) · [PDF](./PEDRO_CONSTRUCT_MAP_NOTE.pdf) — tables + why they matter for AcuPebble / Arm P / Dual A / FEP. Do not paste Table 1 into Paper A.
+
+**Recognition goal:** [RECOGNITION_CONFIDENCE.md](./RECOGNITION_CONFIDENCE.md) — one Core ML model, three references, three thresholds. The night bar stays Quiet, Tonic, Phasic, Rescue, Recovery. Not an apnea count.
 
 **Related (detail, not duplicates):** [DENTIST_APPROXIMATE.md](./DENTIST_APPROXIMATE.md) (aim vs current bar — living shortcomings) · [ANR_M40_CONCORDANCE.md](../../ANR_M40_CONCORDANCE.md) · [ACUPEBBLE_VS_ORALABLE_ANR.md](../bookmarks/ACUPEBBLE_VS_ORALABLE_ANR.md) · [BRUXOFF_PSG_GOLD_STANDARD.md](../bookmarks/BRUXOFF_PSG_GOLD_STANDARD.md) · [ED_PEDRO_SB_FEP_DRAFT_PAPER.md](./ED_PEDRO_SB_FEP_DRAFT_PAPER.md) · [OVERNIGHT_NIGHT_REPORT.md](../../OVERNIGHT_NIGHT_REPORT.md) · [ALGORITHM_ARCHITECTURE.md](../../ALGORITHM_ARCHITECTURE.md) · [TEMPORALIS_COLLECTION_PROTOCOL.md](../../TEMPORALIS_COLLECTION_PROTOCOL.md) · [MAYORAL_METHOD_ORALABLE_VALIDATION.md](./MAYORAL_METHOD_ORALABLE_VALIDATION.md)
 
@@ -115,3 +117,4 @@ Hypothesis 3.5.4 (MAD/CPAP cuts RMMA **timed to apnea/hypopnea end**) needs **ev
 | 30 Aug 2026 | Pedro note: glossary (instrument / methods / Dual A / muscle vs infrared / Paper A / FEP). Table 1 unchanged. |
 | 12 Sep 2026 | Dual A = **lab methods** (not Beacon patient). Pack **1.1.69**. Table 1 numbers unchanged. |
 | 24 Sep 2026 | Pointer only: [DENTIST_APPROXIMATE.md](./DENTIST_APPROXIMATE.md). Table 1 unchanged. |
+| 22 Nov 2026 | Pointer only: [RECOGNITION_CONFIDENCE.md](./RECOGNITION_CONFIDENCE.md). Table 1 unchanged. |

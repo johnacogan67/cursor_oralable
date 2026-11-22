@@ -63,6 +63,7 @@ Corporate / statutory packs stay **outside** this git index.
 | [clinical/PAPER_A_FEASIBILITY_PROTOCOL.md](./clinical/PAPER_A_FEASIBILITY_PROTOCOL.md) | n≈5 feasibility |
 | [clinical/PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf](./clinical/PAPER_A_IEEE_TEMPORALIS_OMG_DRAFT.pdf) | Draft PDF |
 | [clinical/MEASUREMENT_CONSTRUCT_MAP.md](./clinical/MEASUREMENT_CONSTRUCT_MAP.md) | Living construct table |
+| [clinical/RECOGNITION_CONFIDENCE.md](./clinical/RECOGNITION_CONFIDENCE.md) | Goal lock: clench, grind, and apnea-like confidence. Not an apnea count |
 | [clinical/DENTIST_APPROXIMATE.md](./clinical/DENTIST_APPROXIMATE.md) | Living aim and shortcomings for a dentist approximate |
 | [../ANR_M40_CONCORDANCE.md](../ANR_M40_CONCORDANCE.md) | **Edit ANR here** (full) · bookmark [bookmarks/ANR_M40_CONCORDANCE.md](./bookmarks/ANR_M40_CONCORDANCE.md) |
 
